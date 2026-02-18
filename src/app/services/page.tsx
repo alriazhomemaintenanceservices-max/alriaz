@@ -6,12 +6,12 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Maintenance Services in Riyadh | Electrician, Plumber & Security"
+        absolute: "All Home Maintenance Services | Electrician, Plumber & Intercom Riyadh"
     },
     alternates: {
         canonical: '/services'
     },
-    description: "Explore our full range of professional home maintenance services in Riyadh. From emergency electrician and plumbing to smart intercom systems. 24/7 SASO-certified help.",
+    description: "Expert Professional Electrician, Plumber, and Intercom installation services in Riyadh. We also provide comprehensive General Maintenance for all home needs.",
 };
 
 const SERVICES = [
@@ -59,6 +59,21 @@ const SERVICES = [
         href: "/services/intercom",
         color: "#6366f1",
         bg: "#eef2ff"
+    },
+    {
+        title: "General Maintenance",
+        description: "Comprehensive handyman services for all your home repair needs. From painting to carpentry, we handle it all.",
+        features: [
+            "Painting & Drywall Repair",
+            "Furniture Assembly",
+            "Door & Window Fixes",
+            "General Handyman Tasks",
+            "Emergency Repairs"
+        ],
+        icon: <Wrench size={32} />,
+        href: "/services",
+        color: "#14b8a6",
+        bg: "#f0fdfa"
     }
 ];
 
@@ -83,12 +98,13 @@ export default function ServicesPage() {
                 background: '#fff',
                 overflow: 'hidden'
             }}>
-                <div className="container" style={{ position: 'relative', zIndex: 10 }}>
-                    <div className="grid grid-2" style={{ alignItems: 'center', gap: '60px' }}>
+                <div className="container" style={{ position: 'relative', zIndex: 10, textAlign: 'center' }}>
+                    <div style={{ maxWidth: '800px', margin: '0 auto' }}>
                         <div className="animate-fade-in">
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--primary)', fontWeight: 800, marginBottom: '20px', fontSize: '0.9rem', letterSpacing: '2px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent: 'center', color: 'var(--primary)', fontWeight: 800, marginBottom: '20px', fontSize: '0.9rem', letterSpacing: '2px' }}>
                                 <div style={{ width: '40px', height: '2px', background: 'var(--primary)' }}></div>
                                 COMPREHENSIVE SOLUTIONS
+                                <div style={{ width: '40px', height: '2px', background: 'var(--primary)' }}></div>
                             </div>
                             <h1 style={{
                                 fontSize: 'clamp(2.5rem, 5vw, 4rem)',
@@ -98,49 +114,19 @@ export default function ServicesPage() {
                                 color: '#333',
                                 letterSpacing: '-1.5px'
                             }}>
-                                Professional <span style={{ color: 'var(--primary)' }}>Home Services</span> <br />
-                                in Riyadh - 24/7 Expert Help
+                                Expert <span style={{ color: 'var(--primary)' }}>Home Maintenance</span> <br />
+                                & Repairs in Riyadh
                             </h1>
-                            <p style={{ fontSize: '1.25rem', color: '#666', marginBottom: '40px', maxWidth: '600px', lineHeight: 1.7 }}>
+                            <p style={{ fontSize: '1.25rem', color: '#666', marginBottom: '40px', lineHeight: 1.7, margin: '0 auto 40px', maxWidth: '700px' }}>
                                 Your trusted partner for specialized electrical, plumbing, and security solutions. Licensed technicians available 24/7 across the capital.
                             </p>
-                            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+                            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
                                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
                                     <WhatsAppIcon size={20} /> BOOK A SERVICE NOW
                                 </a>
                                 <a href="tel:+966508901536" className="btn btn-lg" style={{ border: '1px solid #ddd', color: '#111' }}>
                                     CALL CUSTOMER CARE
                                 </a>
-                            </div>
-                        </div>
-
-                        <div style={{ position: 'relative', height: '100%', display: 'flex', justifyContent: 'flex-end' }}>
-                            <div style={{
-                                position: 'relative',
-                                width: '100%',
-                                maxWidth: '450px',
-                                height: '400px',
-                                background: '#f1f5f9',
-                                borderRadius: '20px',
-                                overflow: 'hidden',
-                                boxShadow: 'var(--shadow-card)'
-                            }}>
-                                <div style={{
-                                    width: '100%',
-                                    height: '100%',
-                                    background: 'url("https://images.unsplash.com/photo-1581578731522-745d05db9ad0?q=80&w=2070&auto=format&fit=crop") center/cover no-repeat'
-                                }}></div>
-                                <div style={{
-                                    position: 'absolute',
-                                    bottom: '10%',
-                                    right: '-10%',
-                                    width: '120%',
-                                    height: '60px',
-                                    background: 'var(--primary)',
-                                    transform: 'rotate(-5deg)',
-                                    opacity: 0.8,
-                                    zIndex: 3
-                                }}></div>
                             </div>
                         </div>
                     </div>

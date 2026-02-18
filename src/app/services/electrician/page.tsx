@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Zap, MapPin, CheckCircle, ArrowRight, ShieldCheck, Clock, Wrench, ShieldAlert, BadgeCheck, Star, Lightbulb, ThermometerSun, AlertTriangle, ZapOff, Sparkles, Phone } from 'lucide-react';
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
+import Accordion from "@/components/Accordion";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -65,18 +66,19 @@ export default function ElectricianPage() {
             {/* 1. HERO SECTION */}
             <section style={{
                 position: 'relative',
-                minHeight: '80vh',
+                minHeight: '60vh',
                 display: 'flex',
                 alignItems: 'center',
                 background: '#fff',
                 overflow: 'hidden'
             }}>
-                <div className="container" style={{ position: 'relative', zIndex: 10 }}>
-                    <div className="grid grid-2" style={{ alignItems: 'center', gap: '60px' }}>
+                <div className="container" style={{ position: 'relative', zIndex: 10, textAlign: 'center' }}>
+                    <div style={{ maxWidth: '800px', margin: '0 auto' }}>
                         <div className="animate-fade-in">
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--primary)', fontWeight: 800, marginBottom: '20px', fontSize: '0.9rem', letterSpacing: '2px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent: 'center', color: 'var(--primary)', fontWeight: 800, marginBottom: '20px', fontSize: '0.9rem', letterSpacing: '2px' }}>
                                 <div style={{ width: '40px', height: '2px', background: 'var(--primary)' }}></div>
                                 EXPERT ELECTRICAL SOLUTIONS
+                                <div style={{ width: '40px', height: '2px', background: 'var(--primary)' }}></div>
                             </div>
                             <h1 style={{
                                 fontSize: 'clamp(3rem, 5vw, 4.5rem)',
@@ -89,46 +91,16 @@ export default function ElectricianPage() {
                                 Licensed <span style={{ color: 'var(--primary)' }}>Electrician</span> in <br />
                                 Riyadh — 24/7 Service
                             </h1>
-                            <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '40px', maxWidth: '550px', lineHeight: 1.7 }}>
+                            <p style={{ fontSize: '1.25rem', color: '#666', marginBottom: '40px', lineHeight: 1.7, margin: '0 auto 40px', maxWidth: '700px' }}>
                                 Searching for a certified electrician in Riyadh? From emergency short circuits in Olaya to luxury lighting in Hittin, our SASO-standard technicians ensure your home's safety and comfort.
                             </p>
-                            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+                            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
                                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
                                     <WhatsAppIcon size={20} /> BOOK ON WHATSAPP
                                 </a>
                                 <a href="tel:+966508901536" className="btn btn-lg" style={{ border: '1px solid #ddd', color: '#111' }}>
                                     CALL NOW
                                 </a>
-                            </div>
-                        </div>
-
-                        <div style={{ position: 'relative', height: '100%', display: 'flex', justifyContent: 'flex-end' }}>
-                            <div style={{
-                                position: 'relative',
-                                width: '100%',
-                                maxWidth: '500px',
-                                height: '550px',
-                                background: '#f1f5f9',
-                                borderRadius: '20px',
-                                overflow: 'hidden',
-                                boxShadow: 'var(--shadow-card)'
-                            }}>
-                                <div style={{
-                                    width: '100%',
-                                    height: '100%',
-                                    background: 'url("https://images.unsplash.com/photo-1621905235277-22649a379201?q=80&w=2070&auto=format&fit=crop") center/cover no-repeat'
-                                }}></div>
-                                <div style={{
-                                    position: 'absolute',
-                                    bottom: '10%',
-                                    left: '-10%',
-                                    width: '120%',
-                                    height: '80px',
-                                    background: 'var(--primary)',
-                                    transform: 'rotate(-10deg)',
-                                    opacity: 0.8,
-                                    zIndex: 3
-                                }}></div>
                             </div>
                         </div>
                     </div>
@@ -294,9 +266,7 @@ export default function ElectricianPage() {
                                 <li>• Princess Nora University (PNU)</li>
                                 <li>• King Abdullah Financial District (KAFD)</li>
                             </ul>
-                            <div style={{ marginTop: '30px', padding: '20px', background: 'white', borderRadius: '20px', border: '1px solid #25D366' }}>
-                                <p style={{ margin: 0, fontSize: '0.9rem', fontWeight: 600 }}>Proximity Alert: Our technician is currently 15 mins away from Olaya.</p>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -334,28 +304,28 @@ export default function ElectricianPage() {
             <section id="faq" className="section animate-fade-in">
                 <div className="container" style={{ maxWidth: '900px' }}>
                     <h2 style={{ textAlign: 'center', marginBottom: '50px' }}>Expert Answers (FAQs)</h2>
-                    <div style={{ display: 'grid', gap: '20px' }}>
-                        <div className="card hover-lift">
-                            <h4>Is there an extra charge for emergency calls after midnight?</h4>
-                            <p style={{ color: 'var(--muted)' }}>Unlike other services, we maintain a flat-rate surcharge for after-hours calls. Our dispatch center handles midnight emergencies in areas like Malqa and Hittin with standard professional fees to ensure accessibility.</p>
-                        </div>
-                        <div className="card hover-lift">
-                            <h4>Do you install smart home switches and Apple HomeKit integrations?</h4>
-                            <p style={{ color: 'var(--muted)' }}>Yes. We specialize in retrofitting traditional villas with smart switches (Lutron, Legrand, or Xiaomi) and ensuring your Wi-Fi Mesh supports your electrical ecosystem without interference.</p>
-                        </div>
-                        <div className="card hover-lift">
-                            <h4>Why does my MCB keep tripping even with no heavy load?</h4>
-                            <p style={{ color: 'var(--muted)' }}>This is common in older Olaya villas. It usually indicates a "neutral leakage" or an aged breaker that has lost its sensitivity. We perform a full load test to identify the exact point of failure.</p>
-                        </div>
-                        <div className="card hover-lift">
-                            <h4>Will your electricians provide the spare parts, or do I need to buy them?</h4>
-                            <p style={{ color: 'var(--muted)' }}>We carry a stock of high-quality SASO-certified breakers, sockets, and cabling in our mobile workshops. If you prefer a specific brand (e.g., Schneider or ABB), we can source it for you instantly.</p>
-                        </div>
-                        <div className="card hover-lift">
-                            <h4>How soon can an electrician arrive in Nakheel District?</h4>
-                            <p style={{ color: 'var(--muted)' }}>Since we have a dedicated team patrolling the Northern Ring Road, we can typically reach An Nakheel or Al-Ghadeer within 35-45 minutes of your WhatsApp confirmation.</p>
-                        </div>
-                    </div>
+                    <Accordion items={[
+                        {
+                            title: "Is there an extra charge for emergency calls after midnight?",
+                            content: "Unlike other services, we maintain a flat-rate surcharge for after-hours calls. Our dispatch center handles midnight emergencies in areas like Malqa and Hittin with standard professional fees to ensure accessibility."
+                        },
+                        {
+                            title: "Do you install smart home switches and Apple HomeKit integrations?",
+                            content: "Yes. We specialize in retrofitting traditional villas with smart switches (Lutron, Legrand, or Xiaomi) and ensuring your Wi-Fi Mesh supports your electrical ecosystem without interference."
+                        },
+                        {
+                            title: "Why does my MCB keep tripping even with no heavy load?",
+                            content: "This is common in older Olaya villas. It usually indicates a \"neutral leakage\" or an aged breaker that has lost its sensitivity. We perform a full load test to identify the exact point of failure."
+                        },
+                        {
+                            title: "Will your electricians provide the spare parts, or do I need to buy them?",
+                            content: "We carry a stock of high-quality SASO-certified breakers, sockets, and cabling in our mobile workshops. If you prefer a specific brand (e.g., Schneider or ABB), we can source it for you instantly."
+                        },
+                        {
+                            title: "How soon can an electrician arrive in Nakheel District?",
+                            content: "Since we have a dedicated team patrolling the Northern Ring Road, we can typically reach An Nakheel or Al-Ghadeer within 35-45 minutes of your WhatsApp confirmation."
+                        }
+                    ]} />
                 </div>
             </section>
 
@@ -435,20 +405,7 @@ export default function ElectricianPage() {
                 </div>
             </section>
 
-            {/* 15. Images & Map Meta (150-200 words) */}
-            <section className="section animate-fade-in" style={{ background: '#f8fafc', fontSize: '0.85rem', color: 'var(--muted)' }}>
-                <div className="container">
-                    <h4>Visual Assets & Accessibility Information</h4>
-                    <p>Suggested Visuals for Webmaster:
-                        <br />• File Name: `riyadh-electrician-emergency-repair.jpg` | Alt: `Licensed electrician in Riyadh repairing a Siemens DB board in a luxury villa in Olaya.`
-                        <br />• File Name: `certified-electrician-hittin-riyadh.jpg` | Alt: `SASO certified electrical technician installing luxury LED lighting in Hittin District, Riyadh.`
-                        <br />• File Name: `safe-electrical-wiring-riyadh.jpg` | Alt: `Thermal imaging scan of electrical junction boxes by Al Riaz Home Maintenance to prevent fires.`
-                    </p>
-                    <p style={{ marginTop: '20px' }}>Map Embed Information:
-                        <br />Caption: "Al Riaz Dispatch Hub located near Olaya Towers, serving a 30km radius including Hittin, Malqa, and the Riyadh International Airport road."
-                    </p>
-                </div>
-            </section>
-        </main>
+
+        </main >
     );
 }

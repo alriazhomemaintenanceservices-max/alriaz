@@ -44,7 +44,7 @@ export default function AboutUsPage() {
                 overflow: 'hidden'
             }}>
                 <div className="container">
-                    <div className="grid grid-2" style={{ alignItems: 'center', gap: '50px' }}>
+                    <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
                         <div>
                             <h1 style={{
                                 fontSize: 'clamp(2.5rem, 5vw, 4rem)',
@@ -61,48 +61,13 @@ export default function AboutUsPage() {
                             <p style={{ fontSize: '1rem', color: '#64748B', marginBottom: '40px', lineHeight: 1.6 }}>
                                 Founded with a vision to professionalize the home maintenance industry in Saudi Arabia, we have grown from a small team of technicians to a leading service provider covering all major districts of Riyadh. Our commitment to punctuality, transparency, and technical excellence sets us apart.
                             </p>
-                            <div style={{ display: 'flex', gap: '20px' }}>
+                            <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
                                 <a href="tel:+966508901536" className="btn" style={{ background: 'var(--secondary)', color: 'white', border: 'none', padding: '15px 30px', fontWeight: 700, borderRadius: '30px', display: 'flex', alignItems: 'center', gap: '10px' }}>
                                     <Phone size={18} /> Call Us
                                 </a>
                                 <a href={whatsappUrl} className="btn" style={{ background: 'var(--primary)', color: 'white', border: 'none', padding: '15px 30px', fontWeight: 700, borderRadius: '30px', display: 'flex', alignItems: 'center', gap: '10px' }}>
                                     <WhatsAppIcon size={18} /> Chat With Us
                                 </a>
-                            </div>
-                        </div>
-                        <div style={{ position: 'relative' }}>
-                            {/* Placeholder for video/image */}
-                            <div style={{
-                                width: '100%',
-                                height: '500px',
-                                background: '#f1f5f9',
-                                borderRadius: '20px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                position: 'relative',
-                                overflow: 'hidden',
-                                boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
-                            }}>
-                                <img
-                                    src="https://images.unsplash.com/photo-1581578731117-104f2a41272c?q=80&w=2070&auto=format&fit=crop"
-                                    alt="Al Riaz Team"
-                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                />
-                                <div style={{
-                                    position: 'absolute',
-                                    top: '50%',
-                                    left: '50%',
-                                    transform: 'translate(-50%, -50%)',
-                                    background: 'rgba(255,255,255,0.95)',
-                                    padding: '30px 40px',
-                                    borderRadius: '15px',
-                                    textAlign: 'center',
-                                    minWidth: '250px'
-                                }}>
-                                    <div style={{ fontSize: '3rem', fontWeight: 800, color: 'var(--primary)', lineHeight: 1 }}>12+</div>
-                                    <div style={{ color: '#334155', letterSpacing: '1px', fontSize: '0.9rem', fontWeight: 700, marginTop: '5px' }}>YEARS OF SERVICE</div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -183,11 +148,11 @@ export default function AboutUsPage() {
             {/* 4. TEAM / EXPERTISE */}
             <section style={{ padding: '80px 0', background: 'var(--secondary)' }}>
                 <div className="container">
-                    <div className="grid grid-2" style={{ alignItems: 'center', gap: '60px' }}>
-                        <div style={{ order: 2 }}>
+                    <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+                        <div>
                             <h2 style={{ fontSize: '2rem', color: 'white', marginBottom: '20px' }}>Not Just "Handymen"</h2>
                             <h3 style={{ fontSize: '1.5rem', color: 'var(--primary)', marginBottom: '30px' }}>We Are Certified Technicians</h3>
-                            <p style={{ lineHeight: 1.8, color: 'rgba(255,255,255,0.8)', marginBottom: '30px' }}>
+                            <p style={{ lineHeight: 1.8, color: 'rgba(255,255,255,0.8)', marginBottom: '30px', maxWidth: '700px', margin: '0 auto 30px' }}>
                                 Unlike freelance laborers found on the street, Al Riaz technicians are full-time employees who undergo rigorous training. They are background-checked, uniformed, and equipped with professional-grade tools to handle complex electrical, plumbing, and HVAC systems safely.
                             </p>
 
@@ -202,9 +167,6 @@ export default function AboutUsPage() {
                                 </div>
                             </div>
                         </div>
-                        <div style={{ order: 1, borderRadius: '20px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.3)' }}>
-                            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2064&auto=format&fit=crop" style={{ width: '100%', display: 'block' }} alt="Professional Meeting" />
-                        </div>
                     </div>
                 </div>
             </section>
@@ -217,8 +179,8 @@ export default function AboutUsPage() {
                         Our mobile workshops are stationed across key districts to ensure rapid response times, usually within 60 minutes for emergencies.
                     </p>
                     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '15px' }}>
-                        {['Olaya', 'Malaz', 'Hittin', 'Al-Nakhil', 'Al-Yasmin', 'Al-Morooj', 'Al-Sulaimaniyah', 'King Abdullah District'].map((area, i) => (
-                            <span key={i} style={{
+                        {['Qurtubah', 'Ishbiliyah', 'Al Yarmouk', 'Al Narjis', 'Al Yasmin', 'Al Sahafah', 'Al Falah', 'Granada', 'Al Rabee', 'Al Nada'].map((area, i) => (
+                            <Link key={i} href={`/locations/${area.toLowerCase().replace(' ', '-')}`} style={{
                                 padding: '10px 25px',
                                 background: '#F1F5F9',
                                 borderRadius: '30px',
@@ -226,10 +188,12 @@ export default function AboutUsPage() {
                                 fontWeight: 600,
                                 display: 'flex',
                                 alignItems: 'center',
-                                gap: '8px'
+                                gap: '8px',
+                                textDecoration: 'none',
+                                transition: 'background 0.2s'
                             }}>
                                 <MapPin size={16} color="var(--primary)" /> {area}
-                            </span>
+                            </Link>
                         ))}
                     </div>
                 </div>

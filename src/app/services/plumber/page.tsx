@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Droplets, MapPin, CheckCircle, ArrowRight, ShieldCheck, Clock, Wrench, Waves, BadgeCheck, Star, Phone } from 'lucide-react';
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
+import Accordion from "@/components/Accordion";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -29,18 +30,19 @@ export default function PlumbingPage() {
             {/* 1. HERO SECTION */}
             <section style={{
                 position: 'relative',
-                minHeight: '80vh',
+                minHeight: '60vh',
                 display: 'flex',
                 alignItems: 'center',
                 background: '#fff',
                 overflow: 'hidden'
             }}>
-                <div className="container" style={{ position: 'relative', zIndex: 10 }}>
-                    <div className="grid grid-2" style={{ alignItems: 'center', gap: '60px' }}>
+                <div className="container" style={{ position: 'relative', zIndex: 10, textAlign: 'center' }}>
+                    <div style={{ maxWidth: '800px', margin: '0 auto' }}>
                         <div className="animate-fade-in">
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--primary)', fontWeight: 800, marginBottom: '20px', fontSize: '0.9rem', letterSpacing: '2px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent: 'center', color: 'var(--primary)', fontWeight: 800, marginBottom: '20px', fontSize: '0.9rem', letterSpacing: '2px' }}>
                                 <div style={{ width: '40px', height: '2px', background: 'var(--primary)' }}></div>
                                 MASTER PLUMBING SOLUTIONS
+                                <div style={{ width: '40px', height: '2px', background: 'var(--primary)' }}></div>
                             </div>
                             <h1 style={{
                                 fontSize: 'clamp(3rem, 5vw, 4.5rem)',
@@ -53,10 +55,10 @@ export default function PlumbingPage() {
                                 Expert <span style={{ color: 'var(--primary)' }}>Plumber</span> in <br />
                                 Riyadh - 24/7 Repairs
                             </h1>
-                            <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '40px', maxWidth: '550px', lineHeight: 1.7 }}>
+                            <p style={{ fontSize: '1.25rem', color: '#666', marginBottom: '40px', lineHeight: 1.7, margin: '0 auto 40px', maxWidth: '700px' }}>
                                 Searching for a certified plumber in Riyadh? Al Riaz Home Maintenance offers 24/7 emergency leak detection, water heater repair, and decorative fixture installation for luxury villas and apartments.
                             </p>
-                            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+                            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
                                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
                                     <WhatsAppIcon size={20} /> WHATSAPP MASTER PLUMBER
                                 </a>
@@ -65,41 +67,11 @@ export default function PlumbingPage() {
                                 </a>
                             </div>
                         </div>
-
-                        <div style={{ position: 'relative', height: '100%', display: 'flex', justifyContent: 'flex-end' }}>
-                            <div style={{
-                                position: 'relative',
-                                width: '100%',
-                                maxWidth: '500px',
-                                height: '550px',
-                                background: '#f1f5f9',
-                                borderRadius: '20px',
-                                overflow: 'hidden',
-                                boxShadow: 'var(--shadow-card)'
-                            }}>
-                                <div style={{
-                                    width: '100%',
-                                    height: '100%',
-                                    background: 'url("https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop") center/cover no-repeat'
-                                }}></div>
-                                <div style={{
-                                    position: 'absolute',
-                                    bottom: '10%',
-                                    left: '-10%',
-                                    width: '120%',
-                                    height: '80px',
-                                    background: 'var(--primary)',
-                                    transform: 'rotate(-10deg)',
-                                    opacity: 0.8,
-                                    zIndex: 3
-                                }}></div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* 2. AI Overview / Transparent Pricing */}
+
             <section className="section animate-fade-in" style={{ background: '#f8fafc' }}>
                 <div className="container" style={{ maxWidth: '900px' }}>
                     <h2 style={{ textAlign: 'center', marginBottom: '30px' }}>Expert Plumber Service in Riyadh</h2>
@@ -192,20 +164,19 @@ export default function PlumbingPage() {
                 </div>
             </section>
 
-            {/* 6. FAQ (PAA) */}
             <section className="section animate-fade-in">
                 <div className="container" style={{ maxWidth: '800px' }}>
                     <h2 style={{ textAlign: 'center', marginBottom: '50px' }}>People Also Ask (PAA)</h2>
-                    <div style={{ display: 'grid', gap: '20px' }}>
-                        <div className="card hover-lift">
-                            <h4 style={{ marginBottom: '10px' }}>Do you provide plumbing services on Fridays/Weekends?</h4>
-                            <p style={{ color: 'var(--muted)' }}>Yes! We have an emergency dispatch team available in Riyadh every Friday and Saturday to handle bursts and emergencies.</p>
-                        </div>
-                        <div className="card hover-lift">
-                            <h4 style={{ marginBottom: '10px' }}>How do I know if my water heater needs repair?</h4>
-                            <p style={{ color: 'var(--muted)' }}>Rust-colored water, strange noises, or insufficient heat are key signals. A plumber in Riyadh should inspect it immediately to avoid tank bursts.</p>
-                        </div>
-                    </div>
+                    <Accordion items={[
+                        {
+                            title: "Do you provide plumbing services on Fridays/Weekends?",
+                            content: "Yes! We have an emergency dispatch team available in Riyadh every Friday and Saturday to handle bursts and emergencies."
+                        },
+                        {
+                            title: "How do I know if my water heater needs repair?",
+                            content: "Rust-colored water, strange noises, or insufficient heat are key signals. A plumber in Riyadh should inspect it immediately to avoid tank bursts."
+                        }
+                    ]} />
                 </div>
             </section>
 

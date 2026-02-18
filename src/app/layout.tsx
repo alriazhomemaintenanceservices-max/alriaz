@@ -20,10 +20,10 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL('https://alriazhomemaintenanceservices.com'),
   title: {
-    absolute: "Electrician & Plumber Riyadh | Al Riaz Home Maintenance"
+    absolute: "Professional Electrician, Plumber & Intercom Riyadh | Al Riaz"
   },
-  description: "24/7 Professional electrician and plumbing services in Riyadh. Emergency repairs for Olaya, Malaz, and Hittin. Certified technicians, fast arrival.",
-  keywords: "Electrician Riyadh, Plumber Riyadh, Home Maintenance Saudi Arabia, Riyadh Home Services",
+  description: "Expert Professional Electrician, Plumber, and Intercom installation services in Riyadh. We also handle detailed general home maintenance for all districts.",
+  keywords: "Electrician Riyadh, Plumber Riyadh, Intercom System Riyadh, Home Maintenance Saudi Arabia, Riyadh Professional Services",
   alternates: {
     canonical: '/',
   },
@@ -104,7 +104,7 @@ export default function RootLayout({
 
         <footer className="footer" style={{ padding: '80px 0 20px', background: 'var(--grad-dark)', color: 'white' }}>
           <div className="container">
-            <div className="grid grid-4" style={{ gap: '60px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '40px' }}>
               <div>
                 <div className="logo" style={{ fontWeight: 900, fontSize: '1.7rem', color: 'white', letterSpacing: '-1px', marginBottom: '25px' }}>
                   AL RIAZ<span style={{ color: 'var(--primary)' }}>.</span>
@@ -136,11 +136,22 @@ export default function RootLayout({
               <div>
                 <h3 style={{ fontSize: '1.2rem', marginBottom: '30px', fontWeight: 800, borderBottom: '2px solid var(--primary)', display: 'inline-block', paddingBottom: '10px' }}>Services</h3>
                 <ul style={{ display: 'grid', gap: '15px' }}>
-                  <li><Link href="/services/electrician" style={{ opacity: 0.7 }}>Electrician Riyadh</Link></li>
-                  <li><Link href="/services/plumber" style={{ opacity: 0.7 }}>Plumber Riyadh</Link></li>
-                  <li><Link href="/services/intercom" style={{ opacity: 0.7 }}>Intercom System</Link></li>
-                  <li><Link href="/services" style={{ opacity: 0.7 }}>Smart Security</Link></li>
-                  <li><Link href="/services" style={{ opacity: 0.7 }}>Home Maintenance</Link></li>
+                  <li><Link href="/services/electrician" style={{ opacity: 0.7 }}>Electrician Services</Link></li>
+                  <li><Link href="/services/plumber" style={{ opacity: 0.7 }}>Plumbing Services</Link></li>
+                  <li><Link href="/services/intercom" style={{ opacity: 0.7 }}>Intercom Installation</Link></li>
+                  <li><Link href="/services" style={{ opacity: 0.7 }}>General Maintenance</Link></li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 style={{ fontSize: '1.2rem', marginBottom: '30px', fontWeight: 800, borderBottom: '2px solid var(--primary)', display: 'inline-block', paddingBottom: '10px' }}>Service Areas</h3>
+                <ul style={{ display: 'grid', gap: '15px' }}>
+                  <li><Link href="/locations/qurtubah" style={{ opacity: 0.7 }}>Qurtubah</Link></li>
+                  <li><Link href="/locations/al-yasmin" style={{ opacity: 0.7 }}>Al Yasmin</Link></li>
+                  <li><Link href="/locations/ishbiliyah" style={{ opacity: 0.7 }}>Ishbiliyah</Link></li>
+                  <li><Link href="/locations/al-malqa" style={{ opacity: 0.7 }}>Al Malqa</Link></li>
+                  <li><Link href="/locations/hittin" style={{ opacity: 0.7 }}>Hittin</Link></li>
+                  <li><Link href="/locations/al-narjis" style={{ opacity: 0.7 }}>Al Narjis</Link></li>
                 </ul>
               </div>
 
@@ -149,24 +160,38 @@ export default function RootLayout({
                 <div style={{ display: 'grid', gap: '20px' }}>
                   <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
                     <div style={{ color: 'var(--primary)' }}><MapPin size={24} /></div>
-                    <p style={{ opacity: 0.7 }}>Olaya District, Riyadh, Saudi Arabia</p>
+                    <p style={{ opacity: 0.7 }}>Riyadh, Saudi Arabia</p>
                   </div>
                   <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
                     <div style={{ color: 'var(--primary)' }}><Phone size={24} /></div>
                     <a href="tel:+966508901536" style={{ color: 'white', fontWeight: 700 }}>+966 50 890 1536</a>
                   </div>
-                  <div style={{ marginTop: '10px', width: '100%', height: '100px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(255,255,255,0.1)' }}>
-                    <p style={{ fontSize: '0.8rem', opacity: 0.4 }}>Map Location Riyadh</p>
-                  </div>
+                  <a href="https://goo.gl/maps/placeholder" target="_blank" rel="noopener noreferrer" style={{
+                    marginTop: '10px',
+                    width: '100%',
+                    padding: '15px',
+                    background: 'rgba(255,255,255,0.05)',
+                    borderRadius: '10px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    color: 'white',
+                    textDecoration: 'none',
+                    gap: '10px',
+                    transition: 'background 0.3s'
+                  }}>
+                    <MapPin size={18} /> View on Google Maps
+                  </a>
                 </div>
               </div>
             </div>
 
             <div style={{ marginTop: '80px', paddingTop: '30px', borderTop: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px' }}>
-              <p style={{ opacity: 0.5, fontSize: '0.9rem' }}>© 2026 Al Riaz Services. All Rights Reserved.</p>
+              <p style={{ opacity: 0.5, fontSize: '0.9rem' }}>© {new Date().getFullYear()} Al Riaz Services. All Rights Reserved.</p>
               <div style={{ display: 'flex', gap: '30px', opacity: 0.5, fontSize: '0.9rem' }}>
                 <Link href="/site-map">Sitemap</Link>
-                <Link href="/privacy-policy">Social Bar</Link>
+                <Link href="/privacy-policy">Privacy Policy</Link>
               </div>
             </div>
           </div>

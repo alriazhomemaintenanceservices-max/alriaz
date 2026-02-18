@@ -53,12 +53,10 @@ export default function Home() {
             textAlign: 'center'
           }}>
             {[
-              { title: "AC Cleaning Service", icon: <Wind size={36} color="var(--primary)" />, href: "/services/ac-cleaning" },
-              { title: "Water Tank Cleaning", icon: <Cylinder size={36} color="var(--primary)" />, href: "/services/water-tank-cleaning" },
-              { title: "Mattress Cleaning", icon: <BedDouble size={36} color="var(--primary)" />, href: "/services/mattress-cleaning" },
-              { title: "Surface Disinfection", icon: <Sparkles size={36} color="var(--primary)" />, href: "/services/water-tank-cleaning" },
-              { title: "Furniture Cleaning", icon: <Armchair size={36} color="var(--primary)" />, href: "/services/furniture-cleaning" },
-              { title: "More Services", icon: <LayoutGrid size={36} color="var(--primary)" />, href: "/services" },
+              { title: "Electrician Services", icon: <Zap size={36} color="var(--primary)" />, href: "/services/electrician" },
+              { title: "Plumbing Services", icon: <Droplets size={36} color="var(--primary)" />, href: "/services/plumber" },
+              { title: "Intercom Installation", icon: <ShieldCheck size={36} color="var(--primary)" />, href: "/services/intercom" },
+              { title: "General Maintenance", icon: <Wrench size={36} color="var(--primary)" />, href: "/services" },
             ].map((item, i) => (
               <Link key={i} href={item.href} className="card hover-lift" style={{
                 padding: '30px 15px',
@@ -92,64 +90,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. ABOUT WITH STATS SECTION */}
-      <section id="about" className="section animate-fade-in" style={{ padding: '120px 0' }}>
+      {/* 2. ABOUT US SECTION */}
+      <section id="about" className="section" style={{ background: '#fff' }}>
         <div className="container">
-          <div className="grid grid-2" style={{ alignItems: 'center', gap: '80px' }}>
-            <div style={{ position: 'relative' }}>
-              <div style={{
-                width: '100%',
-                height: '500px',
-                background: 'url("https://images.unsplash.com/photo-1558403194-611308249627?q=80&w=2070&auto=format&fit=crop") center/cover no-repeat',
-                borderRadius: '20px',
-                boxShadow: 'var(--shadow-card)'
-              }}></div>
-              <div style={{
-                position: 'absolute',
-                bottom: '-40px',
-                right: '-40px',
-                background: 'var(--primary)',
-                color: 'white',
-                padding: '40px',
-                borderRadius: '20px',
-                textAlign: 'center',
-                boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
-              }}>
-                <div style={{ fontSize: '3rem', fontWeight: 900 }}>12+</div>
-                <div style={{ fontWeight: 700, fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Years Experience</div>
+          <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+            <h2 className="heading" style={{ fontSize: '2.5rem', marginBottom: '20px', color: '#1e293b' }}>
+              Your Trusted Home Maintenance Partner
+            </h2>
+            <p style={{ fontSize: '1.2rem', color: '#64748b', lineHeight: 1.8, marginBottom: '40px' }}>
+              We provide reliable, high-quality maintenance services for homeowners and businesses in Riyadh.
+              Our team of certified professionals is dedicated to ensuring your property remains in perfect condition.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '30px', marginTop: '40px' }}>
+              <div style={{ padding: '20px', background: '#f8fafc', borderRadius: '15px' }}>
+                <h3 style={{ fontSize: '2.5rem', color: 'var(--primary)', marginBottom: '5px' }}>12+</h3>
+                <p style={{ fontWeight: 600 }}>Years Exeperience</p>
               </div>
-            </div>
-
-            <div>
-              <div style={{ color: 'var(--primary)', fontWeight: 800, marginBottom: '20px', fontSize: '0.9rem', letterSpacing: '2px' }}>
-                PROFESSIONAL & RELIABLE
+              <div style={{ padding: '20px', background: '#f8fafc', borderRadius: '15px' }}>
+                <h3 style={{ fontSize: '2.5rem', color: 'var(--primary)', marginBottom: '5px' }}>5k+</h3>
+                <p style={{ fontWeight: 600 }}>Happy Clients</p>
               </div>
-              <h2 style={{ fontSize: '3rem', marginBottom: '30px', color: 'var(--secondary)' }}>
-                Outstanding residential & commercial services
-              </h2>
-              <p style={{ fontSize: '1.1rem', color: 'var(--muted)', marginBottom: '40px', lineHeight: 1.8 }}>
-                We understand that home maintenance is more than just fixing things; it is about ensuring the safety and comfort of your family. Our team of certified technicians brings decades of experience to every job, from minor repairs to complex installations.
-              </p>
-
-              <div className="grid grid-2" style={{ gap: '30px' }}>
-                <div style={{ display: 'flex', gap: '20px' }}>
-                  <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'rgba(225, 29, 72, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <ShieldCheck size={24} color="var(--primary)" />
-                  </div>
-                  <div>
-                    <h4 style={{ fontSize: '1.2rem', marginBottom: '8px' }}>Safe & Secure</h4>
-                    <p style={{ fontSize: '0.9rem', color: 'var(--muted)' }}>We follow strict SASO safety protocols on every project.</p>
-                  </div>
-                </div>
-                <div style={{ display: 'flex', gap: '20px' }}>
-                  <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'rgba(225, 29, 72, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <Clock size={24} color="var(--primary)" />
-                  </div>
-                  <div>
-                    <h4 style={{ fontSize: '1.2rem', marginBottom: '8px' }}>24/7 Support</h4>
-                    <p style={{ fontSize: '0.9rem', color: 'var(--muted)' }}>Our emergency response team is always ready to help.</p>
-                  </div>
-                </div>
+              <div style={{ padding: '20px', background: '#f8fafc', borderRadius: '15px' }}>
+                <h3 style={{ fontSize: '2.5rem', color: 'var(--primary)', marginBottom: '5px' }}>24/7</h3>
+                <p style={{ fontWeight: 600 }}>Emergency Service</p>
               </div>
             </div>
           </div>
@@ -203,45 +166,26 @@ export default function Home() {
       </section>
 
       {/* 4. RELIABLE PARTNER (DARK SECTION) */}
-      <section className="section" style={{ background: 'var(--grad-dark)', color: 'white' }}>
+      <section className="section bg-pattern-dark" style={{ background: '#0f172a', color: 'white' }}>
         <div className="container">
-          <div className="grid grid-2" style={{ alignItems: 'center', gap: '80px' }}>
-            <div>
-              <div style={{ color: 'var(--primary)', fontWeight: 800, marginBottom: '20px', fontSize: '0.9rem', letterSpacing: '2px' }}>
-                WHY CHOOSE US
-              </div>
-              <h2 style={{ fontSize: '3rem', marginBottom: '30px' }}>Your Reliable Partner for Electrical Solutions</h2>
-              <p style={{ fontSize: '1.1rem', opacity: 0.8, marginBottom: '40px', lineHeight: 1.8 }}>
-                Since 2012, we have been the gold standard for home maintenance in Riyadh. Our commitment to quality and transparency makes us the preferred choice for residents.
-              </p>
+          <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+            <h2 className="heading" style={{ fontSize: '2.5rem', marginBottom: '20px' }}>Why Choose Al Riaz?</h2>
+            <p style={{ fontSize: '1.2rem', opacity: 0.8, marginBottom: '50px' }}>
+              We combine technical expertise with a commitment to customer satisfaction.
+            </p>
 
-              <ul style={{ display: 'grid', gap: '20px' }}>
-                {[
-                  "24/7 Professional Emergency Services",
-                  "Expert & SASO Certified Technicians",
-                  "Fair and Transparent Pricing",
-                  "High Quality Materials & Parts",
-                  "100% Satisfaction Guarantee"
-                ].map((item, i) => (
-                  <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '20px', fontSize: '1.1rem', fontWeight: 600 }}>
-                    <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                      <CheckCircle size={20} color="white" />
-                    </div>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div style={{ position: 'relative' }}>
-              <div style={{
-                width: '100%',
-                height: '600px',
-                background: 'url("https://images.unsplash.com/photo-1590033063412-1d573359d95f?q=80&w=2040&auto=format&fit=crop") center/cover no-repeat',
-                borderRadius: '30px',
-                transform: 'rotate(2deg)',
-                border: '10px solid rgba(255,255,255,0.05)'
-              }}></div>
+            <div className="grid grid-2">
+              {[
+                { title: "Licensed Experts", desc: "All our technicians are certified and background-checked." },
+                { title: "Upfront Pricing", desc: "No hidden fees. You know the cost before we start." },
+                { title: "On-Time Arrival", desc: "We value your time and guarantee punctual service." },
+                { title: "Work Warranty", desc: "We stand behind our quality with a satisfaction guarantee." }
+              ].map((item, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.05)', padding: '30px', borderRadius: '15px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                  <h3 style={{ marginBottom: '10px', fontSize: '1.3rem' }}>{item.title}</h3>
+                  <p style={{ opacity: 0.7 }}>{item.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -278,14 +222,14 @@ export default function Home() {
           <div className="grid grid-2">
             {[
               {
-                text: "The technician arrived within 30 minutes of my call. The repair was handled very professionally and the price was fair. I'll definitely use Al Riaz again for my villa!",
-                author: "Mohammad Bin Salman",
-                role: "Client from Olaya"
+                text: "The technician arrived within 30 minutes of my call. The repair was handled very professionally and the price was fair. I'll definitely use Al Riaz again for my villa in Al Yasmin!",
+                author: "Abdul Rahman Al-Saud",
+                role: "Client from Al Yasmin"
               },
               {
-                text: "Very impressed with the smart intercom system they installed. It works perfectly with my phone and the video quality is crystal clear. Great job!",
-                author: "Khalid Al-Rashed",
-                role: "Client from Hittin"
+                text: "Very impressed with the smart intercom system they installed. It works perfectly with my phone. Great job!",
+                author: "Khalid Al-Otaibi",
+                role: "Client from Qurtubah"
               }
             ].map((test, i) => (
               <div key={i} className="card hover-lift" style={{ textAlign: 'left', padding: '50px' }}>
@@ -309,27 +253,31 @@ export default function Home() {
       {/* 7. CTA / CONTACT BOX */}
       <section className="section" style={{ background: '#f8fafc' }}>
         <div className="container">
-          <div className="grid grid-2" style={{ alignItems: 'center', gap: '40px', background: '#fff', borderRadius: '30px', overflow: 'hidden', boxShadow: 'var(--shadow-premium)' }}>
-            <div style={{ width: '100%', height: '100%', minHeight: '400px', background: 'url("https://images.unsplash.com/photo-1544725121-be3b54443903?q=80&w=1943&auto=format&fit=crop") center/cover no-repeat' }}></div>
-            <div style={{ padding: '60px' }}>
-              <div style={{ color: 'var(--primary)', fontWeight: 800, marginBottom: '20px', fontSize: '0.9rem', letterSpacing: '2px' }}>
-                GET IN TOUCH
-              </div>
-              <h2 style={{ fontSize: '2.5rem', marginBottom: '30px', color: 'var(--secondary)' }}>Need any electrical service help?</h2>
-
-              <div style={{ display: 'flex', alignItems: 'center', gap: '20px', padding: '30px', background: '#f8fafc', borderRadius: '15px', border: '1px solid var(--border)' }}>
-                <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Phone size={30} color="white" />
-                </div>
-                <div>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--muted)', fontWeight: 600 }}>Call 24/7 for support</p>
-                  <a href="tel:+966508901536" style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--secondary)' }}>+966 50 890 1536</a>
-                </div>
-              </div>
-
-              <Link href="/contact" className="btn btn-primary" style={{ marginTop: '30px', padding: '15px 40px', borderRadius: '4px' }}>
-                CONTACT US NOW
-              </Link>
+          <div className="bg-pattern" style={{
+            background: '#fff',
+            borderRadius: '30px',
+            overflow: 'hidden',
+            boxShadow: 'var(--shadow-premium)',
+            padding: '60px',
+            textAlign: 'center',
+            border: '1px solid var(--border)'
+          }}>
+            <div style={{ marginBottom: '20px', display: 'inline-flex', padding: '20px', background: 'rgba(225, 29, 72, 0.05)', borderRadius: '50%', color: 'var(--primary)' }}>
+              <Phone size={60} />
+            </div>
+            <h2 style={{ fontSize: '2.8rem', fontWeight: 800, marginBottom: '20px', color: '#1e293b' }}>
+              Need Immediate Assistance?
+            </h2>
+            <p style={{ fontSize: '1.25rem', color: '#64748b', marginBottom: '40px', maxWidth: '600px', margin: '0 auto 40px' }}>
+              Our expert technicians are on standby for 24/7 emergency repairs in all Riyadh districts.
+            </p>
+            <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-accent btn-lg" style={{ background: '#25D366', color: 'white', borderRadius: '50px' }}>
+                <WhatsAppIcon size={24} /> WhatsApp Now
+              </a>
+              <a href="tel:+966508901536" className="btn btn-lg" style={{ background: '#1e293b', color: 'white', borderRadius: '50px' }}>
+                <Phone size={24} /> Call 050 890 1536
+              </a>
             </div>
           </div>
         </div>
@@ -345,15 +293,44 @@ export default function Home() {
 
           <div className="grid grid-3">
             {[
-              { name: "Ahmed Abdullah", role: "Master Electrician", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop" },
-              { name: "Khalid Mansour", role: "Senior Plumber", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop" },
-              { name: "Mohammad Fazil", role: "Security Expert", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974&auto=format&fit=crop" }
+              { name: "Ahmed Abdullah", role: "Master Electrician" },
+              { name: "Khalid Mansour", role: "Senior Plumber" },
+              { name: "Mohammad Fazil", role: "Security Expert" }
             ].map((member, i) => (
-              <div key={i} className="hover-lift" style={{ textAlign: 'left' }}>
-                <div style={{ width: '100%', height: '400px', background: `url("${member.img}") center/cover no-repeat`, borderRadius: '15px', marginBottom: '20px' }}></div>
+              <div key={i} className="hover-lift" style={{ textAlign: 'center', background: 'white', padding: '30px', borderRadius: '20px', border: '1px solid var(--border)' }}>
+                <div style={{ width: '100px', height: '100px', background: 'var(--grad-primary)', borderRadius: '50%', marginBottom: '20px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
+                  <Users size={40} />
+                </div>
                 <h4 style={{ fontSize: '1.4rem', fontWeight: 800 }}>{member.name}</h4>
                 <p style={{ color: 'var(--primary)', fontWeight: 700 }}>{member.role}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 9. SERVICE LOCATIONS */}
+      <section className="section" style={{ background: '#f8fafc', padding: '80px 0' }}>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '40px', color: 'var(--secondary)' }}>Serving All Major Districts in Riyadh</h2>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '15px' }}>
+            {['Qurtubah', 'Ishbiliyah', 'Al Yarmouk', 'Al Narjis', 'Al Yasmin', 'Al Sahafah', 'Al Falah', 'Granada', 'Al Rabee', 'Al Nada', 'Hittin', 'Al Malqa'].map((area, i) => (
+              <Link key={i} href={`/locations/${area.toLowerCase().replace(' ', '-')}`} style={{
+                padding: '12px 25px',
+                background: 'white',
+                border: '1px solid var(--border)',
+                borderRadius: '30px',
+                color: '#334155',
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                textDecoration: 'none',
+                boxShadow: '0 2px 5px rgba(0,0,0,0.02)',
+                transition: 'transform 0.2s'
+              }}>
+                <MapPin size={16} color="var(--primary)" /> {area}
+              </Link>
             ))}
           </div>
         </div>

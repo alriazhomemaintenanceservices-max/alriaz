@@ -87,11 +87,11 @@ export default function MattressCleaningPage() {
                                 overflow: 'hidden',
                                 boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
                             }}>
-                                <img
+                                {/* <img
                                     src="https://images.unsplash.com/photo-1631049552057-403cdb8f0658?q=80&w=2070&auto=format&fit=crop"
                                     alt="Mattress Cleaning"
                                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                />
+                                /> */}
                                 <div style={{
                                     position: 'absolute',
                                     top: '50%',
@@ -132,13 +132,13 @@ export default function MattressCleaningPage() {
                     <h2 style={{ color: '#334155', marginBottom: '40px', fontSize: '1.8rem' }}>Our Cleaning Technologies</h2>
                     <div className="grid grid-3" style={{ gap: '30px' }}>
                         {[
-                            { title: "Steam Extraction", img: "https://images.unsplash.com/photo-1581539250439-d96689ec4636?auto=format&fit=crop&q=80&w=2070" },
-                            { title: "Stain Removal", img: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80&w=2070" },
-                            { title: "UV-C Sanitization", img: "https://images.unsplash.com/photo-1621905235277-22649a379201?auto=format&fit=crop&q=80&w=2070" }
+                            { title: "Steam Extraction" },
+                            { title: "Stain Removal" },
+                            { title: "UV-C Sanitization" }
                         ].map((service, i) => (
                             <div key={i} style={{ background: 'white', borderRadius: '15px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.05)', textAlign: 'center' }}>
                                 <div style={{ height: '200px', overflow: 'hidden' }}>
-                                    <img src={service.img} alt={service.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                    <div style={{ width: '100%', height: '100%', background: '#e2e8f0' }}></div>
                                 </div>
                                 <div style={{ padding: '20px' }}>
                                     <h3 style={{ fontSize: '1.1rem', color: '#1E293B', fontWeight: 600 }}>{service.title}</h3>
@@ -218,7 +218,7 @@ export default function MattressCleaningPage() {
                             </Link>
                         </div>
                         <div style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}>
-                            <img src="https://images.unsplash.com/photo-1505693416383-877fe99fadec?auto=format&fit=crop&q=80&w=2070" style={{ width: '100%', display: 'block' }} alt="Clean Bed" />
+                            <div style={{ width: '100%', height: '400px', background: '#e2e8f0' }}></div>
                         </div>
                     </div>
                 </div>

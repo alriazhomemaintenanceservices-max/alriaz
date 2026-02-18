@@ -19,7 +19,7 @@ export default function ContactPage() {
 
     return (
         <main style={{ paddingTop: '120px', paddingBottom: '80px' }}>
-                        {/* Breadcrumbs */}
+            {/* Breadcrumbs */}
             <nav className="container" style={{ marginBottom: '30px', fontSize: '0.9rem', color: 'var(--muted)' }}>
                 <Link href="/">Home</Link> / <span style={{ color: 'var(--primary)', fontWeight: 600 }}>Contact</span>
             </nav>
@@ -54,8 +54,8 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h4 style={{ marginBottom: '5px' }}>Service Area</h4>
-                                    <p style={{ fontSize: '1.1rem' }}>All Districts of Riyadh, Saudi Arabia</p>
-                                    <p style={{ fontSize: '0.9rem', color: 'var(--muted)' }}>Including Olaya, Malaz, Hittin, Malqa, and Nakheel.</p>
+                                    <p style={{ fontSize: '1.1rem' }}>Riyadh, Saudi Arabia</p>
+                                    <p style={{ fontSize: '0.9rem', color: 'var(--muted)' }}>Serving: Qurtubah, Ishbiliyah, Al Yarmouk, Al Narjis, Al Yasmin, Al Sahafah, Al Falah, Granada, Al Rabee, Al Nada.</p>
                                 </div>
                             </div>
 
@@ -97,12 +97,12 @@ export default function ContactPage() {
                                     <option>Electrician</option>
                                     <option>Plumber</option>
                                     <option>Intercom System</option>
-                                    <option>Other / General Maintenance</option>
+                                    <option>General Home Maintenance</option>
                                 </select>
                             </div>
                             <div>
                                 <label style={{ display: 'block', marginBottom: '8px', fontWeight: 600 }}>Location (District)</label>
-                                <input type="text" placeholder="e.g. Olaya" style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid var(--border)', background: 'white' }} />
+                                <input type="text" placeholder="e.g. Qurtubah" style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid var(--border)', background: 'white' }} />
                             </div>
                             <div>
                                 <label style={{ display: 'block', marginBottom: '8px', fontWeight: 600 }}>Description</label>
@@ -117,7 +117,7 @@ export default function ContactPage() {
                         <div>
                             <h2 style={{ marginBottom: '20px' }}>Share Your Experience</h2>
                             <p style={{ color: 'var(--muted)', fontSize: '1.1rem', marginBottom: '20px' }}>
-                                Satisfied with our Riyadh maintenance service? Your feedback helps other neighbors in districts like Olaya and Malqa find reliable help.
+                                Satisfied with our Riyadh maintenance service? Your feedback helps other neighbors in districts like Al Yasmin and Qurtubah find reliable help.
                             </p>
                             <div style={{ display: 'flex', gap: '5px', color: 'var(--accent)', marginBottom: '20px' }}>
                                 <Star size={24} fill="currentColor" />

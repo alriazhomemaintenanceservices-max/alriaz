@@ -86,11 +86,11 @@ export default function FurnitureCleaningPage() {
                                 overflow: 'hidden',
                                 boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
                             }}>
-                                <img
+                                {/* <img
                                     src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?q=80&w=2070&auto=format&fit=crop"
                                     alt="Furniture Cleaning"
                                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                />
+                                /> */}
                                 <div style={{
                                     position: 'absolute',
                                     top: '50%',
@@ -131,13 +131,13 @@ export default function FurnitureCleaningPage() {
                     <h2 style={{ color: '#334155', marginBottom: '40px', fontSize: '1.8rem' }}>Furniture Care Services</h2>
                     <div className="grid grid-3" style={{ gap: '30px' }}>
                         {[
-                            { title: "Sofa Shampooing", img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=2070" },
-                            { title: "Carpet Steam Clean", img: "https://images.unsplash.com/photo-1522771772403-a9e5c0dce99d?auto=format&fit=crop&q=80&w=2070" },
-                            { title: "Curtain Cleaning", img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=2069" }
+                            { title: "Sofa Shampooing" },
+                            { title: "Carpet Steam Clean" },
+                            { title: "Curtain Cleaning" }
                         ].map((service, i) => (
                             <div key={i} style={{ background: 'white', borderRadius: '15px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.05)', textAlign: 'center' }}>
                                 <div style={{ height: '200px', overflow: 'hidden' }}>
-                                    <img src={service.img} alt={service.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                    <div style={{ width: '100%', height: '100%', background: '#e2e8f0' }}></div>
                                 </div>
                                 <div style={{ padding: '20px' }}>
                                     <h3 style={{ fontSize: '1.1rem', color: '#1E293B', fontWeight: 600 }}>{service.title}</h3>
@@ -217,7 +217,7 @@ export default function FurnitureCleaningPage() {
                             </Link>
                         </div>
                         <div style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}>
-                            <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=2057" style={{ width: '100%', display: 'block' }} alt="Clean Living Room" />
+                            <div style={{ width: '100%', height: '400px', background: '#e2e8f0' }}></div>
                         </div>
                     </div>
                 </div>
