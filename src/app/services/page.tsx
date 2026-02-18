@@ -120,7 +120,7 @@ export default function ServicesPage() {
                             <p style={{ fontSize: '1.25rem', color: '#666', marginBottom: '40px', lineHeight: 1.7, margin: '0 auto 40px', maxWidth: '700px' }}>
                                 Your trusted partner for specialized electrical, plumbing, and security solutions. Licensed technicians available 24/7 across the capital.
                             </p>
-                            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                            <div className="hero-btn-group" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
                                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
                                     <WhatsAppIcon size={20} /> BOOK A SERVICE NOW
                                 </a>
@@ -156,9 +156,9 @@ export default function ServicesPage() {
             {/* Detailed Services list */}
             <section className="section animate-fade-in">
                 <div className="container">
-                    <div style={{ display: 'grid', gap: '80px' }}>
+                    <div style={{ display: 'grid', gap: '60px' }}>
                         {SERVICES.map((service, index) => (
-                            <div key={index} className="grid grid-2" style={{ alignItems: 'center', gap: '60px', direction: index % 2 === 1 ? 'rtl' : 'ltr' }}>
+                            <div key={index} className="grid grid-2" style={{ alignItems: 'center', gap: '40px' }}>
                                 <div style={{ direction: 'ltr' }}>
                                     <div style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '10px 20px', background: service.bg, color: service.color, borderRadius: '12px', marginBottom: '25px', fontWeight: 800 }}>
                                         {service.icon} {service.title.split(' ')[0].toUpperCase()}
@@ -178,7 +178,7 @@ export default function ServicesPage() {
                                         VIEW FULL DETAILS <ArrowRight size={20} />
                                     </Link>
                                 </div>
-                                <div style={{ background: 'var(--card)', padding: '50px', borderRadius: '40px', border: '1px solid var(--border)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+                                <div style={{ background: 'var(--card)', padding: '40px 30px', borderRadius: '30px', border: '1px solid var(--border)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
                                     <div style={{ position: 'absolute', top: '-50px', right: '-50px', width: '200px', height: '200px', background: service.color, opacity: 0.05, borderRadius: '50%' }}></div>
                                     <div style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '20px', color: service.color }}>PROFESSIONAL CHOICE</div>
                                     <p style={{ fontSize: '1.1rem', fontStyle: 'italic', color: 'var(--muted)', marginBottom: '30px' }}>
@@ -203,7 +203,7 @@ export default function ServicesPage() {
                         <p style={{ fontSize: '1.2rem', opacity: 0.8, marginBottom: '40px' }}>
                             Whether it's a flickering light, a hidden leak, or a security upgrade, get an instant quote and same-day support today.
                         </p>
-                        <div style={{ display: 'flex', gap: '25px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <div className="hero-btn-group" style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
                             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-accent btn-lg" style={{ background: '#25D366', color: 'white' }}>
                                 <WhatsAppIcon size={24} /> MESSAGE US ON WHATSAPP
                             </a>

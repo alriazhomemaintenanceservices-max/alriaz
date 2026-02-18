@@ -84,11 +84,11 @@ export default async function LocationPage({ params }: Props) {
                         Al Riaz provides fast, SASO-certified repairs right in your neighborhood.
                         We are just around the corner.
                     </p>
-                    <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
-                        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
+                    <div className="hero-btn-group" style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg" style={{ flex: '1 1 200px', maxWidth: '280px', textAlign: 'center', justifyContent: 'center' }}>
                             <WhatsAppIcon size={20} /> BOOK IN {locationName.toUpperCase()}
                         </a>
-                        <a href="tel:+966508901536" className="btn btn-lg" style={{ background: 'white', color: '#333', border: '1px solid #e2e8f0' }}>
+                        <a href="tel:+966508901536" className="btn btn-lg" style={{ background: 'white', color: '#333', border: '1px solid #e2e8f0', flex: '1 1 200px', maxWidth: '280px', textAlign: 'center', justifyContent: 'center' }}>
                             <Phone size={20} /> CALL NOW
                         </a>
                     </div>

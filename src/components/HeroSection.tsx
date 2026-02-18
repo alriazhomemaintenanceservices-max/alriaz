@@ -43,11 +43,11 @@ export default function HeroSection() {
                     <p style={{ fontSize: '1.2rem', color: '#64748b', marginBottom: '40px', lineHeight: 1.8 }}>
                         Your trusted partner for all home maintenance needs. From extensive electrical repairs and plumbing fixes to smart intercom installations. We handle every kind of household work with professionalism.
                     </p>
-                    <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
-                        <Link href="/services" className="btn btn-primary" style={{ padding: '16px 40px', borderRadius: '50px', fontSize: '1.1rem', fontWeight: 700 }}>
+                    <div className="hero-btn-group" style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <Link href="/services" className="btn btn-primary" style={{ padding: '16px 40px', borderRadius: '50px', fontSize: '1.1rem', fontWeight: 700, flex: '1 1 200px', maxWidth: '260px', textAlign: 'center' }}>
                             Explore Services
                         </Link>
-                        <Link href="/contact" className="btn" style={{ background: 'white', color: '#334155', border: '1px solid #cbd5e1', padding: '16px 40px', borderRadius: '50px', fontSize: '1.1rem', fontWeight: 700 }}>
+                        <Link href="/contact" className="btn" style={{ background: 'white', color: '#334155', border: '1px solid #cbd5e1', padding: '16px 40px', borderRadius: '50px', fontSize: '1.1rem', fontWeight: 700, flex: '1 1 200px', maxWidth: '260px', textAlign: 'center' }}>
                             Contact Us
                         </Link>
                     </div>

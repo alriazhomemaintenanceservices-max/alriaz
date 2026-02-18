@@ -253,7 +253,7 @@ export default function Home() {
       {/* 7. CTA / CONTACT BOX */}
       <section className="section" style={{ background: '#f8fafc' }}>
         <div className="container">
-          <div className="bg-pattern" style={{
+          <div className="bg-pattern cta-box" style={{
             background: '#fff',
             borderRadius: '30px',
             overflow: 'hidden',
@@ -271,11 +271,11 @@ export default function Home() {
             <p style={{ fontSize: '1.25rem', color: '#64748b', marginBottom: '40px', maxWidth: '600px', margin: '0 auto 40px' }}>
               Our expert technicians are on standby for 24/7 emergency repairs in all Riyadh districts.
             </p>
-            <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-accent btn-lg" style={{ background: '#25D366', color: 'white', borderRadius: '50px' }}>
+            <div className="hero-btn-group" style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-accent btn-lg" style={{ background: '#25D366', color: 'white', borderRadius: '50px', flex: '1 1 200px', maxWidth: '260px' }}>
                 <WhatsAppIcon size={24} /> WhatsApp Now
               </a>
-              <a href="tel:+966508901536" className="btn btn-lg" style={{ background: '#1e293b', color: 'white', borderRadius: '50px' }}>
+              <a href="tel:+966508901536" className="btn btn-lg" style={{ background: '#1e293b', color: 'white', borderRadius: '50px', flex: '1 1 200px', maxWidth: '260px' }}>
                 <Phone size={24} /> Call 050 890 1536
               </a>
             </div>

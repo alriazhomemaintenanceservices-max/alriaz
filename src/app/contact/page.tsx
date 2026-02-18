@@ -74,13 +74,13 @@ export default function ContactPage() {
                         <div style={{ marginTop: '50px', padding: '30px', background: 'var(--grad-primary)', borderRadius: '30px', color: 'white' }}>
                             <h3 style={{ marginBottom: '15px' }}>Emergency?</h3>
                             <p style={{ marginBottom: '20px', opacity: 0.9 }}>Send your location on WhatsApp and we will dispatch the nearest technician immediately.</p>
-                            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-accent" style={{ background: '#25D366', color: 'white', border: 'none' }}>
+                            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-accent" style={{ background: '#25D366', color: 'white', border: 'none', marginTop: '8px' }}>
                                 MESSAGE ON WHATSAPP
                             </a>
                         </div>
                     </div>
 
-                    <div style={{ background: 'var(--card)', padding: '40px', borderRadius: '30px', border: '1px solid var(--border)' }}>
+                    <div style={{ background: 'var(--card)', padding: '30px', borderRadius: '24px', border: '1px solid var(--border)' }}>
                         <h2 style={{ marginBottom: '30px' }}>Request a Free Estimate</h2>
                         <form style={{ display: 'grid', gap: '20px' }}>
                             <div>
@@ -127,8 +127,8 @@ export default function ContactPage() {
                                 <Star size={24} fill="currentColor" />
                             </div>
                         </div>
-                        <div style={{ textAlign: 'center' }}>
-                            <a href="https://g.page/r/your-google-review-link" target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ border: '2px solid var(--secondary)', background: 'transparent', color: 'var(--secondary)' }}>
+                        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                            <a href="https://g.page/r/your-google-review-link" target="_blank" rel="noopener noreferrer" className="btn" style={{ border: '2px solid var(--secondary)', background: 'transparent', color: 'var(--secondary)', display: 'inline-flex' }}>
                                 REVIEW US ON GOOGLE
                             </a>
                         </div>

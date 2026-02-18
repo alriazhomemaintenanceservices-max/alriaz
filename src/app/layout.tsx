@@ -4,6 +4,7 @@ import Link from 'next/link';
 import "./globals.css";
 import { Phone, MapPin, Clock } from 'lucide-react';
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
+import MobileNav from '@/components/MobileNav';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -47,13 +48,15 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body>
         <nav className="nav" style={{ background: 'var(--grad-glass-light)', borderBottom: '1px solid var(--border)' }}>
           <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div className="logo" style={{ fontWeight: 900, fontSize: '1.7rem', color: 'var(--secondary)', letterSpacing: '-1px' }}>
-              AL RIAZ<span style={{ color: 'var(--primary)' }}>.</span>
+            <div className="logo" style={{ fontWeight: 900, fontSize: '1.5rem', color: 'var(--secondary)', letterSpacing: '-1px' }}>
+              <Link href="/">AL RIAZ<span style={{ color: 'var(--primary)' }}>.</span></Link>
             </div>
+            {/* Desktop nav links */}
             <div className="nav-links hide-mobile" style={{ display: 'flex', gap: '40px', fontWeight: 600, alignItems: 'center', fontSize: '0.95rem' }}>
               <Link href="/">Home</Link>
               <Link href="/services">Services</Link>
@@ -66,10 +69,14 @@ export default function RootLayout({
                   </div>
                   +966 50 890 1536
                 </a>
-                <Link href="/contact" className="btn btn-primary" style={{ padding: '12px 24px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                <Link href="/contact" className="btn btn-primary" style={{ padding: '12px 24px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '1px', width: 'auto' }}>
                   Book Now
                 </Link>
               </div>
+            </div>
+            {/* Mobile hamburger menu */}
+            <div className="mobile-nav-actions">
+              <MobileNav />
             </div>
           </div>
         </nav>
@@ -104,7 +111,7 @@ export default function RootLayout({
 
         <footer className="footer" style={{ padding: '80px 0 20px', background: 'var(--grad-dark)', color: 'white' }}>
           <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '40px' }}>
+            <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '40px' }}>
               <div>
                 <div className="logo" style={{ fontWeight: 900, fontSize: '1.7rem', color: 'white', letterSpacing: '-1px', marginBottom: '25px' }}>
                   AL RIAZ<span style={{ color: 'var(--primary)' }}>.</span>
@@ -113,7 +120,6 @@ export default function RootLayout({
                   The gold standard for residential and commercial maintenance in Riyadh. Providing safe, reliable, and professional solutions since 2012.
                 </p>
                 <div style={{ display: 'flex', gap: '15px' }}>
-                  {/* Social links placeholders as styled bullets */}
                   {[1, 2, 3, 4].map(s => (
                     <div key={s} style={{ width: '35px', height: '35px', borderRadius: '4px', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(255,255,255,0.1)' }}>
                       <div style={{ width: '5px', height: '5px', borderRadius: '50%', background: 'white' }}></div>
@@ -123,8 +129,8 @@ export default function RootLayout({
               </div>
 
               <div>
-                <h3 style={{ fontSize: '1.2rem', marginBottom: '30px', fontWeight: 800, borderBottom: '2px solid var(--primary)', display: 'inline-block', paddingBottom: '10px' }}>Useful Links</h3>
-                <ul style={{ display: 'grid', gap: '15px' }}>
+                <h3 style={{ fontSize: '1.1rem', marginBottom: '25px', fontWeight: 800, borderBottom: '2px solid var(--primary)', display: 'inline-block', paddingBottom: '8px' }}>Useful Links</h3>
+                <ul style={{ display: 'grid', gap: '12px' }}>
                   <li><Link href="/services" style={{ opacity: 0.7 }}>Our Services</Link></li>
                   <li><Link href="/#about" style={{ opacity: 0.7 }}>About Us</Link></li>
                   <li><Link href="/contact" style={{ opacity: 0.7 }}>Contact Us</Link></li>
@@ -134,8 +140,8 @@ export default function RootLayout({
               </div>
 
               <div>
-                <h3 style={{ fontSize: '1.2rem', marginBottom: '30px', fontWeight: 800, borderBottom: '2px solid var(--primary)', display: 'inline-block', paddingBottom: '10px' }}>Services</h3>
-                <ul style={{ display: 'grid', gap: '15px' }}>
+                <h3 style={{ fontSize: '1.1rem', marginBottom: '25px', fontWeight: 800, borderBottom: '2px solid var(--primary)', display: 'inline-block', paddingBottom: '8px' }}>Services</h3>
+                <ul style={{ display: 'grid', gap: '12px' }}>
                   <li><Link href="/services/electrician" style={{ opacity: 0.7 }}>Electrician Services</Link></li>
                   <li><Link href="/services/plumber" style={{ opacity: 0.7 }}>Plumbing Services</Link></li>
                   <li><Link href="/services/intercom" style={{ opacity: 0.7 }}>Intercom Installation</Link></li>
@@ -144,8 +150,8 @@ export default function RootLayout({
               </div>
 
               <div>
-                <h3 style={{ fontSize: '1.2rem', marginBottom: '30px', fontWeight: 800, borderBottom: '2px solid var(--primary)', display: 'inline-block', paddingBottom: '10px' }}>Service Areas</h3>
-                <ul style={{ display: 'grid', gap: '15px' }}>
+                <h3 style={{ fontSize: '1.1rem', marginBottom: '25px', fontWeight: 800, borderBottom: '2px solid var(--primary)', display: 'inline-block', paddingBottom: '8px' }}>Service Areas</h3>
+                <ul style={{ display: 'grid', gap: '12px' }}>
                   <li><Link href="/locations/qurtubah" style={{ opacity: 0.7 }}>Qurtubah</Link></li>
                   <li><Link href="/locations/al-yasmin" style={{ opacity: 0.7 }}>Al Yasmin</Link></li>
                   <li><Link href="/locations/ishbiliyah" style={{ opacity: 0.7 }}>Ishbiliyah</Link></li>
@@ -156,20 +162,20 @@ export default function RootLayout({
               </div>
 
               <div>
-                <h3 style={{ fontSize: '1.2rem', marginBottom: '30px', fontWeight: 800, borderBottom: '2px solid var(--primary)', display: 'inline-block', paddingBottom: '10px' }}>Contact Bar</h3>
-                <div style={{ display: 'grid', gap: '20px' }}>
-                  <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
-                    <div style={{ color: 'var(--primary)' }}><MapPin size={24} /></div>
+                <h3 style={{ fontSize: '1.1rem', marginBottom: '25px', fontWeight: 800, borderBottom: '2px solid var(--primary)', display: 'inline-block', paddingBottom: '8px' }}>Contact</h3>
+                <div style={{ display: 'grid', gap: '16px' }}>
+                  <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                    <div style={{ color: 'var(--primary)', flexShrink: 0 }}><MapPin size={20} /></div>
                     <p style={{ opacity: 0.7 }}>Riyadh, Saudi Arabia</p>
                   </div>
-                  <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
-                    <div style={{ color: 'var(--primary)' }}><Phone size={24} /></div>
+                  <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                    <div style={{ color: 'var(--primary)', flexShrink: 0 }}><Phone size={20} /></div>
                     <a href="tel:+966508901536" style={{ color: 'white', fontWeight: 700 }}>+966 50 890 1536</a>
                   </div>
                   <a href="https://goo.gl/maps/placeholder" target="_blank" rel="noopener noreferrer" style={{
-                    marginTop: '10px',
+                    marginTop: '6px',
                     width: '100%',
-                    padding: '15px',
+                    padding: '12px',
                     background: 'rgba(255,255,255,0.05)',
                     borderRadius: '10px',
                     display: 'flex',
@@ -178,18 +184,18 @@ export default function RootLayout({
                     border: '1px solid rgba(255,255,255,0.1)',
                     color: 'white',
                     textDecoration: 'none',
-                    gap: '10px',
+                    gap: '8px',
                     transition: 'background 0.3s'
                   }}>
-                    <MapPin size={18} /> View on Google Maps
+                    <MapPin size={16} /> View on Google Maps
                   </a>
                 </div>
               </div>
             </div>
 
-            <div style={{ marginTop: '80px', paddingTop: '30px', borderTop: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px' }}>
-              <p style={{ opacity: 0.5, fontSize: '0.9rem' }}>© {new Date().getFullYear()} Al Riaz Services. All Rights Reserved.</p>
-              <div style={{ display: 'flex', gap: '30px', opacity: 0.5, fontSize: '0.9rem' }}>
+            <div className="footer-bottom" style={{ marginTop: '60px', paddingTop: '25px', borderTop: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '15px' }}>
+              <p style={{ opacity: 0.5, fontSize: '0.85rem', overflowWrap: 'break-word', maxWidth: '100%' }}>© {new Date().getFullYear()} Al Riaz Services. All Rights Reserved.</p>
+              <div style={{ display: 'flex', gap: '20px', opacity: 0.5, fontSize: '0.85rem', flexShrink: 0 }}>
                 <Link href="/site-map">Sitemap</Link>
                 <Link href="/privacy-policy">Privacy Policy</Link>
               </div>
