@@ -6,10 +6,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Plumber in Riyadh | Professional 24/7 Plumbing Services - Al Riaz"
+        absolute: "Plumber in Riyadh | Professional 24/7 Plumbing Services - Saudi Home Experts"
     },
     alternates: {
-        canonical: '/services/plumber'
+        canonical: '/services/plumber/'
     },
     description: "Certified plumber in Riyadh for emergency leak repairs, water heater maintenance, and tank cleaning. Same-day service in Olaya, Malaz, and Ar Rawdah. WhatsApp Now!",
 };
@@ -56,7 +56,7 @@ export default function PlumbingPage() {
                                 Riyadh - 24/7 Repairs
                             </h1>
                             <p style={{ fontSize: '1.25rem', color: '#666', marginBottom: '40px', lineHeight: 1.7, margin: '0 auto 40px', maxWidth: '700px' }}>
-                                Searching for a certified plumber in Riyadh? Al Riaz Home Maintenance offers 24/7 emergency leak detection, water heater repair, and decorative fixture installation for luxury villas and apartments.
+                                Searching for a certified plumber in Riyadh? Saudi Home Experts offers 24/7 emergency leak detection, water heater repair, and decorative fixture installation for luxury villas and apartments.
                             </p>
                             <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
                                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
@@ -81,7 +81,7 @@ export default function PlumbingPage() {
                         </p>
                         <div className="grid grid-2" style={{ gap: '20px' }}>
                             <div style={{ padding: '20px', border: '1px solid var(--border)', borderRadius: '15px' }}>
-                                <h4 style={{ color: 'var(--primary)', marginBottom: '10px' }}>✓ Why Choose Al Riaz?</h4>
+                                <h4 style={{ color: 'var(--primary)', marginBottom: '10px' }}>✓ Why Choose Saudi Home Experts?</h4>
                                 <ul style={{ fontSize: '0.9rem', opacity: 0.8 }}>
                                     <li>SASO Compliant Pressure Testing</li>
                                     <li>Same-Day Leak Detection & Fix</li>

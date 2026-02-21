@@ -4,9 +4,9 @@ export default function robots(): MetadataRoute.Robots {
     return {
         rules: {
             userAgent: '*',
-            allow: '/',
-            disallow: '/private/',
+            allow: ['/'],
+            disallow: ['/private/'],
         },
-        sitemap: 'https://alriazhomemaintenanceservices.com/sitemap.xml',
+        sitemap: 'https://saudihomeexperts.com/sitemap.xml',
     }
 }

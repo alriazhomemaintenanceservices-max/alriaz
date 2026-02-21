@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     },
     description: "Professional water tank cleaning and disinfection services in Riyadh. Remove sludge, bacteria, and algae. Municipality approved sanitization.",
     alternates: {
-        canonical: '/services/water-tank-cleaning'
+        canonical: '/services/water-tank-cleaning/'
     },
 };
 
@@ -118,7 +118,7 @@ export default function WaterTankPage() {
                         Is your tap water really clean?
                     </h2>
                     <p style={{ maxWidth: '900px', margin: '0 auto 40px', lineHeight: 1.8, color: '#64748B' }}>
-                        In Riyadh's hot climate, water tanks are breeding grounds for bacteria, algae, and mosquitoes. Over time, sand and sediment from the municipality supply settle at the bottom, creating a sludge layer that contaminates fresh water. Al Riaz uses high-pressure rotary jets and safe chlorine-based disinfection agents to sanitize every inch of your tank walls. We don't just clean; we sterilize.
+                        In Riyadh's hot climate, water tanks are breeding grounds for bacteria, algae, and mosquitoes. Over time, sand and sediment from the municipality supply settle at the bottom, creating a sludge layer that contaminates fresh water. Saudi Home Experts uses high-pressure rotary jets and safe chlorine-based disinfection agents to sanitize every inch of your tank walls. We don't just clean; we sterilize.
                     </p>
                     <Link href="/contact" className="btn" style={{ background: 'var(--primary)', color: 'white', padding: '15px 40px', borderRadius: '30px', fontWeight: 700, textDecoration: 'none' }}>
                         Get A Free Inspection
@@ -211,7 +211,7 @@ export default function WaterTankPage() {
                         <div>
                             <h2 style={{ fontSize: '2rem', color: '#334155', marginBottom: '20px' }}>Certified by Riyadh Municipality</h2>
                             <p style={{ lineHeight: 1.8, color: '#64748B', marginBottom: '30px' }}>
-                                Al Riaz follows the strict health and safety guidelines set by the Saudi Ministry of Health. Our 6-step cleaning process ensures zero residue of toxic chemicals while guaranteeing 99.9% elimination of bacteria. We use food-grade cleaning agents standard for potable water systems.
+                                Saudi Home Experts follows the strict health and safety guidelines set by the Saudi Ministry of Health. Our 6-step cleaning process ensures zero residue of toxic chemicals while guaranteeing 99.9% elimination of bacteria. We use food-grade cleaning agents standard for potable water systems.
                             </p>
                             <Link href="/contact" className="btn" style={{ border: '2px solid var(--primary)', color: 'var(--primary)', padding: '12px 30px', borderRadius: '30px', fontWeight: 700, textDecoration: 'none' }}>
                                 VIEW CERTIFICATIONS

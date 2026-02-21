@@ -3,7 +3,7 @@ import { MapPin, ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Service Areas | Al Riaz Home Maintenance Riyadh",
+    title: "Service Areas | Saudi Home Experts Riyadh",
     description: "We provide expert electrician, plumbing, and intercom services across all major districts of Riyadh including Qurtubah, Ishbiliyah, and Olaya.",
 };
 

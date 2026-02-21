@@ -2,11 +2,11 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Privacy Policy | Al Riaz Home Maintenance Services Riyadh",
+    title: "Privacy Policy | Saudi Home Experts Riyadh",
     alternates: {
-        canonical: '/privacy-policy'
+        canonical: '/privacy-policy/'
     },
-    description: "Read the privacy policy of Al Riaz Home Maintenance Services. We value your privacy and protect your data while providing home maintenance in Riyadh.",
+    description: "Read the privacy policy of Saudi Home Experts. We value your privacy and protect your data while providing home maintenance in Riyadh.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -22,7 +22,7 @@ export default function PrivacyPolicyPage() {
 
                 <section style={{ marginBottom: '30px' }}>
                     <p style={{ color: 'var(--muted)', marginBottom: '20px' }}>Last Updated: February 12, 2026</p>
-                    <p>Welcome to **Al Riaz Home Maintenance Services**. We respect your privacy and are committed to protecting your personal data. This privacy policy explains how we handle your information when you visit our website or use our services in Riyadh.</p>
+                    <p>Welcome to **Saudi Home Experts**. We respect your privacy and are committed to protecting your personal data. This privacy policy explains how we handle your information when you visit our website or use our services in Riyadh.</p>
                 </section>
 
                 <section style={{ marginBottom: '30px' }}>
@@ -60,7 +60,7 @@ export default function PrivacyPolicyPage() {
                 <section style={{ marginBottom: '30px' }}>
                     <h2 style={{ marginBottom: '15px' }}>5. Contact Us</h2>
                     <p>If you have any questions about this Privacy Policy, please contact us at:</p>
-                    <p style={{ marginTop: '10px' }}>**Al Riaz Home Maintenance Services**</p>
+                    <p style={{ marginTop: '10px' }}>**Saudi Home Experts**</p>
                     <p>Riyadh, Saudi Arabia</p>
                     <p>WhatsApp: +966 50 890 1536</p>
                 </section>

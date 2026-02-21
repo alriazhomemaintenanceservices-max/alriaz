@@ -2,11 +2,11 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Cookie Policy | Al Riaz Home Maintenance Services Riyadh",
+    title: "Cookie Policy | Saudi Home Experts Riyadh",
     alternates: {
-        canonical: '/cookie-policy'
+        canonical: '/cookie-policy/'
     },
-    description: "Learn how Al Riaz Home Maintenance Services uses cookies to improve your user experience and analyze our website traffic in Riyadh.",
+    description: "Learn how Saudi Home Experts uses cookies to improve your user experience and analyze our website traffic in Riyadh.",
 };
 
 export default function CookiePolicyPage() {
@@ -22,7 +22,7 @@ export default function CookiePolicyPage() {
 
                 <section style={{ marginBottom: '30px' }}>
                     <p style={{ color: 'var(--muted)', marginBottom: '20px' }}>Last Updated: February 12, 2026</p>
-                    <p>This Cookie Policy explains how **Al Riaz Home Maintenance Services** uses cookies and similar technologies to recognize you when you visit our website. It explains what these technologies are and why we use them.</p>
+                    <p>This Cookie Policy explains how **Saudi Home Experts** uses cookies and similar technologies to recognize you when you visit our website. It explains what these technologies are and why we use them.</p>
                 </section>
 
                 <section style={{ marginBottom: '30px' }}>

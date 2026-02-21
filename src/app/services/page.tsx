@@ -9,7 +9,7 @@ export const metadata: Metadata = {
         absolute: "All Home Maintenance Services | Electrician, Plumber & Intercom Riyadh"
     },
     alternates: {
-        canonical: '/services'
+        canonical: '/services/'
     },
     description: "Expert Professional Electrician, Plumber, and Intercom installation services in Riyadh. We also provide comprehensive General Maintenance for all home needs.",
 };
@@ -79,7 +79,7 @@ const SERVICES = [
 
 export default function ServicesPage() {
     const whatsappNumber = "966508901536";
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=Hello%20Al%20Riaz,%20I%20am%20interested%20in%20your%20services.`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=Hello%20Saudi%20Home%20Experts,%20I%20am%20interested%20in%20your%20services.`;
 
     return (
         <main style={{ paddingTop: '80px', background: '#fff' }}>

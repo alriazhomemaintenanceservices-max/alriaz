@@ -2,11 +2,11 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Disclaimer | Al Riaz Home Maintenance Services Riyadh",
+    title: "Disclaimer | Saudi Home Experts Riyadh",
     alternates: {
-        canonical: '/disclaimer'
+        canonical: '/disclaimer/'
     },
-    description: "Legal disclaimer for Al Riaz Home Maintenance Services. Information regarding service accuracy, external links, and professional advice in Riyadh.",
+    description: "Legal disclaimer for Saudi Home Experts. Information regarding service accuracy, external links, and professional advice in Riyadh.",
 };
 
 export default function DisclaimerPage() {
@@ -22,7 +22,7 @@ export default function DisclaimerPage() {
 
                 <section style={{ marginBottom: '30px' }}>
                     <p style={{ color: 'var(--muted)', marginBottom: '20px' }}>Effective Date: February 12, 2026</p>
-                    <p>The information provided by **Al Riaz Home Maintenance Services** on our website and via our communication channels is for general informational purposes only. All information is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the site.</p>
+                    <p>The information provided by **Saudi Home Experts** on our website and via our communication channels is for general informational purposes only. All information is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the site.</p>
                 </section>
 
                 <section style={{ marginBottom: '30px' }}>
@@ -32,7 +32,7 @@ export default function DisclaimerPage() {
 
                 <section style={{ marginBottom: '30px' }}>
                     <h2 style={{ marginBottom: '15px' }}>2. External Links Disclaimer</h2>
-                    <p>Our website may contain links to external websites that are not provided or maintained by or in any way affiliated with Al Riaz. Please note that we do not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.</p>
+                    <p>Our website may contain links to external websites that are not provided or maintained by or in any way affiliated with Saudi Home Experts. Please note that we do not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.</p>
                 </section>
 
                 <section style={{ marginBottom: '30px' }}>
@@ -42,7 +42,7 @@ export default function DisclaimerPage() {
 
                 <section style={{ marginBottom: '30px' }}>
                     <h2 style={{ marginBottom: '15px' }}>4. Limitation of Liability</h2>
-                    <p>Under no circumstance shall Al Riaz have any liability to you for any loss or damage of any kind incurred as a result of the use of the site or reliance on any information provided on the site. Your use of the site and your reliance on any information on the site is solely at your own risk.</p>
+                    <p>Under no circumstance shall Saudi Home Experts have any liability to you for any loss or damage of any kind incurred as a result of the use of the site or reliance on any information provided on the site. Your use of the site and your reliance on any information on the site is solely at your own risk.</p>
                 </section>
 
                 <div style={{ marginTop: '50px' }}>

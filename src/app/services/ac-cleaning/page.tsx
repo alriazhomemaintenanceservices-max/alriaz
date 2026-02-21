@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     title: {
         absolute: "AC Cleaning Services Riyadh | Eco-Friendly Air Conditioning Maintenance"
     },
-    description: "Enhance your indoor air quality with Al Riaz's premium AC cleaning services in Riyadh. Eco-friendly, deep cleaning for ducts and coils. Book a consultation today.",
+    description: "Enhance your indoor air quality with Saudi Home Experts premium AC cleaning services in Riyadh. Eco-friendly, deep cleaning for ducts and coils. Book a consultation today.",
     alternates: {
-        canonical: '/services/ac-cleaning'
+        canonical: '/services/ac-cleaning/'
     },
 };
 
@@ -67,7 +67,7 @@ export default function AcCleaningPage() {
                                 Breathe cleaner air in your living space with Pure Air® AC cleaning services.
                             </p>
                             <p style={{ fontSize: '1rem', color: '#64748B', marginBottom: '40px', lineHeight: 1.6 }}>
-                                Experience premium AC cleaning services in KSA with the Al Riaz Standard. Be sure to improve the performance of AC units, reduce AC bills, and more.
+                                Experience premium AC cleaning services in KSA with the Saudi Home Experts Standard. Be sure to improve the performance of AC units, reduce AC bills, and more.
                             </p>
                             <div style={{ display: 'flex', gap: '20px' }}>
                                 <a href="tel:+966508901536" className="btn" style={{ background: 'var(--secondary)', color: 'white', border: 'none', padding: '15px 30px', fontWeight: 700, borderRadius: '30px', display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -107,7 +107,7 @@ export default function AcCleaningPage() {
                                     borderRadius: '10px',
                                     textAlign: 'center'
                                 }}>
-                                    <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--secondary)' }}>AL RIAZ</div>
+                                    <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--secondary)' }}>SAUDI HOME EXPERTS</div>
                                     <div style={{ color: 'var(--primary)', letterSpacing: '3px', fontSize: '0.8rem', fontWeight: 700 }}>HOME MAINTENANCE</div>
                                 </div>
                             </div>
@@ -123,7 +123,7 @@ export default function AcCleaningPage() {
                         Enhance indoor air quality with eco-friendly AC cleaning services in Saudi Arabia
                     </h2>
                     <p style={{ maxWidth: '900px', margin: '0 auto 40px', lineHeight: 1.8, color: '#64748B' }}>
-                        When it comes to air conditioning cleaning services, you wouldn’t want to hire just any service provider. You need reliable AC maintenance and cleaning services that provide you the most reliability and efficiency. Clean and healthy indoor air is essential for your health and well-being. Our Safe AC Cleaning Technology cleans your AC significantly to reduce triggers like dust, bacteria and microbes using only eco-friendly products and techniques. Our specialized AC cleaning and disinfection service uses advanced methods ensuring your AC units are counting fresh healthy air instantly. With regular maintenance and professional deep cleaning, including coil and duct cleaning, Al Riaz extends the lifespan of your AC units components, ultimately reducing the need for frequent AC replacements and repairs.
+                        When it comes to air conditioning cleaning services, you wouldn’t want to hire just any service provider. You need reliable AC maintenance and cleaning services that provide you the most reliability and efficiency. Clean and healthy indoor air is essential for your health and well-being. Our Safe AC Cleaning Technology cleans your AC significantly to reduce triggers like dust, bacteria and microbes using only eco-friendly products and techniques. Our specialized AC cleaning and disinfection service uses advanced methods ensuring your AC units are counting fresh healthy air instantly. With regular maintenance and professional deep cleaning, including coil and duct cleaning, Saudi Home Experts extends the lifespan of your AC units components, ultimately reducing the need for frequent AC replacements and repairs.
                     </p>
                     <Link href="/contact" className="btn" style={{ background: 'var(--primary)', color: 'white', padding: '15px 40px', borderRadius: '30px', fontWeight: 700, textDecoration: 'none' }}>
                         Request A Consultation
@@ -191,7 +191,7 @@ export default function AcCleaningPage() {
                 <div className="container">
                     <h3 style={{ fontSize: '1.5rem', color: '#334155', marginBottom: '20px', fontWeight: 700 }}>The importance of cleaning your AC system</h3>
                     <p style={{ lineHeight: 1.8, color: '#64748B', marginBottom: '20px' }}>
-                        In Saudi Arabia’s climate characterized by extreme heat and dust, regular maintenance of air conditioning units is crucial. Continuous operation in such conditions leads to the accumulation of dust and debris within the AC systems, resulting in reduced efficiency, unpleasant odors, and higher chances of breakdowns. Moreover, a dirty AC unit contributes to poor indoor air quality, which can exacerbate respiratory issues. To combat these challenges, professional AC cleaning services are essential. At Al Riaz Home Maintenance, we specialize in comprehensive AC cleaning services designed to ensure optimal air quality and comfort. In addition to our standard cleaning, we offer specialized disinfection contracts to provide comprehensive protection and quality.
+                        In Saudi Arabia’s climate characterized by extreme heat and dust, regular maintenance of air conditioning units is crucial. Continuous operation in such conditions leads to the accumulation of dust and debris within the AC systems, resulting in reduced efficiency, unpleasant odors, and higher chances of breakdowns. Moreover, a dirty AC unit contributes to poor indoor air quality, which can exacerbate respiratory issues. To combat these challenges, professional AC cleaning services are essential. At Saudi Home Experts, we specialize in comprehensive AC cleaning services designed to ensure optimal air quality and comfort. In addition to our standard cleaning, we offer specialized disinfection contracts to provide comprehensive protection and quality.
                     </p>
                     <p style={{ lineHeight: 1.8, color: '#64748B' }}>
                         As part of our mission to enhance health and wellness via effective indoor environmental quality management, we provide AC duct cleaning and disinfection treatments to improve the air quality in your home and improve overall wellbeing.
@@ -229,7 +229,7 @@ export default function AcCleaningPage() {
                         <div>
                             <h2 style={{ fontSize: '2rem', color: '#334155', marginBottom: '20px' }}>Professional AC cleaning services in KSA</h2>
                             <p style={{ lineHeight: 1.8, color: '#64748B', marginBottom: '30px' }}>
-                                The Al Riaz team offers the best AC cleaning services in Saudi Arabia. We use the latest cleaning and sanitation equipment to ensure you can feel the difference. We have been one of the leading providers of home wellness services in KSA since 2012. Call us now to schedule your eco-friendly air duct cleaning & sanitation services.
+                                The Saudi Home Experts team offers the best AC cleaning services in Saudi Arabia. We use the latest cleaning and sanitation equipment to ensure you can feel the difference. We have been one of the leading providers of home wellness services in KSA since 2012. Call us now to schedule your eco-friendly air duct cleaning & sanitation services.
                             </p>
                             <Link href="/contact" className="btn" style={{ border: '2px solid var(--primary)', color: 'var(--primary)', padding: '12px 30px', borderRadius: '30px', fontWeight: 700, textDecoration: 'none' }}>
                                 KNOW MORE NOW

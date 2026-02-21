@@ -6,10 +6,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Intercom System Riyadh | Smart Home Security & Video Entry - Al Riaz"
+        absolute: "Intercom System Riyadh | Smart Home Security & Video Entry - Saudi Home Experts"
     },
     alternates: {
-        canonical: '/services/intercom'
+        canonical: '/services/intercom/'
     },
     description: "Expert intercom system installation in Riyadh. We specialize in video doorbell, multi-apartment entry, and smart lock integration. Same-day service in Hittin and Malqa!",
 };
@@ -56,7 +56,7 @@ export default function IntercomPage() {
                                 Riyadh - Video Entry
                             </h1>
                             <p style={{ fontSize: '1.25rem', color: '#666', marginBottom: '40px', lineHeight: 1.7, margin: '0 auto 40px', maxWidth: '700px' }}>
-                                Secure your villa with a premium intercom system in Riyadh. Al Riaz specializes in video doorbells, multi-apartment entry systems, and smart lock integration for luxury projects.
+                                Secure your villa with a premium intercom system in Riyadh. Saudi Home Experts specializes in video doorbells, multi-apartment entry systems, and smart lock integration for luxury projects.
                             </p>
                             <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
                                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
@@ -78,7 +78,7 @@ export default function IntercomPage() {
                 <div className="container">
                     <div className="grid grid-2" style={{ alignItems: 'center' }}>
                         <div>
-                            <h2 style={{ marginBottom: '20px' }}>Why Choose Al Riaz for Home Security?</h2>
+                            <h2 style={{ marginBottom: '20px' }}>Why Choose Saudi Home Experts for Home Security?</h2>
                             <p style={{ marginBottom: '20px', color: 'var(--muted)', lineHeight: '1.6' }}>
                                 With over a decade of experience installing intercom systems in Riyadh, we understand the specific security needs of the Kingdom's luxury compounds and independent villas. Our technicians are factory-trained for brands like Hikvision, Dahua, and Commax.
                             </p>

@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://alriazhomemaintenanceservices.com'
+    const baseUrl = 'https://saudihomeexperts.com'
 
     const services = [
         'electrician',
@@ -25,13 +25,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     const sitemapEntries: MetadataRoute.Sitemap = [
         ...staticPages.map((route) => ({
-            url: `${baseUrl}${route}`,
+            url: route === '' ? `${baseUrl}/` : `${baseUrl}${route}/`,
             lastModified: new Date(),
             changeFrequency: 'monthly' as const,
             priority: route === '' ? 1 : 0.8,
         })),
         ...services.map((service) => ({
-            url: `${baseUrl}/services/${service}`,
+            url: `${baseUrl}/services/${service}/`,
             lastModified: new Date(),
             changeFrequency: 'weekly' as const,
             priority: 0.9,
@@ -41,7 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     districts.forEach(district => {
         services.forEach(service => {
             sitemapEntries.push({
-                url: `${baseUrl}/riyadh/${district}/${service}`,
+                url: `${baseUrl}/riyadh/${district}/${service}/`,
                 lastModified: new Date(),
                 changeFrequency: 'weekly' as const,
                 priority: 0.7,

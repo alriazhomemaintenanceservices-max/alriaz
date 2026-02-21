@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     },
     description: "Professional furniture cleaning in Riyadh. Sofa shampooing, carpet steam cleaning, and upholstery stain removal. Revitalize your living room today.",
     alternates: {
-        canonical: '/services/furniture-cleaning'
+        canonical: '/services/furniture-cleaning/'
     },
 };
 
@@ -61,7 +61,7 @@ export default function FurnitureCleaningPage() {
                                 Restore the beauty and comfort of your sofas, carpets, and armchairs.
                             </p>
                             <p style={{ fontSize: '1rem', color: '#64748B', marginBottom: '40px', lineHeight: 1.6 }}>
-                                Dust, spills, and everyday use can make your furniture look dull and tired. Al Riaz uses advanced shampooing and steam extraction techniques to lift deep stains and brighten fabrics without damaging delicate fibers.
+                                Dust, spills, and everyday use can make your furniture look dull and tired. Saudi Home Experts uses advanced shampooing and steam extraction techniques to lift deep stains and brighten fabrics without damaging delicate fibers.
                             </p>
                             <div style={{ display: 'flex', gap: '20px' }}>
                                 <a href="tel:+966508901536" className="btn" style={{ background: 'var(--secondary)', color: 'white', border: 'none', padding: '15px 30px', fontWeight: 700, borderRadius: '30px', display: 'flex', alignItems: 'center', gap: '10px' }}>

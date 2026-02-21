@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (!locationName) return { title: 'Location Not Found' };
 
     return {
-        title: `Best Electrician & Plumber in ${locationName} - Al Riaz Repairs`,
+        title: `Best Electrician & Plumber in ${locationName} - Saudi Home Experts Repairs`,
         description: `Leading home maintenance services in ${locationName}, Riyadh. Expert electrician, plumber, and intercom installation available 24/7 in your neighborhood.`,
     };
 }
@@ -81,7 +81,7 @@ export default async function LocationPage({ params }: Props) {
                     </h1>
                     <p style={{ fontSize: '1.2rem', color: '#64748b', marginBottom: '40px', lineHeight: 1.6 }}>
                         Need a reliable electrician or plumber in {locationName}?
-                        Al Riaz provides fast, SASO-certified repairs right in your neighborhood.
+                        Saudi Home Experts provides fast, SASO-certified repairs right in your neighborhood.
                         We are just around the corner.
                     </p>
                     <div className="hero-btn-group" style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>

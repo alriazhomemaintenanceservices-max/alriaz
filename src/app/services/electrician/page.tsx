@@ -6,10 +6,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Electrician in Riyadh | 24/7 Emergency Electrical Repair - Al Riaz"
+        absolute: "Electrician in Riyadh | 24/7 Emergency Electrical Repair - Saudi Home Experts"
     },
     alternates: {
-        canonical: '/services/electrician'
+        canonical: '/services/electrician/'
     },
     description: "Expert electrician in Riyadh for 24/7 emergency repairs, DB balancing, and lighting installation. Serving Olaya, Malaz, and Hittin. 45-min arrival guaranteed. Book on WhatsApp!",
 };
@@ -24,10 +24,10 @@ export default function ElectricianPage() {
         "@type": "Service",
         "name": "Professional Electrical Repair & Installation Riyadh",
         "serviceType": "Electrician",
-        "description": "24/7 emergency electrical services in Riyadh by Al Riaz. Specialized in short circuit repair, DB load balancing, and smart home lighting for luxury villas.",
+        "description": "24/7 emergency electrical services in Riyadh by Saudi Home Experts. Specialized in short circuit repair, DB load balancing, and smart home lighting for luxury villas.",
         "provider": {
             "@type": "HomeAndConstructionBusiness",
-            "name": "Al Riaz Home Maintenance Services",
+            "name": "Saudi Home Experts",
             "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Olaya District",
@@ -115,7 +115,7 @@ export default function ElectricianPage() {
                             <Zap size={20} fill="#25D366" color="#25D366" /> COST & AVAILABILITY SUMMARY
                         </h2>
                         <p style={{ fontSize: '1.1rem', lineHeight: 1.6, color: '#1e293b', margin: 0 }}>
-                            Hiring a certified electrician in Riyadh guarantees safety and quality. Al Riaz provides 24/7 same-day service in all districts including Olaya (12211), Malaz (12831), and Hittin (13516) with no hidden charges and fully transparent quotes.
+                            Hiring a certified electrician in Riyadh guarantees safety and quality. Saudi Home Experts provides 24/7 same-day service in all districts including Olaya (12211), Malaz (12831), and Hittin (13516) with no hidden charges and fully transparent quotes.
                         </p>
                     </div>
                 </div>
@@ -125,7 +125,7 @@ export default function ElectricianPage() {
             <section className="section animate-fade-in">
                 <div className="container">
                     <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-                        <h2 style={{ fontSize: '2.5rem', marginBottom: '15px' }}>Why Choose Al Riaz Home Maintenance?</h2>
+                        <h2 style={{ fontSize: '2.5rem', marginBottom: '15px' }}>Why Choose Saudi Home Experts?</h2>
                         <p style={{ color: 'var(--muted)', maxWidth: '700px', margin: '0 auto' }}>With over a decade of hands-on experience in Riyadh province, we have refined our services to meet the VIP standards expected in the Kingdom.</p>
                     </div>
                     <div className="grid grid-3" style={{ gap: '30px' }}>
@@ -295,7 +295,7 @@ export default function ElectricianPage() {
                         </div>
                     </div>
                     <p style={{ marginTop: '50px', maxWidth: '800px', margin: '50px auto 0', opacity: 0.8, lineHeight: 1.8 }}>
-                        Al Riaz Home Maintenance is not just a service provider; we are a community partner. Our licenses are renewed annually with the Riyadh Municipality and the Saudi Ministry of Commerce. Every repair we perform contributes to the structural integrity and electrical safety of our beautiful capital.
+                        Saudi Home Experts is not just a service provider; we are a community partner. Our licenses are renewed annually with the Riyadh Municipality and the Saudi Ministry of Commerce. Every repair we perform contributes to the structural integrity and electrical safety of our beautiful capital.
                     </p>
                 </div>
             </section>
@@ -366,7 +366,7 @@ export default function ElectricianPage() {
                         <div className="grid grid-2" style={{ alignItems: 'center' }}>
                             <div>
                                 <h3 style={{ color: 'var(--accent)' }}>CASE STUDY: EMERGENCY DB FIX IN AL-KHUZAMA</h3>
-                                <p style={{ fontSize: '1.2rem', lineHeight: 1.6 }}><strong>Problem:</strong> A total HVAC shutdown during mid-July heat threatened a commercial server room. <br /><strong>Solution:</strong> Al Riaz dispatched an expert phase-balancer in 38 minutes. <br /><strong>Outcome:</strong> System online within 55 mins of arrival. Saved client thousand in potential hardware damage.</p>
+                                <p style={{ fontSize: '1.2rem', lineHeight: 1.6 }}><strong>Problem:</strong> A total HVAC shutdown during mid-July heat threatened a commercial server room. <br /><strong>Solution:</strong> Saudi Home Experts dispatched an expert phase-balancer in 38 minutes. <br /><strong>Outcome:</strong> System online within 55 mins of arrival. Saved client thousand in potential hardware damage.</p>
                             </div>
                             <div style={{ textAlign: 'right' }}>
                                 <Zap size={80} color="var(--accent)" style={{ opacity: 0.3 }} />

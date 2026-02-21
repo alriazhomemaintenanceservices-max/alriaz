@@ -8,9 +8,9 @@ export const metadata: Metadata = {
         absolute: "Intercom Installation in Al Rabee, Riyadh | Smart Villa Security"
     },
     alternates: {
-        canonical: '/riyadh/rabee/intercom'
+        canonical: '/riyadh/rabee/intercom/'
     },
-    description: "Smart intercom installation & repair in Al Rabee, Riyadh City. Video doorbells, multi-apartment systems, and mobile app integration by Al Riaz specialist.",
+    description: "Smart intercom installation & repair in Al Rabee, Riyadh City. Video doorbells, multi-apartment systems, and mobile app integration by Saudi Home Experts specialist.",
 };
 
 export default function IntercomRabeePage() {
@@ -23,7 +23,7 @@ export default function IntercomRabeePage() {
                 <Link href="/">Home</Link> / <Link href="/services">Services</Link> / <Link href="/services/intercom">Intercom</Link> / <span style={{ color: 'var(--primary)', fontWeight: 600 }}>Rabee</span>
             </nav>
 
-<section className="section animate-fade-in" style={{ paddingBottom: '60px' }}>
+            <section className="section animate-fade-in" style={{ paddingBottom: '60px' }}>
                 <div className="container">
                     <div className="grid grid-2" style={{ alignItems: 'center', gap: '80px' }}>
                         <div>
@@ -34,7 +34,7 @@ export default function IntercomRabeePage() {
                                 Licensed <span style={{ color: 'var(--primary)' }}>Intercom in Al Rabee</span>, Riyadh — Fast 24/7 Support
                             </h1>
                             <p style={{ fontSize: '1.3rem', color: '#444', marginBottom: '40px', maxWidth: '600px' }}>
-                                Experiencing a maintenance emergency in Al Rabee? Al Riaz Home Maintenance provides elite-level intercom services for luxury villas and prestigious apartments near Kingdom Hospital and luxury residential compounds. Join 15,000+ satisfied clients across Riyadh who trust us for safety and precision.
+                                Experiencing a maintenance emergency in Al Rabee? Saudi Home Experts provides elite-level intercom services for luxury villas and prestigious apartments near Kingdom Hospital and luxury residential compounds. Join 15,000+ satisfied clients across Riyadh who trust us for safety and precision.
                             </p>
                             <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
                                 <a href="https://wa.me/966508901536?text=I%20need%20an%20expert%20intercom%20in%20Al Rabee%20Riyadh" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ background: '#22c55e', border: 'none', padding: '18px 40px', fontSize: '1.1rem', boxShadow: '0 10px 15px -3px rgba(34, 197, 94, 0.4)' }}>
@@ -46,18 +46,18 @@ export default function IntercomRabeePage() {
                         <div style={{ position: 'relative' }}>
                             <div style={{ background: 'white', padding: '50px', borderRadius: '40px', border: '1px solid var(--border)', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.08)' }}>
                                 <ShieldCheck size={60} color="var(--primary)" style={{ marginBottom: '20px' }} />
-                                <h3 style={{ fontSize: '1.6rem', marginBottom: '15px' }}>Al Riaz Quality Guarantee</h3>
+                                <h3 style={{ fontSize: '1.6rem', marginBottom: '15px' }}>Saudi Home Experts Quality Guarantee</h3>
                                 <p style={{ fontSize: '1.05rem', color: '#64748b', marginBottom: '25px' }}>
                                     Our Intercom experts in Al Rabee are rigorously vetted. We handle specialized electrical architectures of high-end Riyadh villas with absolute professionalism.
                                 </p>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '5px', color: '#f59e0b', marginBottom: '20px' }}>
-                                     <Star size={24} fill="currentColor" />
-                                     <span style={{ fontWeight: 800, fontSize: '1.4rem', color: '#0f172a' }}>5.0 Rating in Al Rabee</span>
+                                    <Star size={24} fill="currentColor" />
+                                    <span style={{ fontWeight: 800, fontSize: '1.4rem', color: '#0f172a' }}>5.0 Rating in Al Rabee</span>
                                 </div>
                                 <div style={{ borderTop: '1px solid #f1f5f9', paddingTop: '20px' }}>
-                                     {/* INTERNAL LINK 1: HOME */}
-                                     <Link href="/" style={{ color: 'var(--primary)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                         Browse Best Home Maintenance in Riyadh <ArrowRight size={18} />
+                                    {/* INTERNAL LINK 1: HOME */}
+                                    <Link href="/" style={{ color: 'var(--primary)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                        Browse Best Home Maintenance in Riyadh <ArrowRight size={18} />
                                     </Link>
                                 </div>
                             </div>
@@ -70,102 +70,102 @@ export default function IntercomRabeePage() {
             <section className="section animate-fade-in" style={{ background: '#f8fafc' }}>
                 <div className="container">
                     <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 60px' }}>
-                         <h2 style={{ fontSize: '2.5rem', marginBottom: '20px' }}>Comprehensive Intercom Solutions for Al Rabee Homes</h2>
-                         <p style={{ fontSize: '1.1rem', color: '#64748b' }}>From emergency short circuits to complete villa security overhauls, our specialized district teams are equipped with the latest diagnostic tools to serve the Al Rabee community 24/7.</p>
-                         {/* INTERNAL LINK 2: HOME */}
-                         <p style={{ marginTop: '10px' }}>Part of our <Link href="/" style={{ color: 'var(--primary)', fontWeight: 600 }}>Al Riaz Maintenance Network</Link>.</p>
+                        <h2 style={{ fontSize: '2.5rem', marginBottom: '20px' }}>Comprehensive Intercom Solutions for Al Rabee Homes</h2>
+                        <p style={{ fontSize: '1.1rem', color: '#64748b' }}>From emergency short circuits to complete villa security overhauls, our specialized district teams are equipped with the latest diagnostic tools to serve the Al Rabee community 24/7.</p>
+                        {/* INTERNAL LINK 2: HOME */}
+                        <p style={{ marginTop: '10px' }}>Part of our <Link href="/" style={{ color: 'var(--primary)', fontWeight: 600 }}>Saudi Home Experts Maintenance Network</Link>.</p>
                     </div>
 
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Smart Video Intercom Installation</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Smart Video Intercom Installation in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Smart Video Intercom Installation</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Smart Video Intercom Installation in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Multi-Floor Apartment Solutions</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Multi-Floor Apartment Solutions in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Multi-Floor Apartment Solutions</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Multi-Floor Apartment Solutions in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Mobile App Integration</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Mobile App Integration in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Mobile App Integration</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Mobile App Integration in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Wiring & Connectivity Repair</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Wiring & Connectivity Repair in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Wiring & Connectivity Repair</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Wiring & Connectivity Repair in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Villa Gate Communication Systems</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Villa Gate Communication Systems in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Villa Gate Communication Systems</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Villa Gate Communication Systems in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Night Vision Camera Integration</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Night Vision Camera Integration in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Night Vision Camera Integration</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Night Vision Camera Integration in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Biometric Access Control</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Biometric Access Control in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Biometric Access Control</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Biometric Access Control in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Wireless Doorbell Setup</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Wireless Doorbell Setup in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Wireless Doorbell Setup</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Wireless Doorbell Setup in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>IP Intercom Configuration</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of IP Intercom Configuration in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>IP Intercom Configuration</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of IP Intercom Configuration in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Old System Modernization</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Old System Modernization in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Old System Modernization</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Old System Modernization in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Voice Recognition Intercoms</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Voice Recognition Intercoms in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Voice Recognition Intercoms</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Voice Recognition Intercoms in the Al Rabee area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                     </div>
                 </div>
             </section>
@@ -189,8 +189,8 @@ export default function IntercomRabeePage() {
                                     <p style={{ fontSize: '0.95rem', opacity: 0.8 }}>Our dispatch center near Northern Ring Road ensures that an expert intercom in Al Rabee is never more than 40 minutes away from any emergency call.</p>
                                 </div>
                             </div>
-                             {/* LONG-TAIL INTERNAL LINKS (5) */}
-                             <div style={{ marginTop: '40px', borderTop: '1px dotted rgba(255,255,255,0.2)', paddingTop: '30px', display: 'flex', flexWrap: 'wrap', gap: '15px', justifyContent: 'center' }}>
+                            {/* LONG-TAIL INTERNAL LINKS (5) */}
+                            <div style={{ marginTop: '40px', borderTop: '1px dotted rgba(255,255,255,0.2)', paddingTop: '30px', display: 'flex', flexWrap: 'wrap', gap: '15px', justifyContent: 'center' }}>
                                 <Link href="/riyadh/nada/electrician" style={{ color: 'var(--primary)', fontWeight: 600 }}>Emergency electrician in Al Nada</Link>
                                 <span style={{ opacity: 0.3 }}>|</span>
                                 <Link href="/riyadh/qurtubah/plumber" style={{ color: 'var(--primary)', fontWeight: 600 }}>Reliable plumber for Qurtubah Villas</Link>
@@ -200,7 +200,7 @@ export default function IntercomRabeePage() {
                                 <Link href="/riyadh/yarmouk/electrician" style={{ color: 'var(--primary)', fontWeight: 600 }}>Verified electrician Al Yarmouk</Link>
                                 <span style={{ opacity: 0.3 }}>|</span>
                                 <Link href="/riyadh/narjis/plumber" style={{ color: 'var(--primary)', fontWeight: 600 }}>Top-rated plumber Unit in Al Narjis</Link>
-                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -215,16 +215,16 @@ export default function IntercomRabeePage() {
                     </div>
                     <div style={{ display: 'grid', gap: '16px' }}>
                         {[
-                            { q: "How quickly can an Al Riaz intercom arrive in Al Rabee?", a: "With our dedicated response unit stationed near Al Rabee, we typically reach your villa within 35 to 45 minutes for emergency calls." },
+                            { q: "How quickly can an Saudi Home Experts intercom arrive in Al Rabee?", a: "With our dedicated response unit stationed near Al Rabee, we typically reach your villa within 35 to 45 minutes for emergency calls." },
                             { q: "Do you handle specialized electrical loads for larger villas?", a: "Yes, we specialize in high-capacity DB balancing and villa rewiring specifically tailored for large residential properties near Kingdom Hospital and luxury residential compounds." },
                             { q: "Are your technicians licensed by Saudi authorities?", a: "Absolutely. Every plumber and electrician on our team is fully licensed and follows SASO (Saudi Standards, Metrology and Quality Organization) protocols." },
                             { q: "Can I get a detailed estimate before any work starts?", a: "Transparency is our priority. Our 'Get Quote' button allows you to share photos of the issue, and we provide a fixed estimate before physical arrival." },
                             { q: "What landmarks do you cover in the Al Rabee area?", a: "We provide full coverage across Al Rabee, including all streets near residential complexes and commercial zones near Kingdom Hospital and luxury residential compounds." },
-                            { q: "Do you offer emergency support on weekends and holidays?", a: "Yes, Al Riaz operates 24/7, 365 days a year to ensure your home's vital systems never fail you." },
+                            { q: "Do you offer emergency support on weekends and holidays?", a: "Yes, Saudi Home Experts operates 24/7, 365 days a year to ensure your home's vital systems never fail you." },
                             { q: "Is any warranty provided for the repair work?", a: "We offer a standard 30-day workmanship warranty. If the same issue persists, our team will fix it at zero additional cost." },
                             { q: "Do you handle smart home and intercom integrations?", a: "Yes, we have specialists for video doorbells, smart lighting, and centralized villa security systems." },
                             { q: "How can I pay for the services in Riyadh?", a: "We accept all major credit/debit cards, bank transfers, and cash for your convenience." },
-                            { q: "Why is Al Riaz considered the best in Al Rabee?", a: "Our combination of local district knowledge, SASO-certified parts, and a customer-first rapid arrival policy makes us the top-rated choice in Riyadh." }
+                            { q: "Why is Saudi Home Experts considered the best in Al Rabee?", a: "Our combination of local district knowledge, SASO-certified parts, and a customer-first rapid arrival policy makes us the top-rated choice in Riyadh." }
                         ].map((item, i) => (
                             <details key={i} style={{ padding: '24px', border: '1px solid #e2e8f0', borderRadius: '20px', cursor: 'pointer', background: 'white' }}>
                                 <summary style={{ fontWeight: 700, fontSize: '1.15rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', listStyle: 'none' }}>
@@ -246,7 +246,7 @@ export default function IntercomRabeePage() {
                         <h2 style={{ fontSize: '3rem', marginBottom: '20px', position: 'relative', zIndex: 1 }}>Professional Intercom in Al Rabee</h2>
                         <p style={{ fontSize: '1.25rem', opacity: 0.9, marginBottom: '40px', position: 'relative', zIndex: 1 }}>Don't let a small leak or a short circuit become a major expensive headache. Safe, clean, and reliable maintenance is a click away.</p>
                         <a href="https://wa.me/966508901536?text=I%20need%20an%20expert%20intercom%20in%20Al Rabee%20Riyadh" target="_blank" rel="noopener noreferrer" className="btn" style={{ background: '#22c55e', color: 'white', border: 'none', padding: '20px 60px', fontSize: '1.4rem', borderRadius: '100px', fontWeight: 700, boxShadow: '0 20px 40px -10px rgba(0,0,0,0.2)', position: 'relative', zIndex: 1 }}>
-                            <WhatsAppIcon size={24} /> Chat with Al Riaz Now
+                            <WhatsAppIcon size={24} /> Chat with Saudi Home Experts Now
                         </a>
                     </div>
                 </div>

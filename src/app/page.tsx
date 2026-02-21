@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   const whatsappNumber = "966508901536";
-  const whatsappMsg = "Hello Al Riaz Services, I need an emergency repair in Riyadh.";
+  const whatsappMsg = "Hello Saudi Home Experts, I need an emergency repair in Riyadh.";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMsg)}`;
 
   return (
@@ -169,7 +169,7 @@ export default function Home() {
       <section className="section bg-pattern-dark" style={{ background: '#0f172a', color: 'white' }}>
         <div className="container">
           <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-            <h2 className="heading" style={{ fontSize: '2.5rem', marginBottom: '20px' }}>Why Choose Al Riaz?</h2>
+            <h2 className="heading" style={{ fontSize: '2.5rem', marginBottom: '20px' }}>Why Choose Saudi Home Experts?</h2>
             <p style={{ fontSize: '1.2rem', opacity: 0.8, marginBottom: '50px' }}>
               We combine technical expertise with a commitment to customer satisfaction.
             </p>
@@ -222,7 +222,7 @@ export default function Home() {
           <div className="grid grid-2">
             {[
               {
-                text: "The technician arrived within 30 minutes of my call. The repair was handled very professionally and the price was fair. I'll definitely use Al Riaz again for my villa in Al Yasmin!",
+                text: "The technician arrived within 30 minutes of my call. The repair was handled very professionally and the price was fair. I'll definitely use Saudi Home Experts again for my villa in Al Yasmin!",
                 author: "Abdul Rahman Al-Saud",
                 role: "Client from Al Yasmin"
               },

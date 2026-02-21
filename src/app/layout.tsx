@@ -19,9 +19,9 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://alriazhomemaintenanceservices.com'),
+  metadataBase: new URL('https://saudihomeexperts.com'),
   title: {
-    absolute: "Professional Electrician, Plumber & Intercom Riyadh | Al Riaz"
+    absolute: "Professional Electrician, Plumber & Intercom Riyadh | Saudi Home Experts"
   },
   description: "Expert Professional Electrician, Plumber, and Intercom installation services in Riyadh. We also handle detailed general home maintenance for all districts.",
   keywords: "Electrician Riyadh, Plumber Riyadh, Intercom System Riyadh, Home Maintenance Saudi Arabia, Riyadh Professional Services",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Top-Rated Maintenance Services in Riyadh | Al Riaz",
+    title: "Top-Rated Maintenance Services in Riyadh | Saudi Home Experts",
     description: "Your trusted partner for home repairs and maintenance in Riyadh.",
     type: "website",
   },
@@ -41,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const whatsappNumber = "966508901536"; // Update with actual number
-  const whatsappMsg = "Hello Al Riaz Services, I need a professional technician in Riyadh.";
+  const whatsappMsg = "Hello Saudi Home Experts, I need a professional technician in Riyadh.";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMsg)}`;
 
   return (
@@ -54,7 +54,7 @@ export default function RootLayout({
         <nav className="nav" style={{ background: 'var(--grad-glass-light)', borderBottom: '1px solid var(--border)' }}>
           <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div className="logo" style={{ fontWeight: 900, fontSize: '1.5rem', color: 'var(--secondary)', letterSpacing: '-1px' }}>
-              <Link href="/">AL RIAZ<span style={{ color: 'var(--primary)' }}>.</span></Link>
+              <Link href="/">Saudi Home Experts<span style={{ color: 'var(--primary)' }}>.</span></Link>
             </div>
             {/* Desktop nav links */}
             <div className="nav-links hide-mobile" style={{ display: 'flex', gap: '40px', fontWeight: 600, alignItems: 'center', fontSize: '0.95rem' }}>
@@ -114,7 +114,7 @@ export default function RootLayout({
             <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '40px' }}>
               <div>
                 <div className="logo" style={{ fontWeight: 900, fontSize: '1.7rem', color: 'white', letterSpacing: '-1px', marginBottom: '25px' }}>
-                  AL RIAZ<span style={{ color: 'var(--primary)' }}>.</span>
+                  Saudi Home Experts<span style={{ color: 'var(--primary)' }}>.</span>
                 </div>
                 <p style={{ opacity: 0.7, lineHeight: 1.8, marginBottom: '30px' }}>
                   The gold standard for residential and commercial maintenance in Riyadh. Providing safe, reliable, and professional solutions since 2012.
@@ -194,7 +194,7 @@ export default function RootLayout({
             </div>
 
             <div className="footer-bottom" style={{ marginTop: '60px', paddingTop: '25px', borderTop: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '15px' }}>
-              <p style={{ opacity: 0.5, fontSize: '0.85rem', overflowWrap: 'break-word', maxWidth: '100%' }}>© {new Date().getFullYear()} Al Riaz Services. All Rights Reserved.</p>
+              <p style={{ opacity: 0.5, fontSize: '0.85rem', overflowWrap: 'break-word', maxWidth: '100%' }}>© {new Date().getFullYear()} Saudi Home Experts. All Rights Reserved.</p>
               <div style={{ display: 'flex', gap: '20px', opacity: 0.5, fontSize: '0.85rem', flexShrink: 0 }}>
                 <Link href="/site-map">Sitemap</Link>
                 <Link href="/privacy-policy">Privacy Policy</Link>

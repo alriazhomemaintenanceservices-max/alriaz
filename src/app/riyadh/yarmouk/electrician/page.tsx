@@ -8,9 +8,9 @@ export const metadata: Metadata = {
         absolute: "Licensed Electrician in Al Yarmouk, Riyadh | 24/7 Professional Repair"
     },
     alternates: {
-        canonical: '/riyadh/yarmouk/electrician'
+        canonical: '/riyadh/yarmouk/electrician/'
     },
-    description: "Certified electrician in Al Yarmouk, Riyadh City. 24/7 emergency electrical fixes, villa rewiring, DB box maintenance, and lighting installation. Al Riaz #1 choice. Book now!",
+    description: "Certified electrician in Al Yarmouk, Riyadh City. 24/7 emergency electrical fixes, villa rewiring, DB box maintenance, and lighting installation. Saudi Home Experts #1 choice. Book now!",
 };
 
 export default function ElectricianYarmoukPage() {
@@ -23,7 +23,7 @@ export default function ElectricianYarmoukPage() {
                 <Link href="/">Home</Link> / <Link href="/services">Services</Link> / <Link href="/services/electrician">Electrician</Link> / <span style={{ color: 'var(--primary)', fontWeight: 600 }}>Yarmouk</span>
             </nav>
 
-<section className="section animate-fade-in" style={{ paddingBottom: '60px' }}>
+            <section className="section animate-fade-in" style={{ paddingBottom: '60px' }}>
                 <div className="container">
                     <div className="grid grid-2" style={{ alignItems: 'center', gap: '80px' }}>
                         <div>
@@ -34,7 +34,7 @@ export default function ElectricianYarmoukPage() {
                                 Licensed <span style={{ color: 'var(--primary)' }}>Electrician in Al Yarmouk</span>, Riyadh — Fast 24/7 Support
                             </h1>
                             <p style={{ fontSize: '1.3rem', color: '#444', marginBottom: '40px', maxWidth: '600px' }}>
-                                Experiencing a maintenance emergency in Al Yarmouk? Al Riaz Home Maintenance provides elite-level electrician services for luxury villas and prestigious apartments close to the metro tracks and Prince Bandar Road. Join 15,000+ satisfied clients across Riyadh who trust us for safety and precision.
+                                Experiencing a maintenance emergency in Al Yarmouk? Saudi Home Experts provides elite-level electrician services for luxury villas and prestigious apartments close to the metro tracks and Prince Bandar Road. Join 15,000+ satisfied clients across Riyadh who trust us for safety and precision.
                             </p>
                             <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
                                 <a href="https://wa.me/966508901536?text=I%20need%20an%20expert%20electrician%20in%20Al Yarmouk%20Riyadh" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ background: '#22c55e', border: 'none', padding: '18px 40px', fontSize: '1.1rem', boxShadow: '0 10px 15px -3px rgba(34, 197, 94, 0.4)' }}>
@@ -46,18 +46,18 @@ export default function ElectricianYarmoukPage() {
                         <div style={{ position: 'relative' }}>
                             <div style={{ background: 'white', padding: '50px', borderRadius: '40px', border: '1px solid var(--border)', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.08)' }}>
                                 <ShieldCheck size={60} color="var(--primary)" style={{ marginBottom: '20px' }} />
-                                <h3 style={{ fontSize: '1.6rem', marginBottom: '15px' }}>Al Riaz Quality Guarantee</h3>
+                                <h3 style={{ fontSize: '1.6rem', marginBottom: '15px' }}>Saudi Home Experts Quality Guarantee</h3>
                                 <p style={{ fontSize: '1.05rem', color: '#64748b', marginBottom: '25px' }}>
                                     Our Electrician experts in Al Yarmouk are rigorously vetted. We handle specialized electrical architectures of high-end Riyadh villas with absolute professionalism.
                                 </p>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '5px', color: '#f59e0b', marginBottom: '20px' }}>
-                                     <Star size={24} fill="currentColor" />
-                                     <span style={{ fontWeight: 800, fontSize: '1.4rem', color: '#0f172a' }}>5.0 Rating in Al Yarmouk</span>
+                                    <Star size={24} fill="currentColor" />
+                                    <span style={{ fontWeight: 800, fontSize: '1.4rem', color: '#0f172a' }}>5.0 Rating in Al Yarmouk</span>
                                 </div>
                                 <div style={{ borderTop: '1px solid #f1f5f9', paddingTop: '20px' }}>
-                                     {/* INTERNAL LINK 1: HOME */}
-                                     <Link href="/" style={{ color: 'var(--primary)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                         Browse Best Home Maintenance in Riyadh <ArrowRight size={18} />
+                                    {/* INTERNAL LINK 1: HOME */}
+                                    <Link href="/" style={{ color: 'var(--primary)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                        Browse Best Home Maintenance in Riyadh <ArrowRight size={18} />
                                     </Link>
                                 </div>
                             </div>
@@ -70,102 +70,102 @@ export default function ElectricianYarmoukPage() {
             <section className="section animate-fade-in" style={{ background: '#f8fafc' }}>
                 <div className="container">
                     <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 60px' }}>
-                         <h2 style={{ fontSize: '2.5rem', marginBottom: '20px' }}>Comprehensive Electrician Solutions for Al Yarmouk Homes</h2>
-                         <p style={{ fontSize: '1.1rem', color: '#64748b' }}>From emergency short circuits to complete villa security overhauls, our specialized district teams are equipped with the latest diagnostic tools to serve the Al Yarmouk community 24/7.</p>
-                         {/* INTERNAL LINK 2: HOME */}
-                         <p style={{ marginTop: '10px' }}>Part of our <Link href="/" style={{ color: 'var(--primary)', fontWeight: 600 }}>Al Riaz Maintenance Network</Link>.</p>
+                        <h2 style={{ fontSize: '2.5rem', marginBottom: '20px' }}>Comprehensive Electrician Solutions for Al Yarmouk Homes</h2>
+                        <p style={{ fontSize: '1.1rem', color: '#64748b' }}>From emergency short circuits to complete villa security overhauls, our specialized district teams are equipped with the latest diagnostic tools to serve the Al Yarmouk community 24/7.</p>
+                        {/* INTERNAL LINK 2: HOME */}
+                        <p style={{ marginTop: '10px' }}>Part of our <Link href="/" style={{ color: 'var(--primary)', fontWeight: 600 }}>Saudi Home Experts Maintenance Network</Link>.</p>
                     </div>
 
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Short Circuit Location & Repair</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Short Circuit Location & Repair in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Short Circuit Location & Repair</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Short Circuit Location & Repair in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Distribution Board (DB) Balancing</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Distribution Board (DB) Balancing in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Distribution Board (DB) Balancing</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Distribution Board (DB) Balancing in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Luxury Chandelier & Fixture Installation</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Luxury Chandelier & Fixture Installation in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Luxury Chandelier & Fixture Installation</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Luxury Chandelier & Fixture Installation in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Villa Rewiring & Safety Audits</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Villa Rewiring & Safety Audits in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Villa Rewiring & Safety Audits</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Villa Rewiring & Safety Audits in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Pool & Garden Lighting Systems</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Pool & Garden Lighting Systems in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Pool & Garden Lighting Systems</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Pool & Garden Lighting Systems in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Smart Switch & System Configuration</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Smart Switch & System Configuration in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Smart Switch & System Configuration</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Smart Switch & System Configuration in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Surge Protection Installation</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Surge Protection Installation in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Surge Protection Installation</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Surge Protection Installation in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Emergency Power Supply Maintenance</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Emergency Power Supply Maintenance in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Emergency Power Supply Maintenance</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Emergency Power Supply Maintenance in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>AC Breaker & Wiring Upgrades</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of AC Breaker & Wiring Upgrades in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>AC Breaker & Wiring Upgrades</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of AC Breaker & Wiring Upgrades in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Socket & Switch Replacement</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Socket & Switch Replacement in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Socket & Switch Replacement</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Socket & Switch Replacement in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                         <div className="card hover-lift" style={{ padding: '30px', background: 'white', borderRadius: '24px', transition: 'transform 0.3s ease' }}>
-                             <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                            <div style={{ width: '50px', height: '50px', background: '#f1f5f9', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                                 <CheckCircle size={24} color="var(--primary)" />
-                             </div>
-                             <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Industrial Electrical Troubleshooting</h4>
-                             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Industrial Electrical Troubleshooting in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
+                            </div>
+                            <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Industrial Electrical Troubleshooting</h4>
+                            <p style={{ fontSize: '0.95rem', color: '#64748b' }}>Professional handling of Industrial Electrical Troubleshooting in the Al Yarmouk area, ensuring full compliance with Saudi Electrical & Building codes (SASO).</p>
                         </div>
-                        
+
                     </div>
                 </div>
             </section>
@@ -189,8 +189,8 @@ export default function ElectricianYarmoukPage() {
                                     <p style={{ fontSize: '0.95rem', opacity: 0.8 }}>Our dispatch center near Northern Ring Road ensures that an expert electrician in Al Yarmouk is never more than 40 minutes away from any emergency call.</p>
                                 </div>
                             </div>
-                             {/* LONG-TAIL INTERNAL LINKS (5) */}
-                             <div style={{ marginTop: '40px', borderTop: '1px dotted rgba(255,255,255,0.2)', paddingTop: '30px', display: 'flex', flexWrap: 'wrap', gap: '15px', justifyContent: 'center' }}>
+                            {/* LONG-TAIL INTERNAL LINKS (5) */}
+                            <div style={{ marginTop: '40px', borderTop: '1px dotted rgba(255,255,255,0.2)', paddingTop: '30px', display: 'flex', flexWrap: 'wrap', gap: '15px', justifyContent: 'center' }}>
                                 <Link href="/riyadh/narjis/plumber" style={{ color: 'var(--primary)', fontWeight: 600 }}>Emergency plumber in Al Narjis</Link>
                                 <span style={{ opacity: 0.3 }}>|</span>
                                 <Link href="/riyadh/yasmin/intercom" style={{ color: 'var(--primary)', fontWeight: 600 }}>Reliable intercom for Al Yasmin Villas</Link>
@@ -200,7 +200,7 @@ export default function ElectricianYarmoukPage() {
                                 <Link href="/riyadh/falah/plumber" style={{ color: 'var(--primary)', fontWeight: 600 }}>Verified plumber Al Falah</Link>
                                 <span style={{ opacity: 0.3 }}>|</span>
                                 <Link href="/riyadh/granada/intercom" style={{ color: 'var(--primary)', fontWeight: 600 }}>Top-rated intercom Unit in Granada</Link>
-                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -215,16 +215,16 @@ export default function ElectricianYarmoukPage() {
                     </div>
                     <div style={{ display: 'grid', gap: '16px' }}>
                         {[
-                            { q: "How quickly can an Al Riaz electrician arrive in Al Yarmouk?", a: "With our dedicated response unit stationed near Al Yarmouk, we typically reach your villa within 35 to 45 minutes for emergency calls." },
+                            { q: "How quickly can an Saudi Home Experts electrician arrive in Al Yarmouk?", a: "With our dedicated response unit stationed near Al Yarmouk, we typically reach your villa within 35 to 45 minutes for emergency calls." },
                             { q: "Do you handle specialized electrical loads for larger villas?", a: "Yes, we specialize in high-capacity DB balancing and villa rewiring specifically tailored for large residential properties close to the metro tracks and Prince Bandar Road." },
                             { q: "Are your technicians licensed by Saudi authorities?", a: "Absolutely. Every plumber and electrician on our team is fully licensed and follows SASO (Saudi Standards, Metrology and Quality Organization) protocols." },
                             { q: "Can I get a detailed estimate before any work starts?", a: "Transparency is our priority. Our 'Get Quote' button allows you to share photos of the issue, and we provide a fixed estimate before physical arrival." },
                             { q: "What landmarks do you cover in the Al Yarmouk area?", a: "We provide full coverage across Al Yarmouk, including all streets near residential complexes and commercial zones close to the metro tracks and Prince Bandar Road." },
-                            { q: "Do you offer emergency support on weekends and holidays?", a: "Yes, Al Riaz operates 24/7, 365 days a year to ensure your home's vital systems never fail you." },
+                            { q: "Do you offer emergency support on weekends and holidays?", a: "Yes, Saudi Home Experts operates 24/7, 365 days a year to ensure your home's vital systems never fail you." },
                             { q: "Is any warranty provided for the repair work?", a: "We offer a standard 30-day workmanship warranty. If the same issue persists, our team will fix it at zero additional cost." },
                             { q: "Do you handle smart home and intercom integrations?", a: "Yes, we have specialists for video doorbells, smart lighting, and centralized villa security systems." },
                             { q: "How can I pay for the services in Riyadh?", a: "We accept all major credit/debit cards, bank transfers, and cash for your convenience." },
-                            { q: "Why is Al Riaz considered the best in Al Yarmouk?", a: "Our combination of local district knowledge, SASO-certified parts, and a customer-first rapid arrival policy makes us the top-rated choice in Riyadh." }
+                            { q: "Why is Saudi Home Experts considered the best in Al Yarmouk?", a: "Our combination of local district knowledge, SASO-certified parts, and a customer-first rapid arrival policy makes us the top-rated choice in Riyadh." }
                         ].map((item, i) => (
                             <details key={i} style={{ padding: '24px', border: '1px solid #e2e8f0', borderRadius: '20px', cursor: 'pointer', background: 'white' }}>
                                 <summary style={{ fontWeight: 700, fontSize: '1.15rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', listStyle: 'none' }}>
@@ -246,7 +246,7 @@ export default function ElectricianYarmoukPage() {
                         <h2 style={{ fontSize: '3rem', marginBottom: '20px', position: 'relative', zIndex: 1 }}>Professional Electrician in Al Yarmouk</h2>
                         <p style={{ fontSize: '1.25rem', opacity: 0.9, marginBottom: '40px', position: 'relative', zIndex: 1 }}>Don't let a small leak or a short circuit become a major expensive headache. Safe, clean, and reliable maintenance is a click away.</p>
                         <a href="https://wa.me/966508901536?text=I%20need%20an%20expert%20electrician%20in%20Al Yarmouk%20Riyadh" target="_blank" rel="noopener noreferrer" className="btn" style={{ background: '#22c55e', color: 'white', border: 'none', padding: '20px 60px', fontSize: '1.4rem', borderRadius: '100px', fontWeight: 700, boxShadow: '0 20px 40px -10px rgba(0,0,0,0.2)', position: 'relative', zIndex: 1 }}>
-                            <WhatsAppIcon size={24} /> Chat with Al Riaz Now
+                            <WhatsAppIcon size={24} /> Chat with Saudi Home Experts Now
                         </a>
                     </div>
                 </div>

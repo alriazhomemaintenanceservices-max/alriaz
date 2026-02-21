@@ -2,11 +2,11 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Terms of Service | Al Riaz Home Maintenance Services Riyadh",
+    title: "Terms of Service | Saudi Home Experts Riyadh",
     alternates: {
-        canonical: '/terms-of-service'
+        canonical: '/terms-of-service/'
     },
-    description: "Terms and conditions for Al Riaz Home Maintenance Services. Learn about our service warranties, payment policies, and booking terms in Riyadh.",
+    description: "Terms and conditions for Saudi Home Experts. Learn about our service warranties, payment policies, and booking terms in Riyadh.",
 };
 
 export default function TermsOfServicePage() {
@@ -22,12 +22,12 @@ export default function TermsOfServicePage() {
 
                 <section style={{ marginBottom: '30px' }}>
                     <p style={{ color: 'var(--muted)', marginBottom: '20px' }}>Effective Date: February 12, 2026</p>
-                    <p>By accessing this website and booking services with **Al Riaz Home Maintenance Services**, you agree to the following terms and conditions. Please read them carefully.</p>
+                    <p>By accessing this website and booking services with **Saudi Home Experts**, you agree to the following terms and conditions. Please read them carefully.</p>
                 </section>
 
                 <section style={{ marginBottom: '30px' }}>
                     <h2 style={{ marginBottom: '15px' }}>1. Scope of Service</h2>
-                    <p>Al Riaz provides residential and commercial maintenance services in Riyadh, including electrical, plumbing, and intercom installations/repairs. All services are subject to technician availability and site assessment.</p>
+                    <p>Saudi Home Experts provides residential and commercial maintenance services in Riyadh, including electrical, plumbing, and intercom installations/repairs. All services are subject to technician availability and site assessment.</p>
                 </section>
 
                 <section style={{ marginBottom: '30px' }}>
@@ -51,7 +51,7 @@ export default function TermsOfServicePage() {
 
                 <section style={{ marginBottom: '30px' }}>
                     <h2 style={{ marginBottom: '15px' }}>5. Customer Responsibility</h2>
-                    <p>Customers must provide safe access to the property and ensure a responsible adult (18+) is present during the service. Al Riaz is not responsible for moving or protecting personal property during maintenance.</p>
+                    <p>Customers must provide safe access to the property and ensure a responsible adult (18+) is present during the service. Saudi Home Experts is not responsible for moving or protecting personal property during maintenance.</p>
                 </section>
 
                 <section style={{ marginBottom: '30px' }}>

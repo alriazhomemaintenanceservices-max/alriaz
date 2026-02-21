@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     },
     description: "Expert mattress cleaning in Riyadh. Remove dust mites, stains, and allergens with our deep steam and UV sanitization process. Book now for better sleep.",
     alternates: {
-        canonical: '/services/mattress-cleaning'
+        canonical: '/services/mattress-cleaning/'
     },
 };
 
@@ -62,7 +62,7 @@ export default function MattressCleaningPage() {
                                 Sleep better and healthier. Eliminate 99.9% of dust mites, bacteria, and allergens from your bed.
                             </p>
                             <p style={{ fontSize: '1rem', color: '#64748B', marginBottom: '40px', lineHeight: 1.6 }}>
-                                We spend a third of our lives on our mattress. Using industrial-grade steam extraction and UV-C light technology, Al Riaz restores your mattress to a medically sanitized condition, free from sweat stains and microscopic pests.
+                                We spend a third of our lives on our mattress. Using industrial-grade steam extraction and UV-C light technology, Saudi Home Experts restores your mattress to a medically sanitized condition, free from sweat stains and microscopic pests.
                             </p>
                             <div style={{ display: 'flex', gap: '20px' }}>
                                 <a href="tel:+966508901536" className="btn" style={{ background: 'var(--secondary)', color: 'white', border: 'none', padding: '15px 30px', fontWeight: 700, borderRadius: '30px', display: 'flex', alignItems: 'center', gap: '10px' }}>

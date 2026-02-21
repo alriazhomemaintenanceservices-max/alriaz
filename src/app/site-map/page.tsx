@@ -2,20 +2,20 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Sitemap | Al Riaz Home Maintenance Services Riyadh",
-  alternates: {
-    canonical: '/site-map'
-  },
-    description: "Explore all pages and services provided by Al Riaz Home Maintenance Services in Riyadh, including electrician, plumbing, and intercom services.",
+    title: "Sitemap | Saudi Home Experts Riyadh",
+    alternates: {
+        canonical: '/site-map/'
+    },
+    description: "Explore all pages and services provided by Saudi Home Experts in Riyadh, including electrician, plumbing, and intercom services.",
 };
 
 export default function SitemapPage() {
     const links = [
         {
             title: "Main Pages",
-  alternates: {
-    canonical: '/site-map'
-  }, items: [
+            alternates: {
+                canonical: '/site-map/'
+            }, items: [
                 { name: "Homepage", href: "/" },
                 { name: "About Us", href: "/#about" },
                 { name: "Contact Us", href: "/contact" }
@@ -23,9 +23,9 @@ export default function SitemapPage() {
         },
         {
             title: "Our Services",
-  alternates: {
-    canonical: '/site-map'
-  }, items: [
+            alternates: {
+                canonical: '/site-map/'
+            }, items: [
                 { name: "Electrician Services", href: "/services/electrician" },
                 { name: "Plumbing Services", href: "/services/plumber" },
                 { name: "Intercom Installation", href: "/services/intercom" }
@@ -33,9 +33,9 @@ export default function SitemapPage() {
         },
         {
             title: "Priority Service Areas",
-  alternates: {
-    canonical: '/site-map'
-  }, items: [
+            alternates: {
+                canonical: '/site-map/'
+            }, items: [
                 { name: "Electrician in Qurtubah", href: "/riyadh/qurtubah/electrician" },
                 { name: "Electrician in Ishbiliyah", href: "/riyadh/ishbiliyah/electrician" },
                 { name: "Electrician in Al Yarmouk", href: "/riyadh/yarmouk/electrician" },
@@ -54,9 +54,9 @@ export default function SitemapPage() {
         },
         {
             title: "Legal & Information",
-  alternates: {
-    canonical: '/site-map'
-  }, items: [
+            alternates: {
+                canonical: '/site-map/'
+            }, items: [
                 { name: "Privacy Policy", href: "/privacy-policy" },
                 { name: "Terms of Service", href: "/terms-of-service" },
                 { name: "Cookie Policy", href: "/cookie-policy" },
@@ -67,7 +67,7 @@ export default function SitemapPage() {
 
     return (
         <main style={{ paddingTop: '120px', paddingBottom: '80px' }}>
-                        {/* Breadcrumbs */}
+            {/* Breadcrumbs */}
             <nav className="container" style={{ marginBottom: '30px', fontSize: '0.9rem', color: 'var(--muted)' }}>
                 <Link href="/">Home</Link> / <span style={{ color: 'var(--primary)', fontWeight: 600 }}>Site map</span>
             </nav>

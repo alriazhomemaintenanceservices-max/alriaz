@@ -15,17 +15,17 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: {
-        absolute: "About Us | Al Riaz Home Maintenance Services Riyadh"
+        absolute: "About Us | Saudi Home Experts Riyadh"
     },
-    description: "Learn about Al Riaz Home Maintenance, Riyadh's trusted partner for AC, plumbing, and electrical services since 2012. Our mission is quality, reliability, and customer satisfaction.",
+    description: "Learn about Saudi Home Experts, Riyadh's trusted partner for AC, plumbing, and electrical services since 2012. Our mission is quality, reliability, and customer satisfaction.",
     alternates: {
-        canonical: '/about-us'
+        canonical: '/about-us/'
     },
 };
 
 export default function AboutUsPage() {
     const whatsappNumber = "966508901536";
-    const whatsappMsg = "Hello, I would like to know more about Al Riaz services.";
+    const whatsappMsg = "Hello, I would like to know more about Saudi Home Experts services.";
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMsg)}`;
 
     return (
@@ -56,7 +56,7 @@ export default function AboutUsPage() {
                                 Building Trust in Riyadh Since 2012
                             </h1>
                             <p style={{ fontSize: '1.2rem', color: '#64748B', marginBottom: '30px' }}>
-                                Al Riaz Home Maintenance is more than just a service provider; we are your partners in creating a safe, comfortable, and well-maintained home.
+                                Saudi Home Experts is more than just a service provider; we are your partners in creating a safe, comfortable, and well-maintained home.
                             </p>
                             <p style={{ fontSize: '1rem', color: '#64748B', marginBottom: '40px', lineHeight: 1.6 }}>
                                 Founded with a vision to professionalize the home maintenance industry in Saudi Arabia, we have grown from a small team of technicians to a leading service provider covering all major districts of Riyadh. Our commitment to punctuality, transparency, and technical excellence sets us apart.
@@ -153,7 +153,7 @@ export default function AboutUsPage() {
                             <h2 style={{ fontSize: '2rem', color: 'white', marginBottom: '20px' }}>Not Just "Handymen"</h2>
                             <h3 style={{ fontSize: '1.5rem', color: 'var(--primary)', marginBottom: '30px' }}>We Are Certified Technicians</h3>
                             <p style={{ lineHeight: 1.8, color: 'rgba(255,255,255,0.8)', marginBottom: '30px', maxWidth: '700px', margin: '0 auto 30px' }}>
-                                Unlike freelance laborers found on the street, Al Riaz technicians are full-time employees who undergo rigorous training. They are background-checked, uniformed, and equipped with professional-grade tools to handle complex electrical, plumbing, and HVAC systems safely.
+                                Unlike freelance laborers found on the street, Saudi Home Experts technicians are full-time employees who undergo rigorous training. They are background-checked, uniformed, and equipped with professional-grade tools to handle complex electrical, plumbing, and HVAC systems safely.
                             </p>
 
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
@@ -202,7 +202,7 @@ export default function AboutUsPage() {
             {/* 6. BOTTOM BANNER */}
             <section style={{ padding: '80px 0', background: '#fff', borderTop: '1px solid #f1f5f9' }}>
                 <div className="container" style={{ textAlign: 'center' }}>
-                    <h2 style={{ fontSize: '2.5rem', color: '#1E293B', marginBottom: '20px' }}>Experience the Al Riaz Difference</h2>
+                    <h2 style={{ fontSize: '2.5rem', color: '#1E293B', marginBottom: '20px' }}>Experience the Saudi Home Experts Difference</h2>
                     <p style={{ maxWidth: '600px', margin: '0 auto 40px', color: '#64748B', fontSize: '1.2rem' }}>
                         Ready to upgrade your home maintenance experience? Contact our friendly team today.
                     </p>

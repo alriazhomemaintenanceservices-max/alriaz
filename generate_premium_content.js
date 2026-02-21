@@ -29,7 +29,7 @@ const services = [
             'Socket & Switch Replacement', 'Industrial Electrical Troubleshooting'
         ],
         metaTitle: (loc) => `Licensed Electrician in ${loc}, Riyadh | 24/7 Professional Repair`,
-        metaDesc: (loc) => `Certified electrician in ${loc}, Riyadh City. 24/7 emergency electrical fixes, villa rewiring, DB box maintenance, and lighting installation. Al Riaz #1 choice. Book now!`
+        metaDesc: (loc) => `Certified electrician in ${loc}, Riyadh City. 24/7 emergency electrical fixes, villa rewiring, DB box maintenance, and lighting installation. Saudi Home Experts #1 choice. Book now!`
     },
     {
         id: 'plumber',
@@ -43,7 +43,7 @@ const services = [
             'Kitchen Plumbing Upgrades', 'Irrigation System Installation'
         ],
         metaTitle: (loc) => `Professional Plumber in ${loc}, Riyadh | 24/7 Leak Repair`,
-        metaDesc: (loc) => `Expert plumber in ${loc}, Riyadh City. 24/7 emergency leak detection, water tank cleaning, pipe repair, and heater installation. High-quality Al Riaz service.`
+        metaDesc: (loc) => `Expert plumber in ${loc}, Riyadh City. 24/7 emergency leak detection, water tank cleaning, pipe repair, and heater installation. High-quality Saudi Home Experts service.`
     },
     {
         id: 'intercom',
@@ -57,7 +57,7 @@ const services = [
             'Old System Modernization', 'Voice Recognition Intercoms'
         ],
         metaTitle: (loc) => `Intercom Installation in ${loc}, Riyadh | Smart Villa Security`,
-        metaDesc: (loc) => `Smart intercom installation & repair in ${loc}, Riyadh City. Video doorbells, multi-apartment systems, and mobile app integration by Al Riaz specialist.`
+        metaDesc: (loc) => `Smart intercom installation & repair in ${loc}, Riyadh City. Video doorbells, multi-apartment systems, and mobile app integration by Saudi Home Experts specialist.`
     }
 ];
 
@@ -97,7 +97,7 @@ export default function ${service.id.charAt(0).toUpperCase() + service.id.slice(
                                 Licensed <span style={{ color: 'var(--primary)' }}>${serviceName} in ${locName}</span>, Riyadh — Fast 24/7 Support
                             </h1>
                             <p style={{ fontSize: '1.3rem', color: '#444', marginBottom: '40px', maxWidth: '600px' }}>
-                                Experiencing a maintenance emergency in **${locName}**? Al Riaz Home Maintenance provides elite-level ${service.id} services for luxury villas and prestigious apartments ${loc.landmarks}. Join 15,000+ satisfied clients across Riyadh who trust us for safety and precision.
+                                Experiencing a maintenance emergency in **${locName}**? Saudi Home Experts provides elite-level ${service.id} services for luxury villas and prestigious apartments ${loc.landmarks}. Join 15,000+ satisfied clients across Riyadh who trust us for safety and precision.
                             </p>
                             <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
                                 <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ background: '#22c55e', border: 'none', padding: '18px 40px', fontSize: '1.1rem', boxShadow: '0 10px 15px -3px rgba(34, 197, 94, 0.4)' }}>
@@ -109,7 +109,7 @@ export default function ${service.id.charAt(0).toUpperCase() + service.id.slice(
                         <div style={{ position: 'relative' }}>
                             <div style={{ background: 'white', padding: '50px', borderRadius: '40px', border: '1px solid var(--border)', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.08)' }}>
                                 <ShieldCheck size={60} color="var(--primary)" style={{ marginBottom: '20px' }} />
-                                <h3 style={{ fontSize: '1.6rem', marginBottom: '15px' }}>Al Riaz Quality Guarantee</h3>
+                                <h3 style={{ fontSize: '1.6rem', marginBottom: '15px' }}>Saudi Home Experts Quality Guarantee</h3>
                                 <p style={{ fontSize: '1.05rem', color: '#64748b', marginBottom: '25px' }}>
                                     Our ${serviceName} experts in **${locName}** are rigorously vetted. We handle specialized electrical architectures of high-end Riyadh villas with absolute professionalism.
                                 </p>
@@ -136,7 +136,7 @@ export default function ${service.id.charAt(0).toUpperCase() + service.id.slice(
                          <h2 style={{ fontSize: '2.5rem', marginBottom: '20px' }}>Comprehensive ${serviceName} Solutions for ${locName} Homes</h2>
                          <p style={{ fontSize: '1.1rem', color: '#64748b' }}>From emergency short circuits to complete villa security overhauls, our specialized district teams are equipped with the latest diagnostic tools to serve the ${locName} community 24/7.</p>
                          {/* INTERNAL LINK 2: HOME */}
-                         <p style={{ marginTop: '10px' }}>Part of our <Link href="/" style={{ color: 'var(--primary)', fontWeight: 600 }}>Al Riaz Maintenance Network</Link>.</p>
+                         <p style={{ marginTop: '10px' }}>Part of our <Link href="/" style={{ color: 'var(--primary)', fontWeight: 600 }}>Saudi Home Experts Maintenance Network</Link>.</p>
                     </div>
 
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
@@ -198,16 +198,16 @@ export default function ${service.id.charAt(0).toUpperCase() + service.id.slice(
                     </div>
                     <div style={{ display: 'grid', gap: '16px' }}>
                         {[
-                            { q: "How quickly can an Al Riaz ${service.id} arrive in ${locName}?", a: "With our dedicated response unit stationed near ${locName}, we typically reach your villa within 35 to 45 minutes for emergency calls." },
+                            { q: "How quickly can an Saudi Home Experts ${service.id} arrive in ${locName}?", a: "With our dedicated response unit stationed near ${locName}, we typically reach your villa within 35 to 45 minutes for emergency calls." },
                             { q: "Do you handle specialized electrical loads for larger villas?", a: "Yes, we specialize in high-capacity DB balancing and villa rewiring specifically tailored for large residential properties ${loc.landmarks}." },
                             { q: "Are your technicians licensed by Saudi authorities?", a: "Absolutely. Every plumber and electrician on our team is fully licensed and follows SASO (Saudi Standards, Metrology and Quality Organization) protocols." },
                             { q: "Can I get a detailed estimate before any work starts?", a: "Transparency is our priority. Our 'Get Quote' button allows you to share photos of the issue, and we provide a fixed estimate before physical arrival." },
                             { q: "What landmarks do you cover in the ${locName} area?", a: "We provide full coverage across **${locName}**, including all streets near residential complexes and commercial zones ${loc.landmarks}." },
-                            { q: "Do you offer emergency support on weekends and holidays?", a: "Yes, Al Riaz operates 24/7, 365 days a year to ensure your home's vital systems never fail you." },
+                            { q: "Do you offer emergency support on weekends and holidays?", a: "Yes, Saudi Home Experts operates 24/7, 365 days a year to ensure your home's vital systems never fail you." },
                             { q: "Is any warranty provided for the repair work?", a: "We offer a standard 30-day workmanship warranty. If the same issue persists, our team will fix it at zero additional cost." },
                             { q: "Do you handle smart home and intercom integrations?", a: "Yes, we have specialists for video doorbells, smart lighting, and centralized villa security systems." },
                             { q: "How can I pay for the services in Riyadh?", a: "We accept all major credit/debit cards, bank transfers, and cash for your convenience." },
-                            { q: "Why is Al Riaz considered the best in ${locName}?", a: "Our combination of local district knowledge, SASO-certified parts, and a customer-first rapid arrival policy makes us the top-rated choice in Riyadh." }
+                            { q: "Why is Saudi Home Experts considered the best in ${locName}?", a: "Our combination of local district knowledge, SASO-certified parts, and a customer-first rapid arrival policy makes us the top-rated choice in Riyadh." }
                         ].map((item, i) => (
                             <details key={i} style={{ padding: '24px', border: '1px solid #e2e8f0', borderRadius: '20px', cursor: 'pointer', background: 'white' }}>
                                 <summary style={{ fontWeight: 700, fontSize: '1.15rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', listStyle: 'none' }}>
@@ -229,7 +229,7 @@ export default function ${service.id.charAt(0).toUpperCase() + service.id.slice(
                         <h2 style={{ fontSize: '3rem', marginBottom: '20px', position: 'relative', zIndex: 1 }}>Professional ${serviceName} in ${locName}</h2>
                         <p style={{ fontSize: '1.25rem', opacity: 0.9, marginBottom: '40px', position: 'relative', zIndex: 1 }}>Don't let a small leak or a short circuit become a major expensive headache. Safe, clean, and reliable maintenance is a click away.</p>
                         <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" className="btn" style={{ background: '#22c55e', color: 'white', border: 'none', padding: '20px 60px', fontSize: '1.4rem', borderRadius: '100px', fontWeight: 700, boxShadow: '0 20px 40px -10px rgba(0,0,0,0.2)', position: 'relative', zIndex: 1 }}>
-                            <MessageCircle size={24} /> Chat with Al Riaz Now
+                            <MessageCircle size={24} /> Chat with Saudi Home Experts Now
                         </a>
                     </div>
                 </div>

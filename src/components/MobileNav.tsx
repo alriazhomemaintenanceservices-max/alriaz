@@ -20,7 +20,7 @@ const SERVICE_LINKS = [
     { href: '/services', label: 'General Maintenance', icon: <Wrench size={16} /> },
 ];
 
-const whatsappUrl = `https://wa.me/966508901536?text=Hello%20Al%20Riaz,%20I%20need%20a%20technician.`;
+const whatsappUrl = `https://wa.me/966508901536?text=Hello%20Saudi%20Home%20Experts,%20I%20need%20a%20technician.`;
 
 export default function MobileNav() {
     const [isOpen, setIsOpen] = useState(false);

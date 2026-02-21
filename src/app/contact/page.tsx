@@ -5,12 +5,12 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Contact Us | Al Riaz Home Maintenance Services Riyadh"
+        absolute: "Contact Us | Saudi Home Experts Riyadh"
     },
     alternates: {
-        canonical: '/contact'
+        canonical: '/contact/'
     },
-    description: "Contact Al Riaz Home Maintenance Services for 24/7 electrician, plumbing, and intercom services in Riyadh. Quick WhatsApp booking and free estimates.",
+    description: "Contact Saudi Home Experts for 24/7 electrician, plumbing, and intercom services in Riyadh. Quick WhatsApp booking and free estimates.",
 };
 
 export default function ContactPage() {

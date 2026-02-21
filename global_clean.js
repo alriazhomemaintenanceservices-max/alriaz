@@ -14,7 +14,7 @@ function cleanFile(filePath) {
     content = content.replace(/\*\*/g, '');
 
     // 2. Remove any remaining AI OVERVIEW: blocks
-    content = content.replace(/AI OVERVIEW:/g, 'Al Riaz Commitment:');
+    content = content.replace(/AI OVERVIEW:/g, 'Saudi Home Experts Commitment:');
 
     fs.writeFileSync(filePath, content);
     console.log(`Cleaned: ${filePath}`);
