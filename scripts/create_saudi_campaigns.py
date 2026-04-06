@@ -1,154 +1,203 @@
 #!/usr/bin/env python3
 """
-Saudi Home Experts — Google Ads Campaign Creator
+Saudi Home Experts — Hyper-Targeted Google Ads Campaign Creator
 Account: 241-614-6162 (PKR currency)
 MCC: 2554020790 (CruxLabs)
 
-Strategy:
-- 2 campaigns: Electrician + Plumber (highest emergency demand)
-- Arabic keywords only (3-5x cheaper than English)
-- Search ads + Call extensions
-- Targeting: North Riyadh (12 specific areas)
-- Budget: 500 PKR/day each = 1,000 PKR total (~13 SAR/day)
-- Negative keywords to avoid wasted spend
+Structure:
+  2 campaigns × 14 ad groups = 28 ad groups total
+  Each area gets its own ad group with matching landing page
+  Same 1,000 PKR/day budget — just spent smarter
+
+  Campaign 1: Electrician (500 PKR/day)
+    ├── 12 area ad groups (1 keyword each → area landing page)
+    ├── 1 emergency ad group (6 keywords → homepage)
+    └── 1 general ad group (3 keywords → /services/)
+
+  Campaign 2: Plumber (500 PKR/day)
+    ├── 12 area ad groups (1 keyword each → area landing page)
+    ├── 1 emergency ad group (5 keywords → homepage)
+    └── 1 general ad group (3 keywords → /services/)
 """
 
 from google.ads.googleads.client import GoogleAdsClient
 from google.ads.googleads.errors import GoogleAdsException
-import sys
 
-# Account details
+# ==========================================
+# CONFIGURATION
+# ==========================================
+
 SAUDI_CUSTOMER_ID = "2416146162"
 MCC_CUSTOMER_ID = "2554020790"
 CONFIG_PATH = "/Users/mawais/Developer/ChauffeurTop-Revamp-main/google-ads.yaml"
-
-# Budget in PKR micros (500 PKR = 500,000,000 micros)
+BASE_URL = "https://saudihomeexperts.com"
 DAILY_BUDGET_MICROS = 500_000_000  # 500 PKR per campaign
 
 # ==========================================
-# KEYWORD STRATEGY
+# AREA DATA — 12 North Riyadh districts
 # ==========================================
 
-ELECTRICIAN_KEYWORDS = [
-    # High intent - service + city
-    "كهربائي الرياض",           # electrician riyadh
-    "فني كهرباء الرياض",        # electrical technician riyadh
-    "كهربائي منازل الرياض",     # home electrician riyadh
-
-    # Emergency / problem keywords
-    "المكيف ما يبرد",           # AC not cooling
-    "الكهرب يفصل",             # power keeps cutting
-    "اللمبات ما تشتغل",        # lights not working
-    "انقطاع كهرباء",           # power outage
-    "عطل كهربائي",             # electrical fault
-    "تماس كهربائي",            # short circuit
-    "صيانة مكيفات الرياض",     # AC maintenance riyadh
-    "تعبئة فريون",             # freon refill
-
-    # Area-specific (highest value)
-    "كهربائي النرجس",           # electrician narjis
-    "كهربائي الياسمين",         # electrician yasmin
-    "كهربائي حطين",            # electrician hittin
-    "كهربائي الملقا",           # electrician malqa
-    "كهربائي قرطبة",           # electrician qurtubah
-    "كهربائي غرناطة",          # electrician granada
-    "كهربائي الفلاح",           # electrician falah
-    "كهربائي الندى",            # electrician nada
-    "كهربائي الربيع",           # electrician rabee
-    "كهربائي اشبيلية",          # electrician ishbiliyah
-    "كهربائي العقيق",           # electrician aqiq
-    "كهربائي القيروان",         # electrician qirawan
+AREAS = [
+    {"slug": "narjis",     "ar": "النرجس",    "en": "Al Narjis"},
+    {"slug": "yasmin",     "ar": "الياسمين",   "en": "Al Yasmin"},
+    {"slug": "qurtubah",   "ar": "قرطبة",     "en": "Qurtubah"},
+    {"slug": "granada",    "ar": "غرناطة",    "en": "Granada"},
+    {"slug": "falah",      "ar": "الفلاح",    "en": "Al Falah"},
+    {"slug": "nada",       "ar": "الندى",     "en": "Al Nada"},
+    {"slug": "rabee",      "ar": "الربيع",    "en": "Al Rabee"},
+    {"slug": "ishbiliyah", "ar": "اشبيلية",   "en": "Ishbiliyah"},
+    {"slug": "hittin",     "ar": "حطين",     "en": "Hittin"},
+    {"slug": "malqa",      "ar": "الملقا",    "en": "Al Malqa"},
+    {"slug": "aqiq",       "ar": "العقيق",    "en": "Al Aqiq"},
+    {"slug": "qirawan",    "ar": "القيروان",   "en": "Al Qirawan"},
 ]
 
-PLUMBER_KEYWORDS = [
-    # High intent - service + city
-    "سباك الرياض",              # plumber riyadh
-    "فني سباكة الرياض",         # plumbing technician riyadh
-    "سباك منازل الرياض",        # home plumber riyadh
+# ==========================================
+# SERVICE DEFINITIONS
+# ==========================================
 
-    # Emergency / problem keywords
-    "تسريب مياه",              # water leak
-    "المجاري مسدودة",          # drain blocked
-    "السخان خربان",            # heater broken
-    "تسريب السقف",             # ceiling leak
-    "المويه تسرب",             # water leaking
-    "سباك طوارئ الرياض",       # emergency plumber riyadh
-    "تسليك مجاري",             # drain cleaning
-    "صيانة سخانات",            # heater maintenance
+SERVICES = {
+    "electrician": {
+        "ar": "كهربائي",
+        "slug_ar": "كهربائي",
+        "campaign_name": "SHE - كهربائي الرياض (Electrician)",
+        "budget_name": "SHE - Electrician Budget",
+        "emergency_keywords": [
+            "المكيف ما يبرد",
+            "الكهرب يفصل",
+            "اللمبات ما تشتغل",
+            "انقطاع كهرباء الرياض",
+            "عطل كهربائي الرياض",
+            "تماس كهربائي",
+        ],
+        "general_keywords": [
+            "كهربائي الرياض",
+            "فني كهرباء الرياض",
+            "صيانة مكيفات الرياض",
+        ],
+        "headlines": {
+            "emergency": [
+                "كهربائي طوارئ ٢٤ ساعة",
+                "الكهرب فصل؟ نوصلك خلال ساعة",
+                "فني كهرباء الرياض الآن",
+                "إصلاح فوري — اتصل الحين",
+                "ضمان ٣٠ يوم على الشغل",
+                "خبرة ٣٠+ سنة عائلية",
+                "٠٥٠ ٨٩٠ ١٥٣٦",
+                "متوفرين حتى بالليل",
+                "نراعي أوقات الصلاة",
+                "بدون وسطاء — خدمة مباشرة",
+            ],
+            "general": [
+                "كهربائي الرياض محترف",
+                "صيانة مكيفات وفريون",
+                "تمديدات كهربائية جديدة",
+                "نوصلك خلال ساعة",
+                "ضمان ٣٠ يوم",
+                "اتصل الآن ٠٥٠٨٩٠١٥٣٦",
+                "خبرة ٣٠+ سنة",
+                "أسعار عادلة — نتفق قبل البدء",
+                "خدمة ٢٤/٧ شمال الرياض",
+                "فني أمين ومحترم",
+            ],
+        },
+        "descriptions": {
+            "emergency": [
+                "الكهرب فصل أو المكيف وقف؟ فني كهرباء يوصلك خلال ساعة. خبرة ٣٠+ سنة. اتصل الحين!",
+                "إصلاح أعطال كهربائية فوري في الرياض. نراعي أوقات الصلاة. ضمان ٣٠ يوم. ٠٥٠٨٩٠١٥٣٦",
+                "كهربائي طوارئ متوفر الآن. أرسل صورة المشكلة واتساب ونجيك بأسرع وقت.",
+            ],
+            "general": [
+                "كهربائي محترف في الرياض. صيانة مكيفات، تمديدات، إصلاح أعطال. اتصل للتقييم المجاني!",
+                "فريق خبرة ٣٠+ سنة. نوصلك خلال ساعة مع ضمان الشغل. أرسل واتساب أو اتصل.",
+                "خدمة كهربائي مباشرة بدون وسطاء. أسعار عادلة ونتفق قبل البدء. ٠٥٠٨٩٠١٥٣٦",
+            ],
+        },
+    },
+    "plumber": {
+        "ar": "سباك",
+        "slug_ar": "سباك",
+        "campaign_name": "SHE - سباك الرياض (Plumber)",
+        "budget_name": "SHE - Plumber Budget",
+        "emergency_keywords": [
+            "تسريب مياه الرياض",
+            "المجاري مسدودة",
+            "السخان خربان",
+            "المويه تسرب",
+            "سباك طوارئ الرياض",
+        ],
+        "general_keywords": [
+            "سباك الرياض",
+            "فني سباكة الرياض",
+            "تسليك مجاري الرياض",
+        ],
+        "headlines": {
+            "emergency": [
+                "سباك طوارئ ٢٤ ساعة",
+                "تسريب مياه؟ نوصلك خلال ساعة",
+                "سباك الرياض الآن",
+                "إصلاح فوري — اتصل الحين",
+                "ضمان ٣٠ يوم على الشغل",
+                "خبرة ٣٠+ سنة عائلية",
+                "٠٥٠ ٨٩٠ ١٥٣٦",
+                "المجاري مسدودة؟ نحلها اليوم",
+                "نراعي أوقات الصلاة",
+                "بدون وسطاء — خدمة مباشرة",
+            ],
+            "general": [
+                "سباك الرياض محترف",
+                "إصلاح تسريبات المياه",
+                "تسليك مجاري مسدودة",
+                "نوصلك خلال ساعة",
+                "ضمان ٣٠ يوم",
+                "اتصل الآن ٠٥٠٨٩٠١٥٣٦",
+                "خبرة ٣٠+ سنة",
+                "أسعار عادلة — نتفق قبل البدء",
+                "صيانة سخانات وخلاطات",
+                "سباك أمين ومحترم",
+            ],
+        },
+        "descriptions": {
+            "emergency": [
+                "تسريب مياه أو مجاري مسدودة؟ سباك يوصلك خلال ساعة. خبرة ٣٠+ سنة. اتصل الحين!",
+                "إصلاح تسريبات فوري في الرياض. نراعي أوقات الصلاة. ضمان ٣٠ يوم. ٠٥٠٨٩٠١٥٣٦",
+                "سباك طوارئ متوفر الآن. أرسل صورة المشكلة واتساب ونجيك بأسرع وقت.",
+            ],
+            "general": [
+                "سباك محترف في الرياض. تسريبات، مجاري، سخانات، خلاطات. اتصل للتقييم المجاني!",
+                "فريق خبرة ٣٠+ سنة في السباكة. نوصلك خلال ساعة مع ضمان الشغل. ٠٥٠٨٩٠١٥٣٦",
+                "خدمة سباكة مباشرة بدون وسطاء. أسعار عادلة ونتفق قبل البدء.",
+            ],
+        },
+    },
+}
 
-    # Area-specific
-    "سباك النرجس",              # plumber narjis
-    "سباك الياسمين",            # plumber yasmin
-    "سباك حطين",               # plumber hittin
-    "سباك الملقا",              # plumber malqa
-    "سباك قرطبة",              # plumber qurtubah
-    "سباك غرناطة",             # plumber granada
-    "سباك الفلاح",              # plumber falah
-    "سباك الندى",               # plumber nada
-    "سباك الربيع",              # plumber rabee
-    "سباك اشبيلية",             # plumber ishbiliyah
-    "سباك العقيق",              # plumber aqiq
-    "سباك القيروان",            # plumber qirawan
-]
+# ==========================================
+# NEGATIVE KEYWORDS — shared across campaigns
+# ==========================================
 
-# Negative keywords — prevent wasted clicks
 NEGATIVE_KEYWORDS = [
-    # Job seekers (NOT customers)
-    "وظيفة",                   # job
-    "وظائف",                   # jobs
-    "توظيف",                   # hiring
-    "راتب",                    # salary
-    "رواتب",                   # salaries
-    "تدريب",                   # training
-    "دورة",                    # course
-    "دورات",                   # courses
-    "شهادة",                   # certificate
-    "تعلم",                    # learn
-    "كيف تصبح",                # how to become
-
-    # DIY / information seekers
-    "بنفسك",                   # yourself / DIY
-    "يوتيوب",                  # youtube
-    "فيديو",                   # video
-    "شرح",                     # explanation
-    "كتاب",                    # book
-    "مقال",                    # article
-
-    # Wrong locations
-    "جدة",                     # jeddah
-    "مكة",                     # mecca
-    "المدينة",                  # medina
-    "الدمام",                   # dammam
-    "الخبر",                   # khobar
-    "أبها",                    # abha
-    "تبوك",                    # tabuk
-    "حائل",                    # hail
-    "نجران",                   # najran
-    "جيزان",                   # jizan
-
-    # Competitors / brands
-    "شركة",                    # company (looking for a company, not individual)
-    "مؤسسة",                   # establishment
-    "مقاولات",                  # contracting
-
-    # Free / cheap seekers
-    "مجاني",                   # free
-    "مجانا",                   # free
-    "أرخص",                    # cheapest
-    "رخيص",                    # cheap
-
+    # Job seekers
+    "وظيفة", "وظائف", "توظيف", "راتب", "رواتب",
+    "تدريب", "دورة", "دورات", "شهادة", "تعلم", "كيف تصبح",
+    # DIY / information
+    "بنفسك", "يوتيوب", "فيديو", "شرح", "كتاب", "مقال",
+    # Wrong cities
+    "جدة", "مكة", "المدينة", "الدمام", "الخبر",
+    "أبها", "تبوك", "حائل", "نجران", "جيزان",
+    "الجبيل", "ينبع", "الطائف", "بريدة", "سكاكا",
+    "الأحساء", "الخرج",
+    # Competitor / company seekers
+    "شركة", "مؤسسة", "مقاولات",
+    # Cheap / free
+    "مجاني", "مجانا", "أرخص", "رخيص",
     # English noise
-    "job",
-    "salary",
-    "career",
-    "training",
-    "course",
-    "DIY",
-    "free",
+    "job", "salary", "career", "training", "course", "DIY", "free", "cheap",
 ]
 
+
 # ==========================================
-# CAMPAIGN CREATION FUNCTIONS
+# API HELPER FUNCTIONS
 # ==========================================
 
 def get_client():
@@ -158,100 +207,77 @@ def get_client():
 
 
 def create_budget(client, customer_id, name, amount_micros):
-    """Create a campaign budget."""
-    budget_service = client.get_service("CampaignBudgetService")
-    budget_op = client.get_type("CampaignBudgetOperation")
-    budget = budget_op.create
-
+    service = client.get_service("CampaignBudgetService")
+    op = client.get_type("CampaignBudgetOperation")
+    budget = op.create
     budget.name = name
     budget.amount_micros = amount_micros
     budget.delivery_method = client.enums.BudgetDeliveryMethodEnum.STANDARD
 
-    response = budget_service.mutate_campaign_budgets(
-        customer_id=customer_id, operations=[budget_op]
-    )
-    budget_resource = response.results[0].resource_name
-    print(f"  ✅ Budget created: {name} ({amount_micros / 1_000_000:.0f} PKR/day)")
-    return budget_resource
+    resp = service.mutate_campaign_budgets(customer_id=customer_id, operations=[op])
+    resource = resp.results[0].resource_name
+    print(f"  ✅ Budget: {name} ({amount_micros // 1_000_000} PKR/day)")
+    return resource
 
 
 def create_campaign(client, customer_id, name, budget_resource):
-    """Create a search campaign."""
-    campaign_service = client.get_service("CampaignService")
-    campaign_op = client.get_type("CampaignOperation")
-    campaign = campaign_op.create
-
+    service = client.get_service("CampaignService")
+    op = client.get_type("CampaignOperation")
+    campaign = op.create
     campaign.name = name
     campaign.campaign_budget = budget_resource
     campaign.advertising_channel_type = client.enums.AdvertisingChannelTypeEnum.SEARCH
-    campaign.status = client.enums.CampaignStatusEnum.PAUSED  # Start paused for review
-
-    # Manual CPC for budget control
+    campaign.status = client.enums.CampaignStatusEnum.PAUSED
     campaign.manual_cpc.enhanced_cpc_enabled = True
-
-    # Network settings — search only, no display
     campaign.network_settings.target_google_search = True
     campaign.network_settings.target_search_network = False
     campaign.network_settings.target_content_network = False
 
-    response = campaign_service.mutate_campaigns(
-        customer_id=customer_id, operations=[campaign_op]
-    )
-    campaign_resource = response.results[0].resource_name
-    print(f"  ✅ Campaign created: {name} (PAUSED — review before enabling)")
-    return campaign_resource
+    resp = service.mutate_campaigns(customer_id=customer_id, operations=[op])
+    resource = resp.results[0].resource_name
+    print(f"  ✅ Campaign: {name} (PAUSED)")
+    return resource
 
 
 def create_ad_group(client, customer_id, campaign_resource, name, cpc_micros):
-    """Create an ad group."""
-    ad_group_service = client.get_service("AdGroupService")
-    ad_group_op = client.get_type("AdGroupOperation")
-    ad_group = ad_group_op.create
+    service = client.get_service("AdGroupService")
+    op = client.get_type("AdGroupOperation")
+    ag = op.create
+    ag.name = name
+    ag.campaign = campaign_resource
+    ag.type_ = client.enums.AdGroupTypeEnum.SEARCH_STANDARD
+    ag.cpc_bid_micros = cpc_micros
+    ag.status = client.enums.AdGroupStatusEnum.ENABLED
 
-    ad_group.name = name
-    ad_group.campaign = campaign_resource
-    ad_group.type_ = client.enums.AdGroupTypeEnum.SEARCH_STANDARD
-    ad_group.cpc_bid_micros = cpc_micros
-    ad_group.status = client.enums.AdGroupStatusEnum.ENABLED
-
-    response = ad_group_service.mutate_ad_groups(
-        customer_id=customer_id, operations=[ad_group_op]
-    )
-    ad_group_resource = response.results[0].resource_name
-    print(f"  ✅ Ad group created: {name} (CPC: {cpc_micros / 1_000_000:.2f} PKR)")
-    return ad_group_resource
+    resp = service.mutate_ad_groups(customer_id=customer_id, operations=[op])
+    resource = resp.results[0].resource_name
+    print(f"    ✅ Ad Group: {name} (CPC: {cpc_micros // 1_000_000} PKR)")
+    return resource
 
 
-def add_keywords(client, customer_id, ad_group_resource, keywords, match_type="PHRASE"):
-    """Add keywords to an ad group."""
-    keyword_service = client.get_service("AdGroupCriterionService")
-    operations = []
-
-    match_enum = client.enums.KeywordMatchTypeEnum.PHRASE
-    if match_type == "EXACT":
-        match_enum = client.enums.KeywordMatchTypeEnum.EXACT
-    elif match_type == "BROAD":
-        match_enum = client.enums.KeywordMatchTypeEnum.BROAD
-
+def add_keywords(client, customer_id, ag_resource, keywords, match_type="PHRASE"):
+    service = client.get_service("AdGroupCriterionService")
+    match_map = {
+        "PHRASE": client.enums.KeywordMatchTypeEnum.PHRASE,
+        "EXACT": client.enums.KeywordMatchTypeEnum.EXACT,
+        "BROAD": client.enums.KeywordMatchTypeEnum.BROAD,
+    }
+    ops = []
     for kw in keywords:
         op = client.get_type("AdGroupCriterionOperation")
         criterion = op.create
-        criterion.ad_group = ad_group_resource
+        criterion.ad_group = ag_resource
         criterion.keyword.text = kw
-        criterion.keyword.match_type = match_enum
-        operations.append(op)
+        criterion.keyword.match_type = match_map[match_type]
+        ops.append(op)
 
-    response = keyword_service.mutate_ad_group_criteria(
-        customer_id=customer_id, operations=operations
-    )
-    print(f"  ✅ Added {len(response.results)} {match_type} keywords")
+    resp = service.mutate_ad_group_criteria(customer_id=customer_id, operations=ops)
+    print(f"      + {len(resp.results)} keywords ({match_type})")
 
 
 def add_negative_keywords(client, customer_id, campaign_resource, negatives):
-    """Add negative keywords at campaign level."""
-    criterion_service = client.get_service("CampaignCriterionService")
-    operations = []
-
+    service = client.get_service("CampaignCriterionService")
+    ops = []
     for kw in negatives:
         op = client.get_type("CampaignCriterionOperation")
         criterion = op.create
@@ -259,189 +285,185 @@ def add_negative_keywords(client, customer_id, campaign_resource, negatives):
         criterion.negative = True
         criterion.keyword.text = kw
         criterion.keyword.match_type = client.enums.KeywordMatchTypeEnum.BROAD
-        operations.append(op)
+        ops.append(op)
 
-    response = criterion_service.mutate_campaign_criteria(
-        customer_id=customer_id, operations=operations
-    )
-    print(f"  ✅ Added {len(response.results)} negative keywords")
+    resp = service.mutate_campaign_criteria(customer_id=customer_id, operations=ops)
+    print(f"  ✅ {len(resp.results)} negative keywords added")
 
 
-def create_responsive_search_ad(client, customer_id, ad_group_resource, headlines, descriptions, final_url, path1, path2):
-    """Create a responsive search ad."""
-    ad_group_ad_service = client.get_service("AdGroupAdService")
+def create_rsa(client, customer_id, ag_resource, headlines, descriptions, final_url, path1, path2):
+    service = client.get_service("AdGroupAdService")
     op = client.get_type("AdGroupAdOperation")
     ad_group_ad = op.create
-    ad_group_ad.ad_group = ad_group_resource
+    ad_group_ad.ad_group = ag_resource
     ad_group_ad.status = client.enums.AdGroupAdStatusEnum.ENABLED
 
     ad = ad_group_ad.ad
     ad.final_urls.append(final_url)
 
-    # Add headlines (max 15)
     for h in headlines:
-        headline = client.get_type("AdTextAsset")
-        headline.text = h
-        ad.responsive_search_ad.headlines.append(headline)
+        asset = client.get_type("AdTextAsset")
+        asset.text = h
+        ad.responsive_search_ad.headlines.append(asset)
 
-    # Add descriptions (max 4)
     for d in descriptions:
-        desc = client.get_type("AdTextAsset")
-        desc.text = d
-        ad.responsive_search_ad.descriptions.append(desc)
+        asset = client.get_type("AdTextAsset")
+        asset.text = d
+        ad.responsive_search_ad.descriptions.append(asset)
 
     ad.responsive_search_ad.path1 = path1
     ad.responsive_search_ad.path2 = path2
 
-    response = ad_group_ad_service.mutate_ad_group_ads(
-        customer_id=customer_id, operations=[op]
-    )
-    print(f"  ✅ Responsive search ad created ({len(headlines)} headlines, {len(descriptions)} descriptions)")
+    service.mutate_ad_group_ads(customer_id=customer_id, operations=[op])
+    print(f"      + RSA created → {final_url}")
 
 
 # ==========================================
-# MAIN — BUILD BOTH CAMPAIGNS
+# MAIN BUILDER
 # ==========================================
+
+def build_service_campaign(client, service_key):
+    """Build a full campaign for one service type."""
+    svc = SERVICES[service_key]
+    print(f"\n{'='*60}")
+    print(f"📦 BUILDING: {svc['campaign_name']}")
+    print(f"{'='*60}")
+
+    # Budget + Campaign
+    budget = create_budget(client, SAUDI_CUSTOMER_ID, svc["budget_name"], DAILY_BUDGET_MICROS)
+    campaign = create_campaign(client, SAUDI_CUSTOMER_ID, svc["campaign_name"], budget)
+
+    # Negative keywords
+    add_negative_keywords(client, SAUDI_CUSTOMER_ID, campaign, NEGATIVE_KEYWORDS)
+
+    # ---- AD GROUP: Emergency ----
+    print(f"\n  🚨 Emergency Ad Group")
+    ag_emg = create_ad_group(client, SAUDI_CUSTOMER_ID, campaign,
+                              f"{svc['ar']} طوارئ (Emergency)", 50_000_000)
+    add_keywords(client, SAUDI_CUSTOMER_ID, ag_emg, svc["emergency_keywords"], "PHRASE")
+    create_rsa(client, SAUDI_CUSTOMER_ID, ag_emg,
+               svc["headlines"]["emergency"], svc["descriptions"]["emergency"],
+               f"{BASE_URL}/", svc["ar"], "طوارئ")
+
+    # ---- AD GROUP: General ----
+    print(f"\n  🔧 General Ad Group")
+    ag_gen = create_ad_group(client, SAUDI_CUSTOMER_ID, campaign,
+                              f"{svc['ar']} عام (General)", 20_000_000)
+    add_keywords(client, SAUDI_CUSTOMER_ID, ag_gen, svc["general_keywords"], "PHRASE")
+    create_rsa(client, SAUDI_CUSTOMER_ID, ag_gen,
+               svc["headlines"]["general"], svc["descriptions"]["general"],
+               f"{BASE_URL}/services/", svc["ar"], "الرياض")
+
+    # ---- AD GROUPS: 12 Areas (one each) ----
+    print(f"\n  📍 Area Ad Groups (12 districts)")
+    for area in AREAS:
+        area_name = area["ar"]
+        slug = area["slug"]
+        landing_page = f"{BASE_URL}/{svc['slug_ar']}-{slug}/"
+
+        ag = create_ad_group(client, SAUDI_CUSTOMER_ID, campaign,
+                              f"{svc['ar']} {area_name}", 30_000_000)
+
+        # 2 keyword variations per area
+        keywords = [
+            f"{svc['ar']} {area_name}",                  # كهربائي النرجس
+            f"{svc['ar']} حي {area_name}",               # كهربائي حي النرجس
+        ]
+        add_keywords(client, SAUDI_CUSTOMER_ID, ag, keywords, "PHRASE")
+
+        # Area-specific ad — headlines mention the area name
+        area_headlines = [
+            f"{svc['ar']} {area_name} — خلال ساعة",      # Electrician Narjis — within 1 hour
+            f"نوصلك {area_name} بأسرع وقت",             # We reach Narjis fastest
+            f"{svc['ar']} محترف في {area_name}",          # Professional electrician in Narjis
+            f"خبرة ٣٠+ سنة في {area_name}",             # 30+ years experience in Narjis
+            f"ضمان ٣٠ يوم",                              # 30-day warranty
+            f"اتصل الآن ٠٥٠٨٩٠١٥٣٦",                   # Call now
+            f"متوفر الآن في {area_name}",                 # Available now in Narjis
+            f"خدمة مباشرة بدون وسطاء",                   # Direct service no middlemen
+            f"نراعي أوقات الصلاة",                        # Prayer-time aware
+            f"أرسل صورة المشكلة واتساب",                  # Send problem photo WhatsApp
+        ]
+
+        area_descriptions = [
+            f"{svc['ar']} محترف في {area_name} الرياض. نوصلك خلال ساعة مع ضمان ٣٠ يوم. اتصل الآن!",
+            f"خبرة عائلية ٣٠+ سنة في خدمة بيوت {area_name}. خدمة مباشرة، أسعار عادلة. ٠٥٠٨٩٠١٥٣٦",
+            f"أرسل صورة المشكلة واتساب ونعطيك تقييم مجاني. متوفرين ٢٤/٧ في {area_name}.",
+        ]
+
+        create_rsa(client, SAUDI_CUSTOMER_ID, ag,
+                   area_headlines, area_descriptions,
+                   landing_page, svc["ar"], area_name)
+
+    return campaign
+
 
 def main():
     print("\n" + "=" * 60)
-    print("SAUDI HOME EXPERTS — GOOGLE ADS CAMPAIGN BUILDER")
+    print("🏗️  SAUDI HOME EXPERTS — HYPER-TARGETED CAMPAIGN BUILDER")
     print("=" * 60)
 
-    client = get_client()
+    try:
+        client = get_client()
 
-    # ---- CAMPAIGN 1: ELECTRICIAN ----
-    print("\n📦 CAMPAIGN 1: Electrician (كهربائي)")
-    print("-" * 40)
+        # Build both campaigns
+        elec_campaign = build_service_campaign(client, "electrician")
+        plumb_campaign = build_service_campaign(client, "plumber")
 
-    elec_budget = create_budget(client, SAUDI_CUSTOMER_ID, "SHE - Electrician Budget", DAILY_BUDGET_MICROS)
-    elec_campaign = create_campaign(client, SAUDI_CUSTOMER_ID, "SHE - كهربائي الرياض (Electrician Riyadh)", elec_budget)
+        # Final summary
+        total_ad_groups = 14 * 2  # 14 per campaign × 2 campaigns
+        total_keywords = (len(SERVICES["electrician"]["emergency_keywords"])
+                         + len(SERVICES["electrician"]["general_keywords"])
+                         + len(AREAS) * 2  # 2 keywords per area
+                         + len(SERVICES["plumber"]["emergency_keywords"])
+                         + len(SERVICES["plumber"]["general_keywords"])
+                         + len(AREAS) * 2)
 
-    # Ad Group — Emergency keywords (high CPC bid: 50 PKR ≈ 0.65 SAR)
-    elec_emergency = create_ad_group(client, SAUDI_CUSTOMER_ID, elec_campaign, "كهربائي طوارئ (Emergency)", 50_000_000)
-    emergency_kws = [kw for kw in ELECTRICIAN_KEYWORDS if any(w in kw for w in ["يفصل", "يبرد", "تشتغل", "انقطاع", "عطل", "تماس"])]
-    add_keywords(client, SAUDI_CUSTOMER_ID, elec_emergency, emergency_kws, "PHRASE")
+        print(f"""
+{'='*60}
+✅ ALL CAMPAIGNS CREATED SUCCESSFULLY
+{'='*60}
 
-    # Ad Group — Area keywords (medium CPC bid: 30 PKR ≈ 0.40 SAR)
-    elec_areas = create_ad_group(client, SAUDI_CUSTOMER_ID, elec_campaign, "كهربائي حسب المنطقة (By Area)", 30_000_000)
-    area_kws = [kw for kw in ELECTRICIAN_KEYWORDS if any(w in kw for w in ["النرجس", "الياسمين", "حطين", "الملقا", "قرطبة", "غرناطة", "الفلاح", "الندى", "الربيع", "اشبيلية", "العقيق", "القيروان"])]
-    add_keywords(client, SAUDI_CUSTOMER_ID, elec_areas, area_kws, "PHRASE")
+📊 Final Structure:
+   Campaigns:     2 (Electrician + Plumber)
+   Ad Groups:     {total_ad_groups} (14 per campaign)
+   Ads:           {total_ad_groups} (1 RSA per ad group)
+   Keywords:      {total_keywords} (area-specific + emergency + general)
+   Negatives:     {len(NEGATIVE_KEYWORDS)} per campaign
 
-    # Ad Group — General service keywords (lower CPC: 20 PKR)
-    elec_general = create_ad_group(client, SAUDI_CUSTOMER_ID, elec_campaign, "كهربائي عام (General)", 20_000_000)
-    general_kws = [kw for kw in ELECTRICIAN_KEYWORDS if kw not in emergency_kws and kw not in area_kws]
-    add_keywords(client, SAUDI_CUSTOMER_ID, elec_general, general_kws, "PHRASE")
+💰 Budget:
+   Electrician:   500 PKR/day (~6.5 SAR)
+   Plumber:       500 PKR/day (~6.5 SAR)
+   Total:         1,000 PKR/day (~13 SAR)
 
-    # Negative keywords
-    add_negative_keywords(client, SAUDI_CUSTOMER_ID, elec_campaign, NEGATIVE_KEYWORDS)
+🎯 CPC Strategy:
+   Emergency:     50 PKR max (~0.65 SAR) — highest conversion
+   Area-specific: 30 PKR max (~0.40 SAR) — best quality score
+   General:       20 PKR max (~0.26 SAR) — volume play
 
-    # Ads for each ad group
-    elec_headlines_ar = [
-        "كهربائي الرياض ٢٤ ساعة",        # Electrician Riyadh 24h
-        "نوصلك خلال ساعة",               # We reach you in 1 hour
-        "ضمان ٣٠ يوم",                   # 30-day warranty
-        "فني كهرباء محترف",              # Professional electrician
-        "خبرة ٣٠+ سنة",                 # 30+ years experience
-        "اتصل الآن ٠٥٠٨٩٠١٥٣٦",        # Call now
-        "صيانة مكيفات وفريون",           # AC maintenance and freon
-        "إصلاح أعطال الكهرباء",           # Electrical fault repair
-        "كهربائي شمال الرياض",            # Electrician north riyadh
-        "خدمة فورية نفس اليوم",           # Same day instant service
-    ]
+📍 Landing Pages:
+   Emergency ads    → {BASE_URL}/
+   General ads      → {BASE_URL}/services/
+   Area ads (×24)   → {BASE_URL}/كهربائي-narjis/ (etc.)
 
-    elec_descriptions_ar = [
-        "كهربائي محترف في الرياض. نوصلك خلال ساعة مع ضمان ٣٠ يوم. اتصل الآن!",
-        "فريق خبرة ٣٠+ سنة في صيانة الكهرباء والمكيفات. خدمة ٢٤/٧ في جميع أحياء شمال الرياض.",
-        "إصلاح أعطال، صيانة مكيفات، تمديدات كهربائية. اتصل أو أرسل واتساب ٠٥٠٨٩٠١٥٣٦",
-    ]
-
-    for ag in [elec_emergency, elec_areas, elec_general]:
-        create_responsive_search_ad(
-            client, SAUDI_CUSTOMER_ID, ag,
-            elec_headlines_ar, elec_descriptions_ar,
-            "https://saudihomeexperts.com/",
-            "كهربائي", "الرياض"
-        )
-
-    # ---- CAMPAIGN 2: PLUMBER ----
-    print("\n📦 CAMPAIGN 2: Plumber (سباك)")
-    print("-" * 40)
-
-    plumb_budget = create_budget(client, SAUDI_CUSTOMER_ID, "SHE - Plumber Budget", DAILY_BUDGET_MICROS)
-    plumb_campaign = create_campaign(client, SAUDI_CUSTOMER_ID, "SHE - سباك الرياض (Plumber Riyadh)", plumb_budget)
-
-    # Ad Group — Emergency
-    plumb_emergency = create_ad_group(client, SAUDI_CUSTOMER_ID, plumb_campaign, "سباك طوارئ (Emergency)", 50_000_000)
-    plumb_emg_kws = [kw for kw in PLUMBER_KEYWORDS if any(w in kw for w in ["تسريب", "مسدودة", "خربان", "تسرب", "طوارئ"])]
-    add_keywords(client, SAUDI_CUSTOMER_ID, plumb_emergency, plumb_emg_kws, "PHRASE")
-
-    # Ad Group — Area keywords
-    plumb_areas = create_ad_group(client, SAUDI_CUSTOMER_ID, plumb_campaign, "سباك حسب المنطقة (By Area)", 30_000_000)
-    plumb_area_kws = [kw for kw in PLUMBER_KEYWORDS if any(w in kw for w in ["النرجس", "الياسمين", "حطين", "الملقا", "قرطبة", "غرناطة", "الفلاح", "الندى", "الربيع", "اشبيلية", "العقيق", "القيروان"])]
-    add_keywords(client, SAUDI_CUSTOMER_ID, plumb_areas, plumb_area_kws, "PHRASE")
-
-    # Ad Group — General
-    plumb_general = create_ad_group(client, SAUDI_CUSTOMER_ID, plumb_campaign, "سباك عام (General)", 20_000_000)
-    plumb_gen_kws = [kw for kw in PLUMBER_KEYWORDS if kw not in plumb_emg_kws and kw not in plumb_area_kws]
-    add_keywords(client, SAUDI_CUSTOMER_ID, plumb_general, plumb_gen_kws, "PHRASE")
-
-    # Negative keywords
-    add_negative_keywords(client, SAUDI_CUSTOMER_ID, plumb_campaign, NEGATIVE_KEYWORDS)
-
-    # Ads
-    plumb_headlines_ar = [
-        "سباك الرياض ٢٤ ساعة",           # Plumber Riyadh 24h
-        "نوصلك خلال ساعة",               # We reach you in 1 hour
-        "ضمان ٣٠ يوم",                   # 30-day warranty
-        "سباك محترف وأمين",              # Professional trusted plumber
-        "خبرة ٣٠+ سنة",                 # 30+ years experience
-        "اتصل الآن ٠٥٠٨٩٠١٥٣٦",        # Call now
-        "إصلاح تسريبات المياه",           # Water leak repair
-        "تسليك مجاري مسدودة",            # Blocked drain cleaning
-        "سباك شمال الرياض",              # Plumber north riyadh
-        "خدمة طوارئ فورية",              # Instant emergency service
-    ]
-
-    plumb_descriptions_ar = [
-        "سباك محترف في الرياض. نوصلك خلال ساعة مع ضمان ٣٠ يوم. اتصل الآن!",
-        "فريق خبرة ٣٠+ سنة في السباكة. تسريبات، مجاري، سخانات، خلاطات. خدمة ٢٤/٧.",
-        "إصلاح تسريبات، تسليك مجاري، صيانة سخانات. اتصل أو واتساب ٠٥٠٨٩٠١٥٣٦",
-    ]
-
-    for ag in [plumb_emergency, plumb_areas, plumb_general]:
-        create_responsive_search_ad(
-            client, SAUDI_CUSTOMER_ID, ag,
-            plumb_headlines_ar, plumb_descriptions_ar,
-            "https://saudihomeexperts.com/",
-            "سباك", "الرياض"
-        )
-
-    # ---- SUMMARY ----
-    print("\n" + "=" * 60)
-    print("✅ CAMPAIGN SETUP COMPLETE")
-    print("=" * 60)
-    print(f"""
-📊 Summary:
-   • 2 campaigns created (PAUSED — review before enabling)
-   • 6 ad groups (3 per campaign: Emergency, By Area, General)
-   • {len(ELECTRICIAN_KEYWORDS)} electrician keywords
-   • {len(PLUMBER_KEYWORDS)} plumber keywords
-   • {len(NEGATIVE_KEYWORDS)} negative keywords per campaign
-   • Daily budget: 500 PKR per campaign = 1,000 PKR total
-
-🎯 CPC Bidding Strategy:
-   • Emergency keywords: 50 PKR max CPC (~0.65 SAR)
-   • Area keywords: 30 PKR max CPC (~0.40 SAR)
-   • General keywords: 20 PKR max CPC (~0.26 SAR)
-
-⚠️  NEXT STEPS:
-   1. Review campaigns in Google Ads console
-   2. Create conversion actions (phone_call, whatsapp_click)
-   3. Set location targeting to North Riyadh
-   4. Add call extensions with phone number
-   5. Enable campaigns when ready to go live
-   6. Monitor for 3-5 days, then optimize
+⚠️  CAMPAIGNS ARE PAUSED — Next steps:
+   1. Go to Google Ads console → Review all ads
+   2. Create conversion actions: phone_call + whatsapp_click
+   3. Set location targeting: North Riyadh radius
+   4. Add call extension: +966 50 890 1536
+   5. Enable campaigns when ready
+   6. Monitor 3-5 days → pause low-performing ad groups
+   7. Scale budget to 2,000 PKR when ROI is proven
 """)
+
+    except GoogleAdsException as ex:
+        print(f"\n❌ Google Ads API Error:")
+        for error in ex.failure.errors:
+            print(f"  {error.message}")
+    except Exception as e:
+        print(f"\n❌ Error: {e}")
+        import traceback
+        traceback.print_exc()
 
 
 if __name__ == "__main__":
