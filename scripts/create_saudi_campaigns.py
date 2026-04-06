@@ -17,6 +17,10 @@ Keywords based on real Google Keyword Planner data (Apr 2026).
 
 from google.ads.googleads.client import GoogleAdsClient
 from google.ads.googleads.errors import GoogleAdsException
+import random
+import string
+
+SUFFIX = ''.join(random.choices(string.ascii_lowercase + string.digits, k=6))
 
 # ==========================================
 # CONFIG
@@ -100,7 +104,7 @@ def create_budget(client, cid, name, micros):
     svc = client.get_service("CampaignBudgetService")
     op = client.get_type("CampaignBudgetOperation")
     b = op.create
-    b.name = name
+    b.name = f"{name} {SUFFIX}"
     b.amount_micros = micros
     b.delivery_method = client.enums.BudgetDeliveryMethodEnum.STANDARD
     resp = svc.mutate_campaign_budgets(customer_id=cid, operations=[op])
@@ -117,7 +121,8 @@ def create_campaign(client, cid, name, budget_resource):
     c.campaign_budget = budget_resource
     c.advertising_channel_type = client.enums.AdvertisingChannelTypeEnum.SEARCH
     c.status = client.enums.CampaignStatusEnum.PAUSED
-    c.manual_cpc.enhanced_cpc_enabled = True
+    c.manual_cpc.enhanced_cpc_enabled = False
+    c.contains_eu_political_advertising = 2  # BOOL_FALSE = 2 in proto enum
     c.network_settings.target_google_search = True
     c.network_settings.target_search_network = False
     c.network_settings.target_content_network = False
