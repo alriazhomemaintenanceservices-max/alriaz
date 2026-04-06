@@ -6,6 +6,7 @@ import { Phone, Clock, Shield, Users, CheckCircle, Zap, Star } from 'lucide-reac
 import Button from '@/components/shared/Button';
 import { useTranslation } from '@/hooks/useTranslation';
 import { translations } from '@/lib/translations';
+import { trackPhoneClick as trackPhone, trackWhatsAppClick, trackServicePageView } from '@/lib/tracking';
 import '../../styles/globals.css';
 
 interface Area {
@@ -23,12 +24,6 @@ interface Service {
 interface Props {
   area: Area;
   service: Service;
-}
-
-declare global {
-  interface Window {
-    gtag: any;
-  }
 }
 
 type TKey = keyof typeof translations.ar;
@@ -133,29 +128,8 @@ export default function ElectricianAreaPage({ area, service }: Props) {
   const otherServices = allServices.filter(s => s.type !== service.type);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'page_view', {
-        page_title: `${serviceName} ${areaName}`,
-        page_location: window.location.href,
-        content_group1: 'area_pages',
-        content_group2: area.slug,
-        content_group3: service.type
-      });
-    }
-  }, [area.slug, service.type, serviceName, areaName]);
-
-  const trackPhoneClick = () => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'conversion', {
-        'send_to': 'AW-18063458010/PHONE_CONVERSION',
-        'value': 100.0,
-        'currency': 'SAR',
-        'event_callback': () => {
-          console.log('Phone conversion tracked for', areaName);
-        }
-      });
-    }
-  };
+    trackServicePageView(service.type, area.slug);
+  }, [area.slug, service.type]);
 
   const whatsappUrl = `https://wa.me/966508901536?text=${encodeURIComponent(t('area-whatsapp-msg', vars))}`;
 
@@ -219,10 +193,10 @@ export default function ElectricianAreaPage({ area, service }: Props) {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', justifyContent: 'center', marginBottom: '32px' }}>
             <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Button href="tel:0508901536" variant="emergency" size="large" icon={<Phone size={20} />} onClick={trackPhoneClick}>
+              <Button href="tel:0508901536" variant="emergency" size="large" icon={<Phone size={20} />} onClick={() => trackPhone(`${service.type}-${area.slug}`)}>
                 {t('area-call-now')}
               </Button>
-              <Button href={whatsappUrl} variant="whatsapp" size="large" external icon={
+              <Button href={whatsappUrl} variant="whatsapp" size="large" external onClick={() => trackWhatsAppClick(`${service.type}-${area.slug}`)} icon={
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
                 </svg>
@@ -335,7 +309,7 @@ export default function ElectricianAreaPage({ area, service }: Props) {
         <div className="container" style={{ textAlign: 'center' }}>
           <h2 style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '16px' }}>{t(config.emergencyTitleKey, vars)}</h2>
           <p style={{ fontSize: '1.25rem', marginBottom: '24px' }}>{t(config.emergencyDescKey)}</p>
-          <Button href="tel:0508901536" variant="secondary" size="large" icon={<Phone size={20} />} onClick={trackPhoneClick} style={{ background: 'white', color: 'var(--emergency-red)' }}>
+          <Button href="tel:0508901536" variant="secondary" size="large" icon={<Phone size={20} />} onClick={() => trackPhone(`${service.type}-${area.slug}`)} style={{ background: 'white', color: 'var(--emergency-red)' }}>
             {t('area-emergency-call')}
           </Button>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginTop: '24px', opacity: 0.9 }}>

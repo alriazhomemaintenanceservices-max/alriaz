@@ -4,12 +4,6 @@ import { useEffect } from 'react';
 import './globals.css';
 import styles from './page.module.css';
 
-declare global {
-  interface Window {
-    gtag: any;
-  }
-}
-
 export default function RiyadhLocalPage() {
   useEffect(() => {
     // Track phone clicks for conversion

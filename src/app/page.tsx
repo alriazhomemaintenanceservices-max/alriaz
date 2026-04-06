@@ -8,12 +8,6 @@ import { useTranslation } from '@/hooks/useTranslation';
 import { translations } from '@/lib/translations';
 import { Phone, Clock, Shield, Users, CheckCircle, Star, Zap } from 'lucide-react';
 
-declare global {
-  interface Window {
-    gtag: any;
-  }
-}
-
 // Area detection handled inside component for language support
 
 export default function HomePage() {

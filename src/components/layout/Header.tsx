@@ -6,26 +6,11 @@ import { Phone, Menu, X, Home, Users, Mail } from 'lucide-react';
 import Button from '@/components/shared/Button';
 import LanguageToggle from '@/components/shared/LanguageToggle';
 import { useTranslation } from '@/hooks/useTranslation';
-
-declare global {
-  interface Window {
-    gtag: any;
-  }
-}
+import { trackPhoneClick } from '@/lib/tracking';
 
 export default function Header() {
   const { t } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const trackPhoneClick = () => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'conversion', {
-        'send_to': 'AW-18063458010/PHONE_CONVERSION',
-        'value': 50.0,
-        'currency': 'SAR',
-      });
-    }
-  };
 
   return (
     <header style={{ position: 'sticky', top: 0, backgroundColor: 'var(--white)', borderBottom: '1px solid var(--gray-300)', zIndex: 20 }}>
@@ -51,7 +36,7 @@ export default function Header() {
           <LanguageToggle />
 
           {/* Call button - desktop only */}
-          <Button href="tel:0508901536" variant="emergency" size="small" icon={<Phone size={16} />} onClick={trackPhoneClick} className="mobile-hidden">
+          <Button href="tel:0508901536" variant="emergency" size="small" icon={<Phone size={16} />} onClick={() => trackPhoneClick('header')} className="mobile-hidden">
             {t('call-now')}
           </Button>
 
@@ -84,7 +69,7 @@ export default function Header() {
             ))}
           </nav>
           <div style={{ marginTop: '8px', paddingTop: '8px', borderTop: '1px solid var(--gray-200)' }}>
-            <Button href="tel:0508901536" variant="emergency" size="large" icon={<Phone size={18} />} onClick={() => { trackPhoneClick(); setMenuOpen(false); }} fullWidth>
+            <Button href="tel:0508901536" variant="emergency" size="large" icon={<Phone size={18} />} onClick={() => { trackPhoneClick('header-menu'); setMenuOpen(false); }} fullWidth>
               {t('contact-call-btn')}
             </Button>
           </div>
