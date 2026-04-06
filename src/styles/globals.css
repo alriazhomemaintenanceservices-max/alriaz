@@ -459,6 +459,13 @@ a:hover {
 
 .hidden { display: none; }
 
+/* Force phone numbers and buttons to display LTR in RTL mode */
+[dir="rtl"] .btn,
+[dir="rtl"] [href^="tel:"] {
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
 @media (max-width: 767px) {
   .mobile-hidden { display: none !important; }
 }
