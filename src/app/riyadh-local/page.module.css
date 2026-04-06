@@ -1,0 +1,537 @@
+/* Font and Base */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap');
+
+/* Header */
+.header {
+  background: #1a1a1a;
+  color: white;
+  padding: 12px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.headerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Tajawal', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffd700;
+  letter-spacing: -0.5px;
+}
+
+.headerPhone {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: #d32f2f;
+  padding: 8px 16px;
+  border-radius: 25px;
+  transition: all 0.3s;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.headerPhone:hover {
+  background: #b71c1c;
+  transform: scale(1.05);
+}
+
+.phoneIcon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  padding: 60px 20px;
+  text-align: center;
+  font-family: 'Tajawal', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #d32f2f, #ffd700, #d32f2f);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.urgentBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(211, 47, 47, 0.1);
+  border: 1px solid #d32f2f;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  color: #d32f2f;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.urgentDot {
+  width: 8px;
+  height: 8px;
+  background: #d32f2f;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.mainTitle {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  color: #555;
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+.mainCTA {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #25d366;
+  color: white;
+  padding: 18px 36px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 35px;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+  transition: all 0.3s;
+  margin-bottom: 15px;
+}
+
+.mainCTA:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.4);
+}
+
+.ctaIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.whatsappText {
+  font-size: 1rem;
+  color: #666;
+  margin: 15px 0;
+}
+
+.availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #059862;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.checkIcon {
+  width: 20px;
+  height: 20px;
+  color: #059862;
+}
+
+/* Trust Section */
+.trust {
+  background: white;
+  padding: 50px 20px;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 35px;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: #ffd700;
+}
+
+.trustGrid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  background: #f8f8f8;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  color: #333;
+  transition: all 0.3s;
+}
+
+.trustItem:hover {
+  background: #f0f0f0;
+  transform: translateX(-5px);
+}
+
+.trustIcon {
+  font-size: 1.5rem;
+}
+
+/* Services Section */
+.services {
+  background: #fafafa;
+  padding: 50px 20px;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.serviceColumns {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.serviceColumn {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.serviceTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.serviceBullet {
+  font-size: 1.8rem;
+}
+
+.serviceList {
+  list-style: none;
+  padding: 0;
+}
+
+.serviceList li {
+  padding: 10px 0;
+  color: #555;
+  font-size: 1.05rem;
+  border-bottom: 1px solid #f0f0f0;
+  position: relative;
+  padding-right: 25px;
+}
+
+.serviceList li::before {
+  content: '✓';
+  position: absolute;
+  right: 0;
+  color: #25d366;
+  font-weight: bold;
+}
+
+/* Areas Section */
+.areas {
+  background: white;
+  padding: 50px 20px;
+  font-family: 'Tajawal', sans-serif;
+  text-align: center;
+}
+
+.areaGrid {
+  max-width: 900px;
+  margin: 0 auto 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.areaTag {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #f0f0f0;
+  border: 2px solid #e0e0e0;
+  border-radius: 25px;
+  font-size: 1rem;
+  color: #333;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.areaTag:hover {
+  background: #ffd700;
+  border-color: #ffd700;
+  color: #1a1a1a;
+}
+
+.areaNote {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Pricing Section */
+.pricing {
+  background: #fff8dc;
+  padding: 50px 20px;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.pricingCard {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  border: 3px solid #ffd700;
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.pricingTitle {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 30px;
+}
+
+.priceGrid {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.priceItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #f8f8f8;
+  border-radius: 10px;
+}
+
+.priceLabel {
+  font-size: 1.1rem;
+  color: #555;
+  font-weight: 600;
+}
+
+.priceValue {
+  font-size: 1.2rem;
+  color: #d32f2f;
+  font-weight: 700;
+}
+
+.priceNote {
+  text-align: center;
+  padding: 15px;
+  background: #fffacd;
+  border-radius: 10px;
+  color: #333;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+/* Emergency Section */
+.emergency {
+  background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+  font-family: 'Tajawal', sans-serif;
+  position: relative;
+}
+
+.emergencyTitle {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.emergencyText {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  opacity: 0.95;
+}
+
+.emergencyUrgent {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #ffd700;
+}
+
+.emergencyCTA {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  color: #d32f2f;
+  padding: 18px 40px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 35px;
+  transition: all 0.3s;
+  margin-bottom: 30px;
+}
+
+.emergencyCTA:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.workHours {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.clockIcon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Floating Call Button */
+.floatingCall {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  z-index: 999;
+  transition: all 0.3s;
+  animation: ringring 2s infinite;
+}
+
+.floatingCall:hover {
+  transform: scale(1.1);
+}
+
+.floatingCall svg {
+  width: 28px;
+  height: 28px;
+  color: white;
+}
+
+@keyframes ringring {
+  0%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(-10deg); }
+  20%, 40% { transform: rotate(10deg); }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .headerContent {
+    padding: 0 15px;
+  }
+  
+  .logo {
+    font-size: 1.1rem;
+  }
+  
+  .headerPhone {
+    font-size: 0.95rem;
+    padding: 6px 12px;
+  }
+  
+  .hero {
+    padding: 40px 15px;
+  }
+  
+  .mainTitle {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .mainCTA {
+    font-size: 1.1rem;
+    padding: 15px 25px;
+  }
+  
+  .trustGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .serviceColumns {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .floatingCall {
+    bottom: 15px;
+    left: 15px;
+    width: 55px;
+    height: 55px;
+  }
+}

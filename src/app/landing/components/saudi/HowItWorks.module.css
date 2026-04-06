@@ -1,0 +1,127 @@
+.section { 
+  background: #FFFFFF; 
+  padding: 100px 0; 
+}
+
+.header { 
+  text-align: center; 
+  margin-bottom: 80px; 
+}
+
+.tagWrapper { margin-bottom: 16px; }
+
+.tag {
+  background: #F3EBD1;
+  color: #C9A84C;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.h2Title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #0A0C10;
+  margin-bottom: 16px;
+  letter-spacing: -1px;
+}
+
+.sub {
+  font-size: 1.15rem;
+  color: #6B7280;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.stepsContainer {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.line {
+  position: absolute;
+  top: 40px;
+  left: 17%;
+  right: 17%;
+  height: 2px;
+  background-image: linear-gradient(to right, #C9A84C 50%, transparent 50%);
+  background-size: 20px 1px;
+  background-repeat: repeat-x;
+  opacity: 0.25;
+  z-index: 0;
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.numCircle {
+  width: 80px;
+  height: 80px;
+  background: #C9A84C;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0A0C10;
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 32px;
+  box-shadow: 0 10px 25px rgba(201, 168, 76, 0.25);
+  font-family: var(--font-ar);
+}
+
+.iconBox {
+  width: 56px;
+  height: 56px;
+  background: #FDF9EC;
+  border: 1px solid #C9A84C15;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #C9A84C;
+  margin-bottom: 24px;
+}
+
+.iconBox svg {
+  width: 28px;
+  height: 28px;
+}
+
+.title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #0A0C10;
+  margin-bottom: 12px;
+}
+
+.text {
+  font-size: 15px;
+  color: #6B7280;
+  line-height: 1.8;
+  max-width: 280px;
+}
+
+@media (max-width: 768px) {
+  .line { display: none; }
+  .stepsGrid { grid-template-columns: 1fr; gap: 48px; }
+  .numCircle { width: 70px; height: 70px; font-size: 1.6rem; margin-bottom: 24px; }
+  .h2Title { font-size: 2.2rem; }
+}

@@ -1,0 +1,78 @@
+'use client';
+
+import React from 'react';
+import { useLang } from './LanguageContext';
+import styles from './Hero.module.css';
+
+const WA_URL = 'https://wa.me/966508901536?text=' + encodeURIComponent('Hello, I want to book a home technician.');
+
+export default function Hero() {
+  const { t } = useLang();
+
+  return (
+    <section id="hero" className={styles.hero}>
+      {/* Badge */}
+      <div className={styles.badge}>
+        <span className={styles.dot} />
+        {t('⚡ خدمة طوارئ 24/7 في جميع أنحاء المملكة', '⚡ 24/7 Emergency Service Across All KSA')}
+      </div>
+
+      {/* Headline */}
+      <h1 className={styles.h1}>
+        {t(
+          <>
+            كهربائي وسباك في الرياض —<br />
+            <span className={styles.highlight}>فني عندك خلال 45 دقيقة</span>
+          </>,
+          <>
+            Electrician &amp; Plumber in Riyadh<br />
+            <span className={styles.highlight}>Technician in 45 Minutes</span>
+          </>
+        )}
+      </h1>
+
+      {/* Sub-headline */}
+      <p className={styles.sub}>
+        {t(
+          'موثوق من أكثر من 5,000 فيلا ومنشأة تجارية في المملكة · ضمان 30 يوم على جميع الأعمال',
+          'Trusted by 5,000+ villas & businesses across the Kingdom · 30-day labor warranty on all work'
+        )}
+      </p>
+
+      {/* CTAs */}
+      <div className={styles.ctas}>
+        <a className={styles.btnWa} href={WA_URL}>
+          <WhatsAppIcon />
+          {t('احجز الآن', 'Book Now')}
+        </a>
+        <a className={styles.btnCall} href="tel:+966508901536">
+          <PhoneIcon />
+          {t('اتصل الآن', 'Call Now')}
+        </a>
+      </div>
+
+      {/* Stars */}
+      <div className={styles.stars}>
+        <span className={styles.starIcons}>★★★★★</span>
+        {t('٩٢٠+ تقييم موثق من عملائنا', '920+ verified customer reviews')}
+      </div>
+    </section>
+  );
+}
+
+function WhatsAppIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.747-2.874-2.512-2.96-2.626-.087-.115-.702-.932-.702-1.779 0-.847.444-1.264.603-1.437.159-.173.346-.217.462-.217h.332c.115 0 .231-.022.331.217.115.275.397.967.433 1.039.036.072.06.155.011.252-.049.098-.073.159-.145.242-.072.083-.153.184-.217.247-.072.072-.147.151-.063.296.084.144.374.616.802 1.002.553.496 1.018.65 1.176.723.159.072.252.06.346-.046.094-.105.405-.472.513-.632.108-.159.217-.133.34-.087.123.046.78.368.914.436.134.068.224.1.256.155.033.055.033.318-.111.723z" />
+      <path d="M12.736 22.566c-1.894 0-3.71-.468-5.334-1.354l-6.342 1.662 1.696-6.19c-1.01-1.72-1.544-3.687-1.544-5.727 0-6.24 5.076-11.317 11.317-11.317 3.023 0 5.864 1.177 8 3.315 2.138 2.137 3.316 4.978 3.317 8.002 0 6.241-5.077 11.316-11.31 11.316zM12.736 2.186c-5.13 0-9.303 4.173-9.303 9.303 0 2.052.673 4.015 1.947 5.7l-1.033 3.77 3.861-1.01c1.614.978 3.473 1.493 5.374 1.493 5.13 0 9.303-4.173 9.303-9.303 0-2.484-.967-4.821-2.723-6.577a9.217 9.217 0 00-6.425-2.724v.051z" />
+    </svg>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.06 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z" />
+    </svg>
+  );
+}

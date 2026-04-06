@@ -1,0 +1,28 @@
+.toggle {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;
+  background: var(--dark);
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--font-ar);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 0.5px;
+}
+.toggle:hover {
+  background: var(--gold);
+  color: var(--dark);
+}
+
+@media (max-width: 768px) {
+  .toggle {
+    top: 10px;
+    left: 10px;
+  }
+}
