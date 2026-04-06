@@ -34,6 +34,7 @@ export default function ServicesPage() {
     { ar: 'الملقا', en: 'Al Malqa', slug: 'malqa' },
     { ar: 'العقيق', en: 'Al Aqiq', slug: 'aqiq' },
     { ar: 'القيروان', en: 'Al Qirawan', slug: 'qirawan' },
+    { ar: 'العارض', en: 'Al Arid', slug: 'arid' },
   ];
 
   const services = [

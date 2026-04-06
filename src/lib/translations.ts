@@ -317,7 +317,7 @@ export const translations = {
     'about-intcom-desc': 'تركيب انتركوم، كاميرات مراقبة، أجراس ذكية، أنظمة تحكم',
 
     'about-coverage-title': 'نغطي كل شمال الرياض',
-    'about-coverage-desc': 'النرجس، الياسمين، قرطبة، غرناطة، الفلاح، الندى، الربيع، اشبيلية، حطين، الملقا، العقيق، القيروان — وجميع الأحياء المجاورة.',
+    'about-coverage-desc': 'النرجس، الياسمين، قرطبة، غرناطة، الفلاح، الندى، الربيع، اشبيلية، حطين، الملقا، العقيق، القيروان، العارض — وجميع الأحياء المجاورة.',
 
     'about-cta-title': 'جاهزين نخدمك',
     'about-cta-desc': 'تواصل معنا الحين — متوفرين 24/7',
@@ -666,7 +666,7 @@ export const translations = {
     'about-intcom-desc': 'Intercom installation, security cameras, smart doorbells, access control',
 
     'about-coverage-title': 'We Cover All of North Riyadh',
-    'about-coverage-desc': 'Al Narjis, Al Yasmin, Qurtubah, Granada, Al Falah, Al Nada, Al Rabee, Ishbiliyah, Hittin, Al Malqa, Al Aqiq, Al Qirawan — and all neighboring districts.',
+    'about-coverage-desc': 'Al Narjis, Al Yasmin, Qurtubah, Granada, Al Falah, Al Nada, Al Rabee, Ishbiliyah, Hittin, Al Malqa, Al Aqiq, Al Qirawan, Al Arid — and all neighboring districts.',
 
     'about-cta-title': 'Ready to Serve You',
     'about-cta-desc': 'Contact us now — available 24/7',

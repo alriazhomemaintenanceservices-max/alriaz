@@ -50,6 +50,7 @@ AREAS = [
     {"slug": "malqa",      "ar": "الملقا",    "en": "Al Malqa"},
     {"slug": "aqiq",       "ar": "العقيق",    "en": "Al Aqiq"},
     {"slug": "qirawan",    "ar": "القيروان",   "en": "Al Qirawan"},
+    {"slug": "arid",       "ar": "العارض",    "en": "Al Arid"},
 ]
 
 # ==========================================
