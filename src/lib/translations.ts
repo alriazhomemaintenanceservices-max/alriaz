@@ -3,7 +3,7 @@ export const translations = {
     // Header
     'saudi-home-experts': 'خبراء المنزل السعودي',
     'saudi-badge': 'السعودية',
-    'call-now': 'اتصل الآن: 050 890 1536',
+    'call-now': 'اتصل الآن: ‎050 890 1536',
     'language': 'English',
     
     // Navigation
@@ -16,7 +16,7 @@ export const translations = {
     'electrician-plumber': 'كهربائي وسباك',
     'arrives-in-hour': 'يصلك خلال ساعة',
     'instant-service-247': 'خدمة فورية 24/7 في جميع أحياء الرياض',
-    'call-now-number': 'اتصل الآن: 050 890 1536',
+    'call-now-number': 'اتصل الآن: ‎050 890 1536',
     'send-problem-photo': 'أرسل صورة المشكلة',
     'available-now': 'متوفر الآن',
     '30-day-warranty': 'ضمان 30 يوم',
@@ -140,7 +140,7 @@ export const translations = {
     'area-available-now': 'متوفر الآن في',
     'area-within-hour': 'خلال ساعة',
     'area-service-desc': 'خدمة {service} احترافية في {area} الرياض. فريق باكستاني-سعودي محترف مع ضمان الجودة',
-    'area-call-now': 'اتصل الآن: 050 890 1536',
+    'area-call-now': 'اتصل الآن: ‎050 890 1536',
     'area-send-whatsapp': 'أرسل رسالة واتساب',
     'area-whatsapp-msg': 'مرحباً، أحتاج {service} في {area}. هل يمكنكم المساعدة؟',
 
@@ -174,7 +174,7 @@ export const translations = {
     'area-faq-time-q': 'كم وقت تحتاجون للوصول إلى {area}؟',
     'area-faq-time-a': 'عادة نصل إلى {area} خلال 45-60 دقيقة من وقت الاتصال. في حالات الطوارئ، نعطي الأولوية للوصول السريع.',
     'area-faq-book-q': 'وش أسرع طريقة أحجز {service} في {area}؟',
-    'area-faq-book-a': 'أسرع طريقة هي الاتصال المباشر على 050 890 1536 أو إرسال رسالة واتساب. نرد خلال دقائق ونحدد موعد سريع.',
+    'area-faq-book-a': 'أسرع طريقة هي الاتصال المباشر على ‎050 890 1536 أو إرسال رسالة واتساب. نرد خلال دقائق ونحدد موعد سريع.',
     'area-faq-local-q': 'هل {service}كم من {area} أم من منطقة ثانية؟',
     'area-faq-local-a': 'فريقنا من الفنيين الباكستانيين المقيمين في الرياض ويعرفون {area} جيداً. لدينا خبرة محلية في المنطقة لأكثر من 5 سنوات.',
 
@@ -190,7 +190,7 @@ export const translations = {
     // Area Page - Emergency CTA
     'area-emergency-title': 'طوارئ كهربائية في {area}؟',
     'area-emergency-desc': 'انقطاع الكهرباء؟ مشكلة في المكيف؟ نصلك خلال ساعة!',
-    'area-emergency-call': 'اتصال طوارئ: 050 890 1536',
+    'area-emergency-call': 'اتصال طوارئ: ‎050 890 1536',
     'area-emergency-available': 'متوفرين 24/7 - نراعي أوقات الصلاة',
 
     // Area Page - Schema
@@ -228,7 +228,7 @@ export const translations = {
     'plumb-faq-time-q': 'كم يأخذ السباك وقت عشان يوصل {area}؟',
     'plumb-faq-time-a': 'عادة يوصل السباك إلى {area} خلال 45-60 دقيقة. في حالات التسريب الطارئة، نعطي الأولوية للوصول الفوري.',
     'plumb-faq-emergency-q': 'عندي تسريب مياه طارئ في {area}، وش أسوي؟',
-    'plumb-faq-emergency-a': 'أغلق محبس المياه الرئيسي فوراً واتصل على 050 890 1536. فريقنا متوفر 24/7 ويصلك بأسرع وقت.',
+    'plumb-faq-emergency-a': 'أغلق محبس المياه الرئيسي فوراً واتصل على ‎050 890 1536. فريقنا متوفر 24/7 ويصلك بأسرع وقت.',
     'plumb-faq-types-q': 'وش أنواع مشاكل السباكة اللي تصلحونها في {area}؟',
     'plumb-faq-types-a': 'نصلح جميع مشاكل السباكة: تسريبات المياه، انسداد المجاري، أعطال السخانات، مشاكل الخلاطات، تمديد المواسير، وتركيب الفلاتر.',
 
@@ -328,7 +328,7 @@ export const translations = {
 
     'contact-call-title': 'اتصل مباشرة',
     'contact-call-desc': 'أسرع طريقة — تكلم الفني مباشرة وحدد موعد الزيارة',
-    'contact-call-btn': 'اتصل الآن: 050 890 1536',
+    'contact-call-btn': 'اتصل الآن: ‎050 890 1536',
     'contact-call-note': 'متوفرين 24/7 — نرد خلال ثواني',
 
     'contact-whatsapp-title': 'واتساب',

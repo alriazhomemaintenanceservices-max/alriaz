@@ -71,7 +71,7 @@ export default function Footer() {
                   href="tel:0508901536" 
                   style={{ color: 'inherit', textDecoration: 'none' }}
                 >
-                  050 890 1536
+                  <span dir="ltr">050 890 1536</span>
                 </a>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>

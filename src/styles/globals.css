@@ -461,9 +461,12 @@ a:hover {
 
 /* Force phone numbers and buttons to display LTR in RTL mode */
 [dir="rtl"] .btn,
-[dir="rtl"] [href^="tel:"] {
-  direction: ltr;
-  unicode-bidi: embed;
+[dir="rtl"] [href^="tel:"],
+[dir="rtl"] .badge,
+[dir="rtl"] .sticky-cta .btn,
+[dir="rtl"] .availability-badge {
+  direction: ltr !important;
+  unicode-bidi: embed !important;
 }
 
 @media (max-width: 767px) {
