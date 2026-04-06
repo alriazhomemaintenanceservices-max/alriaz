@@ -1,209 +1,199 @@
-import React from 'react';
+'use client';
+
 import Link from 'next/link';
-import { Zap, Droplets, ShieldCheck, ArrowRight, CheckCircle, Clock, MapPin, Wrench, Shield, Smartphone, Star, BadgeCheck, Phone } from 'lucide-react';
-import { WhatsAppIcon } from "@/components/WhatsAppIcon";
-import type { Metadata } from 'next';
+import { Phone, Clock, Shield, CheckCircle, Star, MapPin } from 'lucide-react';
+import Button from '@/components/shared/Button';
+import { useTranslation } from '@/hooks/useTranslation';
+import { translations } from '@/lib/translations';
 
-export const metadata: Metadata = {
-    title: {
-        absolute: "Home Maintenance Services Saudi Arabia | Plumber, Electrician & Intercom"
-    },
-    alternates: {
-        canonical: 'https://saudihomeexperts.com/services',
-        languages: {
-            'en-US': 'https://saudihomeexperts.com/services',
-            'ar-SA': 'https://saudihomeexperts.com/ar/services'
-        }
-    },
-    description: "Expert licensed plumber, electrician, and smart intercom installation services in Saudi Arabia. We provide 24/7 home maintenance and property repair services.",
-};
-
-const SERVICES = [
-    {
-        title: "Electrical Services",
-        description: "Expert electrical solutions for luxury villas and commercial properties across Saudi Arabia. We specialize in complex troubleshooting and safety-first repairs.",
-        features: [
-            "24/7 Emergency Short Circuit Fix",
-            "CB & DB Box Load Balancing",
-            "Luxury Chandelier Installation",
-            "Smart Lighting & Dimmer Setup",
-            "SASO-Certified Safety Audits"
-        ],
-        icon: <Zap size={32} />,
-        href: "/services/electrician",
-        color: "#3b82f6",
-        bg: "#eff6ff"
-    },
-    {
-        title: "Plumbing Services",
-        description: "Expert plumbing and leak detection services across all major Saudi cities. We use ultrasonic technology to find and fix leaks with zero damage.",
-        features: [
-            "Ultrasonic Leak Detection",
-            "Water Tank Deep Cleaning",
-            "Pressure Pump Install & Repair",
-            "Ariston/Milano Heater Support",
-            "Central Filtration Systems"
-        ],
-        icon: <Droplets size={32} />,
-        href: "/services/plumber",
-        color: "#06b6d4",
-        bg: "#ecfeff"
-    },
-    {
-        title: "Intercom & Security",
-        description: "Modernize your home security with high-definition video entry and smart access controls integrated with your smartphone.",
-        features: [
-            "4K Video Doorbell Install",
-            "Multi-Unit Access Control",
-            "Smartphone App Integration",
-            "Biometric Door Lock Setup",
-            "Intercom Repair & Maintenance"
-        ],
-        icon: <ShieldCheck size={32} />,
-        href: "/services/intercom",
-        color: "#6366f1",
-        bg: "#eef2ff"
-    },
-
-];
+type TKey = keyof typeof translations.ar;
 
 export default function ServicesPage() {
-    const whatsappNumber = "966508901536";
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=Hello%20Saudi%20Home%20Experts,%20I%20am%20interested%20in%20your%20services.`;
+  const { t, language } = useTranslation();
 
-    return (
-        <main style={{ paddingTop: '80px', background: '#fff' }}>
+  const trackPhoneClick = () => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'conversion', {
+        'send_to': 'AW-18063458010/PHONE_CONVERSION',
+        'value': 50.0,
+        'currency': 'SAR',
+      });
+    }
+  };
 
-            {/* Breadcrumbs */}
-            <nav className="container" style={{ marginBottom: '30px', fontSize: '0.9rem', color: 'var(--muted)' }}>
-                <Link href="/">Home</Link> / <span style={{ color: 'var(--primary)', fontWeight: 600 }}>Services</span>
-            </nav>
+  const areas = [
+    { ar: 'النرجس', en: 'Al Narjis', slug: 'narjis' },
+    { ar: 'الياسمين', en: 'Al Yasmin', slug: 'yasmin' },
+    { ar: 'قرطبة', en: 'Qurtubah', slug: 'qurtubah' },
+    { ar: 'غرناطة', en: 'Granada', slug: 'granada' },
+    { ar: 'الفلاح', en: 'Al Falah', slug: 'falah' },
+    { ar: 'الندى', en: 'Al Nada', slug: 'nada' },
+    { ar: 'الربيع', en: 'Al Rabee', slug: 'rabee' },
+    { ar: 'اشبيلية', en: 'Ishbiliyah', slug: 'ishbiliyah' },
+    { ar: 'حطين', en: 'Hittin', slug: 'hittin' },
+    { ar: 'الملقا', en: 'Al Malqa', slug: 'malqa' },
+    { ar: 'العقيق', en: 'Al Aqiq', slug: 'aqiq' },
+    { ar: 'القيروان', en: 'Al Qirawan', slug: 'qirawan' },
+  ];
 
-            {/* 1. HERO SECTION */}
-            <section style={{
-                position: 'relative',
-                minHeight: '60vh',
-                display: 'flex',
-                alignItems: 'center',
-                background: '#fff',
-                overflow: 'hidden'
-            }}>
-                <div className="container" style={{ position: 'relative', zIndex: 10, textAlign: 'center' }}>
-                    <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-                        <div className="animate-fade-in">
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent: 'center', color: 'var(--primary)', fontWeight: 800, marginBottom: '20px', fontSize: '0.9rem', letterSpacing: '2px' }}>
-                                <div style={{ width: '40px', height: '2px', background: 'var(--primary)' }}></div>
-                                COMPREHENSIVE SOLUTIONS
-                                <div style={{ width: '40px', height: '2px', background: 'var(--primary)' }}></div>
-                            </div>
-                            <h1 style={{
-                                fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-                                lineHeight: 1.1,
-                                marginBottom: '25px',
-                                fontWeight: 800,
-                                color: '#333',
-                                letterSpacing: '-1.5px'
-                            }}>
-                                Expert <span style={{ color: 'var(--primary)' }}>Home Maintenance</span> <br />
-                                & Repairs in Saudi Arabia
-                            </h1>
-                            <p style={{ fontSize: '1.25rem', color: '#666', marginBottom: '40px', lineHeight: 1.7, margin: '0 auto 40px', maxWidth: '700px' }}>
-                                Your trusted partner for specialized electrical, plumbing, and security solutions. Licensed technicians available 24/7 across the capital.
-                            </p>
-                            <div className="hero-btn-group" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
-                                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
-                                    <WhatsAppIcon size={20} /> BOOK A SERVICE NOW
-                                </a>
-                                <a href="tel:+966508901536" className="btn btn-lg" style={{ border: '1px solid #ddd', color: '#111' }}>
-                                    CALL CUSTOMER CARE
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+  const services = [
+    {
+      icon: '⚡',
+      color: '#f59e0b',
+      titleKey: 'electrician' as TKey,
+      descKey: 'about-elec-desc' as TKey,
+      slugAr: 'كهربائي',
+      items: [
+        'area-svc-ac-title' as TKey,
+        'area-svc-power-title' as TKey,
+        'area-svc-lights-title' as TKey,
+        'area-svc-panel-title' as TKey,
+        'area-svc-wiring-title' as TKey,
+        'area-svc-fault-title' as TKey,
+      ],
+    },
+    {
+      icon: '💧',
+      color: '#3b82f6',
+      titleKey: 'plumber' as TKey,
+      descKey: 'about-plumb-desc' as TKey,
+      slugAr: 'سباك',
+      items: [
+        'plumb-svc-leak-title' as TKey,
+        'plumb-svc-drain-title' as TKey,
+        'plumb-svc-heater-title' as TKey,
+        'plumb-svc-faucet-title' as TKey,
+        'plumb-svc-filter-title' as TKey,
+        'plumb-svc-pipe-title' as TKey,
+      ],
+    },
+    {
+      icon: '🔒',
+      color: '#8b5cf6',
+      titleKey: 'intercom' as TKey,
+      descKey: 'about-intcom-desc' as TKey,
+      slugAr: 'انتركوم',
+      items: [
+        'intcom-svc-install-title' as TKey,
+        'intcom-svc-camera-title' as TKey,
+        'intcom-svc-doorbell-title' as TKey,
+        'intcom-svc-access-title' as TKey,
+        'intcom-svc-repair-title' as TKey,
+        'intcom-svc-upgrade-title' as TKey,
+      ],
+    },
+  ];
+
+  return (
+    <>
+      {/* Breadcrumbs */}
+      <nav className="container" style={{ paddingTop: '24px', marginBottom: '30px', fontSize: '0.9rem', color: 'var(--gray-500)' }}>
+        <Link href="/">{t('breadcrumb-home')}</Link> / <span style={{ color: 'var(--primary-blue)', fontWeight: 600 }}>{t('nav-services')}</span>
+      </nav>
+
+      {/* Hero */}
+      <section style={{ background: 'linear-gradient(135deg, #EBF8FF 0%, #FFFFFF 100%)', padding: '60px 0' }}>
+        <div className="container" style={{ maxWidth: '800px', textAlign: 'center' }}>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 900, color: 'var(--dark)', marginBottom: '16px' }}>
+            {t('our-services')}
+          </h1>
+          <p style={{ fontSize: '1.2rem', color: 'var(--gray-700)', lineHeight: 1.6 }}>
+            {language === 'ar'
+              ? 'كهرباء، سباكة، وأنظمة انتركوم — فريق واحد يحل جميع مشاكل منزلك في الرياض'
+              : 'Electrical, plumbing, and intercom systems — one team solves all your home problems in Riyadh'}
+          </p>
+
+          {/* Trust Badges */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px', marginTop: '24px' }}>
+            <div className="badge badge-success"><CheckCircle size={14} />{t('available-now')}</div>
+            <div className="badge badge-gold"><Shield size={14} />{t('30-day-warranty')}</div>
+            <div className="badge badge-success"><Clock size={14} />{t('arrives-in-hour')}</div>
+          </div>
+        </div>
+      </section>
+
+      {/* Service Cards */}
+      {services.map((svc, idx) => (
+        <section key={idx} className={idx % 2 === 1 ? 'section bg-light' : 'section'}>
+          <div className="container" style={{ maxWidth: '1000px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '24px' }}>
+              <div style={{ fontSize: '2.5rem' }}>{svc.icon}</div>
+              <h2 style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--dark)' }}>{t(svc.titleKey)}</h2>
+            </div>
+
+            <p style={{ fontSize: '1.1rem', color: 'var(--gray-600)', marginBottom: '28px', lineHeight: 1.7, maxWidth: '700px' }}>
+              {t(svc.descKey)}
+            </p>
+
+            {/* Service items */}
+            <div className="grid grid-cols-1 grid-cols-md-2 grid-cols-lg-3" style={{ gap: '16px', marginBottom: '28px' }}>
+              {svc.items.map((itemKey, i) => (
+                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '14px 18px', background: 'white', borderRadius: '10px', border: '1px solid var(--gray-300)' }}>
+                  <CheckCircle size={18} style={{ color: svc.color, flexShrink: 0 }} />
+                  <span style={{ fontWeight: 600, color: 'var(--dark)' }}>{t(itemKey)}</span>
                 </div>
-            </section>
+              ))}
+            </div>
 
-            {/* Trust Badges */}
-            <section style={{ background: '#f8fafc', padding: '30px 0', borderBottom: '1px solid var(--border)' }}>
-                <div className="container">
-                    <div className="grid grid-4" style={{ textAlign: 'center' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent: 'center' }}>
-                            <BadgeCheck size={24} color="var(--primary)" /> <span style={{ fontWeight: 600 }}>SASO Certified</span>
-                        </div>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent: 'center' }}>
-                            <Clock size={24} color="var(--primary)" /> <span style={{ fontWeight: 600 }}>24/7 Emergency</span>
-                        </div>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent: 'center' }}>
-                            <Shield size={24} color="var(--primary)" /> <span style={{ fontWeight: 600 }}>30-Day Warranty</span>
-                        </div>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent: 'center' }}>
-                            <MapPin size={24} color="var(--primary)" /> <span style={{ fontWeight: 600 }}>All Districts</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            {/* Area links for this service */}
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--gray-600)', marginBottom: '14px' }}>
+              {language === 'ar' ? `${t(svc.titleKey)} حسب المنطقة:` : `${t(svc.titleKey)} by Area:`}
+            </h3>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '24px' }}>
+              {areas.map((area) => (
+                <Link
+                  key={area.slug}
+                  href={`/${svc.slugAr}-${area.slug}/`}
+                  style={{
+                    padding: '8px 18px', background: 'white', border: '1px solid var(--gray-300)',
+                    borderRadius: '50px', fontWeight: 600, textDecoration: 'none', color: 'var(--dark)',
+                    fontSize: '0.9rem', transition: 'all 0.2s',
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = svc.color; e.currentTarget.style.color = svc.color; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--gray-300)'; e.currentTarget.style.color = 'var(--dark)'; }}
+                >
+                  {language === 'ar' ? area.ar : area.en}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      ))}
 
-            {/* Detailed Services list */}
-            <section className="section animate-fade-in">
-                <div className="container">
-                    <div style={{ display: 'grid', gap: '60px' }}>
-                        {SERVICES.map((service, index) => (
-                            <div key={index} className="grid grid-2" style={{ alignItems: 'center', gap: '40px' }}>
-                                <div style={{ direction: 'ltr' }}>
-                                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '10px 20px', background: service.bg, color: service.color, borderRadius: '12px', marginBottom: '25px', fontWeight: 800 }}>
-                                        {service.icon} {service.title.split(' ')[0].toUpperCase()}
-                                    </div>
-                                    <h2 style={{ fontSize: '2.5rem', marginBottom: '20px' }}>{service.title}</h2>
-                                    <p style={{ fontSize: '1.2rem', color: 'var(--muted)', marginBottom: '30px', lineHeight: 1.6 }}>
-                                        {service.description}
-                                    </p>
-                                    <ul style={{ display: 'grid', gap: '15px', marginBottom: '40px' }}>
-                                        {service.features.map((feature, i) => (
-                                            <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 600 }}>
-                                                <CheckCircle size={20} color="#22c55e" /> {feature}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <Link href={service.href} className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '15px 35px' }}>
-                                        VIEW {service.title.toUpperCase()} DETAILS <ArrowRight size={20} />
-                                    </Link>
-                                </div>
-                                <div style={{ background: 'var(--card)', padding: '40px 30px', borderRadius: '30px', border: '1px solid var(--border)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-                                    <div style={{ position: 'absolute', top: '-50px', right: '-50px', width: '200px', height: '200px', background: service.color, opacity: 0.05, borderRadius: '50%' }}></div>
-                                    <div style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '20px', color: service.color }}>EXPERT CHOICE</div>
-                                    <p style={{ fontSize: '1.1rem', fontStyle: 'italic', color: 'var(--muted)', marginBottom: '30px' }}>
-                                        "Our specialized teams use the latest diagnostics to ensure your {service.title.toLowerCase()} are safe, efficient, and long-lasting."
-                                    </p>
-                                    <div style={{ display: 'flex', justifyContent: 'center', gap: '5px', color: 'var(--accent)', marginBottom: '10px' }}>
-                                        {[...Array(5)].map((_, i) => <Star key={i} size={20} fill="currentColor" />)}
-                                    </div>
-                                    <div style={{ fontWeight: 800 }}>5.0 Rating Across KSA</div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+      {/* Coverage */}
+      <section style={{ padding: '32px 0', background: '#F0F9FF', borderTop: '2px solid #DBEAFE', borderBottom: '2px solid #DBEAFE' }}>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <MapPin size={28} style={{ color: 'var(--primary-blue)', marginBottom: '8px' }} />
+          <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '8px' }}>{t('about-coverage-title')}</h3>
+          <p style={{ color: 'var(--gray-600)' }}>{t('about-coverage-desc')}</p>
+        </div>
+      </section>
 
-            {/* CTA Section */}
-            <section className="section animate-fade-in" style={{ background: 'var(--secondary)', color: 'white', textAlign: 'center' }}>
-                <div className="container">
-                    <div style={{ maxWidth: '750px', margin: '0 auto' }}>
-                        <h2 style={{ fontSize: '2.5rem', marginBottom: '20px' }}>Don't Wait for a Maintenance Disaster</h2>
-                        <p style={{ fontSize: '1.2rem', opacity: 0.8, marginBottom: '40px' }}>
-                            Whether it's a flickering light, a hidden leak, or a security upgrade, get an instant quote and same-day support today.
-                        </p>
-                        <div className="hero-btn-group" style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-                            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-accent btn-lg" style={{ background: '#25D366', color: 'white' }}>
-                                <WhatsAppIcon size={24} /> MESSAGE US
-                            </a>
-                            <a href="tel:+966508901536" className="btn btn-lg" style={{ border: '2px solid white', color: 'white' }}>
-                                CALL HELP LINE
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-    );
+      {/* CTA */}
+      <section style={{ background: 'linear-gradient(135deg, var(--emergency-red) 0%, #DC2626 100%)', color: 'white', padding: '48px 0' }}>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <h2 style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '16px' }}>{t('emergency-question')}</h2>
+          <p style={{ fontSize: '1.25rem', marginBottom: '24px' }}>{t('dont-wait-technician-now')}</p>
+
+          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Button href="tel:0508901536" variant="secondary" size="large" icon={<Phone size={20} />} onClick={trackPhoneClick} style={{ background: 'white', color: 'var(--emergency-red)' }}>
+              {t('contact-call-btn')}
+            </Button>
+            <Button
+              href={`https://wa.me/966508901536?text=${encodeURIComponent(t('whatsapp-problem-message'))} ${t('riyadh')}`}
+              variant="whatsapp" size="large" external
+              icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>}
+            >
+              {t('area-send-whatsapp')}
+            </Button>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginTop: '24px', opacity: 0.9 }}>
+            <Clock size={20} />
+            <span>{t('area-emergency-available')}</span>
+          </div>
+        </div>
+      </section>
+    </>
+  );
 }
