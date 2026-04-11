@@ -1,7 +1,8 @@
 'use client';
 
-import { Phone, Camera } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import Button from '@/components/shared/Button';
+import WhatsAppSvg from '@/components/shared/WhatsAppSvg';
 import { useTranslation } from '@/hooks/useTranslation';
 import { trackPhoneClick, trackWhatsAppClick } from '@/lib/tracking';
 
@@ -22,7 +23,7 @@ export default function StickyMobileCTA() {
       <Button
         href={`https://wa.me/966508901536?text=${encodeURIComponent(t('whatsapp-photo-message'))}`}
         variant="whatsapp"
-        icon={<Camera size={16} />}
+        icon={<WhatsAppSvg size={16} />}
         onClick={() => trackWhatsAppClick('sticky-cta')}
         external
         fullWidth

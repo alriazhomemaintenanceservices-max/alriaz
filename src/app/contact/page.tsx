@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { Phone, MapPin, Clock, Camera, MessageCircle } from 'lucide-react';
+import { Phone, MapPin, Clock, MessageCircle } from 'lucide-react';
 import Button from '@/components/shared/Button';
+import WhatsAppSvg from '@/components/shared/WhatsAppSvg';
 import { useTranslation } from '@/hooks/useTranslation';
 
 export default function ContactPage() {
@@ -84,7 +85,7 @@ export default function ContactPage() {
                 <Button
                   href={`https://wa.me/966508901536?text=${encodeURIComponent(whatsappMsg)}`}
                   variant="whatsapp" size="large" external
-                  icon={<MessageCircle size={18} />}
+                  icon={<WhatsAppSvg size={18} />}
                   style={{ width: '100%', justifyContent: 'center' }}
                 >
                   {t('contact-whatsapp-btn')}
@@ -92,7 +93,7 @@ export default function ContactPage() {
                 <Button
                   href={`https://wa.me/966508901536?text=${encodeURIComponent(whatsappPhotoMsg)}`}
                   variant="primary" size="large" external
-                  icon={<Camera size={18} />}
+                  icon={<WhatsAppSvg size={18} />}
                   style={{ width: '100%', justifyContent: 'center', background: '#059669' }}
                 >
                   {t('contact-whatsapp-photo')}
