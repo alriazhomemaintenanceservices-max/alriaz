@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Phone, Menu, X, Home, Users, Mail, Wrench } from 'lucide-react';
 import Button from '@/components/shared/Button';
+import Logo from '@/components/shared/Logo';
 import LanguageToggle from '@/components/shared/LanguageToggle';
 import { useTranslation } from '@/hooks/useTranslation';
 import { trackPhoneClick } from '@/lib/tracking';
@@ -14,17 +15,14 @@ export default function Header() {
 
   return (
     <header style={{ position: 'sticky', top: 0, backgroundColor: 'var(--white)', borderBottom: '1px solid var(--gray-300)', zIndex: 20 }}>
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 16px' }}>
+      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 16px' }}>
 
-        {/* Logo + KSA badge */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Link href="/" style={{ fontSize: '1.1rem', fontWeight: 900, color: 'var(--primary-blue)', textDecoration: 'none', whiteSpace: 'nowrap' }}>
-            {t('saudi-home-experts')}
-          </Link>
-          <span className="badge badge-gold" style={{ fontSize: '0.65rem', padding: '2px 6px' }}>{t('saudi-badge')}</span>
-        </div>
+        {/* Logo */}
+        <Link href="/" style={{ textDecoration: 'none' }}>
+          <Logo size={38} />
+        </Link>
 
-        {/* Desktop Nav - ONLY on desktop */}
+        {/* Desktop Nav */}
         <nav className="mobile-hidden" style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
           <Link href="/" style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--gray-600)', textDecoration: 'none' }}>{t('breadcrumb-home')}</Link>
           <Link href="/services/" style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--gray-600)', textDecoration: 'none' }}>{t('nav-services')}</Link>
@@ -33,22 +31,20 @@ export default function Header() {
         </nav>
 
         {/* Right side */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <LanguageToggle />
 
-          {/* Call button - desktop only */}
           <Button href="tel:0508901536" variant="emergency" size="small" icon={<Phone size={16} />} onClick={() => trackPhoneClick('header')} className="mobile-hidden">
             {t('call-now')}
           </Button>
 
-          {/* Hamburger - mobile only */}
           <button
             className="desktop-hidden"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Menu"
-            style={{ background: 'none', border: '1px solid var(--gray-300)', borderRadius: '8px', padding: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--dark)' }}
+            style={{ background: 'none', border: '1px solid var(--gray-300)', borderRadius: '8px', padding: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--dark)' }}
           >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
