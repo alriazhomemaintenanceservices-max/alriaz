@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Phone, Menu, X, Home, Users, Mail } from 'lucide-react';
+import { Phone, Menu, X, Home, Users, Mail, Wrench } from 'lucide-react';
 import Button from '@/components/shared/Button';
 import LanguageToggle from '@/components/shared/LanguageToggle';
 import { useTranslation } from '@/hooks/useTranslation';
@@ -27,6 +27,7 @@ export default function Header() {
         {/* Desktop Nav - ONLY on desktop */}
         <nav className="mobile-hidden" style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
           <Link href="/" style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--gray-600)', textDecoration: 'none' }}>{t('breadcrumb-home')}</Link>
+          <Link href="/services/" style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--gray-600)', textDecoration: 'none' }}>{t('nav-services')}</Link>
           <Link href="/about-us/" style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--gray-600)', textDecoration: 'none' }}>{t('nav-about')}</Link>
           <Link href="/contact/" style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--gray-600)', textDecoration: 'none' }}>{t('nav-contact')}</Link>
         </nav>
@@ -58,6 +59,7 @@ export default function Header() {
           <nav style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
             {[
               { href: '/', icon: <Home size={18} />, label: t('breadcrumb-home') },
+              { href: '/services/', icon: <Wrench size={18} />, label: t('nav-services') },
               { href: '/about-us/', icon: <Users size={18} />, label: t('nav-about') },
               { href: '/contact/', icon: <Mail size={18} />, label: t('nav-contact') },
             ].map((item) => (
