@@ -26,35 +26,35 @@ export default function Footer() {
             </h4>
             <ul style={{ listStyle: 'none', padding: 0, color: '#9CA3AF' }}>
               <li style={{ marginBottom: '8px' }}>
-                <Link 
-                  href="/كهربائي-الرياض" 
+                <Link
+                  href="/services/electrician/"
                   style={{ color: 'inherit', textDecoration: 'none' }}
                 >
                   {t('electrician-riyadh')}
                 </Link>
               </li>
               <li style={{ marginBottom: '8px' }}>
-                <Link 
-                  href="/سباك-الرياض" 
+                <Link
+                  href="/services/plumber/"
                   style={{ color: 'inherit', textDecoration: 'none' }}
                 >
                   {t('plumber-riyadh')}
                 </Link>
               </li>
               <li style={{ marginBottom: '8px' }}>
-                <Link 
-                  href="/طوارئ-24-ساعة" 
+                <Link
+                  href="/services/"
                   style={{ color: 'inherit', textDecoration: 'none' }}
                 >
                   {t('emergency-service-24')}
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/اسعار-كهربائي-الرياض" 
+                <Link
+                  href="/contact/"
                   style={{ color: 'inherit', textDecoration: 'none' }}
                 >
-                  {t('pricing')}
+                  {t('contact-us')}
                 </Link>
               </li>
             </ul>
