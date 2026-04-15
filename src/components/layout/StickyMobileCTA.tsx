@@ -12,7 +12,7 @@ export default function StickyMobileCTA() {
   return (
     <div className="sticky-cta">
       <Button
-        href="tel:0508901536"
+        href="tel:+966508901536"
         variant="emergency"
         icon={<Phone size={16} />}
         onClick={() => trackPhoneClick('sticky-cta')}

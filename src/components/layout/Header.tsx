@@ -34,7 +34,7 @@ export default function Header() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <LanguageToggle />
 
-          <Button href="tel:0508901536" variant="emergency" size="small" icon={<Phone size={16} />} onClick={() => trackPhoneClick('header')} className="mobile-hidden">
+          <Button href="tel:+966508901536" variant="emergency" size="small" icon={<Phone size={16} />} onClick={() => trackPhoneClick('header')} className="mobile-hidden">
             {t('call-now')}
           </Button>
 
@@ -67,7 +67,7 @@ export default function Header() {
             ))}
           </nav>
           <div style={{ marginTop: '8px', paddingTop: '8px', borderTop: '1px solid var(--gray-200)' }}>
-            <Button href="tel:0508901536" variant="emergency" size="large" icon={<Phone size={18} />} onClick={() => { trackPhoneClick('header-menu'); setMenuOpen(false); }} fullWidth>
+            <Button href="tel:+966508901536" variant="emergency" size="large" icon={<Phone size={18} />} onClick={() => { trackPhoneClick('header-menu'); setMenuOpen(false); }} fullWidth>
               {t('contact-call-btn')}
             </Button>
           </div>

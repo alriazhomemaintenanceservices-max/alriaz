@@ -175,7 +175,7 @@ export default function AboutUsPage() {
           <p style={{ fontSize: '1.25rem', marginBottom: '28px', opacity: 0.9 }}>{t('about-cta-desc')}</p>
 
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Button href="tel:0508901536" variant="secondary" size="large" icon={<Phone size={20} />} onClick={trackPhoneClick} style={{ background: 'white', color: 'var(--primary-blue)' }}>
+            <Button href="tel:+966508901536" variant="secondary" size="large" icon={<Phone size={20} />} onClick={trackPhoneClick} style={{ background: 'white', color: 'var(--primary-blue)' }}>
               {t('area-call-now')}
             </Button>
             <Button

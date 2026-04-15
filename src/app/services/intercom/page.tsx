@@ -60,7 +60,7 @@ export default function IntercomPage() {
             <div className="badge badge-success"><Clock size={14} />{t('arrives-in-hour')}</div>
           </div>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Button href="tel:0508901536" variant="emergency" size="large" icon={<Phone size={20} />} onClick={() => trackPhoneClick('intercom-page')}>
+            <Button href="tel:+966508901536" variant="emergency" size="large" icon={<Phone size={20} />} onClick={() => trackPhoneClick('intercom-page')}>
               {t('area-call-now')}
             </Button>
             <Button href={`https://wa.me/966508901536?text=${encodeURIComponent(language === 'ar' ? 'مرحباً، أحتاج تركيب انتركوم في الرياض' : 'Hello, I need intercom installation in Riyadh')}`} variant="whatsapp" size="large" external icon={<WhatsAppSvg size={20} />} onClick={() => trackWhatsAppClick('intercom-page')}>
@@ -110,7 +110,7 @@ export default function IntercomPage() {
         <div className="container" style={{ textAlign: 'center' }}>
           <h2 style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '16px' }}>{t('intcom-emergency-title', { area: t('riyadh') })}</h2>
           <p style={{ fontSize: '1.25rem', marginBottom: '24px' }}>{t('intcom-emergency-desc')}</p>
-          <Button href="tel:0508901536" variant="secondary" size="large" icon={<Phone size={20} />} onClick={() => trackPhoneClick('intercom-emergency')} style={{ background: 'white', color: 'var(--emergency-red)' }}>
+          <Button href="tel:+966508901536" variant="secondary" size="large" icon={<Phone size={20} />} onClick={() => trackPhoneClick('intercom-emergency')} style={{ background: 'white', color: 'var(--emergency-red)' }}>
             {t('area-emergency-call')}
           </Button>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginTop: '24px', opacity: 0.9 }}>

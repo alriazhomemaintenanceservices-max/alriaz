@@ -68,7 +68,7 @@ export default function Footer() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
                 <Phone size={16} />
                 <a 
-                  href="tel:0508901536" 
+                  href="tel:+966508901536" 
                   style={{ color: 'inherit', textDecoration: 'none' }}
                 >
                   <span dir="ltr">050 890 1536</span>

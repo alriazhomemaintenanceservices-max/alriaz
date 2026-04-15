@@ -194,7 +194,7 @@ export default function ElectricianAreaPage({ area, service }: Props) {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', justifyContent: 'center', marginBottom: '32px' }}>
             <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Button href="tel:0508901536" variant="emergency" size="large" icon={<Phone size={20} />} onClick={() => trackPhone(`${service.type}-${area.slug}`)}>
+              <Button href="tel:+966508901536" variant="emergency" size="large" icon={<Phone size={20} />} onClick={() => trackPhone(`${service.type}-${area.slug}`)}>
                 {t('area-call-now')}
               </Button>
               <Button href={whatsappUrl} variant="whatsapp" size="large" external onClick={() => trackWhatsAppClick(`${service.type}-${area.slug}`)} icon={<WhatsAppSvg size={20} />}>
@@ -306,7 +306,7 @@ export default function ElectricianAreaPage({ area, service }: Props) {
         <div className="container" style={{ textAlign: 'center' }}>
           <h2 style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '16px' }}>{t(config.emergencyTitleKey, vars)}</h2>
           <p style={{ fontSize: '1.25rem', marginBottom: '24px' }}>{t(config.emergencyDescKey)}</p>
-          <Button href="tel:0508901536" variant="secondary" size="large" icon={<Phone size={20} />} onClick={() => trackPhone(`${service.type}-${area.slug}`)} style={{ background: 'white', color: 'var(--emergency-red)' }}>
+          <Button href="tel:+966508901536" variant="secondary" size="large" icon={<Phone size={20} />} onClick={() => trackPhone(`${service.type}-${area.slug}`)} style={{ background: 'white', color: 'var(--emergency-red)' }}>
             {t('area-emergency-call')}
           </Button>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginTop: '24px', opacity: 0.9 }}>

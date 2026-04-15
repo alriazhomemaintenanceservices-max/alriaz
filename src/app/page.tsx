@@ -99,7 +99,7 @@ export default function HomePage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', justifyContent: 'center', marginBottom: '32px' }}>
             <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <Button
-                href="tel:0508901536"
+                href="tel:+966508901536"
                 variant="emergency"
                 size="large"
                 icon={<Phone size={20} />}
@@ -171,7 +171,7 @@ export default function HomePage() {
                 ✅ {t('can-fix-in-hour')}
               </p>
               <Button
-                href="tel:0508901536"
+                href="tel:+966508901536"
                 variant="emergency"
                 icon={<Phone size={18} />}
                 onClick={trackPhoneClick}
@@ -456,7 +456,7 @@ export default function HomePage() {
           <div style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '24px' }}>{t('dont-wait-technician-now')}</div>
           
           <Button
-            href="tel:0508901536"
+            href="tel:+966508901536"
             variant="secondary"
             size="large"
             icon={<Phone size={20} />}
