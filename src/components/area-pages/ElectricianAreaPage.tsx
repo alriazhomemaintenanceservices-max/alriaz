@@ -8,6 +8,7 @@ import WhatsAppSvg from '@/components/shared/WhatsAppSvg';
 import { useTranslation } from '@/hooks/useTranslation';
 import { translations } from '@/lib/translations';
 import { trackPhoneClick as trackPhone, trackWhatsAppClick, trackServicePageView } from '@/lib/tracking';
+import CallbackForm from '@/components/shared/CallbackForm';
 import '../../styles/globals.css';
 
 interface Area {
@@ -298,6 +299,13 @@ export default function ElectricianAreaPage({ area, service }: Props) {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Callback Form */}
+      <section className="section">
+        <div className="container" style={{ maxWidth: '550px' }}>
+          <CallbackForm preselectedArea={area.english} preselectedProblem={service.type === 'plumber' ? 'Water Leak' : service.type === 'intercom' ? 'Intercom Install' : 'Power Cuts'} variant="compact" />
         </div>
       </section>
 

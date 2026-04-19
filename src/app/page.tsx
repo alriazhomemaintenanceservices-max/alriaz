@@ -8,6 +8,7 @@ import { useTranslation } from '@/hooks/useTranslation';
 import { translations } from '@/lib/translations';
 import { Phone, Clock, Shield, Users, CheckCircle, Star, Zap } from 'lucide-react';
 import WhatsAppSvg from '@/components/shared/WhatsAppSvg';
+import CallbackForm from '@/components/shared/CallbackForm';
 
 // Area detection handled inside component for language support
 
@@ -180,6 +181,13 @@ export default function HomePage() {
               </Button>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Callback Form */}
+      <section className="section">
+        <div className="container" style={{ maxWidth: '550px' }}>
+          <CallbackForm />
         </div>
       </section>
 

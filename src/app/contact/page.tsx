@@ -5,6 +5,7 @@ import { Phone, MapPin, Clock, MessageCircle } from 'lucide-react';
 import Button from '@/components/shared/Button';
 import WhatsAppSvg from '@/components/shared/WhatsAppSvg';
 import { useTranslation } from '@/hooks/useTranslation';
+import CallbackForm from '@/components/shared/CallbackForm';
 
 export default function ContactPage() {
   const { t, language } = useTranslation();
@@ -105,6 +106,13 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Callback Form */}
+      <section className="section">
+        <div className="container" style={{ maxWidth: '550px' }}>
+          <CallbackForm />
         </div>
       </section>
 

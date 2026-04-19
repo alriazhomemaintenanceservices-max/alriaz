@@ -6,6 +6,7 @@ import WhatsAppSvg from '@/components/shared/WhatsAppSvg';
 import Button from '@/components/shared/Button';
 import { useTranslation } from '@/hooks/useTranslation';
 import { translations } from '@/lib/translations';
+import CallbackForm from '@/components/shared/CallbackForm';
 
 type TKey = keyof typeof translations.ar;
 
@@ -168,6 +169,13 @@ export default function ServicesPage() {
           <MapPin size={28} style={{ color: 'var(--primary-blue)', marginBottom: '8px' }} />
           <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '8px' }}>{t('about-coverage-title')}</h3>
           <p style={{ color: 'var(--gray-600)' }}>{t('about-coverage-desc')}</p>
+        </div>
+      </section>
+
+      {/* Callback Form */}
+      <section className="section">
+        <div className="container" style={{ maxWidth: '550px' }}>
+          <CallbackForm />
         </div>
       </section>
 
