@@ -1,85 +1,56 @@
 import { MetadataRoute } from 'next'
 
+// Single source of truth for sitemap. Every URL listed here corresponds to a
+// directory that exists under src/app/. If you add or remove a page, update here.
+//
+// Convention: trailingSlash is true in next.config.ts, so all URLs end with '/'.
+
+const BASE_URL = 'https://saudihomeexperts.com'
+
+// Areas — must match the area lists in src/app/page.tsx and src/app/services/*.
+const AREA_SLUGS = [
+    'narjis', 'yasmin', 'qurtubah', 'granada', 'falah', 'nada', 'rabee',
+    'ishbiliyah', 'hittin', 'malqa', 'aqiq', 'qirawan', 'arid', 'sadis',
+] as const
+
+// Service prefixes — Arabic, matching real route directory names.
+const SERVICE_PREFIXES_AR = ['سباك', 'كهربائي', 'انتركوم'] as const
+
+const STATIC_PAGES: { path: string; priority: number }[] = [
+    { path: '/', priority: 1.0 },
+    { path: '/services/', priority: 0.9 },
+    { path: '/services/electrician/', priority: 0.9 },
+    { path: '/services/plumber/', priority: 0.9 },
+    { path: '/services/intercom/', priority: 0.9 },
+    { path: '/about-us/', priority: 0.8 },
+    { path: '/contact/', priority: 0.8 },
+    { path: '/site-map/', priority: 0.5 },
+    { path: '/privacy-policy/', priority: 0.4 },
+    { path: '/terms-of-service/', priority: 0.4 },
+    { path: '/cookie-policy/', priority: 0.4 },
+    { path: '/disclaimer/', priority: 0.4 },
+]
+
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://saudihomeexperts.com'
-
-    const services = [
-        { slug: 'plumber' },
-        { slug: 'electrician' },
-        { slug: 'intercom-installation' }
-    ]
-
-    const cities = [
-        'riyadh', 'al-falah', 'al-yarmouk', 'al-yasmin', 'granada', 'al-narjis', 'qurtubah',
-        'al-sahafah', 'al-nada', 'ishbiliyah', 'al-rabee',
-        'jeddah', 'dammam', 'khobar', 'mecca', 'medina', 'taif', 'tabuk', 'abha', 'jubail',
-        'hail', 'buraidah', 'najran', 'yanbu', 'jizan', 'hofuf', 'dhahran', 'alkharj', 'rabigh', 'sakaka'
-    ]
-
-    const enStaticPages = [
-        { path: '/', priority: 1.0 },
-        { path: '/services/', priority: 0.9 },
-        { path: '/services/electrician/', priority: 0.9 },
-        { path: '/services/plumber/', priority: 0.9 },
-        { path: '/services/intercom/', priority: 0.9 },
-        { path: '/about-us/', priority: 0.8 },
-        { path: '/contact/', priority: 0.8 },
-        { path: '/site-map/', priority: 0.5 },
-        { path: '/privacy-policy/', priority: 0.4 },
-        { path: '/terms-of-service/', priority: 0.4 },
-    ]
-
-    const arStaticPages = [
-        { path: '/ar', priority: 1.0 },
-        { path: '/ar/services', priority: 0.9 },
-        { path: '/ar/services/intercom', priority: 0.9 },
-        { path: '/ar/about-us', priority: 0.8 },
-        { path: '/ar/contact', priority: 0.8 },
-        { path: '/ar/site-map', priority: 0.5 },
-    ]
-
     const now = new Date()
 
-    const entries: MetadataRoute.Sitemap = [
-        // English static pages
-        ...enStaticPages.map(p => ({
-            url: `${baseUrl}${p.path}`,
-            lastModified: now,
-            changeFrequency: 'monthly' as const,
-            priority: p.priority,
-        })),
-        // Arabic static pages
-        ...arStaticPages.map(p => ({
-            url: `${baseUrl}${p.path}`,
-            lastModified: now,
-            changeFrequency: 'monthly' as const,
-            priority: p.priority,
-        })),
-    ]
+    const entries: MetadataRoute.Sitemap = STATIC_PAGES.map(p => ({
+        url: `${BASE_URL}${p.path}`,
+        lastModified: now,
+        changeFrequency: 'monthly' as const,
+        priority: p.priority,
+    }))
 
-    // English city-service pages
-    cities.forEach(city => {
-        services.forEach(service => {
+    for (const service of SERVICE_PREFIXES_AR) {
+        for (const slug of AREA_SLUGS) {
             entries.push({
-                url: `${baseUrl}/${service.slug}-${city}/`,
+                url: `${BASE_URL}/${service}-${slug}/`,
                 lastModified: now,
                 changeFrequency: 'weekly' as const,
                 priority: 0.8,
             })
-        })
-    })
-
-    // Arabic city-service pages
-    cities.forEach(city => {
-        services.forEach(service => {
-            entries.push({
-                url: `${baseUrl}/ar/${service.slug}-${city}`,
-                lastModified: now,
-                changeFrequency: 'weekly' as const,
-                priority: 0.8,
-            })
-        })
-    })
+        }
+    }
 
     return entries
 }
