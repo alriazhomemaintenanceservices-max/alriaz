@@ -57,6 +57,7 @@ export default function HomePage() {
     { ar: 'العقيق', en: 'Al Aqiq', slug: 'aqiq' },
     { ar: 'القيروان', en: 'Al Qirawan', slug: 'qirawan' },
     { ar: 'العارض', en: 'Al Arid', slug: 'arid' },
+    { ar: 'الحي السادس', en: 'Al-Hay Al-Sadis', slug: 'sadis' },
   ];
 
   const trackPhoneClick = () => {
