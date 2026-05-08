@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import { Inter, Cairo } from 'next/font/google';
 import Script from 'next/script';
 import "./globals.css";
@@ -19,6 +18,67 @@ const cairo = Cairo({
   variable: '--font-cairo',
   display: 'swap',
 });
+
+// Global Organization + LocalBusiness + WebSite JSON-LD. Appears on every page
+// so AI answer engines (ChatGPT, Perplexity, Google AI Overviews) and crawlers
+// can extract phone, location, and entity identity from any URL on the site.
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://saudihomeexperts.com/#organization",
+      "name": "خبراء المنزل السعودي",
+      "alternateName": "Saudi Home Experts",
+      "url": "https://saudihomeexperts.com/",
+      "logo": "https://saudihomeexperts.com/icon.png",
+      "telephone": "+966508901536",
+      "email": "info@saudihomeexperts.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Riyadh",
+        "addressRegion": "Riyadh",
+        "addressCountry": "SA"
+      },
+      "areaServed": { "@type": "City", "name": "Riyadh" },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+966508901536",
+        "contactType": "customer service",
+        "areaServed": "SA",
+        "availableLanguage": ["Arabic", "English"]
+      }
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://saudihomeexperts.com/#localbusiness",
+      "name": "خبراء المنزل السعودي",
+      "alternateName": "Saudi Home Experts",
+      "url": "https://saudihomeexperts.com/",
+      "image": "https://saudihomeexperts.com/icon.png",
+      "telephone": "+966508901536",
+      "priceRange": "$$",
+      "openingHours": "Mo-Su 00:00-23:59",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Riyadh",
+        "addressRegion": "Riyadh",
+        "addressCountry": "SA"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": "24.7136", "longitude": "46.6753" },
+      "areaServed": { "@type": "City", "name": "Riyadh" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "127" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://saudihomeexperts.com/#website",
+      "url": "https://saudihomeexperts.com/",
+      "name": "خبراء المنزل السعودي",
+      "publisher": { "@id": "https://saudihomeexperts.com/#organization" },
+      "inLanguage": "ar-SA"
+    }
+  ]
+};
 
 export default function RootLayout({
   children,
@@ -42,6 +102,8 @@ export default function RootLayout({
         <meta name="google" content="notranslate" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        {/* JSON-LD: organization, local business, website. Static literal, no user input. */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       </head>
       <body style={{ margin: 0, padding: 0 }}>
         <LanguageProvider>

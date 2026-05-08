@@ -135,36 +135,65 @@ export default function ElectricianAreaPage({ area, service }: Props) {
 
   const whatsappUrl = `https://wa.me/966508901536?text=${encodeURIComponent(t('area-whatsapp-msg', vars))}`;
 
+  const pageUrl = `https://saudihomeexperts.com/${config.slugPrefix.ar}-${area.slug}/`;
+
+  // All page-scoped JSON-LD bundled in @graph — emitted as one inline script.
+  // - LocalBusiness: who we are at this URL, with phone, geo, service area, ratings.
+  // - FAQPage: mirrors the FAQs rendered below — strong AEO/LLM citation signal.
+  // - BreadcrumbList: mirrors the visible breadcrumb at the top of the page.
   const schemaData = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": t('area-schema-name', vars),
-    "description": t('area-schema-desc', vars),
-    "url": `https://saudihomeexperts.com/${config.slugPrefix.ar}-${area.slug}`,
-    "telephone": "+966508901536",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": areaName,
-      "addressLocality": t('riyadh'),
-      "addressRegion": t('riyadh'),
-      "addressCountry": "SA"
-    },
-    "geo": { "@type": "GeoCoordinates", "latitude": "24.7136", "longitude": "46.6753" },
-    "openingHours": "Mo-Su 00:00-23:59",
-    "priceRange": "$$",
-    "serviceArea": {
-      "@type": "GeoCircle",
-      "geoMidpoint": { "@type": "GeoCoordinates", "latitude": "24.7136", "longitude": "46.6753" },
-      "geoRadius": "50000"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": t('area-schema-catalog', vars),
-      "itemListElement": [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": `${serviceName} ${areaName}`, "description": t('area-schema-service-desc') } }
-      ]
-    },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "127" }
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "name": t('area-schema-name', vars),
+        "description": t('area-schema-desc', vars),
+        "url": pageUrl,
+        "telephone": "+966508901536",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": areaName,
+          "addressLocality": t('riyadh'),
+          "addressRegion": t('riyadh'),
+          "addressCountry": "SA"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": "24.7136", "longitude": "46.6753" },
+        "openingHours": "Mo-Su 00:00-23:59",
+        "priceRange": "$$",
+        "serviceArea": {
+          "@type": "GeoCircle",
+          "geoMidpoint": { "@type": "GeoCoordinates", "latitude": "24.7136", "longitude": "46.6753" },
+          "geoRadius": "50000"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": t('area-schema-catalog', vars),
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": `${serviceName} ${areaName}`, "description": t('area-schema-service-desc') } }
+          ]
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "127" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": config.faqs.map((faq) => ({
+          "@type": "Question",
+          "name": t(faq.qKey, vars),
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": t(faq.aKey, vars),
+          },
+        })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": t('breadcrumb-home'), "item": "https://saudihomeexperts.com/" },
+          { "@type": "ListItem", "position": 2, "name": t('breadcrumb-services'), "item": "https://saudihomeexperts.com/services/" },
+          { "@type": "ListItem", "position": 3, "name": `${serviceName} ${areaName}`, "item": pageUrl },
+        ],
+      },
+    ],
   };
 
   return (
@@ -324,7 +353,7 @@ export default function ElectricianAreaPage({ area, service }: Props) {
         </div>
       </section>
 
-      {/* JSON-LD Schema - safe: only uses our own translation strings, no user input */}
+      {/* JSON-LD: LocalBusiness + FAQPage + BreadcrumbList in one @graph. Static, safe. */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
     </>
   );

@@ -16,10 +16,6 @@ export const metadata: Metadata = {
     siteName: 'خبراء المنزل السعودي'
   },
   alternates: {
-    canonical: 'https://saudihomeexperts.com/',
-    languages: {
-      'ar-SA': 'https://saudihomeexperts.com/',
-      'en-US': 'https://saudihomeexperts.com/en'
-    }
+    canonical: 'https://saudihomeexperts.com/'
   }
 };

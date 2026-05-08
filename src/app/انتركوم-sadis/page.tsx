@@ -8,11 +8,7 @@ export const metadata: Metadata = {
   title: `${service.arabic} ${area.name} الرياض | خدمة 24 ساعة | السعودية 2026`,
   description: `أفضل ${service.arabic} في ${area.name} الرياض. خدمة سريعة خلال ساعة، فريق باكستاني-سعودي محترف. اتصل الآن 050 890 1536`,
   alternates: {
-    canonical: `https://saudihomeexperts.com/انتركوم-${area.slug}`,
-    languages: {
-      'ar-SA': `https://saudihomeexperts.com/انتركوم-${area.slug}`,
-      'en': `https://saudihomeexperts.com/intercom-${area.slug}`
-    }
+    canonical: `https://saudihomeexperts.com/انتركوم-${area.slug}`
   },
   openGraph: {
     title: `${service.arabic} ${area.name} | خدمة احترافية 24/7`,
