@@ -22,6 +22,13 @@ const areas = [
   { ar: 'الوادي', en: 'Al Wadi', slug: 'wadi' },
   { ar: 'النفل', en: 'Al Nafal', slug: 'nafal' },
   { ar: 'النرجس', en: 'Al Narjis', slug: 'narjis' },
+  { ar: 'قرطبة', en: 'Qurtubah', slug: 'qurtubah' },
+  { ar: 'غرناطة', en: 'Granada', slug: 'granada' },
+  { ar: 'الفلاح', en: 'Al Falah', slug: 'falah' },
+  { ar: 'اشبيلية', en: 'Ishbiliyah', slug: 'ishbiliyah' },
+  { ar: 'حطين', en: 'Hittin', slug: 'hittin' },
+  { ar: 'العقيق', en: 'Al Aqiq', slug: 'aqiq' },
+  { ar: 'الحي السادس', en: 'Al-Hay Al-Sadis', slug: 'sadis' },
 ];
 
 const services: { icon: string; titleKey: TKey; descKey: TKey }[] = [
