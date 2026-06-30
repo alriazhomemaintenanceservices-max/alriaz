@@ -24,20 +24,17 @@ export default function ServicesPage() {
   };
 
   const areas = [
-    { ar: 'النرجس', en: 'Al Narjis', slug: 'narjis' },
     { ar: 'الياسمين', en: 'Al Yasmin', slug: 'yasmin' },
-    { ar: 'قرطبة', en: 'Qurtubah', slug: 'qurtubah' },
-    { ar: 'غرناطة', en: 'Granada', slug: 'granada' },
-    { ar: 'الفلاح', en: 'Al Falah', slug: 'falah' },
-    { ar: 'الندى', en: 'Al Nada', slug: 'nada' },
-    { ar: 'الربيع', en: 'Al Rabee', slug: 'rabee' },
-    { ar: 'اشبيلية', en: 'Ishbiliyah', slug: 'ishbiliyah' },
-    { ar: 'حطين', en: 'Hittin', slug: 'hittin' },
-    { ar: 'الملقا', en: 'Al Malqa', slug: 'malqa' },
-    { ar: 'العقيق', en: 'Al Aqiq', slug: 'aqiq' },
-    { ar: 'القيروان', en: 'Al Qirawan', slug: 'qirawan' },
     { ar: 'العارض', en: 'Al Arid', slug: 'arid' },
-    { ar: 'الحي السادس', en: 'Al-Hay Al-Sadis', slug: 'sadis' },
+    { ar: 'القيروان', en: 'Al Qirawan', slug: 'qirawan' },
+    { ar: 'بنبان', en: 'Banban', slug: 'banban' },
+    { ar: 'الربيع', en: 'Al Rabee', slug: 'rabee' },
+    { ar: 'الصحافة', en: 'Al Sahafa', slug: 'sahafa' },
+    { ar: 'الملقا', en: 'Al Malqa', slug: 'malqa' },
+    { ar: 'الندى', en: 'Al Nada', slug: 'nada' },
+    { ar: 'الوادي', en: 'Al Wadi', slug: 'wadi' },
+    { ar: 'النفل', en: 'Al Nafal', slug: 'nafal' },
+    { ar: 'النرجس', en: 'Al Narjis', slug: 'narjis' },
   ];
 
   const services = [

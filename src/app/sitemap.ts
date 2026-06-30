@@ -7,10 +7,16 @@ import { MetadataRoute } from 'next'
 
 const BASE_URL = 'https://saudihomeexperts.com'
 
-// Areas — must match the area lists in src/app/page.tsx and src/app/services/*.
+// Areas — every slug below has real route directories under src/app/.
+// The first block is the currently-promoted set (homepage + services grids).
+// The second block holds older areas no longer shown in the UI but kept live
+// and indexed (already crawled by Google — must not 404 / be de-listed).
 const AREA_SLUGS = [
-    'narjis', 'yasmin', 'qurtubah', 'granada', 'falah', 'nada', 'rabee',
-    'ishbiliyah', 'hittin', 'malqa', 'aqiq', 'qirawan', 'arid', 'sadis',
+    // Promoted on homepage + services pages
+    'yasmin', 'arid', 'qirawan', 'banban', 'rabee', 'sahafa',
+    'malqa', 'nada', 'wadi', 'nafal', 'narjis',
+    // Retained for SEO (not shown in UI, reachable via direct URL/backlinks)
+    'qurtubah', 'granada', 'falah', 'ishbiliyah', 'hittin', 'aqiq', 'sadis',
 ] as const
 
 // Service prefixes — Arabic, matching real route directory names.

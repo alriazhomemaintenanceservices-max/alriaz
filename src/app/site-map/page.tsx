@@ -18,20 +18,26 @@ const services = [
     { type: 'intercom', name: 'Intercom', slugAr: 'انتركوم' },
 ];
 
+// Lists every live area page. The first block is the currently-promoted set;
+// the second holds older areas kept live for SEO (reachable via direct URL).
 const areas = [
-    { name: 'Al Narjis', slug: 'narjis' },
     { name: 'Al Yasmin', slug: 'yasmin' },
+    { name: 'Al Arid', slug: 'arid' },
+    { name: 'Al Qirawan', slug: 'qirawan' },
+    { name: 'Banban', slug: 'banban' },
+    { name: 'Al Rabee', slug: 'rabee' },
+    { name: 'Al Sahafa', slug: 'sahafa' },
+    { name: 'Al Malqa', slug: 'malqa' },
+    { name: 'Al Nada', slug: 'nada' },
+    { name: 'Al Wadi', slug: 'wadi' },
+    { name: 'Al Nafal', slug: 'nafal' },
+    { name: 'Al Narjis', slug: 'narjis' },
     { name: 'Qurtubah', slug: 'qurtubah' },
     { name: 'Granada', slug: 'granada' },
     { name: 'Al Falah', slug: 'falah' },
-    { name: 'Al Nada', slug: 'nada' },
-    { name: 'Al Rabee', slug: 'rabee' },
     { name: 'Ishbiliyah', slug: 'ishbiliyah' },
     { name: 'Hittin', slug: 'hittin' },
-    { name: 'Al Malqa', slug: 'malqa' },
     { name: 'Al Aqiq', slug: 'aqiq' },
-    { name: 'Al Qirawan', slug: 'qirawan' },
-    { name: 'Al Arid', slug: 'arid' },
     { name: 'Al-Hay Al-Sadis', slug: 'sadis' },
 ];
 
