@@ -32,7 +32,6 @@ const areas = [
 ];
 
 const services: { icon: string; titleKey: TKey; descKey: TKey }[] = [
-  { icon: '❄️', titleKey: 'area-svc-ac-title', descKey: 'area-svc-ac-desc' },
   { icon: '⚡', titleKey: 'area-svc-power-title', descKey: 'area-svc-power-desc' },
   { icon: '💡', titleKey: 'area-svc-lights-title', descKey: 'area-svc-lights-desc' },
   { icon: '🔧', titleKey: 'area-svc-panel-title', descKey: 'area-svc-panel-desc' },

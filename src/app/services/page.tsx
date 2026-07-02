@@ -52,7 +52,6 @@ export default function ServicesPage() {
       descKey: 'about-elec-desc' as TKey,
       slugAr: 'كهربائي',
       items: [
-        'area-svc-ac-title' as TKey,
         'area-svc-power-title' as TKey,
         'area-svc-lights-title' as TKey,
         'area-svc-panel-title' as TKey,

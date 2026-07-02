@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saudi Home Experts — SEO & Technical Audit</title>
+<style>
+  :root{
+    --blue:#3B82F6; --green:#006C35; --gold:#F59E0B; --red:#EF4444;
+    --dark:#111827; --gray:#6B7280; --line:#E5E7EB; --bg:#F9FAFB;
+    --crit:#EF4444; --high:#F59E0B; --med:#3B82F6; --low:#6B7280; --ok:#10B981;
+  }
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;
+    color:var(--dark); background:var(--bg); margin:0; line-height:1.6;}
+  .wrap{max-width:960px; margin:0 auto; padding:40px 24px;}
+  header.top{background:linear-gradient(135deg,#0f2027,#1e3a2f 60%,#2d4a2f); color:#fff;
+    border-radius:16px; padding:36px 32px; margin-bottom:32px;}
+  header.top h1{margin:0 0 6px; font-size:1.9rem;}
+  header.top p{margin:0; opacity:.85;}
+  .scoregrid{display:flex; flex-wrap:wrap; gap:16px; margin:24px 0 40px;}
+  .score{flex:1; min-width:150px; background:#fff; border:1px solid var(--line);
+    border-radius:12px; padding:18px; text-align:center;}
+  .score .n{font-size:2rem; font-weight:800;}
+  .score .l{font-size:.8rem; color:var(--gray); text-transform:uppercase; letter-spacing:.5px;}
+  h2{margin:40px 0 14px; font-size:1.35rem; border-bottom:3px solid var(--gold);
+    display:inline-block; padding-bottom:4px;}
+  h3{margin:28px 0 8px; font-size:1.05rem;}
+  .issue{background:#fff; border:1px solid var(--line); border-left:5px solid var(--med);
+    border-radius:10px; padding:16px 18px; margin:14px 0;}
+  .issue.crit{border-left-color:var(--crit);}
+  .issue.high{border-left-color:var(--high);}
+  .issue.med{border-left-color:var(--med);}
+  .issue.low{border-left-color:var(--low);}
+  .issue.ok{border-left-color:var(--ok);}
+  .issue h4{margin:0 0 6px; font-size:1rem; display:flex; align-items:center; gap:10px;}
+  .tag{font-size:.68rem; font-weight:700; padding:2px 8px; border-radius:20px; color:#fff; text-transform:uppercase; letter-spacing:.4px;}
+  .tag.crit{background:var(--crit);} .tag.high{background:var(--high);}
+  .tag.med{background:var(--med);} .tag.low{background:var(--low);} .tag.ok{background:var(--ok);}
+  .issue p{margin:6px 0;}
+  .issue .fix{background:var(--bg); border-radius:8px; padding:10px 12px; margin-top:8px; font-size:.92rem;}
+  .fix b{color:var(--green);}
+  code{background:#eef2f7; padding:1px 6px; border-radius:5px; font-size:.85em;}
+  table{width:100%; border-collapse:collapse; background:#fff; border-radius:10px; overflow:hidden; margin:14px 0; font-size:.92rem;}
+  th,td{padding:10px 12px; text-align:left; border-bottom:1px solid var(--line);}
+  th{background:#f3f4f6; font-size:.8rem; text-transform:uppercase; letter-spacing:.4px; color:var(--gray);}
+  .pill{display:inline-block; font-size:.72rem; font-weight:700; padding:2px 8px; border-radius:6px;}
+  .pill.yes{background:#dcfce7; color:#166534;}
+  .pill.no{background:#fee2e2; color:#991b1b;}
+  .num{font-weight:800; color:var(--green);}
+  ul.clean{margin:8px 0; padding-left:20px;}
+  ul.clean li{margin:4px 0;}
+  footer{margin-top:48px; padding-top:20px; border-top:1px solid var(--line); color:var(--gray); font-size:.85rem;}
+  .legend{display:flex; gap:14px; flex-wrap:wrap; margin:10px 0 0; font-size:.8rem; color:var(--gray);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <h1>Saudi Home Experts — SEO &amp; Technical Audit</h1>
+  <p>خبراء المنزل السعودي · saudihomeexperts.com · Next.js 16 / React 19 · Audited July 2, 2026</p>
+</header>
+
+<p>This audit reviews the actual codebase (App Router structure, metadata, structured data, sitemap, robots, proxy, config) plus the rendered site. The technical foundation is genuinely strong — the 54 area pages carry proper metadata and JSON-LD, the sitemap is dynamic, and security headers are in place. The problems are concentrated in a few high-impact areas: the most important pages have no title tags, the English version is invisible to Google, and social/WhatsApp link previews are broken.</p>
+
+<div class="scoregrid">
+  <div class="score"><div class="n" style="color:var(--gold)">6.5/10</div><div class="l">Overall SEO</div></div>
+  <div class="score"><div class="n" style="color:var(--green)">66</div><div class="l">Live Pages</div></div>
+  <div class="score"><div class="n" style="color:var(--crit)">7</div><div class="l">Pages Missing Metadata</div></div>
+  <div class="score"><div class="n" style="color:var(--red)">4</div><div class="l">Critical Issues</div></div>
+</div>
+
+<div class="legend">
+  <span><span class="tag crit">Critical</span> fix now</span>
+  <span><span class="tag high">High</span> fix soon</span>
+  <span><span class="tag med">Medium</span> improvement</span>
+  <span><span class="tag low">Low</span> polish</span>
+</div>
+
+<h2>1. Critical SEO Issues</h2>
+
+<div class="issue crit">
+  <h4><span class="tag crit">Critical</span> Homepage &amp; key pages have no title tag or meta description</h4>
+  <p>7 pages are <code>'use client'</code> components with no server-side metadata: the <b>homepage</b>, <code>/services/</code>, <code>/services/electrician/</code>, <code>/services/plumber/</code>, <code>/services/intercom/</code>, <code>/about-us/</code>, and <code>/contact/</code>. They ship with no <code>&lt;title&gt;</code>, no meta description, no canonical, and no Open Graph.</p>
+  <p>A prewritten <code>src/app/metadata.ts</code> exists but is <b>never imported</b> — it's orphaned. Your single most important page (the homepage) currently has no title in Google's eyes.</p>
+  <div class="fix"><b>Fix:</b> Add a server <code>layout.tsx</code> next to each client page that exports <code>metadata</code> (or convert these pages to a server wrapper + client child, exactly like the area pages already do). Wire up or delete the orphaned <code>metadata.ts</code>.</div>
+</div>
+
+<div class="issue crit">
+  <h4><span class="tag crit">Critical</span> English version is completely invisible to search engines</h4>
+  <p>Language is a client-side Zustand toggle; the URL never changes (no <code>/en/</code> path) and <code>&lt;html lang="ar"&gt;</code> is hard-coded. Google only ever sees the Arabic content. There are <b>no hreflang tags</b>, so the entire English audience is unreachable via organic search.</p>
+  <div class="fix"><b>Fix:</b> Either accept Arabic-only for SEO (and drop the EN claim), or build real <code>/en/</code> routes with <code>hreflang</code> alternates linking the AR ↔ EN versions.</div>
+</div>
+
+<div class="issue crit">
+  <h4><span class="tag crit">Critical</span> No Open Graph image — broken WhatsApp / social previews</h4>
+  <p>No <code>og:image</code> is set anywhere. Since your entire funnel pushes people to <b>share and message on WhatsApp</b>, every shared link shows a blank, unappealing preview — directly hurting the channel you rely on most.</p>
+  <div class="fix"><b>Fix:</b> Add a branded 1200×630 <code>og:image</code> (logo + "كهربائي وسباك · خلال ساعة · 24/7" + phone) in the root metadata, plus <code>twitter:card</code>.</div>
+</div>
+
+<div class="issue crit">
+  <h4><span class="tag crit">Critical</span> Conflicting robots files</h4>
+  <p>Both <code>public/robots.txt</code> (blocks <code>/api/ /_next/ /studio/</code>) and <code>src/app/robots.ts</code> (blocks <code>/private/</code>) exist. The static file in <code>public/</code> wins, so the generated <code>robots.ts</code> is silently ignored — and the two disagree, which is a maintenance trap.</p>
+  <div class="fix"><b>Fix:</b> Keep <b>one</b>. Delete <code>public/robots.txt</code> and let <code>robots.ts</code> be the single source (it already points to the sitemap).</div>
+</div>
+
+<h2>2. High-Priority Issues</h2>
+
+<div class="issue high">
+  <h4><span class="tag high">High</span> Canonical vs. trailing-slash mismatch</h4>
+  <p><code>next.config.ts</code> sets <code>trailingSlash: true</code> and the sitemap emits URLs <b>with</b> a slash (<code>/كهربائي-yasmin/</code>), but the area-page canonicals are written <b>without</b> it (<code>/كهربائي-yasmin</code>). Google receives contradictory signals about the canonical URL.</p>
+  <div class="fix"><b>Fix:</b> Add the trailing slash to every canonical (and legal-page canonicals) so it matches the sitemap and the live 308 redirect.</div>
+</div>
+
+<div class="issue high">
+  <h4><span class="tag high">High</span> Fabricated review rating in structured data</h4>
+  <p><code>layout.tsx</code> injects <code>aggregateRating 4.9 / 127 reviews</code> globally, but there are no corresponding on-page reviews with <code>Review</code> schema to back it. Unsubstantiated <code>aggregateRating</code> is a known trigger for Google manual actions / structured-data penalties.</p>
+  <div class="fix"><b>Fix:</b> Only mark up ratings that are real and visible on the page, with individual <code>Review</code> items. Otherwise remove <code>aggregateRating</code>.</div>
+</div>
+
+<div class="issue high">
+  <h4><span class="tag high">High</span> No custom 404 / error / loading pages</h4>
+  <p>There is no <code>not-found.tsx</code>, <code>error.tsx</code>, or <code>loading.tsx</code> anywhere in <code>src/app</code>. Mistyped Arabic URLs and broken backlinks hit the bare default 404 with no navigation back into the funnel.</p>
+  <div class="fix"><b>Fix:</b> Add a branded <code>not-found.tsx</code> (with call/WhatsApp CTAs + area links) and a root <code>error.tsx</code>.</div>
+</div>
+
+<div class="issue high">
+  <h4><span class="tag high">High</span> Thin content &amp; no blog — weak topical authority</h4>
+  <p>Zero article/blog pages. For a local lead-gen site, informational content ("كم تكلفة تصليح المكيف في الرياض؟", "علامات تسريب المياه") is how you capture top-of-funnel search and build authority that lifts the money pages. Competitors that rank do exactly this.</p>
+  <div class="fix"><b>Fix:</b> Add a <code>/blog/</code> (or <code>/مقالات/</code>) section with 8–12 problem/cost/how-to articles, internally linking to the relevant service + area pages.</div>
+</div>
+
+<h2>3. Missing Pages</h2>
+<p>The site has <span class="num">66</span> live pages (54 area pages + 12 static). These commonly-expected pages are <b>missing</b>:</p>
+<table>
+  <tr><th>Missing page</th><th>Why it matters</th><th>Priority</th></tr>
+  <tr><td>Custom 404 (<code>not-found.tsx</code>)</td><td>Recover mistyped Arabic URLs &amp; dead backlinks</td><td><span class="tag high">High</span></td></tr>
+  <tr><td>Thank-you / confirmation page</td><td>Needed for clean conversion tracking after form submit</td><td><span class="tag high">High</span></td></tr>
+  <tr><td>Blog / articles section</td><td>Top-of-funnel SEO, topical authority</td><td><span class="tag high">High</span></td></tr>
+  <tr><td>AC / air-conditioning service page</td><td>AC repair is the highest-volume home search in Riyadh; you do it but have no dedicated page</td><td><span class="tag high">High</span></td></tr>
+  <tr><td>Problem landing pages (<code>/المكيف-ما-يبرد</code> etc.)</td><td>Referenced in <code>page.tsx</code> but no routes exist — latent broken links &amp; missed intent-rich pages</td><td><span class="tag med">Medium</span></td></tr>
+  <tr><td>FAQ page (standalone)</td><td>FAQ-rich results; consolidates common questions</td><td><span class="tag med">Medium</span></td></tr>
+  <tr><td>Pricing / price-list page</td><td>"سعر" queries are high-intent; builds trust</td><td><span class="tag med">Medium</span></td></tr>
+  <tr><td>Gallery / previous work (before–after)</td><td>Visual proof; strong for a "dumb-user" audience</td><td><span class="tag med">Medium</span></td></tr>
+  <tr><td>English (<code>/en/</code>) indexable pages</td><td>Currently client-only; invisible to search</td><td><span class="tag med">Medium</span></td></tr>
+</table>
+
+<h2>4. What's Already Done Well</h2>
+<div class="issue ok">
+  <h4><span class="tag ok">Good</span> Area pages are properly optimized</h4>
+  <p>All 54 area pages use a server wrapper that exports unique <code>title</code>, <code>description</code>, <code>canonical</code>, and Open Graph, and the shared component injects <code>Service</code>, <code>FAQPage</code>, and <code>BreadcrumbList</code> JSON-LD. This is solid programmatic local SEO.</p>
+</div>
+<div class="issue ok">
+  <h4><span class="tag ok">Good</span> Global structured data &amp; dynamic sitemap</h4>
+  <p><code>layout.tsx</code> ships Organization + LocalBusiness + WebSite JSON-LD on every page. <code>sitemap.ts</code> is a clean single source of truth covering all 66 URLs. Security headers (CSP, X-Frame-Options, nosniff, Referrer-Policy) are configured.</p>
+</div>
+<div class="issue ok">
+  <h4><span class="tag ok">Good</span> Arabic-URL proxy handled correctly</h4>
+  <p><code>proxy.ts</code> cleanly rewrites encoded Arabic URLs to ASCII route folders while preserving the Arabic address bar, and enforces the trailing slash with a 308. This is the tricky part of the setup and it's done right.</p>
+</div>
+
+<h2>5. Technical / Config Notes</h2>
+<table>
+  <tr><th>Item</th><th>Status</th><th>Note</th></tr>
+  <tr><td>Structured data (global)</td><td><span class="pill yes">Present</span></td><td>Org / LocalBusiness / WebSite</td></tr>
+  <tr><td>Structured data (area pages)</td><td><span class="pill yes">Present</span></td><td>Service / FAQ / Breadcrumb</td></tr>
+  <tr><td>Sitemap</td><td><span class="pill yes">Present</span></td><td>Dynamic, 66 URLs</td></tr>
+  <tr><td>Homepage title/description</td><td><span class="pill no">Missing</span></td><td>Orphaned <code>metadata.ts</code></td></tr>
+  <tr><td>og:image / twitter card</td><td><span class="pill no">Missing</span></td><td>Blank WhatsApp previews</td></tr>
+  <tr><td>hreflang (AR/EN)</td><td><span class="pill no">Missing</span></td><td>EN not indexable</td></tr>
+  <tr><td>metadataBase</td><td><span class="pill no">Missing</span></td><td>Set in root layout to silence warnings &amp; resolve OG paths</td></tr>
+  <tr><td>Canonical trailing slash</td><td><span class="pill no">Mismatch</span></td><td>Canonicals omit slash; sitemap includes it</td></tr>
+  <tr><td>robots</td><td><span class="pill no">Conflict</span></td><td>public/robots.txt vs robots.ts</td></tr>
+  <tr><td>Real images / alt text</td><td><span class="pill no">Missing</span></td><td>No photos → no image SEO, no LCP image</td></tr>
+  <tr><td>Permissions-Policy header</td><td><span class="pill no">Typo</span></td><td><code>geolocations</code> → should be <code>geolocation</code></td></tr>
+  <tr><td>Conversion tracking</td><td><span class="pill no">Broken</span></td><td>Placeholder <code>AW-18063458010/PHONE_CONVERSION</code> on home/services/about/contact instead of the real label in <code>tracking.ts</code></td></tr>
+  <tr><td>Security headers</td><td><span class="pill yes">Good</span></td><td>CSP, X-Frame-Options, nosniff, Referrer-Policy</td></tr>
+</table>
+
+<h2>6. Recommended Fix Order</h2>
+<ul class="clean">
+  <li><b>1.</b> Add metadata (title/description/canonical/OG) to the 7 client pages — start with the homepage.</li>
+  <li><b>2.</b> Add a branded <code>og:image</code> + <code>metadataBase</code> in the root layout (fixes WhatsApp previews).</li>
+  <li><b>3.</b> Delete <code>public/robots.txt</code>; keep <code>robots.ts</code>.</li>
+  <li><b>4.</b> Add the trailing slash to all canonicals.</li>
+  <li><b>5.</b> Fix conversion tracking to use the real Google Ads label.</li>
+  <li><b>6.</b> Remove/justify the <code>aggregateRating</code> markup.</li>
+  <li><b>7.</b> Add <code>not-found.tsx</code> + thank-you page.</li>
+  <li><b>8.</b> Decide English SEO strategy (real <code>/en/</code> or drop the claim).</li>
+  <li><b>9.</b> Build the blog + AC service page for topical growth.</li>
+</ul>
+
+<footer>
+  Saudi Home Experts — SEO &amp; Technical Audit · Generated July 2, 2026. Findings based on direct review of the repository source and the rendered homepage.
+</footer>
+
+</div>
+</body>
+</html>

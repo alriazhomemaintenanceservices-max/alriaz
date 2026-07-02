@@ -6,7 +6,7 @@ import '../styles/globals.css';
 import Button from '@/components/shared/Button';
 import { useTranslation } from '@/hooks/useTranslation';
 import { translations } from '@/lib/translations';
-import { Phone, Clock, Shield, Users, CheckCircle, Star, Zap, Snowflake, Droplet, ShowerHead, Flame, Lightbulb, ChevronLeft, MapPin, Timer, ShieldCheck, Home, Wrench, Video } from 'lucide-react';
+import { Phone, Clock, Shield, Users, CheckCircle, Star, Zap, Droplet, ShowerHead, Flame, Lightbulb, ChevronLeft, MapPin, Timer, ShieldCheck, Home, Wrench, Video, type LucideIcon } from 'lucide-react';
 import WhatsAppSvg from '@/components/shared/WhatsAppSvg';
 import CallbackForm from '@/components/shared/CallbackForm';
 
@@ -24,6 +24,16 @@ const HERO_SLIDES = [
   '/hero/clogged-sink.jpg',
   '/hero/radiator.jpg',
 ];
+
+// Faint abstract icon watermarks layered into each home section background.
+function SectionDecor({ Top, Bottom }: { Top: LucideIcon; Bottom: LucideIcon }) {
+  return (
+    <div className="home-decor" aria-hidden="true">
+      <Top className="glyph glyph-top" size={280} strokeWidth={1} />
+      <Bottom className="glyph glyph-bottom" size={240} strokeWidth={1} />
+    </div>
+  );
+}
 
 export default function HomePage() {
   const [selectedProblem, setSelectedProblem] = useState<string | null>(null);
@@ -57,27 +67,29 @@ export default function HomePage() {
   }, []);
 
   const problems = [
-    { id: 'ac-not-cooling', Icon: Snowflake, grad: 'linear-gradient(135deg, #38BDF8, #2563EB)', titleKey: 'ac-not-cooling' as const, svcKey: 'electrician' as const },
-    { id: 'power-cut', Icon: Zap, grad: 'linear-gradient(135deg, #FBBF24, #F59E0B)', titleKey: 'power-cuts' as const, svcKey: 'electrician' as const },
-    { id: 'water-leak', Icon: Droplet, grad: 'linear-gradient(135deg, #22D3EE, #0891B2)', titleKey: 'water-leaking' as const, svcKey: 'plumber' as const },
-    { id: 'drain-blocked', Icon: ShowerHead, grad: 'linear-gradient(135deg, #2DD4BF, #0D9488)', titleKey: 'drain-blocked' as const, svcKey: 'plumber' as const },
-    { id: 'heater-broken', Icon: Flame, grad: 'linear-gradient(135deg, #FB923C, #EF4444)', titleKey: 'heater-broken' as const, svcKey: 'plumber' as const },
-    { id: 'lights-not-working', Icon: Lightbulb, grad: 'linear-gradient(135deg, #FCD34D, #F59E0B)', titleKey: 'lights-not-working' as const, svcKey: 'electrician' as const },
+    { id: 'power-cut', Icon: Zap, grad: 'linear-gradient(135deg, #FBBF24, #F59E0B)', img: '/hero/electrician-switchboard.jpg', titleKey: 'power-cuts' as const, svcKey: 'electrician' as const },
+    { id: 'water-leak', Icon: Droplet, grad: 'linear-gradient(135deg, #22D3EE, #0891B2)', img: '/hero/water-damage-call.jpg', titleKey: 'water-leaking' as const, svcKey: 'plumber' as const },
+    { id: 'drain-blocked', Icon: ShowerHead, grad: 'linear-gradient(135deg, #2DD4BF, #0D9488)', img: '/hero/clogged-sink.jpg', titleKey: 'drain-blocked' as const, svcKey: 'plumber' as const },
+    { id: 'heater-broken', Icon: Flame, grad: 'linear-gradient(135deg, #FB923C, #EF4444)', img: '/hero/radiator.jpg', titleKey: 'heater-broken' as const, svcKey: 'plumber' as const },
+    { id: 'lights-not-working', Icon: Lightbulb, grad: 'linear-gradient(135deg, #FCD34D, #F59E0B)', img: '/hero/electrician-office.jpg', titleKey: 'lights-not-working' as const, svcKey: 'electrician' as const },
   ];
 
   const homeServices = [
     {
       key: 'electrician', Icon: Zap, grad: 'linear-gradient(135deg, #3B82F6, #1D4ED8)',
+      img: '/hero/electrician-switchboard.jpg',
       titleKey: 'electrician' as const, href: '/services/electrician/',
-      items: ['ac-maintenance-freon', 'power-outage-repair', 'lights-installation', 'electrical-panel-maintenance', 'new-electrical-wiring'] as const,
+      items: ['power-outage-repair', 'lights-installation', 'electrical-panel-maintenance', 'new-electrical-wiring', 'electrical-repairs'] as const,
     },
     {
       key: 'plumber', Icon: Droplet, grad: 'linear-gradient(135deg, #06B6D4, #0E7490)',
+      img: '/hero/plumber-sink.jpg',
       titleKey: 'plumber' as const, href: '/services/plumber/',
       items: ['ceiling-water-leak-repair', 'drain-unblocking', 'heater-installation-maintenance', 'faucet-repair', 'water-filter-installation'] as const,
     },
     {
       key: 'intercom', Icon: Video, grad: 'linear-gradient(135deg, #10B981, #047857)',
+      img: '/hero/sockets-install.jpg',
       titleKey: 'intercom' as const, href: '/services/intercom/',
       items: ['intercom-installation', 'security-camera-installation', 'smart-doorbell-installation', 'access-control-systems', 'intercom-repair'] as const,
     },
@@ -211,7 +223,8 @@ export default function HomePage() {
       </section>
 
       {/* Problem Selector */}
-      <section className="section bg-light">
+      <section className="section home-section light">
+        <SectionDecor Top={Wrench} Bottom={Zap} />
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">{t('whats-your-problem')}</h2>
@@ -225,8 +238,10 @@ export default function HomePage() {
                 onClick={() => setSelectedProblem(problem.id)}
                 className={`problem-card${selectedProblem === problem.id ? ' selected' : ''}`}
               >
-                <span className="icon-medallion" style={{ background: problem.grad }}>
-                  <problem.Icon size={30} />
+                <span className="problem-thumb">
+                  <span className="problem-thumb-img" style={{ backgroundImage: `url(${problem.img})` }} />
+                  <span className="problem-thumb-overlay" style={{ background: problem.grad }} />
+                  <problem.Icon className="problem-thumb-icon" size={26} />
                 </span>
                 <span>
                   <span className="p-title">{t(problem.titleKey)}</span>
@@ -256,14 +271,16 @@ export default function HomePage() {
       </section>
 
       {/* Callback Form */}
-      <section className="section">
+      <section className="section home-section dark">
+        <SectionDecor Top={Phone} Bottom={Clock} />
         <div className="container" style={{ maxWidth: '550px' }}>
           <CallbackForm />
         </div>
       </section>
 
       {/* Areas Coverage with Service Tabs */}
-      <section className="section">
+      <section className="section home-section light">
+        <SectionDecor Top={MapPin} Bottom={Home} />
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">{t('cover-north-riyadh')}</h2>
@@ -337,7 +354,8 @@ export default function HomePage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="section bg-light">
+      <section className="section home-section dark">
+        <SectionDecor Top={ShieldCheck} Bottom={Star} />
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">{t('why-choose-us')}</h2>
@@ -358,7 +376,8 @@ export default function HomePage() {
       </section>
 
       {/* Services */}
-      <section className="section">
+      <section className="section home-section light">
+        <SectionDecor Top={Droplet} Bottom={Zap} />
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">{t('our-services')}</h2>
@@ -366,26 +385,32 @@ export default function HomePage() {
 
           <div className="service-grid">
             {homeServices.map((svc) => (
-              <div key={svc.key} className="service-card">
-                <div className="service-card-head" style={{ background: svc.grad }}>
-                  <span className="service-head-icon"><svc.Icon size={26} /></span>
-                  <h3>{t(svc.titleKey)}</h3>
+              <Link key={svc.key} href={svc.href} className="service-card">
+                <div className="service-card-img" style={{ backgroundImage: `url(${svc.img})` }} aria-hidden="true" />
+                <div className="service-card-scrim" aria-hidden="true" />
+                <div className="service-card-content">
+                  <div className="service-card-titlerow">
+                    <span className="service-icon-badge" style={{ background: svc.grad }}>
+                      <svc.Icon size={24} />
+                    </span>
+                    <h3>{t(svc.titleKey)}</h3>
+                  </div>
+                  <div className="service-reveal">
+                    <ul className="service-list">
+                      {svc.items.map((serviceKey, i) => (
+                        <li key={i}>
+                          <CheckCircle size={18} />
+                          <span>{t(serviceKey as keyof typeof translations.ar)}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <span className="service-cta">
+                      {t('view-all-services')}
+                      <ChevronLeft size={18} />
+                    </span>
+                  </div>
                 </div>
-                <div className="service-card-body">
-                  <ul className="service-list">
-                    {svc.items.map((serviceKey, i) => (
-                      <li key={i}>
-                        <CheckCircle size={19} />
-                        <span>{t(serviceKey as keyof typeof translations.ar)}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link href={svc.href} className="service-cta">
-                    {t('view-all-services')}
-                    <ChevronLeft size={18} />
-                  </Link>
-                </div>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -402,11 +427,12 @@ export default function HomePage() {
       </section>
 
       {/* Our Team */}
-      <section className="section bg-light">
+      <section className="section home-section dark">
+        <SectionDecor Top={Users} Bottom={Wrench} />
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">{t('our-team')}</h2>
-            <p style={{ color: 'var(--gray-500)', marginTop: '8px', fontSize: '1.125rem', textAlign: 'center' }}>
+            <p style={{ color: '#94a3b8', marginTop: '8px', fontSize: '1.125rem', textAlign: 'center' }}>
               {t('pakistani-saudi-team')}
             </p>
           </div>
@@ -456,7 +482,8 @@ export default function HomePage() {
       </section>
 
       {/* Customer Reviews */}
-      <section className="section">
+      <section className="section home-section light">
+        <SectionDecor Top={Star} Bottom={CheckCircle} />
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">{t('customer-reviews')}</h2>

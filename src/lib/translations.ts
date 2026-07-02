@@ -97,7 +97,7 @@ export const translations = {
     
     // Reviews
     'customer-reviews': 'آراء عملائنا',
-    'review-1': 'المكيف وقف في عز الحر، جا الفني خلال ساعة وصلحه. سعر معقول وشغل ممتاز',
+    'review-1': 'اللمبات فصلت في نص البيت، جا الفني وصلح الأسلاك بسرعة. شغل نظيف وسعر معقول',
     'review-2': 'سباك محترف، صلح التسريب بدون ما يخرب شي. نظف المكان بعد الشغل',
     'review-3': 'اتصلت عليهم بالليل والكهرب منقطع، جاوا على طول وحلوا المشكلة',
     'mohamed-salem': 'محمد السالم',
@@ -109,7 +109,7 @@ export const translations = {
     
     // Emergency
     'emergency-question': 'عندك طوارئ؟',
-    'ac-stopped-45-degrees': 'المكيف وقف والحر 45 درجة؟',
+    'ac-stopped-45-degrees': 'الكهرباء فصلت فجأة؟',
     'water-flooded-house': 'المويه غرقت البيت؟',
     'dont-wait-technician-now': 'لا تنتظر - فني يجيك الحين!',
     'available-247-prayers': 'متوفرين 24/7 - نراعي أوقات الصلاة',
@@ -189,7 +189,7 @@ export const translations = {
 
     // Area Page - Emergency CTA
     'area-emergency-title': 'طوارئ كهربائية في {area}؟',
-    'area-emergency-desc': 'انقطاع الكهرباء؟ مشكلة في المكيف؟ نصلك خلال ساعة!',
+    'area-emergency-desc': 'انقطاع الكهرباء؟ تسرب مياه؟ نصلك خلال ساعة!',
     'area-emergency-call': 'اتصال طوارئ: ‎050 890 1536',
     'area-emergency-available': 'متوفرين 24/7 - نراعي أوقات الصلاة',
 
@@ -312,7 +312,7 @@ export const translations = {
     'about-value-direct-desc': 'تتواصل معنا مباشرة، وفني الخبرة هو اللي يجيك. ما فيه شركات وسيطة تاخذ عمولة.',
 
     'about-services-title': 'خدماتنا الثلاث',
-    'about-elec-desc': 'صيانة مكيفات، إصلاح أعطال، تمديدات، لوحات كهربائية',
+    'about-elec-desc': 'إصلاح الأعطال، التمديدات، اللوحات الكهربائية، تركيب الإنارة',
     'about-plumb-desc': 'تسريبات، مجاري مسدودة، سخانات، خلاطات، فلاتر مياه',
     'about-intcom-desc': 'تركيب انتركوم، كاميرات مراقبة، أجراس ذكية، أنظمة تحكم',
 
@@ -446,7 +446,7 @@ export const translations = {
     
     // Reviews
     'customer-reviews': 'Customer Reviews',
-    'review-1': 'AC stopped in extreme heat, technician came in an hour and fixed it. Fair price and excellent work',
+    'review-1': 'Half the house lost power, the technician came and fixed the wiring fast. Clean work and a fair price',
     'review-2': 'Professional plumber, fixed the leak without damaging anything. Cleaned up after work',
     'review-3': 'Called them at night when power was out, they came immediately and solved the problem',
     'mohamed-salem': 'Mohamed Al-Salem',
@@ -458,7 +458,7 @@ export const translations = {
     
     // Emergency
     'emergency-question': 'Emergency?',
-    'ac-stopped-45-degrees': 'AC stopped and it\'s 45°C outside?',
+    'ac-stopped-45-degrees': 'Power suddenly cut out?',
     'water-flooded-house': 'Water flooded your house?',
     'dont-wait-technician-now': 'Don\'t wait - technician comes now!',
     'available-247-prayers': 'Available 24/7 - respecting prayer times',
@@ -538,7 +538,7 @@ export const translations = {
 
     // Area Page - Emergency CTA
     'area-emergency-title': 'Electrical Emergency in {area}?',
-    'area-emergency-desc': 'Power outage? AC problem? We reach you within an hour!',
+    'area-emergency-desc': 'Power outage? Water leak? We reach you within an hour!',
     'area-emergency-call': 'Emergency Call: 050 890 1536',
     'area-emergency-available': 'Available 24/7 - Respecting prayer times',
 
@@ -661,7 +661,7 @@ export const translations = {
     'about-value-direct-desc': 'You deal with us directly, and our experienced technician comes to you. No intermediary companies taking commissions.',
 
     'about-services-title': 'Our Three Services',
-    'about-elec-desc': 'AC maintenance, fault repair, wiring, electrical panels',
+    'about-elec-desc': 'Fault repair, wiring, electrical panels, lighting installation',
     'about-plumb-desc': 'Leaks, blocked drains, water heaters, faucets, water filters',
     'about-intcom-desc': 'Intercom installation, security cameras, smart doorbells, access control',
 

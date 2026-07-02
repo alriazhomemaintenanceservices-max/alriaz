@@ -93,6 +93,29 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Branded scrollbar (Firefox) */
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-blue) #E8EDF3;
+}
+
+/* Branded scrollbar (WebKit) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #E8EDF3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary-blue), #1D4ED8);
+  border-radius: 10px;
+  border: 3px solid #E8EDF3;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--primary-gold), #D97706);
 }
 
 body {
@@ -469,6 +492,14 @@ a:hover {
   unicode-bidi: embed !important;
 }
 
+/* Footer phone links are flex rows (icon + text) — keep them RTL so the icon
+   stays on the right like the other contact rows; the number span itself
+   carries its own dir="ltr". Overrides the tel: rule above via higher specificity. */
+[dir="rtl"] a.footer-contact-item[href^="tel:"],
+[dir="rtl"] a.footer-phone-cta[href^="tel:"] {
+  direction: rtl !important;
+}
+
 @media (max-width: 767px) {
   .mobile-hidden { display: none !important; }
 }
@@ -538,11 +569,18 @@ a:hover {
   z-index: var(--z-sticky);
 }
 
-/* --- Utility top bar --- */
+/* --- Utility top bar (collapses on scroll so only the main bar stays pinned) --- */
 .header-topbar {
   background: linear-gradient(90deg, #024a25 0%, #006C35 100%);
   color: #fff;
   font-size: 0.92rem;
+  max-height: 60px;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.site-header.scrolled .header-topbar {
+  max-height: 0;
 }
 
 .header-topbar-inner {
@@ -1163,6 +1201,45 @@ a:hover {
   box-shadow: 0 10px 26px rgba(59, 130, 246, 0.18);
 }
 
+.problem-thumb {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 6px 16px rgba(17, 24, 39, 0.14);
+}
+
+.problem-thumb-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+
+.problem-card:hover .problem-thumb-img {
+  transform: scale(1.1);
+}
+
+.problem-thumb-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+}
+
+.problem-thumb-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  color: #fff;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.45));
+}
+
 .problem-card .p-title {
   display: block;
   font-weight: 700;
@@ -1228,7 +1305,7 @@ a:hover {
   font-size: 0.98rem;
 }
 
-/* --- Service cards --- */
+/* --- Service cards (image-led, hover reveal) --- */
 .service-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1241,98 +1318,144 @@ a:hover {
   position: relative;
   display: flex;
   flex-direction: column;
-  background: #fff;
-  border: 1px solid #EEF0F3;
+  justify-content: flex-end;
+  min-height: 460px;
   border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 4px 18px rgba(17, 24, 39, 0.05);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 6px 22px rgba(17, 24, 39, 0.12);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
+  isolation: isolate;
 }
 
 .service-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 22px 44px rgba(17, 24, 39, 0.12);
+  box-shadow: 0 26px 50px rgba(17, 24, 39, 0.22);
+  text-decoration: none;
+  color: #fff;
 }
 
-.service-card-head {
+.service-card-img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.7s ease;
+}
+
+.service-card:hover .service-card-img {
+  transform: scale(1.08);
+}
+
+.service-card-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(9, 14, 26, 0.95) 6%, rgba(9, 14, 26, 0.55) 46%, rgba(9, 14, 26, 0.1) 100%);
+}
+
+.service-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 26px;
+}
+
+.service-card-titlerow {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 22px 24px;
-  color: #fff;
+  gap: 13px;
 }
 
-.service-card-head h3 {
-  margin: 0;
-  color: #fff;
-  font-size: 1.3rem;
-  font-weight: 800;
-}
-
-.service-head-icon {
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
+.service-icon-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.22);
-  flex-shrink: 0;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
-.service-card-body {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: 22px 24px 24px;
+.service-card-content h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+.service-reveal {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin-top: 0;
+  transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.4s ease;
 }
 
 .service-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 22px;
+  margin: 16px 0 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  flex: 1;
+  gap: 11px;
 }
 
 .service-list li {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  color: var(--gray-700);
+  gap: 9px;
+  color: rgba(255, 255, 255, 0.92);
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 0.98rem;
 }
 
 .service-list li svg {
-  color: var(--success-green);
+  color: #34D399;
   margin-top: 2px;
   flex-shrink: 0;
 }
 
 .service-cta {
-  margin-top: auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 13px 20px;
+  padding: 12px 22px;
   border-radius: 12px;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 1rem;
-  color: var(--primary-blue);
-  background: #EFF6FF;
-  border: 1px solid #DBEAFE;
+  background: #fff;
+  color: var(--dark);
   text-decoration: none;
   transition: background var(--transition-fast), color var(--transition-fast);
 }
 
-.service-cta:hover {
-  background: var(--primary-blue);
-  color: #fff;
-  text-decoration: none;
+.service-card:hover .service-cta {
+  background: var(--primary-gold);
+  color: #111827;
+}
+
+/* Reveal the details on hover (pointer devices) */
+@media (hover: hover) {
+  .service-card:hover .service-reveal {
+    max-height: 460px;
+    opacity: 1;
+    margin-top: 8px;
+  }
+}
+
+/* Touch devices have no hover — always show the details */
+@media (hover: none) {
+  .service-reveal {
+    max-height: none;
+    opacity: 1;
+    margin-top: 16px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1342,7 +1465,7 @@ a:hover {
   }
   .service-grid {
     grid-template-columns: 1fr;
-    max-width: 520px;
+    max-width: 480px;
   }
 }
 
@@ -1524,4 +1647,115 @@ a:hover {
   text-decoration: none;
   border-color: var(--primary-gold);
   background: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================================
+   HOMEPAGE SECTION RHYTHM — alternating light / dark
+   with abstract dot pattern, glow blob, and faint icon glyphs
+   ============================================================ */
+.home-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.home-section > .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Light sections */
+.home-section.light {
+  background: #F6F8FB;
+}
+
+.home-section.light::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(59, 130, 246, 0.07) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+}
+
+.home-section.light::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  top: -180px;
+  inset-inline-start: -160px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.10), transparent 65%);
+}
+
+/* Dark sections */
+.home-section.dark {
+  background: linear-gradient(160deg, #0b1220 0%, #111827 55%, #0b1220 100%);
+  color: #cbd5e1;
+}
+
+.home-section.dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 1.5px);
+  background-size: 26px 26px;
+}
+
+.home-section.dark::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  top: -200px;
+  inset-inline-end: -140px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.18), transparent 65%);
+}
+
+.home-section.dark .section-title {
+  color: #fff;
+}
+
+.home-section.dark .section-header p {
+  color: #94a3b8;
+}
+
+/* Faint abstract icon watermarks */
+.home-decor {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.home-decor .glyph {
+  position: absolute;
+  opacity: 0.05;
+  color: var(--primary-blue);
+}
+
+.home-section.dark .home-decor .glyph {
+  color: #ffffff;
+  opacity: 0.055;
+}
+
+.home-decor .glyph-top {
+  top: -50px;
+  inset-inline-end: -40px;
+  transform: rotate(12deg);
+}
+
+.home-decor .glyph-bottom {
+  bottom: -60px;
+  inset-inline-start: -40px;
+  transform: rotate(-10deg);
 }

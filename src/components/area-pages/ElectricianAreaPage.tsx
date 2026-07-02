@@ -35,7 +35,6 @@ const serviceConfig = {
   electrician: {
     subtitleKey: 'area-services-subtitle' as TKey,
     services: [
-      { icon: '❄️', titleKey: 'area-svc-ac-title' as TKey, descKey: 'area-svc-ac-desc' as TKey },
       { icon: '⚡', titleKey: 'area-svc-power-title' as TKey, descKey: 'area-svc-power-desc' as TKey },
       { icon: '💡', titleKey: 'area-svc-lights-title' as TKey, descKey: 'area-svc-lights-desc' as TKey },
       { icon: '🔧', titleKey: 'area-svc-panel-title' as TKey, descKey: 'area-svc-panel-desc' as TKey },

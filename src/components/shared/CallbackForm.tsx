@@ -26,7 +26,6 @@ const AREAS = [
 ];
 
 const PROBLEMS = [
-  { ar: 'المكيف ما يبرد', en: 'AC Not Cooling', icon: '❄️' },
   { ar: 'الكهرب يفصل', en: 'Power Cuts', icon: '⚡' },
   { ar: 'تسريب مياه', en: 'Water Leak', icon: '💧' },
   { ar: 'المجاري مسدودة', en: 'Drain Blocked', icon: '🚿' },
