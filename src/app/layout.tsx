@@ -5,6 +5,7 @@ import "../styles/globals.css";
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import StickyMobileCTA from '@/components/layout/StickyMobileCTA';
+import FloatingActions from '@/components/layout/FloatingActions';
 import LanguageProvider from '@/components/layout/LanguageProvider';
 
 const inter = Inter({
@@ -113,6 +114,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <StickyMobileCTA />
+          <FloatingActions />
         </LanguageProvider>
       </body>
     </html>

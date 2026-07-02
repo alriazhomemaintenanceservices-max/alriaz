@@ -12,11 +12,29 @@ import CallbackForm from '@/components/shared/CallbackForm';
 
 // Area detection handled inside component for language support
 
+// Hero background slides. Demo photography (Unsplash) — swap these URLs for the
+// branded shoot described in "UI-Audit-and-Image-Prompts.md" when ready.
+const HERO_SLIDES = [
+  'https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1600&q=70', // electrician at panel
+  'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1600&q=70', // plumber under sink
+  'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1600&q=70', // technician / tools
+  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=70', // modern home
+];
+
 export default function HomePage() {
   const [selectedProblem, setSelectedProblem] = useState<string | null>(null);
   const [selectedService, setSelectedService] = useState<'electrician' | 'plumber' | 'intercom'>('electrician');
+  const [heroSlide, setHeroSlide] = useState(0);
   const { t, language } = useTranslation();
   const userArea = t('riyadh');
+
+  // Auto-advance the hero slider.
+  useEffect(() => {
+    const id = setInterval(() => {
+      setHeroSlide((s) => (s + 1) % HERO_SLIDES.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, []);
 
   const serviceSlugMap = {
     electrician: 'كهربائي',
@@ -80,65 +98,94 @@ export default function HomePage() {
   return (
     <>
 
-      {/* Hero Section */}
-      <section style={{ background: 'linear-gradient(135deg, #EBF8FF 0%, #FFFFFF 100%)', padding: '48px 0' }}>
-        <div className="container">
-          {/* Professional Availability Badge */}
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
-            <div className="availability-badge">
-              <Zap size={18} className="availability-icon" />
-              <span>{t('available-now-in')} {userArea}</span>
-            </div>
-          </div>
+      {/* Hero Section — image slider */}
+      <section className="hero-slider">
+        {/* Background slides */}
+        {HERO_SLIDES.map((src, i) => (
+          <div
+            key={i}
+            className={`hero-slide${i === heroSlide ? ' active' : ''}`}
+            style={{ backgroundImage: `url(${src})` }}
+            aria-hidden="true"
+          />
+        ))}
+        <div className="hero-overlay" aria-hidden="true" />
 
-          {/* Main Title */}
-          <h1 style={{ textAlign: 'center', fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 900, color: 'var(--dark)', marginBottom: '16px' }}>
-            {t('electrician-plumber')}
-            <span style={{ color: 'var(--primary-blue)' }}> {t('arrives-in-hour')}</span>
-          </h1>
+        <div className="hero-content">
+          <div className="container">
+            <div className="hero-inner">
+              {/* Availability badge */}
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '18px' }}>
+                <div className="availability-badge">
+                  <Zap size={18} className="availability-icon" />
+                  <span>{t('available-now-in')} {userArea}</span>
+                </div>
+              </div>
 
-          <p style={{ textAlign: 'center', fontSize: '1.25rem', color: 'var(--gray-700)', marginBottom: '32px' }}>
-            {t('instant-service-247')}
-          </p>
+              {/* Social proof */}
+              <div className="hero-rating">
+                <span className="stars">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={18} />
+                  ))}
+                </span>
+                <span className="rtext">
+                  {language === 'ar' ? '٤.٩ من ٥ · أكثر من ١٢٧ تقييم' : '4.9 / 5 · 127+ reviews'}
+                </span>
+              </div>
 
-          {/* CTA Buttons */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', justifyContent: 'center', marginBottom: '32px' }}>
-            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Button
-                href="tel:+966508901536"
-                variant="emergency"
-                size="large"
-                icon={<Phone size={20} />}
-                onClick={trackPhoneClick}
-              >
-                {t('call-now-number')}
-              </Button>
-              
-              <Button
-                href={`https://wa.me/966508901536?text=${encodeURIComponent(t('whatsapp-problem-message'))}%20${userArea}%20-%20${encodeURIComponent(t('whatsapp-photo-message'))}`}
-                variant="whatsapp"
-                size="large"
-                external
-                icon={<WhatsAppSvg size={20} />}
-              >
-                {t('send-problem-photo')}
-              </Button>
-            </div>
-          </div>
+              {/* Main Title */}
+              <h1 className="hero-title">
+                {t('electrician-plumber')}
+                <span style={{ color: '#FCD34D' }}> {t('arrives-in-hour')}</span>
+              </h1>
 
-          {/* Trust Indicators */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px' }}>
-            <div className="badge badge-success">
-              <CheckCircle size={14} />
-              {t('available-now')}
+              <p className="hero-subtitle">
+                {t('instant-service-247')}
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="hero-btn-group" style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '28px' }}>
+                <Button
+                  href="tel:+966508901536"
+                  variant="emergency"
+                  size="large"
+                  icon={<Phone size={20} />}
+                  onClick={trackPhoneClick}
+                >
+                  {t('call-now-number')}
+                </Button>
+
+                <Button
+                  href={`https://wa.me/966508901536?text=${encodeURIComponent(t('whatsapp-problem-message'))}%20${userArea}%20-%20${encodeURIComponent(t('whatsapp-photo-message'))}`}
+                  variant="whatsapp"
+                  size="large"
+                  external
+                  icon={<WhatsAppSvg size={20} />}
+                >
+                  {t('send-problem-photo')}
+                </Button>
+              </div>
+
+              {/* Trust row */}
+              <div className="hero-trust">
+                <span className="hero-trust-item"><Clock size={16} />{language === 'ar' ? 'خدمة 24/7' : '24/7 Service'}</span>
+                <span className="hero-trust-item"><Shield size={16} />{t('30-day-warranty')}</span>
+                <span className="hero-trust-item"><Users size={16} />{t('500-customers-month')}</span>
+                <span className="hero-trust-item"><CheckCircle size={16} />{language === 'ar' ? 'فنيون معتمدون' : 'Certified Techs'}</span>
+              </div>
             </div>
-            <div className="badge badge-gold">
-              <Shield size={14} />
-              {t('30-day-warranty')}
-            </div>
-            <div className="badge badge-success">
-              <Users size={14} />
-              {t('500-customers-month')}
+
+            {/* Slide indicators */}
+            <div className="hero-dots">
+              {HERO_SLIDES.map((_, i) => (
+                <button
+                  key={i}
+                  className={`hero-dot${i === heroSlide ? ' active' : ''}`}
+                  onClick={() => setHeroSlide(i)}
+                  aria-label={`${t('view-all-services')} ${i + 1}`}
+                />
+              ))}
             </div>
           </div>
         </div>

@@ -1,37 +1,46 @@
 'use client';
 
 import { useLanguageStore } from '@/store/languageStore';
-import { useTranslation } from '@/hooks/useTranslation';
 
-export default function LanguageToggle() {
-  const { language, toggleLanguage } = useLanguageStore();
-  const { t } = useTranslation();
-  
+/**
+ * Two-option segmented language switch (عربي | EN) with PNG flags.
+ * Shows both languages so it's immediately obvious how to switch.
+ */
+export default function LanguageToggle({ dark = false }: { dark?: boolean }) {
+  const { language, setLanguage } = useLanguageStore();
+
   return (
-    <button
-      onClick={toggleLanguage}
-      className="language-toggle"
-      style={{
-        fontSize: '0.875rem',
-        color: 'var(--gray-500)',
-        background: 'none',
-        border: '1px solid var(--gray-300)',
-        borderRadius: '6px',
-        padding: '6px 12px',
-        cursor: 'pointer',
-        transition: 'all 0.2s',
-        fontWeight: 500
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.color = 'var(--primary-blue)';
-        e.currentTarget.style.borderColor = 'var(--primary-blue)';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.color = 'var(--gray-500)';
-        e.currentTarget.style.borderColor = 'var(--gray-300)';
-      }}
-    >
-      {t('language')}
-    </button>
+    <div className={`lang-switch${dark ? ' dark' : ''}`} role="group" aria-label="Language / اللغة">
+      <button
+        type="button"
+        className={`lang-opt${language === 'ar' ? ' active' : ''}`}
+        onClick={() => setLanguage('ar')}
+        aria-pressed={language === 'ar'}
+      >
+        <img
+          src="https://flagcdn.com/w40/sa.png"
+          srcSet="https://flagcdn.com/w80/sa.png 2x"
+          alt=""
+          width={20}
+          height={15}
+        />
+        عربي
+      </button>
+      <button
+        type="button"
+        className={`lang-opt${language === 'en' ? ' active' : ''}`}
+        onClick={() => setLanguage('en')}
+        aria-pressed={language === 'en'}
+      >
+        <img
+          src="https://flagcdn.com/w40/gb.png"
+          srcSet="https://flagcdn.com/w80/gb.png 2x"
+          alt=""
+          width={20}
+          height={15}
+        />
+        EN
+      </button>
+    </div>
   );
 }

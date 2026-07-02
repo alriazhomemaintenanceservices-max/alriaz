@@ -1,74 +1,150 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Phone, Menu, X, Home, Users, Mail, Wrench } from 'lucide-react';
 import Button from '@/components/shared/Button';
 import Logo from '@/components/shared/Logo';
 import LanguageToggle from '@/components/shared/LanguageToggle';
+import WhatsAppSvg from '@/components/shared/WhatsAppSvg';
 import { useTranslation } from '@/hooks/useTranslation';
 import { trackPhoneClick } from '@/lib/tracking';
 
+const PHONE = '+966508901536';
+const PHONE_DISPLAY = '050 890 1536';
+
 export default function Header() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const isAr = language === 'ar';
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const navLinks = [
+    { href: '/', icon: <Home size={18} />, label: t('breadcrumb-home') },
+    { href: '/services/', icon: <Wrench size={18} />, label: t('nav-services') },
+    { href: '/about-us/', icon: <Users size={18} />, label: t('nav-about') },
+    { href: '/contact/', icon: <Mail size={18} />, label: t('nav-contact') },
+  ];
 
   return (
-    <header style={{ position: 'sticky', top: 0, backgroundColor: 'var(--white)', borderBottom: '1px solid var(--gray-300)', zIndex: 20 }}>
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 16px' }}>
-
-        {/* Logo */}
-        <Link href="/" style={{ textDecoration: 'none' }}>
-          <Logo size={38} />
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav className="mobile-hidden" style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-          <Link href="/" style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--gray-600)', textDecoration: 'none' }}>{t('breadcrumb-home')}</Link>
-          <Link href="/services/" style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--gray-600)', textDecoration: 'none' }}>{t('nav-services')}</Link>
-          <Link href="/about-us/" style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--gray-600)', textDecoration: 'none' }}>{t('nav-about')}</Link>
-          <Link href="/contact/" style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--gray-600)', textDecoration: 'none' }}>{t('nav-contact')}</Link>
-        </nav>
-
-        {/* Right side */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <LanguageToggle />
-
-          <Button href="tel:+966508901536" variant="emergency" size="small" icon={<Phone size={16} />} onClick={() => trackPhoneClick('header')} className="mobile-hidden">
-            {t('call-now')}
-          </Button>
-
-          <button
-            className="desktop-hidden"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Menu"
-            style={{ background: 'none', border: '1px solid var(--gray-300)', borderRadius: '8px', padding: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--dark)' }}
-          >
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+    <header className={`site-header${scrolled ? ' scrolled' : ''}`}>
+      {/* Utility top bar */}
+      <div className="header-topbar">
+        <div className="container header-topbar-inner">
+          <span className="header-topbar-info">
+            <span className="dot" />
+            {t('available-247-prayers')}
+          </span>
+          <span className="header-topbar-actions">
+            <a
+              href={`tel:${PHONE}`}
+              className="header-topbar-phone"
+              onClick={() => trackPhoneClick('topbar')}
+            >
+              <Phone size={14} />
+              <span dir="ltr">{PHONE_DISPLAY}</span>
+            </a>
+            <LanguageToggle dark />
+          </span>
         </div>
       </div>
 
-      {/* Mobile Dropdown Menu */}
-      {menuOpen && (
-        <div className="desktop-hidden" style={{ borderTop: '1px solid var(--gray-300)', background: 'var(--white)', padding: '8px 16px 12px' }}>
-          <nav style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-            {[
-              { href: '/', icon: <Home size={18} />, label: t('breadcrumb-home') },
-              { href: '/services/', icon: <Wrench size={18} />, label: t('nav-services') },
-              { href: '/about-us/', icon: <Users size={18} />, label: t('nav-about') },
-              { href: '/contact/', icon: <Mail size={18} />, label: t('nav-contact') },
-            ].map((item) => (
-              <Link key={item.href} href={item.href} onClick={() => setMenuOpen(false)}
-                style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px 16px', borderRadius: '10px', textDecoration: 'none', color: 'var(--dark)', fontWeight: 600, fontSize: '1rem' }}>
-                <span style={{ color: 'var(--primary-blue)' }}>{item.icon}</span>
-                {item.label}
+      {/* Main bar */}
+      <div className="header-main">
+        <div className="container header-main-inner">
+          <Link href="/" aria-label={t('saudi-home-experts')} style={{ textDecoration: 'none' }}>
+            <Logo size={44} />
+          </Link>
+
+          <nav className="header-nav mobile-hidden">
+            {navLinks.map((l) => (
+              <Link key={l.href} href={l.href} className="header-nav-link">
+                {l.label}
               </Link>
             ))}
           </nav>
-          <div style={{ marginTop: '8px', paddingTop: '8px', borderTop: '1px solid var(--gray-200)' }}>
-            <Button href="tel:+966508901536" variant="emergency" size="large" icon={<Phone size={18} />} onClick={() => { trackPhoneClick('header-menu'); setMenuOpen(false); }} fullWidth>
+
+          <div className="header-actions">
+            <Button
+              href={`tel:${PHONE}`}
+              variant="emergency"
+              size="medium"
+              icon={<Phone size={18} />}
+              onClick={() => trackPhoneClick('header')}
+              className="mobile-hidden"
+            >
+              {isAr ? 'اتصل الآن' : 'Call Now'}
+            </Button>
+
+            {/* Compact phone (mobile only) */}
+            <a
+              href={`tel:${PHONE}`}
+              className="header-icon-btn header-icon-phone desktop-hidden"
+              aria-label={isAr ? 'اتصل الآن' : 'Call Now'}
+              onClick={() => trackPhoneClick('header-mobile')}
+            >
+              <Phone size={20} />
+            </a>
+
+            <button
+              className="header-menu-btn desktop-hidden"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Menu"
+              aria-expanded={menuOpen}
+            >
+              {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile dropdown */}
+      {menuOpen && (
+        <div className="header-mobile-menu desktop-hidden">
+          <nav>
+            {navLinks.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="header-mobile-link"
+                onClick={() => setMenuOpen(false)}
+              >
+                <span className="ico">{l.icon}</span>
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+          <div className="header-mobile-cta">
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2px' }}>
+              <LanguageToggle />
+            </div>
+            <Button
+              href={`tel:${PHONE}`}
+              variant="emergency"
+              size="large"
+              icon={<Phone size={18} />}
+              onClick={() => { trackPhoneClick('header-menu'); setMenuOpen(false); }}
+              fullWidth
+            >
               {t('contact-call-btn')}
+            </Button>
+            <Button
+              href={`https://wa.me/966508901536?text=${encodeURIComponent(t('whatsapp-photo-message'))}`}
+              variant="whatsapp"
+              size="large"
+              external
+              icon={<WhatsAppSvg size={18} />}
+              onClick={() => setMenuOpen(false)}
+              fullWidth
+            >
+              {t('send-photo')}
             </Button>
           </div>
         </div>
