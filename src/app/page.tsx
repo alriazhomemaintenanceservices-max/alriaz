@@ -6,19 +6,23 @@ import '../styles/globals.css';
 import Button from '@/components/shared/Button';
 import { useTranslation } from '@/hooks/useTranslation';
 import { translations } from '@/lib/translations';
-import { Phone, Clock, Shield, Users, CheckCircle, Star, Zap } from 'lucide-react';
+import { Phone, Clock, Shield, Users, CheckCircle, Star, Zap, Snowflake, Droplet, ShowerHead, Flame, Lightbulb, ChevronLeft, MapPin, Timer, ShieldCheck, Home, Wrench, Video } from 'lucide-react';
 import WhatsAppSvg from '@/components/shared/WhatsAppSvg';
 import CallbackForm from '@/components/shared/CallbackForm';
 
 // Area detection handled inside component for language support
 
-// Hero background slides. Demo photography (Unsplash) — swap these URLs for the
-// branded shoot described in "UI-Audit-and-Image-Prompts.md" when ready.
+// Hero background slides — branded service photography (optimized in /public/hero).
 const HERO_SLIDES = [
-  'https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1600&q=70', // electrician at panel
-  'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1600&q=70', // plumber under sink
-  'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1600&q=70', // technician / tools
-  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=70', // modern home
+  '/hero/repairman-uniform.jpg',
+  '/hero/electrician-switchboard.jpg',
+  '/hero/plumber-sink.jpg',
+  '/hero/sockets-install.jpg',
+  '/hero/electrician-office.jpg',
+  '/hero/electrician-building.jpg',
+  '/hero/water-damage-call.jpg',
+  '/hero/clogged-sink.jpg',
+  '/hero/radiator.jpg',
 ];
 
 export default function HomePage() {
@@ -53,13 +57,40 @@ export default function HomePage() {
   }, []);
 
   const problems = [
-    { id: 'ac-not-cooling', icon: '❄️', titleKey: 'ac-not-cooling' as const, url: '/المكيف-ما-يبرد' },
-    { id: 'power-cut', icon: '⚡', titleKey: 'power-cuts' as const, url: '/الكهرب-يفصل' },
-    { id: 'water-leak', icon: '💧', titleKey: 'water-leaking' as const, url: '/المويه-تسرب' },
-    { id: 'drain-blocked', icon: '🚿', titleKey: 'drain-blocked' as const, url: '/المجاري-مسدودة' },
-    { id: 'heater-broken', icon: '🔥', titleKey: 'heater-broken' as const, url: '/السخان-خربان' },
-    { id: 'lights-not-working', icon: '💡', titleKey: 'lights-not-working' as const, url: '/اللمبات-ما-تشتغل' },
+    { id: 'ac-not-cooling', Icon: Snowflake, grad: 'linear-gradient(135deg, #38BDF8, #2563EB)', titleKey: 'ac-not-cooling' as const, svcKey: 'electrician' as const },
+    { id: 'power-cut', Icon: Zap, grad: 'linear-gradient(135deg, #FBBF24, #F59E0B)', titleKey: 'power-cuts' as const, svcKey: 'electrician' as const },
+    { id: 'water-leak', Icon: Droplet, grad: 'linear-gradient(135deg, #22D3EE, #0891B2)', titleKey: 'water-leaking' as const, svcKey: 'plumber' as const },
+    { id: 'drain-blocked', Icon: ShowerHead, grad: 'linear-gradient(135deg, #2DD4BF, #0D9488)', titleKey: 'drain-blocked' as const, svcKey: 'plumber' as const },
+    { id: 'heater-broken', Icon: Flame, grad: 'linear-gradient(135deg, #FB923C, #EF4444)', titleKey: 'heater-broken' as const, svcKey: 'plumber' as const },
+    { id: 'lights-not-working', Icon: Lightbulb, grad: 'linear-gradient(135deg, #FCD34D, #F59E0B)', titleKey: 'lights-not-working' as const, svcKey: 'electrician' as const },
   ];
+
+  const homeServices = [
+    {
+      key: 'electrician', Icon: Zap, grad: 'linear-gradient(135deg, #3B82F6, #1D4ED8)',
+      titleKey: 'electrician' as const, href: '/services/electrician/',
+      items: ['ac-maintenance-freon', 'power-outage-repair', 'lights-installation', 'electrical-panel-maintenance', 'new-electrical-wiring'] as const,
+    },
+    {
+      key: 'plumber', Icon: Droplet, grad: 'linear-gradient(135deg, #06B6D4, #0E7490)',
+      titleKey: 'plumber' as const, href: '/services/plumber/',
+      items: ['ceiling-water-leak-repair', 'drain-unblocking', 'heater-installation-maintenance', 'faucet-repair', 'water-filter-installation'] as const,
+    },
+    {
+      key: 'intercom', Icon: Video, grad: 'linear-gradient(135deg, #10B981, #047857)',
+      titleKey: 'intercom' as const, href: '/services/intercom/',
+      items: ['intercom-installation', 'security-camera-installation', 'smart-doorbell-installation', 'access-control-systems', 'intercom-repair'] as const,
+    },
+  ];
+
+  const features = [
+    { Icon: MapPin, grad: 'linear-gradient(135deg, #3B82F6, #1D4ED8)', titleKey: 'local-experts', descKey: 'local-experts-desc' },
+    { Icon: Timer, grad: 'linear-gradient(135deg, #10B981, #047857)', titleKey: 'quick-arrival', descKey: 'quick-arrival-desc' },
+    { Icon: Clock, grad: 'linear-gradient(135deg, #F59E0B, #D97706)', titleKey: 'respect-time', descKey: 'respect-time-desc' },
+    { Icon: Wrench, grad: 'linear-gradient(135deg, #6366F1, #4338CA)', titleKey: 'experienced-technicians', descKey: 'experienced-technicians-desc' },
+    { Icon: ShieldCheck, grad: 'linear-gradient(135deg, #14B8A6, #0D9488)', titleKey: 'work-warranty', descKey: 'work-warranty-desc' },
+    { Icon: Home, grad: 'linear-gradient(135deg, #EC4899, #BE185D)', titleKey: 'home-respect', descKey: 'home-respect-desc' },
+  ] as const;
 
   const areas = [
     { ar: 'الياسمين', en: 'Al Yasmin', slug: 'yasmin' },
@@ -175,18 +206,6 @@ export default function HomePage() {
                 <span className="hero-trust-item"><CheckCircle size={16} />{language === 'ar' ? 'فنيون معتمدون' : 'Certified Techs'}</span>
               </div>
             </div>
-
-            {/* Slide indicators */}
-            <div className="hero-dots">
-              {HERO_SLIDES.map((_, i) => (
-                <button
-                  key={i}
-                  className={`hero-dot${i === heroSlide ? ' active' : ''}`}
-                  onClick={() => setHeroSlide(i)}
-                  aria-label={`${t('view-all-services')} ${i + 1}`}
-                />
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -199,21 +218,21 @@ export default function HomePage() {
             <p style={{ color: 'var(--gray-500)', marginTop: '8px' }}>{t('choose-problem-instant')}</p>
           </div>
 
-          <div className="grid grid-cols-2 grid-cols-md-3" style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <div className="problem-grid">
             {problems.map((problem) => (
               <button
                 key={problem.id}
                 onClick={() => setSelectedProblem(problem.id)}
-                className={`card ${selectedProblem === problem.id ? 'selected' : ''}`}
-                style={{
-                  textAlign: 'center',
-                  cursor: 'pointer',
-                  border: selectedProblem === problem.id ? '2px solid var(--primary-blue)' : '1px solid var(--gray-300)',
-                  background: selectedProblem === problem.id ? '#EBF8FF' : 'white'
-                }}
+                className={`problem-card${selectedProblem === problem.id ? ' selected' : ''}`}
               >
-                <div style={{ fontSize: '2.5rem', marginBottom: '12px' }}>{problem.icon}</div>
-                <div style={{ fontWeight: 600, color: 'var(--dark)' }}>{t(problem.titleKey)}</div>
+                <span className="icon-medallion" style={{ background: problem.grad }}>
+                  <problem.Icon size={30} />
+                </span>
+                <span>
+                  <span className="p-title">{t(problem.titleKey)}</span>
+                  <span className="p-sub">{t(problem.svcKey)}</span>
+                </span>
+                <ChevronLeft className="p-arrow" size={22} />
               </button>
             ))}
           </div>
@@ -324,19 +343,14 @@ export default function HomePage() {
             <h2 className="section-title">{t('why-choose-us')}</h2>
           </div>
 
-          <div className="grid grid-cols-1 grid-cols-md-2 grid-cols-lg-3" style={{ maxWidth: '1000px', margin: '0 auto' }}>
-            {[
-              { icon: '🗺️', titleKey: 'local-experts', descKey: 'local-experts-desc' },
-              { icon: '⏱️', titleKey: 'quick-arrival', descKey: 'quick-arrival-desc' },
-              { icon: '🕌', titleKey: 'respect-time', descKey: 'respect-time-desc' },
-              { icon: '👨‍🔧', titleKey: 'experienced-technicians', descKey: 'experienced-technicians-desc' },
-              { icon: '🛡️', titleKey: 'work-warranty', descKey: 'work-warranty-desc' },
-              { icon: '🏠', titleKey: 'home-respect', descKey: 'home-respect-desc' },
-            ].map((item, i) => (
-              <div key={i} className="card" style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '2rem', marginBottom: '12px' }}>{item.icon}</div>
-                <h3 style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: '8px' }}>{t(item.titleKey as keyof typeof translations.ar)}</h3>
-                <p style={{ color: 'var(--gray-500)' }}>{t(item.descKey as keyof typeof translations.ar)}</p>
+          <div className="feature-grid">
+            {features.map((item, i) => (
+              <div key={i} className="feature-card">
+                <span className="icon-medallion" style={{ background: item.grad }}>
+                  <item.Icon size={30} />
+                </span>
+                <h3>{t(item.titleKey as keyof typeof translations.ar)}</h3>
+                <p>{t(item.descKey as keyof typeof translations.ar)}</p>
               </div>
             ))}
           </div>
@@ -350,66 +364,29 @@ export default function HomePage() {
             <h2 className="section-title">{t('our-services')}</h2>
           </div>
 
-          <div className="grid grid-cols-1 grid-cols-md-2 grid-cols-lg-3" style={{ maxWidth: '1200px', margin: '0 auto', gap: '32px' }}>
-            <div className="card">
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '16px', color: 'var(--primary-blue)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '1.5rem' }}>⚡</span> {t('electrician')}
-              </h3>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
-                {[
-                  'ac-maintenance-freon',
-                  'power-outage-repair',
-                  'lights-installation',
-                  'electrical-panel-maintenance',
-                  'new-electrical-wiring'
-                ].map((serviceKey, i) => (
-                  <li key={i} style={{ display: 'flex', alignItems: 'start', gap: '8px', marginBottom: '8px' }}>
-                    <CheckCircle size={20} style={{ color: 'var(--success-green)', marginTop: '2px', flexShrink: 0 }} />
-                    <span>{t(serviceKey as keyof typeof translations.ar)}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="card">
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '16px', color: 'var(--primary-blue)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '1.5rem' }}>💧</span> {t('plumber')}
-              </h3>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
-                {[
-                  'ceiling-water-leak-repair',
-                  'drain-unblocking',
-                  'heater-installation-maintenance',
-                  'faucet-repair',
-                  'water-filter-installation'
-                ].map((serviceKey, i) => (
-                  <li key={i} style={{ display: 'flex', alignItems: 'start', gap: '8px', marginBottom: '8px' }}>
-                    <CheckCircle size={20} style={{ color: 'var(--success-green)', marginTop: '2px', flexShrink: 0 }} />
-                    <span>{t(serviceKey as keyof typeof translations.ar)}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="card">
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '16px', color: 'var(--primary-blue)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '1.5rem' }}>🔒</span> {t('intercom')}
-              </h3>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
-                {[
-                  'intercom-installation',
-                  'security-camera-installation',
-                  'smart-doorbell-installation',
-                  'access-control-systems',
-                  'intercom-repair'
-                ].map((serviceKey, i) => (
-                  <li key={i} style={{ display: 'flex', alignItems: 'start', gap: '8px', marginBottom: '8px' }}>
-                    <CheckCircle size={20} style={{ color: 'var(--success-green)', marginTop: '2px', flexShrink: 0 }} />
-                    <span>{t(serviceKey as keyof typeof translations.ar)}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="service-grid">
+            {homeServices.map((svc) => (
+              <div key={svc.key} className="service-card">
+                <div className="service-card-head" style={{ background: svc.grad }}>
+                  <span className="service-head-icon"><svc.Icon size={26} /></span>
+                  <h3>{t(svc.titleKey)}</h3>
+                </div>
+                <div className="service-card-body">
+                  <ul className="service-list">
+                    {svc.items.map((serviceKey, i) => (
+                      <li key={i}>
+                        <CheckCircle size={19} />
+                        <span>{t(serviceKey as keyof typeof translations.ar)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href={svc.href} className="service-cta">
+                    {t('view-all-services')}
+                    <ChevronLeft size={18} />
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
 
           <div style={{ textAlign: 'center', marginTop: '32px' }}>
