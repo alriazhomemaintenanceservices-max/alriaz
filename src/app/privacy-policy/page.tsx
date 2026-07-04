@@ -5,7 +5,7 @@ export const metadata: Metadata = {
     title: "Privacy Policy | Saudi Home Experts",
     description: "Read the Privacy Policy of Saudi Home Experts. Learn how we collect, use, and protect your data while providing premium home services in Saudi Arabia.",
     alternates: {
-        canonical: '/privacy-policy'
+        canonical: '/privacy-policy/'
     }
 };
 

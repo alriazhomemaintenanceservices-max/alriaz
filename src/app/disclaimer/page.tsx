@@ -5,7 +5,7 @@ export const metadata: Metadata = {
     title: "Disclaimer | Saudi Home Experts",
     description: "Legal disclaimer for Saudi Home Experts. Understand the limitations of our content and liability regarding home maintenance services.",
     alternates: {
-        canonical: '/disclaimer'
+        canonical: '/disclaimer/'
     }
 };
 

@@ -12,7 +12,7 @@ export default function AboutUsPage() {
   const trackPhoneClick = () => {
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', 'conversion', {
-        'send_to': 'AW-18063458010/PHONE_CONVERSION',
+        'send_to': 'AW-18063458010/qhSLCPL0mJgcENr9qaVD',
         'value': 50.0,
         'currency': 'SAR',
       });

@@ -128,7 +128,7 @@ export default function HomePage() {
   const trackPhoneClick = () => {
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'conversion', {
-        'send_to': 'AW-18063458010/PHONE_CONVERSION',
+        'send_to': 'AW-18063458010/qhSLCPL0mJgcENr9qaVD',
         'value': 50.0,
         'currency': 'SAR',
         'event_callback': () => {

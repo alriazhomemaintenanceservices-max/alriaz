@@ -50,9 +50,21 @@ Verification convention: after changes run `npx tsc --noEmit` **and** `npm run b
 
 - Google Ads gtag, account **`AW-18063458010`**, loaded in `layout.tsx`. Reusable helpers in **`src/lib/tracking.ts`** (`trackPhoneClick`, `trackWhatsAppClick`, `trackServicePageView`) use the real conversion IDs.
 
-## Known issues / gaps (unfixed as of 2026-07-02)
+## SEO fixes applied (2026-07-02, from SEO-Technical-Audit)
 
-- **Broken conversion tracking**: `page.tsx`, `about-us`, `contact`, `services/page.tsx` have inline gtag calls using the placeholder `AW-18063458010/PHONE_CONVERSION` instead of the real ID in `tracking.ts`. Phone conversions on those pages don't register.
-- **Missing metadata**: `src/app/metadata.ts` is orphaned (never imported); `layout.tsx` exports no `metadata`. Homepage + all `'use client'` pages (services, about, contact) ship with no title/description/canonical. Fix by adding server `layout.tsx` files per client route.
-- **Canonical trailing-slash mismatch**: area-page + legal-page canonicals omit the trailing slash while `trailingSlash: true` adds it.
-- **Conflicting robots**: both `public/robots.txt` and `src/app/robots.ts` exist.
+- Root `layout.tsx` now exports full `metadata` (title, description, canonical, OG, twitter, `metadataBase`). Orphaned `metadata.ts` deleted.
+- Server `layout.tsx` metadata added for the 6 client pages: `services/`, `services/{electrician,plumber,intercom}/`, `about-us/`, `contact/`.
+- Branded OG image via `src/app/opengraph-image.tsx` (`next/og` ImageResponse, 1200×630) — fixes blank WhatsApp/social previews. Uses Latin text (no Arabic webfont loaded).
+- `public/robots.txt` deleted; `src/app/robots.ts` is the single source (+ host).
+- All 54 area-page + 4 legal-page canonicals now include the trailing slash.
+- Conversion tracking: placeholder `PHONE_CONVERSION` replaced with the real label `AW-18063458010/qhSLCPL0mJgcENr9qaVD` on home/about/contact/services.
+- Fabricated `aggregateRating` removed from `layout.tsx` and `ElectricianAreaPage.tsx` schema.
+- `Permissions-Policy` typo fixed (`geolocations` → `geolocation`).
+- Added `not-found.tsx` (branded 404 with CTAs + area links) and `/thank-you/` page.
+
+## Remaining SEO gaps (deferred / decisions needed)
+
+- **English SEO / hreflang**: language is a client-side toggle with no `/en/` routes, so EN is invisible to search. Needs route-based i18n or dropping the EN SEO claim. Not implemented.
+- **Blog / topical content**: no `/blog/` articles yet (top-of-funnel authority).
+- **AC page**: audit suggested one, but AC was intentionally removed site-wide (see memory) — do not add.
+- **Visual redesign**: homepage is the design benchmark (alternating light/dark sections, patterns, image cards). Area/services/about/contact/legal pages still need the same treatment applied.

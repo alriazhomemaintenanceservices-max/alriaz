@@ -5,7 +5,7 @@ export const metadata: Metadata = {
     title: "Terms of Service | Saudi Home Experts",
     description: "Read our Terms of Service to understand the rules and guidelines for using the Saudi Home Experts platform and our maintenance services.",
     alternates: {
-        canonical: '/terms-of-service'
+        canonical: '/terms-of-service/'
     }
 };
 

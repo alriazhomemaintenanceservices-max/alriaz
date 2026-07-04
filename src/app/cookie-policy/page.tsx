@@ -5,7 +5,7 @@ export const metadata: Metadata = {
     title: "Cookie Policy | Saudi Home Experts",
     description: "Understand how Saudi Home Experts uses cookies and similar technologies to improve your user experience on our website.",
     alternates: {
-        canonical: '/cookie-policy'
+        canonical: '/cookie-policy/'
     }
 };
 

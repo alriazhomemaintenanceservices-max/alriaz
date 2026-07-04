@@ -170,8 +170,7 @@ export default function ElectricianAreaPage({ area, service }: Props) {
           "itemListElement": [
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": `${serviceName} ${areaName}`, "description": t('area-schema-service-desc') } }
           ]
-        },
-        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "127" }
+        }
       },
       {
         "@type": "FAQPage",

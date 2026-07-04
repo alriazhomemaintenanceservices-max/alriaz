@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { Inter, Cairo } from 'next/font/google';
 import Script from 'next/script';
 import "./globals.css";
@@ -19,6 +20,31 @@ const cairo = Cairo({
   variable: '--font-cairo',
   display: 'swap',
 });
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://saudihomeexperts.com'),
+  title: 'كهربائي وسباك الرياض - خدمة فورية 24/7 | خبراء المنزل السعودي',
+  description:
+    'كهربائي وسباك في الرياض. خدمة فورية 24/7. إصلاح الأعطال الكهربائية وتسليك المجاري وإصلاح التسريبات. النرجس، الياسمين، قرطبة، غرناطة. اتصل: 050 890 1536',
+  keywords:
+    'كهربائي الرياض, سباك الرياض, صيانة منزلية, إصلاح كهرباء, تسليك مجاري, كهربائي النرجس, سباك الياسمين',
+  applicationName: 'خبراء المنزل السعودي',
+  alternates: { canonical: '/' },
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: 'website',
+    locale: 'ar_SA',
+    siteName: 'خبراء المنزل السعودي',
+    url: '/',
+    title: 'كهربائي وسباك الرياض - خدمة فورية 24/7',
+    description: 'خدمة كهربائي وسباك احترافية في الرياض. وصول خلال ساعة. متوفر 24/7.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'كهربائي وسباك الرياض - خدمة فورية 24/7',
+    description: 'وصول خلال ساعة. متوفر 24/7. اتصل: 050 890 1536',
+  },
+};
 
 // Global Organization + LocalBusiness + WebSite JSON-LD. Appears on every page
 // so AI answer engines (ChatGPT, Perplexity, Google AI Overviews) and crawlers
@@ -67,8 +93,7 @@ const organizationSchema = {
         "addressCountry": "SA"
       },
       "geo": { "@type": "GeoCoordinates", "latitude": "24.7136", "longitude": "46.6753" },
-      "areaServed": { "@type": "City", "name": "Riyadh" },
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "127" }
+      "areaServed": { "@type": "City", "name": "Riyadh" }
     },
     {
       "@type": "WebSite",
