@@ -3,10 +3,7 @@ import { Inter, Cairo } from 'next/font/google';
 import Script from 'next/script';
 import "./globals.css";
 import "../styles/globals.css";
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import StickyMobileCTA from '@/components/layout/StickyMobileCTA';
-import FloatingActions from '@/components/layout/FloatingActions';
+import SiteChrome from '@/components/layout/SiteChrome';
 import LanguageProvider from '@/components/layout/LanguageProvider';
 
 const inter = Inter({
@@ -131,15 +128,11 @@ export default function RootLayout({
         {/* JSON-LD: organization, local business, website. Static literal, no user input. */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       </head>
-      <body style={{ margin: 0, padding: 0 }}>
+      {/* suppressHydrationWarning: browser extensions (Grammarly, etc.) inject
+          attributes on <body> before hydration; harmless mismatch. */}
+      <body style={{ margin: 0, padding: 0 }} suppressHydrationWarning>
         <LanguageProvider>
-          <Header />
-          <main>
-            {children}
-          </main>
-          <Footer />
-          <StickyMobileCTA />
-          <FloatingActions />
+          <SiteChrome>{children}</SiteChrome>
         </LanguageProvider>
       </body>
     </html>

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { SESSION_COOKIE, verifySession } from '@/lib/auth/jwt';
 
 // --- Why this proxy exists --------------------------------------------------
 // The public area-page URLs use Arabic service prefixes, e.g.
@@ -22,7 +23,48 @@ const SERVICE_AR_TO_EN: Record<string, string> = {
   'انتركوم': 'intercom',
 };
 
-export function proxy(req: NextRequest) {
+// Blogger admin routes reachable without a session (auth screens).
+const BLOGGER_PUBLIC = ['/blogger/login', '/blogger/forgot-password', '/blogger/reset-password'];
+
+function stripSlash(p: string): string {
+  return p.replace(/\/+$/, '') || '/';
+}
+
+async function guardBlogger(req: NextRequest, path: string): Promise<NextResponse> {
+  const normalized = stripSlash(path);
+  const isPublic = BLOGGER_PUBLIC.includes(normalized);
+
+  const token = req.cookies.get(SESSION_COOKIE)?.value;
+  const session = token ? await verifySession(token) : null;
+
+  // Unauthenticated → send to login (remember where they were going).
+  if (!session && !isPublic) {
+    const url = req.nextUrl.clone();
+    url.pathname = '/blogger/login';
+    url.search = `?next=${encodeURIComponent(path)}`;
+    return NextResponse.redirect(url);
+  }
+
+  // Already signed in → keep them out of the auth screens and the bare /blogger.
+  if (session && (isPublic || normalized === '/blogger')) {
+    const url = req.nextUrl.clone();
+    url.pathname = '/blogger/dashboard';
+    url.search = '';
+    return NextResponse.redirect(url);
+  }
+
+  return NextResponse.next();
+}
+
+export async function proxy(req: NextRequest) {
+  const rawPath = req.nextUrl.pathname;
+
+  // 1) Admin auth guard (ASCII paths, handled before Arabic rewriting).
+  if (rawPath === '/blogger' || rawPath.startsWith('/blogger/')) {
+    return guardBlogger(req, rawPath);
+  }
+
+  // 2) Arabic public-page routing.
   let pathname: string;
   try {
     pathname = decodeURIComponent(req.nextUrl.pathname);

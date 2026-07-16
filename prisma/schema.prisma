@@ -1,0 +1,219 @@
+// Blogger Management System — data model
+// Postgres (Supabase/Neon). See .env.example for connection strings.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  // Supabase/Neon: pooled URL in DATABASE_URL, direct (non-pooled) URL here for migrations.
+  directUrl = env("DIRECT_URL")
+}
+
+// ---------- Enums ----------
+
+enum Role {
+  ADMIN
+  EDITOR
+  AUTHOR
+}
+
+enum BloggerStatus {
+  ACTIVE
+  DISABLED
+  PENDING
+}
+
+enum PostStatus {
+  DRAFT
+  SCHEDULED
+  PUBLISHED
+}
+
+enum Locale {
+  EN
+  AR
+}
+
+enum RobotsDirective {
+  INDEX
+  NOINDEX
+}
+
+// ---------- Auth / users ----------
+
+model Blogger {
+  id           String        @id @default(cuid())
+  name         String
+  email        String        @unique
+  password     String // bcrypt hash
+  profileImage String?
+  role         Role          @default(AUTHOR)
+  status       BloggerStatus @default(ACTIVE)
+  lastLogin    DateTime?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  posts         BlogPost[]
+  uploadedMedia Media[]
+  resetTokens   PasswordResetToken[]
+
+  @@map("bloggers")
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  bloggerId String
+  tokenHash String   @unique // sha256 of the emailed token
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime @default(now())
+
+  blogger Blogger @relation(fields: [bloggerId], references: [id], onDelete: Cascade)
+
+  @@index([bloggerId])
+  @@map("password_reset_tokens")
+}
+
+// ---------- Taxonomy ----------
+
+model BlogCategory {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  posts BlogPost[]
+
+  @@map("blog_categories")
+}
+
+model BlogTag {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  createdAt DateTime @default(now())
+
+  posts BlogPostTag[]
+
+  @@map("blog_tags")
+}
+
+// ---------- Posts ----------
+// A BlogPost holds locale-independent data (status, schedule, author, category,
+// media, metrics). Per-language content lives in BlogTranslation (EN / AR), so
+// each language has its own title, slug, content, SEO, TOC and FAQs.
+
+model BlogPost {
+  id             String     @id @default(cuid())
+  authorId       String
+  categoryId     String?
+  status         PostStatus @default(DRAFT)
+  publishedAt    DateTime?
+  scheduledAt    DateTime?
+  scheduleTz     String? // IANA tz used when scheduling (e.g. Asia/Riyadh)
+  featuredMediaId String?
+  views          Int        @default(0)
+  likes          Int        @default(0)
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  author        Blogger           @relation(fields: [authorId], references: [id])
+  category      BlogCategory?     @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  featuredMedia Media?            @relation("FeaturedMedia", fields: [featuredMediaId], references: [id], onDelete: SetNull)
+  translations  BlogTranslation[]
+  tags          BlogPostTag[]
+
+  @@index([status, publishedAt])
+  @@index([authorId])
+  @@map("blog_posts")
+}
+
+model BlogTranslation {
+  id       String @id @default(cuid())
+  postId   String
+  locale   Locale
+
+  title       String
+  slug        String
+  excerpt     String?
+  content     String  @default("") // sanitized rich-text HTML
+  contentText String  @default("") // plain text (reading time, keyword checks)
+  readingTime Int     @default(0) // minutes
+  tocJson     Json? // [{ id, text, level }]
+
+  // SEO
+  seoTitle           String?
+  metaDescription    String?
+  focusKeyword       String?
+  secondaryKeywords  String[]        @default([])
+  canonicalUrl       String?
+  robots             RobotsDirective @default(INDEX)
+  ogTitle            String?
+  ogDescription      String?
+  ogImageUrl         String?
+  twitterTitle       String?
+  twitterDescription String?
+  twitterImageUrl    String?
+  seoScore           Int? // last computed 0-100
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  post BlogPost  @relation(fields: [postId], references: [id], onDelete: Cascade)
+  faqs BlogFaq[]
+
+  @@unique([postId, locale])
+  @@unique([locale, slug])
+  @@map("blog_translations")
+}
+
+model BlogFaq {
+  id            String @id @default(cuid())
+  translationId String
+  question      String
+  answer        String
+  order         Int    @default(0)
+
+  translation BlogTranslation @relation(fields: [translationId], references: [id], onDelete: Cascade)
+
+  @@index([translationId])
+  @@map("blog_faqs")
+}
+
+model BlogPostTag {
+  postId String
+  tagId  String
+
+  post BlogPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tag  BlogTag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([postId, tagId])
+  @@map("blog_post_tags")
+}
+
+// ---------- Media ----------
+
+model Media {
+  id           String   @id @default(cuid())
+  uploaderId   String?
+  originalUrl  String
+  webpUrl      String?
+  thumbnailUrl String?
+  altText      String?
+  width        Int?
+  height       Int?
+  sizeBytes    Int?
+  mimeType     String?
+  createdAt    DateTime @default(now())
+
+  uploader      Blogger?   @relation(fields: [uploaderId], references: [id], onDelete: SetNull)
+  featuredPosts BlogPost[] @relation("FeaturedMedia")
+
+  @@index([uploaderId])
+  @@map("blog_media")
+}

@@ -61,6 +61,7 @@ export default function Footer() {
             <h4 className="footer-heading">{isAr ? 'الشركة' : 'Company'}</h4>
             <ul className="footer-links">
               <li><Link className="footer-link" href="/about-us/"><ChevronLeft className="chev" size={14} />{t('nav-about')}</Link></li>
+              <li><Link className="footer-link" href={isAr ? '/blog/' : '/en/blog/'}><ChevronLeft className="chev" size={14} />{isAr ? 'المدونة' : 'Blog'}</Link></li>
               <li><Link className="footer-link" href="/contact/"><ChevronLeft className="chev" size={14} />{t('nav-contact')}</Link></li>
               <li><Link className="footer-link" href="/site-map/"><ChevronLeft className="chev" size={14} />{isAr ? 'خريطة الموقع' : 'Site Map'}</Link></li>
             </ul>

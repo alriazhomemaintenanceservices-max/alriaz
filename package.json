@@ -9,19 +9,41 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.111.0",
+    "@prisma/client": "^6.19.3",
+    "@supabase/supabase-js": "^2.110.6",
+    "@tiptap/extension-color": "^3.27.4",
+    "@tiptap/extension-image": "^3.27.4",
+    "@tiptap/extension-link": "^3.27.4",
+    "@tiptap/extension-placeholder": "^3.27.4",
+    "@tiptap/extension-table": "^3.27.4",
+    "@tiptap/extension-text-align": "^3.27.4",
+    "@tiptap/extension-text-style": "^3.27.4",
+    "@tiptap/extension-underline": "^3.27.4",
+    "@tiptap/pm": "^3.27.4",
+    "@tiptap/react": "^3.27.4",
+    "@tiptap/starter-kit": "^3.27.4",
+    "bcryptjs": "^3.0.3",
+    "jose": "^6.2.3",
     "lucide-react": "^0.563.0",
     "next": "16.1.6",
     "next-intl": "^4.9.0",
+    "pg": "^8.22.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "sharp": "^0.35.3",
+    "slugify": "^1.6.9",
+    "zod": "^4.4.3",
     "zustand": "^5.0.12"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "prisma": "^6.19.3",
     "typescript": "^5"
   }
 }
