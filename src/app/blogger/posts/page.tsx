@@ -52,7 +52,6 @@ export default async function PostsPage() {
                   <th>Title (Arabic)</th>
                   <th>Status</th>
                   <th>Category</th>
-                  <th>English</th>
                   <th>Updated</th>
                   <th style={{ textAlign: 'right' }}>Actions</th>
                 </tr>
@@ -60,7 +59,6 @@ export default async function PostsPage() {
               <tbody>
                 {rows.map((p) => {
                   const ar = p.translations.find((x) => x.locale === 'AR') ?? p.translations[0];
-                  const en = p.translations.find((x) => x.locale === 'EN');
                   const thumb = p.featuredMedia?.thumbnailUrl;
                   return (
                     <tr key={p.id}>
@@ -75,13 +73,6 @@ export default async function PostsPage() {
                       <td><Link href={`/blogger/posts/${p.id}`}>{ar?.title || '(untitled)'}</Link></td>
                       <td><span className={`bms-badge ${STATUS_BADGE[p.status]}`}>{p.status.toLowerCase()}</span></td>
                       <td>{p.category?.name || '—'}</td>
-                      <td>
-                        {en ? (
-                          <Link href={`/blogger/posts/${p.id}/english`} style={{ fontWeight: 600 }}>Preview EN</Link>
-                        ) : (
-                          <span style={{ color: 'var(--bms-muted)' }}>— not translated</span>
-                        )}
-                      </td>
                       <td>{new Date(p.updatedAt).toLocaleDateString()}</td>
                       <td><PostRowActions postId={p.id} /></td>
                     </tr>

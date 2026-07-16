@@ -23,10 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title,
     description,
-    alternates: {
-      canonical,
-      languages: post.altLocaleSlug ? { 'en': `${SITE}/en/blog/${post.altLocaleSlug}/` } : undefined,
-    },
+    alternates: { canonical },
     robots: post.robotsNoindex ? { index: false, follow: false } : { index: true, follow: true },
     openGraph: {
       title: post.ogTitle || title, description: post.ogDescription || description,
@@ -46,5 +43,5 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
   if (!post) notFound();
   const related = await getRelatedPosts(post.categoryId, post.slug, 'AR', 3);
 
-  return <BlogArticle post={post} related={related} basePath="/blog" altBasePath="/en/blog" />;
+  return <BlogArticle post={post} related={related} basePath="/blog" />;
 }

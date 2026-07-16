@@ -2,11 +2,11 @@
 
 import { useMemo, useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
-import { Trash2, Plus, Languages } from 'lucide-react';
+import { Trash2, Plus } from 'lucide-react';
 import RichTextEditor from './RichTextEditor';
 import FeaturedImageUpload, { type FeaturedImage } from './FeaturedImageUpload';
 import { slugify, extractToc } from '@/lib/blog/content';
-import { savePost, deletePost, generateEnglishVersion } from '@/app/blogger/posts/actions';
+import { savePost, deletePost } from '@/app/blogger/posts/actions';
 import { emptyTranslation, type PostPayload } from '@/lib/blog/post-types';
 import type { PostStatus, RobotsDirective } from '@/lib/types/db';
 
@@ -26,7 +26,6 @@ export default function PostForm({
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
-  const [enStatus, setEnStatus] = useState<string | null>(null);
 
   const [status, setStatus] = useState<PostStatus>(initial?.status ?? 'DRAFT');
   const [categoryId, setCategoryId] = useState<string | null>(initial?.categoryId ?? null);
@@ -93,17 +92,6 @@ export default function PostForm({
     });
   };
 
-  const translate = () => {
-    if (!postId) return;
-    setEnStatus(null);
-    setError(null);
-    startTransition(async () => {
-      const res = await generateEnglishVersion(postId);
-      if (!res.ok) { setError(res.error || 'Translation failed.'); return; }
-      setEnStatus('English version generated and saved. View it under /en/blog.');
-    });
-  };
-
   const remove = () => {
     if (!postId || !confirm('Delete this post? This cannot be undone.')) return;
     startTransition(async () => {
@@ -120,11 +108,6 @@ export default function PostForm({
         <h1 style={{ margin: 0, fontSize: '1.5rem' }}>{postId ? 'Edit post (Arabic)' : 'Write post (Arabic)'}</h1>
         <div className="bms-row">
           {postId && (
-            <button type="button" className="bms-btn bms-btn-ghost bms-btn-sm" onClick={translate} disabled={pending} title="Translate the Arabic version to English with AI">
-              <Languages size={15} /> {pending ? 'Working…' : 'Translate to English (AI)'}
-            </button>
-          )}
-          {postId && (
             <button type="button" className="bms-btn bms-btn-danger bms-btn-sm" onClick={remove} disabled={pending}>
               <Trash2 size={15} /> Delete
             </button>
@@ -136,7 +119,6 @@ export default function PostForm({
       </div>
 
       {error && <div className="bms-alert bms-alert-error">{error}</div>}
-      {enStatus && <div className="bms-alert bms-alert-success">{enStatus}</div>}
 
       <div className="bms-grid-2">
         {/* Main column */}

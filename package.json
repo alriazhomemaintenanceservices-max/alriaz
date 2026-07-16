@@ -9,7 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.111.0",
     "@prisma/client": "^6.19.3",
     "@supabase/supabase-js": "^2.110.6",
     "@tiptap/extension-color": "^3.27.4",

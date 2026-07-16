@@ -42,8 +42,6 @@ export interface FullPost {
   featuredHeight: number | null;
   tags: string[];
   faqs: { question: string; answer: string }[];
-  /** slug of the other-language version, if it exists (for the language switch). */
-  altLocaleSlug: string | null;
 }
 
 // PostgREST OR filter: published, or scheduled whose time has arrived.
@@ -85,7 +83,7 @@ export async function getPostBySlug(slug: string, locale: Locale = 'AR'): Promis
   const supabase = supabaseAdmin();
   const { data } = await supabase
     .from('blog_translations')
-    .select('*,faqs:blog_faqs(question,answer,order),post:blog_posts!inner(id,status,scheduledAt,publishedAt,categoryId,category:blog_categories(name,slug),author:bloggers(name),featuredMedia:blog_media(webpUrl,altText,width,height),tags:blog_post_tags(tag:blog_tags(name)),translations:blog_translations(locale,slug))')
+    .select('*,faqs:blog_faqs(question,answer,order),post:blog_posts!inner(id,status,scheduledAt,publishedAt,categoryId,category:blog_categories(name,slug),author:bloggers(name),featuredMedia:blog_media(webpUrl,altText,width,height),tags:blog_post_tags(tag:blog_tags(name)))')
     .eq('locale', locale)
     .eq('slug', slug)
     .maybeSingle();
@@ -100,10 +98,6 @@ export async function getPostBySlug(slug: string, locale: Locale = 'AR'): Promis
     p.status === 'PUBLISHED' ||
     (p.status === 'SCHEDULED' && p.scheduledAt && new Date(p.scheduledAt).getTime() <= now);
   if (!visible) return null;
-
-  const otherLocale = locale === 'AR' ? 'EN' : 'AR';
-  const altLocaleSlug =
-    (p.translations ?? []).find((x: any) => x.locale === otherLocale)?.slug ?? null;
 
   return {
     id: p.id,
@@ -135,7 +129,6 @@ export async function getPostBySlug(slug: string, locale: Locale = 'AR'): Promis
       .slice()
       .sort((a: any, b: any) => (a.order ?? 0) - (b.order ?? 0))
       .map((f: any) => ({ question: f.question, answer: f.answer })),
-    altLocaleSlug,
   };
 }
 

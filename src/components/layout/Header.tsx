@@ -29,7 +29,7 @@ export default function Header() {
   const navLinks = [
     { href: '/', icon: <Home size={18} />, label: t('breadcrumb-home') },
     { href: '/services/', icon: <Wrench size={18} />, label: t('nav-services') },
-    { href: isAr ? '/blog/' : '/en/blog/', icon: <Newspaper size={18} />, label: isAr ? 'المدونة' : 'Blog' },
+    { href: '/blog/', icon: <Newspaper size={18} />, label: isAr ? 'المدونة' : 'Blog' },
     { href: '/about-us/', icon: <Users size={18} />, label: t('nav-about') },
     { href: '/contact/', icon: <Mail size={18} />, label: t('nav-contact') },
   ];

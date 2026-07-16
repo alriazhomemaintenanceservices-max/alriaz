@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Phone, Clock, User, Calendar, Languages } from 'lucide-react';
+import { Phone, Clock, User, Calendar } from 'lucide-react';
 import WhatsAppSvg from '@/components/shared/WhatsAppSvg';
 import { addHeadingIds } from '@/lib/blog/content';
 import type { FullPost, PostCard } from '@/lib/blog/public';
@@ -33,12 +33,10 @@ export default function BlogArticle({
   post,
   related,
   basePath,
-  altBasePath,
 }: {
   post: FullPost;
   related: PostCard[];
-  basePath: string; // '/blog' or '/en/blog'
-  altBasePath: string; // the other language base
+  basePath: string; // '/blog'
 }) {
   const locale = post.locale;
   const s = STRINGS[locale];
@@ -94,11 +92,6 @@ export default function BlogArticle({
             <span><User size={15} /> {post.authorName}</span>
             {post.publishedAt && <span><Calendar size={15} /> {fmtDate(post.publishedAt, locale)}</span>}
             <span><Clock size={15} /> {post.readingTime} {s.minRead}</span>
-            {post.altLocaleSlug && (
-              <Link href={`${altBasePath}/${encodeURIComponent(post.altLocaleSlug)}/`} style={{ color: '#dbeafe', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                <Languages size={15} /> {s.switchTo}
-              </Link>
-            )}
           </div>
         </div>
       </section>
