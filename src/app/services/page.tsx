@@ -91,6 +91,30 @@ export default function ServicesPage() {
     },
   ];
 
+  // ItemList + BreadcrumbList JSON-LD. Each service item references the
+  // Service node published on its own hub page — this page is the index.
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ItemList",
+        "itemListElement": services.map((svc, i) => ({
+          "@type": "ListItem",
+          "position": i + 1,
+          "name": t(svc.titleKey),
+          "url": `https://saudihomeexperts.com/services/${svc.slugAr === 'كهربائي' ? 'electrician' : svc.slugAr === 'سباك' ? 'plumber' : 'intercom'}/`,
+        })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": t('breadcrumb-home'), "item": "https://saudihomeexperts.com/" },
+          { "@type": "ListItem", "position": 2, "name": t('nav-services'), "item": "https://saudihomeexperts.com/services/" },
+        ],
+      },
+    ],
+  };
+
   return (
     <>
       {/* Breadcrumbs */}
@@ -208,6 +232,8 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
     </>
   );
 }

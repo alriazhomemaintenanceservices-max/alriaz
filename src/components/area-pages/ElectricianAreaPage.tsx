@@ -198,7 +198,7 @@ export default function ElectricianAreaPage({ area, service }: Props) {
     <>
       {/* Breadcrumbs */}
       <nav className="container" style={{ paddingTop: '24px', marginBottom: '30px', fontSize: '0.9rem', color: 'var(--gray-500)' }}>
-        <Link href="/">{t('breadcrumb-home')}</Link> / <Link href="/خدماتنا">{t('breadcrumb-services')}</Link> / <span style={{ color: 'var(--primary-blue)', fontWeight: 600 }}>{serviceName} {areaName}</span>
+        <Link href="/">{t('breadcrumb-home')}</Link> / <Link href="/services/">{t('breadcrumb-services')}</Link> / <span style={{ color: 'var(--primary-blue)', fontWeight: 600 }}>{serviceName} {areaName}</span>
       </nav>
 
       {/* Hero Section */}
@@ -284,6 +284,18 @@ export default function ElectricianAreaPage({ area, service }: Props) {
               </Link>
             ))}
           </div>
+
+          {/* Cost + emergency guides — only built out for electrician/plumber so far */}
+          {(service.type === 'electrician' || service.type === 'plumber') && (
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', flexWrap: 'wrap', marginTop: '18px' }}>
+              <Link href={`/services/${service.type}/cost-riyadh/`} style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--primary-blue)', textDecoration: 'underline' }}>
+                {language === 'ar' ? `كم تكلفة ${serviceName}؟` : `How much does ${serviceName} cost?`}
+              </Link>
+              <Link href={`/services/${service.type}/emergency/`} style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--emergency-red)', textDecoration: 'underline' }}>
+                {language === 'ar' ? 'عندي طوارئ الآن' : 'I have an emergency now'}
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 

@@ -43,6 +43,30 @@ export default function ElectricianPage() {
   const { t, language } = useTranslation();
   const serviceName = t('electrician');
 
+  // Service + BreadcrumbList JSON-LD. "provider" references the Organization
+  // node published once in the root layout's @graph (src/app/layout.tsx).
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "serviceType": serviceName,
+        "provider": { "@id": "https://saudihomeexperts.com/#organization" },
+        "areaServed": { "@type": "City", "name": t('riyadh') },
+        "url": "https://saudihomeexperts.com/services/electrician/",
+        "description": t('about-elec-desc'),
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": t('breadcrumb-home'), "item": "https://saudihomeexperts.com/" },
+          { "@type": "ListItem", "position": 2, "name": t('nav-services'), "item": "https://saudihomeexperts.com/services/" },
+          { "@type": "ListItem", "position": 3, "name": serviceName, "item": "https://saudihomeexperts.com/services/electrician/" },
+        ],
+      },
+    ],
+  };
+
   return (
     <>
       <nav className="container" style={{ paddingTop: '24px', marginBottom: '30px', fontSize: '0.9rem', color: 'var(--gray-500)' }}>
@@ -70,6 +94,15 @@ export default function ElectricianPage() {
             <Button href={`https://wa.me/966508901536?text=${encodeURIComponent(language === 'ar' ? 'مرحباً، أحتاج كهربائي في الرياض' : 'Hello, I need an electrician in Riyadh')}`} variant="whatsapp" size="large" external icon={<WhatsAppSvg size={20} />} onClick={() => trackWhatsAppClick('electrician-page')}>
               {t('area-send-whatsapp')}
             </Button>
+          </div>
+          <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '20px' }}>
+            <Link href="/services/electrician/cost-riyadh/" style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--primary-blue)', textDecoration: 'underline' }}>
+              {language === 'ar' ? 'كم تكلفة الخدمة؟' : 'How much does it cost?'}
+            </Link>
+            <span style={{ color: 'var(--gray-400)' }}>·</span>
+            <Link href="/services/electrician/emergency/" style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--emergency-red)', textDecoration: 'underline' }}>
+              {language === 'ar' ? 'عندي طوارئ الآن' : 'I have an emergency now'}
+            </Link>
           </div>
         </div>
       </section>
@@ -110,6 +143,23 @@ export default function ElectricianPage() {
         </div>
       </section>
 
+      {/* Cross-Links to Other Services */}
+      <section style={{ padding: '32px 0', background: '#F0F9FF', borderTop: '2px solid #DBEAFE', borderBottom: '2px solid #DBEAFE' }}>
+        <div className="container">
+          <h3 style={{ textAlign: 'center', fontSize: '1.25rem', fontWeight: 700, marginBottom: '20px', color: 'var(--dark)' }}>
+            {language === 'ar' ? 'خدمات أخرى قد تحتاجها' : 'Other services you may need'}
+          </h3>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
+            <Link href="/services/plumber/" style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '14px 28px', background: 'white', border: '2px solid var(--gray-300)', borderRadius: '12px', fontWeight: 600, textDecoration: 'none', color: 'var(--dark)', fontSize: '1.05rem' }}>
+              <span style={{ fontSize: '1.5rem' }}>💧</span> {t('plumber')}
+            </Link>
+            <Link href="/services/intercom/" style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '14px 28px', background: 'white', border: '2px solid var(--gray-300)', borderRadius: '12px', fontWeight: 600, textDecoration: 'none', color: 'var(--dark)', fontSize: '1.05rem' }}>
+              <span style={{ fontSize: '1.5rem' }}>🔒</span> {t('intercom')}
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section style={{ background: 'linear-gradient(135deg, var(--emergency-red) 0%, #DC2626 100%)', color: 'white', padding: '48px 0' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <h2 style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '16px' }}>{t('area-emergency-title', { area: t('riyadh'), service: serviceName })}</h2>
@@ -122,6 +172,8 @@ export default function ElectricianPage() {
           </div>
         </div>
       </section>
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
     </>
   );
 }

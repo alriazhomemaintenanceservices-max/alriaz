@@ -9,7 +9,15 @@ import { useTranslation } from '@/hooks/useTranslation';
 const PHONE = '+966508901536';
 const PHONE_DISPLAY = '050 890 1536';
 
-// Promoted areas — link to the Arabic electrician area URLs (proxy-rewritten).
+// Promoted areas — link to the Arabic area URLs (proxy-rewritten). Service is
+// rotated per area so plumber/intercom district pages get sitewide footer
+// link equity too, instead of every chip pointing at electrician only.
+const SERVICE_ROTATION = [
+  { slugAr: 'كهربائي', nameAr: 'كهربائي', nameEn: 'Electrician' },
+  { slugAr: 'سباك', nameAr: 'سباك', nameEn: 'Plumber' },
+  { slugAr: 'انتركوم', nameAr: 'انتركوم', nameEn: 'Intercom' },
+] as const;
+
 const AREAS = [
   { ar: 'الياسمين', en: 'Al Yasmin', slug: 'yasmin' },
   { ar: 'النرجس', en: 'Al Narjis', slug: 'narjis' },
@@ -19,7 +27,7 @@ const AREAS = [
   { ar: 'العارض', en: 'Al Arid', slug: 'arid' },
   { ar: 'الندى', en: 'Al Nada', slug: 'nada' },
   { ar: 'حطين', en: 'Hittin', slug: 'hittin' },
-];
+].map((area, i) => ({ ...area, service: SERVICE_ROTATION[i % SERVICE_ROTATION.length] }));
 
 export default function Footer() {
   const { t, language } = useTranslation();
@@ -100,8 +108,8 @@ export default function Footer() {
           <h4 className="footer-heading" style={{ marginBottom: '14px' }}>{isAr ? 'أحياء نخدمها في الرياض' : 'Areas We Serve in Riyadh'}</h4>
           <div className="footer-areas">
             {AREAS.map((a) => (
-              <Link key={a.slug} className="footer-area-chip" href={`/كهربائي-${a.slug}/`}>
-                {isAr ? a.ar : a.en}
+              <Link key={a.slug} className="footer-area-chip" href={`/${a.service.slugAr}-${a.slug}/`}>
+                {isAr ? `${a.service.nameAr} ${a.ar}` : `${a.service.nameEn} ${a.en}`}
               </Link>
             ))}
           </div>

@@ -252,21 +252,38 @@ export default function HomePage() {
             ))}
           </div>
 
-          {selectedProblem && (
-            <div className="animate-fadeIn" style={{ marginTop: '32px', padding: '24px', background: '#FEF3C7', borderRadius: '12px', textAlign: 'center' }}>
-              <p style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '16px' }}>
-                ✅ {t('can-fix-in-hour')}
-              </p>
-              <Button
-                href="tel:+966508901536"
-                variant="emergency"
-                icon={<Phone size={18} />}
-                onClick={trackPhoneClick}
-              >
-                {t('call-instant-solution')}
-              </Button>
-            </div>
-          )}
+          {selectedProblem && (() => {
+            const problem = problems.find((p) => p.id === selectedProblem)!;
+            const problemWhatsappUrl = `https://wa.me/966508901536?text=${encodeURIComponent(t('whatsapp-problem-message'))}%20${encodeURIComponent(t(problem.titleKey))}`;
+            return (
+              <div className="animate-fadeIn" style={{ marginTop: '32px', padding: '24px', background: '#FEF3C7', borderRadius: '12px', textAlign: 'center' }}>
+                <p style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '16px' }}>
+                  ✅ {t('can-fix-in-hour')}
+                </p>
+                <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '16px' }}>
+                  <Button
+                    href="tel:+966508901536"
+                    variant="emergency"
+                    icon={<Phone size={18} />}
+                    onClick={trackPhoneClick}
+                  >
+                    {t('call-instant-solution')}
+                  </Button>
+                  <Button
+                    href={problemWhatsappUrl}
+                    variant="whatsapp"
+                    external
+                    icon={<WhatsAppSvg size={18} />}
+                  >
+                    {t('send-problem-photo')}
+                  </Button>
+                </div>
+                <Link href={`/services/${problem.svcKey}/emergency/`} style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--primary-blue)' }}>
+                  {t(problem.svcKey)} — {language === 'ar' ? 'صفحة طوارئ الخدمة' : 'view emergency service page'} ←
+                </Link>
+              </div>
+            );
+          })()}
         </div>
       </section>
 
