@@ -9,6 +9,7 @@ import { useTranslation } from '@/hooks/useTranslation';
 import { translations } from '@/lib/translations';
 import { trackPhoneClick as trackPhone, trackWhatsAppClick, trackServicePageView } from '@/lib/tracking';
 import CallbackForm from '@/components/shared/CallbackForm';
+import { getAreaLocalContent, getNearbyAreaSlugs, AREA_NAMES, type FaqVariant } from '@/lib/areaLocalContent';
 import '../../styles/globals.css';
 
 interface Area {
@@ -118,6 +119,15 @@ const allServices = [
   { type: 'intercom', icon: '🔒', nameAr: 'انتركوم', nameEn: 'Intercom', slugAr: 'انتركوم' },
 ];
 
+// Maps each district's assigned FAQ angle (src/lib/areaLocalContent.ts) to its
+// translation keys — this is what breaks the "identical FAQ on all 18 pages" pattern.
+const LOCAL_FAQ_KEYS: Record<FaqVariant, { qKey: TKey; aKey: TKey }> = {
+  villa: { qKey: 'area-local-faq-villa-q', aKey: 'area-local-faq-villa-a' },
+  older: { qKey: 'area-local-faq-older-q', aKey: 'area-local-faq-older-a' },
+  compound: { qKey: 'area-local-faq-compound-q', aKey: 'area-local-faq-compound-a' },
+  coverage: { qKey: 'area-local-faq-coverage-q', aKey: 'area-local-faq-coverage-a' },
+};
+
 export default function ElectricianAreaPage({ area, service }: Props) {
   const { t, language } = useTranslation();
 
@@ -127,6 +137,16 @@ export default function ElectricianAreaPage({ area, service }: Props) {
 
   const config = serviceConfig[service.type as keyof typeof serviceConfig] || serviceConfig.electrician;
   const otherServices = allServices.filter(s => s.type !== service.type);
+
+  // District-specific content: unique intro blurb + one distinct FAQ angle,
+  // instead of every district reusing identical copy (see areaLocalContent.ts).
+  const localContent = getAreaLocalContent(area.slug);
+  const localIntro = language === 'ar' ? localContent.intro.ar : localContent.intro.en;
+  const localFaqDef = LOCAL_FAQ_KEYS[localContent.faqVariant];
+  const allFaqs = [...config.faqs, localFaqDef];
+  const nearbyAreas = getNearbyAreaSlugs(area.slug)
+    .map((slug) => ({ slug, name: AREA_NAMES[slug] }))
+    .filter((a) => a.name);
 
   useEffect(() => {
     trackServicePageView(service.type, area.slug);
@@ -174,7 +194,7 @@ export default function ElectricianAreaPage({ area, service }: Props) {
       },
       {
         "@type": "FAQPage",
-        "mainEntity": config.faqs.map((faq) => ({
+        "mainEntity": allFaqs.map((faq) => ({
           "@type": "Question",
           "name": t(faq.qKey, vars),
           "acceptedAnswer": {
@@ -239,6 +259,13 @@ export default function ElectricianAreaPage({ area, service }: Props) {
         </div>
       </section>
 
+      {/* District intro — unique per district, not templated (see areaLocalContent.ts) */}
+      <section style={{ padding: '28px 0 0' }}>
+        <div className="container" style={{ maxWidth: '700px', textAlign: 'center' }}>
+          <p style={{ color: 'var(--gray-600)', fontSize: '1rem', lineHeight: 1.7 }}>{localIntro}</p>
+        </div>
+      </section>
+
       {/* Services Section */}
       <section className="section">
         <div className="container">
@@ -299,6 +326,28 @@ export default function ElectricianAreaPage({ area, service }: Props) {
         </div>
       </section>
 
+      {/* Nearby districts — real cross-links between district pages, same service */}
+      {nearbyAreas.length > 0 && (
+        <section className="section" style={{ paddingTop: '28px', paddingBottom: '28px' }}>
+          <div className="container" style={{ textAlign: 'center' }}>
+            <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--gray-600)', marginBottom: '14px' }}>
+              {language === 'ar' ? `${serviceName} في الأحياء القريبة من ${areaName}` : `${serviceName} in districts near ${areaName}`}
+            </h3>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>
+              {nearbyAreas.map((na) => (
+                <Link
+                  key={na.slug}
+                  href={`/${config.slugPrefix.ar}-${na.slug}/`}
+                  style={{ padding: '9px 20px', background: 'white', border: '1px solid var(--gray-300)', borderRadius: '50px', fontWeight: 600, textDecoration: 'none', color: 'var(--dark)', fontSize: '0.9rem' }}
+                >
+                  {serviceName} {language === 'ar' ? na.name.ar : na.name.en}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* FAQ Section */}
       <section className="section bg-light">
         <div className="container">
@@ -306,7 +355,7 @@ export default function ElectricianAreaPage({ area, service }: Props) {
             <h2 className="section-title">{t('area-faq-title', vars)}</h2>
           </div>
           <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-            {config.faqs.map((faq, i) => (
+            {allFaqs.map((faq, i) => (
               <div key={i} className="card" style={{ marginBottom: '16px', textAlign: language === 'ar' ? 'right' : 'left' }}>
                 <h3 style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: '12px', color: 'var(--primary-blue)' }}>
                   {t(faq.qKey, vars)}

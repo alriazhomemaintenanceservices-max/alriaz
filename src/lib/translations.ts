@@ -451,6 +451,16 @@ export const translations = {
     'emg-plumb-faq-1-a': 'أغلق محبس المياه الرئيسي فورًا، ثم اتصل بنا مباشرة — فريقنا يصل خلال ساعة لتقييم الوضع وإصلاحه.',
     'emg-plumb-faq-2-q': 'هل الخدمة متاحة فعلاً بعد منتصف الليل؟',
     'emg-plumb-faq-2-a': 'نعم، فريقنا متاح على مدار الساعة طوال أيام الأسبوع.',
+
+    // District-page local FAQ variants (one assigned per district — see src/lib/areaLocalContent.ts)
+    'area-local-faq-villa-q': 'هل تقدمون خدمة {service} لفلل {area} متعددة الأدوار؟',
+    'area-local-faq-villa-a': 'نعم، فريقنا معتاد على فلل {area} متعددة الأدوار والملاحق الخارجية، ونغطي كل الأدوار ضمن نفس الزيارة.',
+    'area-local-faq-older-q': 'مباني {area} قديمة نسبيًا، هل تتعاملون مع التمديدات القديمة؟',
+    'area-local-faq-older-a': 'نعم، لدينا خبرة في التعامل مع التمديدات والتوصيلات القديمة في أحياء مثل {area}، ونقيّم حالتها قبل أي إصلاح.',
+    'area-local-faq-compound-q': 'بعض مجمعات {area} مسورة وتحتاج تصريح دخول، هل تتعاملون مع ذلك؟',
+    'area-local-faq-compound-a': 'نعم، نتنسق مع حراسة المجمعات السكنية المسورة في {area} مسبقًا لضمان دخول الفني في الوقت المحدد دون تأخير.',
+    'area-local-faq-coverage-q': 'هل {area} ضمن نطاق التغطية الأساسي أم يحتاج وقت وصول أطول؟',
+    'area-local-faq-coverage-a': 'نعم، {area} ضمن نطاق تغطيتنا الأساسي، ونصل خلال 45-60 دقيقة من وقت الاتصال مثل باقي أحياء شمال وشرق الرياض.',
   },
   en: {
     // Header
@@ -904,5 +914,15 @@ export const translations = {
     'emg-plumb-faq-1-a': 'Shut off the main water valve right away, then call us directly — our team arrives within an hour to assess and fix it.',
     'emg-plumb-faq-2-q': 'Is the service really available after midnight?',
     'emg-plumb-faq-2-a': 'Yes, our team is available around the clock every day of the week.',
+
+    // District-page local FAQ variants (one assigned per district — see src/lib/areaLocalContent.ts)
+    'area-local-faq-villa-q': 'Do you handle {service} for multi-floor villas in {area}?',
+    'area-local-faq-villa-a': 'Yes, our team is well used to multi-floor villas and outbuildings in {area}, and we cover every floor within the same visit.',
+    'area-local-faq-older-q': "{area}'s buildings are relatively older — do you work with older wiring and pipework?",
+    'area-local-faq-older-a': 'Yes, we have experience with older wiring and plumbing connections in districts like {area}, and we assess the condition before any repair.',
+    'area-local-faq-compound-q': 'Some {area} compounds are gated and require entry permits — do you handle that?',
+    'area-local-faq-compound-a': 'Yes, we coordinate with gated compound security in {area} in advance so the technician gets in on time without delay.',
+    'area-local-faq-coverage-q': 'Is {area} within your core coverage area, or does it take longer to reach?',
+    'area-local-faq-coverage-a': 'Yes, {area} is within our core coverage — we arrive within 45-60 minutes of your call, same as the rest of our North and East Riyadh coverage.',
   }
 };
