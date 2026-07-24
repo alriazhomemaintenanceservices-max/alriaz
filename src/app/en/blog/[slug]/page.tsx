@@ -3,21 +3,21 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getPostBySlug, getRelatedPosts, getSiblingSlug } from '@/lib/blog/public';
 import BlogArticle from '@/components/blog/BlogArticle';
-import '../../../styles/blog.css';
+import '../../../../styles/blog.css';
 
 export const revalidate = 300;
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || 'https://saudihomeexperts.com';
-const getPost = cache((slug: string) => getPostBySlug(slug, 'AR'));
+const getPost = cache((slug: string) => getPostBySlug(slug, 'EN'));
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPost(decodeURIComponent(slug));
-  if (!post) return { title: 'المقال غير موجود' };
+  if (!post) return { title: 'Article not found' };
 
   const title = post.seoTitle || post.title;
   const description = post.metaDescription || post.excerpt;
-  const canonical = post.canonicalUrl || `${SITE}/blog/${post.slug}/`;
+  const canonical = post.canonicalUrl || `${SITE}/en/blog/${post.slug}/`;
   const image = post.featuredUrl || undefined;
 
   return {
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     robots: post.robotsNoindex ? { index: false, follow: false } : { index: true, follow: true },
     openGraph: {
       title: post.ogTitle || title, description: post.ogDescription || description,
-      url: canonical, type: 'article', locale: 'ar_SA',
+      url: canonical, type: 'article', locale: 'en_US',
       images: image ? [{ url: image }] : undefined, publishedTime: post.publishedAt || undefined,
     },
     twitter: {
@@ -37,12 +37,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function EnglishBlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = await getPost(decodeURIComponent(slug));
   if (!post) notFound();
-  const related = await getRelatedPosts(post.categoryId, post.slug, 'AR', 3);
-  const enSlug = await getSiblingSlug(post.id, 'EN');
+  const related = await getRelatedPosts(post.categoryId, post.slug, 'EN', 3);
+  const arSlug = await getSiblingSlug(post.id, 'AR');
 
-  return <BlogArticle post={post} related={related} basePath="/blog" altHref={enSlug ? `/en/blog/${encodeURIComponent(enSlug)}/` : null} />;
+  return <BlogArticle post={post} related={related} basePath="/en/blog" altHref={arSlug ? `/blog/${encodeURIComponent(arSlug)}/` : null} />;
 }

@@ -312,17 +312,17 @@ export default function ElectricianAreaPage({ area, service }: Props) {
             ))}
           </div>
 
-          {/* Cost + emergency guides — only built out for electrician/plumber so far */}
-          {(service.type === 'electrician' || service.type === 'plumber') && (
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', flexWrap: 'wrap', marginTop: '18px' }}>
-              <Link href={`/services/${service.type}/cost-riyadh/`} style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--primary-blue)', textDecoration: 'underline' }}>
-                {language === 'ar' ? `كم تكلفة ${serviceName}؟` : `How much does ${serviceName} cost?`}
-              </Link>
+          {/* Cost guide — all 3 services now have one. Emergency page only exists for electrician/plumber. */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', flexWrap: 'wrap', marginTop: '18px' }}>
+            <Link href={`/services/${service.type}/cost-riyadh/`} style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--primary-blue)', textDecoration: 'underline' }}>
+              {language === 'ar' ? `كم تكلفة ${serviceName}؟` : `How much does ${serviceName} cost?`}
+            </Link>
+            {(service.type === 'electrician' || service.type === 'plumber') && (
               <Link href={`/services/${service.type}/emergency/`} style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--emergency-red)', textDecoration: 'underline' }}>
                 {language === 'ar' ? 'عندي طوارئ الآن' : 'I have an emergency now'}
               </Link>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </section>
 

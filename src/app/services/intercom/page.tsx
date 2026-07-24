@@ -96,6 +96,11 @@ export default function IntercomPage() {
               {t('area-send-whatsapp')}
             </Button>
           </div>
+          <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '20px' }}>
+            <Link href="/services/intercom/cost-riyadh/" style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--primary-blue)', textDecoration: 'underline' }}>
+              {language === 'ar' ? 'كم تكلفة الخدمة؟' : 'How much does it cost?'}
+            </Link>
+          </div>
         </div>
       </section>
 

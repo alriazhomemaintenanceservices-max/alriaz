@@ -32,7 +32,10 @@ const STATIC_PAGES: { path: string; priority: number }[] = [
     { path: '/services/plumber/cost-riyadh/', priority: 0.8 },
     { path: '/services/plumber/emergency/', priority: 0.85 },
     { path: '/services/intercom/', priority: 0.9 },
+    { path: '/services/intercom/cost-riyadh/', priority: 0.75 },
+    { path: '/faq/', priority: 0.7 },
     { path: '/blog/', priority: 0.7 },
+    { path: '/en/blog/', priority: 0.6 },
     { path: '/about-us/', priority: 0.8 },
     { path: '/contact/', priority: 0.8 },
     { path: '/site-map/', priority: 0.5 },
@@ -63,16 +66,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         }
     }
 
-    // Published blog posts (best-effort; never break the sitemap on a DB error)
+    // Published blog posts, both locales (best-effort; never break the sitemap on a DB error)
     try {
         const { getPublishedPosts } = await import('@/lib/blog/public')
-        const posts = await getPublishedPosts('AR', 500)
-        for (const post of posts) {
+        const [arPosts, enPosts] = await Promise.all([
+            getPublishedPosts('AR', 500),
+            getPublishedPosts('EN', 500),
+        ])
+        for (const post of arPosts) {
             entries.push({
                 url: `${BASE_URL}/blog/${encodeURIComponent(post.slug)}/`,
                 lastModified: post.publishedAt ? new Date(post.publishedAt) : now,
                 changeFrequency: 'monthly' as const,
                 priority: 0.6,
+            })
+        }
+        for (const post of enPosts) {
+            entries.push({
+                url: `${BASE_URL}/en/blog/${encodeURIComponent(post.slug)}/`,
+                lastModified: post.publishedAt ? new Date(post.publishedAt) : now,
+                changeFrequency: 'monthly' as const,
+                priority: 0.55,
             })
         }
     } catch {

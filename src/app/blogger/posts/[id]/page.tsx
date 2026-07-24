@@ -26,28 +26,33 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const p = post as any;
-  const t = (p.translations ?? []).find((x: any) => x.locale === 'AR') ?? null;
 
-  const ar = t
-    ? {
-        title: t.title ?? '',
-        slug: t.slug ?? '',
-        excerpt: t.excerpt ?? '',
-        content: t.content ?? '',
-        seoTitle: t.seoTitle ?? '',
-        metaDescription: t.metaDescription ?? '',
-        focusKeyword: t.focusKeyword ?? '',
-        secondaryKeywords: t.secondaryKeywords ?? [],
-        canonicalUrl: t.canonicalUrl ?? '',
-        robots: (t.robots ?? 'INDEX') as RobotsDirective,
-        ogTitle: t.ogTitle ?? '',
-        ogDescription: t.ogDescription ?? '',
-        faqs: (t.faqs ?? [])
-          .slice()
-          .sort((a: any, b: any) => (a.order ?? 0) - (b.order ?? 0))
-          .map((f: any) => ({ question: f.question, answer: f.answer })),
-      }
-    : emptyTranslation();
+  const toTranslationInput = (t: any) =>
+    t
+      ? {
+          title: t.title ?? '',
+          slug: t.slug ?? '',
+          excerpt: t.excerpt ?? '',
+          content: t.content ?? '',
+          seoTitle: t.seoTitle ?? '',
+          metaDescription: t.metaDescription ?? '',
+          focusKeyword: t.focusKeyword ?? '',
+          secondaryKeywords: t.secondaryKeywords ?? [],
+          canonicalUrl: t.canonicalUrl ?? '',
+          robots: (t.robots ?? 'INDEX') as RobotsDirective,
+          ogTitle: t.ogTitle ?? '',
+          ogDescription: t.ogDescription ?? '',
+          faqs: (t.faqs ?? [])
+            .slice()
+            .sort((a: any, b: any) => (a.order ?? 0) - (b.order ?? 0))
+            .map((f: any) => ({ question: f.question, answer: f.answer })),
+        }
+      : emptyTranslation();
+
+  const arT = (p.translations ?? []).find((x: any) => x.locale === 'AR') ?? null;
+  const enT = (p.translations ?? []).find((x: any) => x.locale === 'EN') ?? null;
+  const ar = toTranslationInput(arT);
+  const en = toTranslationInput(enT);
 
   const initial: PostPayload = {
     id: p.id,
@@ -58,6 +63,7 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
     scheduleTz: p.scheduleTz ?? null,
     tags: (p.tags ?? []).map((row: any) => row.tag?.name).filter(Boolean),
     ar,
+    en,
   };
 
   const fm = p.featuredMedia;

@@ -158,3 +158,20 @@ export async function getPublishedSlugs(locale: Locale = 'AR'): Promise<{ slug: 
   const posts = await getPublishedPosts(locale, 500);
   return posts.map((p) => ({ slug: p.slug, publishedAt: p.publishedAt }));
 }
+
+/** The other language's slug for the same post, if that translation is published — for AR↔EN switch links and hreflang. */
+export async function getSiblingSlug(postId: string, locale: Locale): Promise<string | null> {
+  const supabase = supabaseAdmin();
+  const { data } = await supabase
+    .from('blog_translations')
+    .select('slug,post:blog_posts!inner(status,publishedAt,scheduledAt)')
+    .eq('postId', postId)
+    .eq('locale', locale)
+    .maybeSingle();
+  if (!data) return null;
+  const row = data as any;
+  const p = row.post;
+  const now = Date.now();
+  const visible = p?.status === 'PUBLISHED' || (p?.status === 'SCHEDULED' && p?.scheduledAt && new Date(p.scheduledAt).getTime() <= now);
+  return visible ? row.slug : null;
+}

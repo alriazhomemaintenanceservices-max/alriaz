@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Phone, Menu, X, Home, Users, Mail, Wrench, Newspaper } from 'lucide-react';
+import { Phone, Menu, X, Home, Users, Mail, Wrench, Newspaper, HelpCircle } from 'lucide-react';
 import Button from '@/components/shared/Button';
 import Logo from '@/components/shared/Logo';
 import LanguageToggle from '@/components/shared/LanguageToggle';
@@ -29,7 +29,8 @@ export default function Header() {
   const navLinks = [
     { href: '/', icon: <Home size={18} />, label: t('breadcrumb-home') },
     { href: '/services/', icon: <Wrench size={18} />, label: t('nav-services') },
-    { href: '/blog/', icon: <Newspaper size={18} />, label: isAr ? 'المدونة' : 'Blog' },
+    { href: isAr ? '/blog/' : '/en/blog/', icon: <Newspaper size={18} />, label: isAr ? 'المدونة' : 'Blog' },
+    { href: '/faq/', icon: <HelpCircle size={18} />, label: isAr ? 'الأسئلة الشائعة' : 'FAQ' },
     { href: '/about-us/', icon: <Users size={18} />, label: t('nav-about') },
     { href: '/contact/', icon: <Mail size={18} />, label: t('nav-contact') },
   ];

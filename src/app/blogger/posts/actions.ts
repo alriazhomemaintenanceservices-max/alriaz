@@ -5,7 +5,7 @@ import { revalidatePath } from 'next/cache';
 import { getSession } from '@/lib/auth/session';
 import { supabaseAdmin } from '@/lib/supabase/server';
 import { slugify, plainText, readingTime, extractToc, autoExcerpt } from '@/lib/blog/content';
-import type { PostPayload, SaveResult } from '@/lib/blog/post-types';
+import type { PostPayload, SaveResult, TranslationInput } from '@/lib/blog/post-types';
 import type { BlogTag } from '@/lib/types/db';
 
 const uid = () => crypto.randomUUID();
@@ -52,30 +52,107 @@ async function ensureTagIds(names: string[]): Promise<string[]> {
   return ids;
 }
 
+/** Upsert one locale's translation row + its FAQs. Returns the final slug, or an error. */
+async function upsertTranslation(
+  postId: string,
+  locale: 'AR' | 'EN',
+  t: TranslationInput,
+  excludePostId?: string,
+): Promise<{ slug: string; error?: undefined } | { slug?: undefined; error: string }> {
+  const supabase = supabaseAdmin();
+
+  const contentText = plainText(t.content);
+  const slugBase = slugify(t.slug || t.title);
+  const slug = await uniqueSlug(slugBase, locale, excludePostId);
+  const toc = extractToc(t.content);
+  const excerpt = t.excerpt.trim() || autoExcerpt(t.content);
+
+  const translationRow = {
+    postId,
+    locale,
+    title: t.title.trim(),
+    slug,
+    excerpt,
+    content: t.content,
+    contentText,
+    readingTime: readingTime(contentText),
+    tocJson: toc,
+    seoTitle: t.seoTitle.trim() || null,
+    metaDescription: t.metaDescription.trim() || null,
+    focusKeyword: t.focusKeyword.trim() || null,
+    secondaryKeywords: t.secondaryKeywords,
+    canonicalUrl: t.canonicalUrl.trim() || null,
+    robots: t.robots,
+    ogTitle: t.ogTitle.trim() || null,
+    ogDescription: t.ogDescription.trim() || null,
+    updatedAt: nowIso(),
+  };
+
+  const { data: existingT } = await supabase
+    .from('blog_translations')
+    .select('id')
+    .eq('postId', postId)
+    .eq('locale', locale)
+    .maybeSingle();
+
+  let translationId: string;
+  if (existingT) {
+    translationId = (existingT as { id: string }).id;
+    const { error } = await supabase.from('blog_translations').update(translationRow).eq('id', translationId);
+    if (error) return { error: error.message };
+  } else {
+    translationId = uid();
+    const { error } = await supabase
+      .from('blog_translations')
+      .insert({ id: translationId, createdAt: nowIso(), ...translationRow });
+    if (error) return { error: error.message };
+  }
+
+  // FAQs — replace the set for this translation
+  await supabase.from('blog_faqs').delete().eq('translationId', translationId);
+  const faqs = t.faqs.filter((f) => f.question.trim() && f.answer.trim());
+  if (faqs.length) {
+    const { error } = await supabase.from('blog_faqs').insert(
+      faqs.map((f, i) => ({
+        id: uid(),
+        translationId,
+        question: f.question.trim(),
+        answer: f.answer.trim(),
+        order: i,
+      })),
+    );
+    if (error) return { error: error.message };
+  }
+
+  return { slug };
+}
+
+function hasContent(t: TranslationInput): boolean {
+  return Boolean(t.title.trim() || plainText(t.content));
+}
+
 export async function savePost(payload: PostPayload): Promise<SaveResult> {
   const session = await getSession();
   if (!session) return { ok: false, error: 'Not authenticated.' };
 
-  const ar = payload.ar;
-  if (!ar.title.trim()) return { ok: false, error: 'Title is required.' };
-  if (!plainText(ar.content)) return { ok: false, error: 'Content cannot be empty.' };
+  const { ar, en } = payload;
+  if (!ar.title.trim()) return { ok: false, error: 'Arabic title is required.' };
+  if (!plainText(ar.content)) return { ok: false, error: 'Arabic content cannot be empty.' };
+
+  // English is required to publish — the site now ships both locales for every
+  // live post — but can stay empty while a post is still a draft in progress.
+  if (payload.status === 'PUBLISHED') {
+    if (!en.title.trim()) return { ok: false, error: 'English title is required to publish.' };
+    if (!plainText(en.content)) return { ok: false, error: 'English content is required to publish.' };
+  }
 
   const supabase = supabaseAdmin();
   const isNew = !payload.id;
   const postId = payload.id || uid();
 
-  // Derived content fields
-  const contentText = plainText(ar.content);
-  const slugBase = slugify(ar.slug || ar.title);
-  const slug = await uniqueSlug(slugBase, 'AR', payload.id);
-  const toc = extractToc(ar.content);
-  const excerpt = ar.excerpt.trim() || autoExcerpt(ar.content);
+  const publishedAt = payload.status === 'PUBLISHED' ? nowIso() : null;
 
-  // Publish timing
-  const publishedAt =
-    payload.status === 'PUBLISHED' ? nowIso() : null;
-
-  // 1) Upsert the post row
+  // 1) Upsert the post row (locale-independent fields)
   if (isNew) {
     const { error } = await supabase.from('blog_posts').insert({
       id: postId,
@@ -91,7 +168,6 @@ export async function savePost(payload: PostPayload): Promise<SaveResult> {
     });
     if (error) return { ok: false, error: error.message };
   } else {
-    // Keep an existing publishedAt if already published
     const { data: current } = await supabase
       .from('blog_posts')
       .select('publishedAt')
@@ -113,64 +189,19 @@ export async function savePost(payload: PostPayload): Promise<SaveResult> {
     if (error) return { ok: false, error: error.message };
   }
 
-  // 2) Upsert the AR translation (primary; unique on postId+locale)
-  const translationRow = {
-    postId,
-    locale: 'AR' as const,
-    title: ar.title.trim(),
-    slug,
-    excerpt,
-    content: ar.content,
-    contentText,
-    readingTime: readingTime(contentText),
-    tocJson: toc,
-    seoTitle: ar.seoTitle.trim() || null,
-    metaDescription: ar.metaDescription.trim() || null,
-    focusKeyword: ar.focusKeyword.trim() || null,
-    secondaryKeywords: ar.secondaryKeywords,
-    canonicalUrl: ar.canonicalUrl.trim() || null,
-    robots: ar.robots,
-    ogTitle: ar.ogTitle.trim() || null,
-    ogDescription: ar.ogDescription.trim() || null,
-    updatedAt: nowIso(),
-  };
+  // 2) Upsert translations — Arabic always, English whenever the blogger has
+  // started it (or it's required because the post is being published).
+  const arResult = await upsertTranslation(postId, 'AR', ar, payload.id);
+  if (arResult.error) return { ok: false, error: arResult.error };
 
-  const { data: existingT } = await supabase
-    .from('blog_translations')
-    .select('id')
-    .eq('postId', postId)
-    .eq('locale', 'AR')
-    .maybeSingle();
-
-  let translationId: string;
-  if (existingT) {
-    translationId = (existingT as { id: string }).id;
-    const { error } = await supabase.from('blog_translations').update(translationRow).eq('id', translationId);
-    if (error) return { ok: false, error: error.message };
-  } else {
-    translationId = uid();
-    const { error } = await supabase
-      .from('blog_translations')
-      .insert({ id: translationId, createdAt: nowIso(), ...translationRow });
-    if (error) return { ok: false, error: error.message };
+  let enSlug: string | undefined;
+  if (hasContent(en)) {
+    const enResult = await upsertTranslation(postId, 'EN', en, payload.id);
+    if (enResult.error) return { ok: false, error: enResult.error };
+    enSlug = enResult.slug;
   }
 
-  // 3) FAQs — replace the set for this translation
-  await supabase.from('blog_faqs').delete().eq('translationId', translationId);
-  const faqs = ar.faqs.filter((f) => f.question.trim() && f.answer.trim());
-  if (faqs.length) {
-    await supabase.from('blog_faqs').insert(
-      faqs.map((f, i) => ({
-        id: uid(),
-        translationId,
-        question: f.question.trim(),
-        answer: f.answer.trim(),
-        order: i,
-      })),
-    );
-  }
-
-  // 4) Tags — replace the set for this post
+  // 3) Tags — replace the set for this post
   const tagIds = await ensureTagIds(payload.tags);
   await supabase.from('blog_post_tags').delete().eq('postId', postId);
   if (tagIds.length) {
@@ -180,7 +211,11 @@ export async function savePost(payload: PostPayload): Promise<SaveResult> {
   revalidatePath('/blogger/posts');
   revalidatePath('/blogger/dashboard');
   revalidatePath('/blog');
-  revalidatePath(`/blog/${slug}`);
+  revalidatePath(`/blog/${arResult.slug}`);
+  if (enSlug) {
+    revalidatePath('/en/blog');
+    revalidatePath(`/en/blog/${enSlug}`);
+  }
   return { ok: true, id: postId };
 }
 

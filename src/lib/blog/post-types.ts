@@ -30,6 +30,7 @@ export interface PostPayload {
   scheduleTz: string | null;
   tags: string[]; // tag names
   ar: TranslationInput; // primary language (Arabic)
+  en: TranslationInput; // English translation — required to publish, optional while drafting
 }
 
 export interface SaveResult {

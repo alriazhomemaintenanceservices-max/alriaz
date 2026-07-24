@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Phone, Clock, User, Calendar } from 'lucide-react';
+import { Phone, Clock, User, Calendar, CheckCircle2 } from 'lucide-react';
 import WhatsAppSvg from '@/components/shared/WhatsAppSvg';
 import { addHeadingIds } from '@/lib/blog/content';
 import type { FullPost, PostCard } from '@/lib/blog/public';
@@ -13,12 +13,14 @@ const STRINGS = {
     faq: 'الأسئلة الشائعة', related: 'مقالات ذات صلة', minRead: 'دقائق قراءة',
     ctaBadge: 'تحتاج مساعدة؟', ctaTitle: 'احجز فنيًا الآن', ctaText: 'كهربائي، سباك وانتركوم — خدمة سريعة في شمال الرياض.',
     call: 'اتصل الآن', whatsapp: 'واتساب', switchTo: 'English',
+    trustFast: 'استجابة سريعة', trustLicensed: 'فنيون معتمدون', trustAvailable: 'متاح 24/7',
   },
   EN: {
     home: 'Home', blog: 'Blog', overview: 'Overview', toc: 'Table of Contents',
     faq: 'Frequently Asked Questions', related: 'Related Articles', minRead: 'min read',
     ctaBadge: 'Need help?', ctaTitle: 'Book a technician', ctaText: 'Electrician, plumber & intercom — fast service across North Riyadh.',
     call: 'Call now', whatsapp: 'WhatsApp', switchTo: 'العربية',
+    trustFast: 'Fast Response', trustLicensed: 'Licensed Professionals', trustAvailable: 'Available 24/7',
   },
 };
 
@@ -33,10 +35,12 @@ export default function BlogArticle({
   post,
   related,
   basePath,
+  altHref,
 }: {
   post: FullPost;
   related: PostCard[];
   basePath: string; // '/blog'
+  altHref?: string | null; // URL of this same post in the other language, if published
 }) {
   const locale = post.locale;
   const s = STRINGS[locale];
@@ -85,6 +89,11 @@ export default function BlogArticle({
         <div className="container">
           <nav className="blog-breadcrumb">
             <Link href="/">{s.home}</Link> / <Link href={`${basePath}/`}>{s.blog}</Link> / <span>{post.title}</span>
+            {altHref && (
+              <Link href={altHref} style={{ float: locale === 'AR' ? 'left' : 'right' }}>
+                {s.switchTo}
+              </Link>
+            )}
           </nav>
           {post.categoryName && <span className="blog-hero-cat">{post.categoryName}</span>}
           <h1>{post.title}</h1>
@@ -96,24 +105,35 @@ export default function BlogArticle({
         </div>
       </section>
 
-      {/* Featured image after hero */}
-      {post.featuredUrl && (
-        <div className="blog-featured">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={post.featuredUrl} alt={post.featuredAlt} width={post.featuredWidth ?? undefined} height={post.featuredHeight ?? undefined} />
-        </div>
-      )}
-
       {/* Body */}
       <div className="container">
         <div className="blog-body">
           <main>
+            {post.featuredUrl && (
+              <div className="blog-featured">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={post.featuredUrl} alt={post.featuredAlt} width={post.featuredWidth ?? undefined} height={post.featuredHeight ?? undefined} />
+              </div>
+            )}
+
             {post.excerpt && (
               <div className="blog-overview">
                 <strong>{s.overview}</strong>
                 <p>{post.excerpt}</p>
               </div>
             )}
+
+            {post.toc.length > 0 && (
+              <div className="blog-toc-inline">
+                <h4>{s.toc}</h4>
+                <ul>
+                  {post.toc.map((item) => (
+                    <li key={item.id}><a href={`#${item.id}`} className={`lvl-${item.level}`}>{item.text}</a></li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             <article className="blog-article" dangerouslySetInnerHTML={{ __html: contentHtml }} />
 
             {post.faqs.length > 0 && (
@@ -130,16 +150,6 @@ export default function BlogArticle({
           </main>
 
           <aside className="blog-aside">
-            {post.toc.length > 0 && (
-              <div className="blog-toc">
-                <h4>{s.toc}</h4>
-                <ul>
-                  {post.toc.map((item) => (
-                    <li key={item.id}><a href={`#${item.id}`} className={`lvl-${item.level}`}>{item.text}</a></li>
-                  ))}
-                </ul>
-              </div>
-            )}
             <div className="blog-cta">
               <span className="blog-cta-badge">{s.ctaBadge}</span>
               <h3>{s.ctaTitle}</h3>
@@ -149,6 +159,11 @@ export default function BlogArticle({
                 <a href={`tel:${PHONE}`} className="blog-btn blog-btn-call"><Phone size={17} /> {s.call}</a>
                 <a href="https://wa.me/966508901536" target="_blank" rel="noopener noreferrer" className="blog-btn blog-btn-wa"><WhatsAppSvg size={17} /> {s.whatsapp}</a>
               </div>
+              <ul className="blog-cta-trust">
+                <li><CheckCircle2 size={15} /> {s.trustFast}</li>
+                <li><CheckCircle2 size={15} /> {s.trustLicensed}</li>
+                <li><CheckCircle2 size={15} /> {s.trustAvailable}</li>
+              </ul>
             </div>
           </aside>
         </div>
